@@ -4,9 +4,8 @@
 
 GameController::GameController()
 {
-	std::cout << "afsd";
+	std::cout << "halo";
 }
-
 
 GameController::~GameController()
 {
