@@ -3,7 +3,7 @@
 
 void Animated::nextFrame()
 {
-	animationStep = (animationStep + 1) % 9; 
+	animationStep = (animationStep + 1) % animationFrames[int(animationType)]; 
 	sprite.setTextureRect(sf::IntRect(animationStep * 64, (int(animationType) * 4 + int(facing)) * 64, 64, 64));
 }
 
@@ -16,7 +16,7 @@ void Animated::animate(const AnimationType animationType)
 void Animated::stopAnimate()
 {
 	animating = false;
-	animationStep = 8;
+	animationStep = animationFrames[int(animationType)] - 1;
 	nextFrame();
 }
 
