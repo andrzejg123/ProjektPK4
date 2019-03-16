@@ -15,7 +15,7 @@ void Enemy::performAction(Player* player, void* gameObjectsHolder, GameTexturesH
 			attack(player, gameObjectsHolder, gameTexturesHolder);
 			setFacing(DistanceHelper::directionToFacing(this->getFacing(), direction));
 		}
-		stopAnimate();
+		stopAnimate(AnimationType::Move);
 		return;
 	}
 	if(sawPlayer || distance < visionRadius)

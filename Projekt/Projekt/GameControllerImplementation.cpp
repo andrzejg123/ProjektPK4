@@ -36,7 +36,7 @@ void GameControllerImplementation::movePlayer(const Direction direction)
 
 void GameControllerImplementation::stopPlayer()
 {
-	gameObjectsHolder->getPlayer()->stopAnimate();
+	gameObjectsHolder->getPlayer()->stopAnimate(AnimationType::Move);
 }
 
 void GameControllerImplementation::updateFlyingObjects(const sf::Time& elapsedTime) const
