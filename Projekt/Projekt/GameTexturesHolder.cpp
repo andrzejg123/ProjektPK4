@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GameTexturesHolder.h"
 
-sf::Texture& GameTexturesHolder::getTexture(const TextureIndicator textureIndicator)
+sf::Texture& GameTexturesHolder::getTexture(const TextureIndicator textureIndicator) const
 {
 	const auto i = textures->find(textureIndicator);
 	if (i == textures->end()) //texture was not loaded before

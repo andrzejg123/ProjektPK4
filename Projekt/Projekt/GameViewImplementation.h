@@ -7,7 +7,7 @@ class GameViewImplementation: GameView
 	GameController* gameController;
 
 public:
-	void displayGame();
+	void displayGame() const;
 	GameViewImplementation();
 	~GameViewImplementation();
 };

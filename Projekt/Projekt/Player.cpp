@@ -1,11 +1,6 @@
 #include "stdafx.h"
 #include "Player.h"
 
-
-void Player::onDamage()
-{
-}
-
 Player::Player()
 {
 }

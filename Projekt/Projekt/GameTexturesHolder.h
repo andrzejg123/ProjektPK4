@@ -14,7 +14,7 @@ class GameTexturesHolder
 	
 public:
 	//Returns a reference to indicated texture. If the texture is not in the map, it is loaded
-	sf::Texture& getTexture(TextureIndicator textureIndicator);
+	sf::Texture& getTexture(TextureIndicator textureIndicator) const;
 	GameTexturesHolder();
 	~GameTexturesHolder();
 };

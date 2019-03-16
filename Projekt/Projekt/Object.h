@@ -19,9 +19,11 @@ protected:
 
 public:
 	sf::FloatRect getFixedBounds() const;
+	sf::FloatRect getBounds() const;
 	void setTexture(sf::Texture &texture);
 	Facing getFacing() const;
 	void setFacing(Facing facing);
+	sf::Vector2f getPosition() const;
 	Object(sf::Texture& spriteTexture);
 	Object();
 	~Object();

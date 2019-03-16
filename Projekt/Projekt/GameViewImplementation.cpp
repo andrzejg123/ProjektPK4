@@ -3,6 +3,7 @@
 #include "GameControllerImplementation.h"
 #include <SFML/Graphics.hpp>
 #include <iostream>
+#include "Keys.h"
 
 GameViewImplementation::GameViewImplementation(): gameController(new GameControllerImplementation(this))
 {
@@ -14,9 +15,10 @@ GameViewImplementation::~GameViewImplementation()
 	delete this->gameController;
 }
 
-void GameViewImplementation::displayGame()
+//todo objects blinks from time to time
+void GameViewImplementation::displayGame() const
 {
-	sf::RenderWindow window(sf::VideoMode(512, 256), "Tilemap");
+	sf::RenderWindow window(sf::VideoMode(512, 256), Keys::version);
 	//window.setFramerateLimit(60);
 	window.setVerticalSyncEnabled(true);
 
@@ -66,8 +68,8 @@ void GameViewImplementation::displayGame()
 		// draw the map
 		window.clear();
 		window.draw(*gameController->getMap());
-		window.draw(*gameController->getPlayer());
-		//gameController->getAllDrawable();
+		for (auto objectToDraw : *gameController->getObjectsToDraw())
+			window.draw(*objectToDraw);
 		window.display();
 	}
 

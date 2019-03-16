@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Object.h"
 #include <SFML/Graphics/RenderTarget.hpp>
+#include <iostream>
 
 void Object::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {
@@ -18,6 +19,11 @@ sf::FloatRect Object::getFixedBounds() const
 	return fixedBounds;
 }
 
+sf::FloatRect Object::getBounds() const
+{
+	return sprite.getGlobalBounds();
+}
+
 void Object::setTexture(sf::Texture& texture)
 {
 	sprite.setTexture(texture);
@@ -31,6 +37,11 @@ Facing Object::getFacing() const
 void Object::setFacing(const Facing facing)
 {
 	this->facing = facing;
+}
+
+sf::Vector2f Object::getPosition() const
+{
+	return sprite.getPosition();
 }
 
 Object::Object(sf::Texture& spriteTexture)
