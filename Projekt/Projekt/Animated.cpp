@@ -3,21 +3,27 @@
 
 void Animated::nextFrame()
 {
-	animationStep = (animationStep + 1) % 9; 
+	animationStep = (animationStep + 1) % animationFrames[int(animationType)];
+	if (autoPausing && animationStep == 0)
+		animating = false;
 	sprite.setTextureRect(sf::IntRect(animationStep * 64, (int(animationType) * 4 + int(facing)) * 64, 64, 64));
 }
 
-void Animated::animate(const AnimationType animationType)
+void Animated::animate(const AnimationType animationType, bool autoPausing)
 {
+	this->autoPausing = autoPausing;
 	this->animationType = animationType;
 	animating = true;
 }
 
-void Animated::stopAnimate()
+void Animated::stopAnimate(AnimationType animationType)
 {
-	animating = false;
-	animationStep = 8;
-	nextFrame();
+	if (this->animationType == animationType)
+	{
+		animating = false;
+		animationStep = animationFrames[int(animationType)] - 1;
+		nextFrame();
+	}
 }
 
 void Animated::updateAnimation(const sf::Time& elapsed)

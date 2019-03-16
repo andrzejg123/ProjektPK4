@@ -17,11 +17,12 @@ class Animated : public virtual Object
 	sf::Time currentElapsed;
 	sf::Time interval = sf::milliseconds(67);
 	int animationStep = 2;
+	int animationFrames[2] = { 9, 6 };
 	AnimationType animationType = AnimationType::Move;
 	void nextFrame();
 public:
-	void animate(AnimationType animationType);
-	void stopAnimate();
+	void animate(AnimationType animationType, bool autoPausing = true);
+	void stopAnimate(AnimationType animationType);
 	void updateAnimation(const sf::Time &elapsed);
 	Animated();
 	~Animated();
