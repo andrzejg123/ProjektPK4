@@ -46,12 +46,12 @@ void GameControllerImplementation::movePlayer(const Direction direction)
 	default: playerFacing = Facing(direction);
 	}
 	player->setFacing(playerFacing);
-	player->animate(AnimationType::Move);
+	player->animate(AnimationType::Move, false);
 }
 
 void GameControllerImplementation::stopPlayer()
 {
-	player->stopAnimate();
+	player->stopAnimate(AnimationType::Move);
 }
 
 void GameControllerImplementation::updateGame(const sf::Time& elapsed)

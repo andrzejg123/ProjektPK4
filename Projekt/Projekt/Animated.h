@@ -21,8 +21,8 @@ class Animated : public virtual Object
 	AnimationType animationType = AnimationType::Move;
 	void nextFrame();
 public:
-	void animate(AnimationType animationType);
-	void stopAnimate();
+	void animate(AnimationType animationType, bool autoPausing = true);
+	void stopAnimate(AnimationType animationType);
 	void updateAnimation(const sf::Time &elapsed);
 	Animated();
 	~Animated();
