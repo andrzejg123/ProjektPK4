@@ -1,10 +1,17 @@
 #pragma once
-#include <list>
+#include "GameMap.h"
+#include "Player.h"
 
 class GameController
 {
 public:
+	virtual ~GameController() = default;
 	virtual void getFirstLayer() = 0;
-
+	virtual void initializeGame() = 0;
+	virtual GameMap* getMap() = 0;
+	virtual Player* getPlayer() = 0;
+	virtual void movePlayer(Direction direction) = 0;
+	virtual void stopPlayer() = 0;
+	virtual void updateGame(const sf::Time& elapsed) = 0;
 };
 

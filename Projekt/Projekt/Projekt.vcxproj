@@ -153,6 +153,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animated.h" />
+    <ClInclude Include="Damageable.h" />
+    <ClInclude Include="FileReadingController.h" />
     <ClInclude Include="GameControllerImplementation.h" />
     <ClInclude Include="GameMapController.h" />
     <ClInclude Include="GameTexturesHolder.h" />
@@ -160,17 +163,26 @@
     <ClInclude Include="GameController.h" />
     <ClInclude Include="GameView.h" />
     <ClInclude Include="MainController.h" />
+    <ClInclude Include="GameMap.h" />
+    <ClInclude Include="Moveable.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animated.cpp" />
+    <ClCompile Include="Damageable.cpp" />
+    <ClCompile Include="FileReadingController.cpp" />
     <ClCompile Include="GameControllerImplementation.cpp" />
     <ClCompile Include="GameMapController.cpp" />
     <ClCompile Include="GameTexturesHolder.cpp" />
     <ClCompile Include="GameViewImplementation.cpp" />
     <ClCompile Include="MainController.cpp" />
+    <ClCompile Include="GameMap.cpp" />
+    <ClCompile Include="Moveable.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projekt.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
