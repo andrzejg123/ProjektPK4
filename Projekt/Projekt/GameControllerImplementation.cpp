@@ -17,6 +17,7 @@ void GameControllerImplementation::initializeGame()
 	gameMapController->loadMap(MapDataIndicator::Test);
 	gameObjectsController->setPlayer(new Player(gameTexturesHolder->getTexture(TextureIndicator::PlayerWarrior)));
 	gameObjectsController->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
+	gameObjectsController->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
 }
 
 void GameControllerImplementation::movePlayer(const Direction direction)

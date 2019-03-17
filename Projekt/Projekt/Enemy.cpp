@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "Enemy.h"
 #include "DistanceHelper.h"
+#include "RandomMoveControllerImplementation.h"
 
 void Enemy::performAction(Player* player, GameObjectsController* gameObjectsController, GameTexturesHolder* gameTexturesHolder)
 {
@@ -21,14 +22,27 @@ void Enemy::performAction(Player* player, GameObjectsController* gameObjectsCont
 	if(sawPlayer || distance < visionRadius)
 	{
 		sawPlayer = true;
-		
 		move(direction);
 		if (player->getFixedBounds().intersects(this->getFixedBounds()))
 			cancelMove();
 		setFacing(DistanceHelper::directionToFacing(this->getFacing(), direction));
 		animate(AnimationType::Move);
-	} else
-	{
-		// todo handle time when enemy does not see enemy
+		return;
 	}
+	const auto randomDirection = randomMoveHelper->getDirection();
+	move(randomDirection);
+	if (player->getFixedBounds().intersects(this->getFixedBounds()))
+		cancelMove();
+	setFacing(DistanceHelper::directionToFacing(this->getFacing(), randomDirection));
+	animate(AnimationType::Move);
+}
+
+Enemy::Enemy()
+{
+	randomMoveHelper = new RandomMoveControllerImplementation(this);
+}
+
+Enemy::~Enemy()
+{
+	delete randomMoveHelper;
 }

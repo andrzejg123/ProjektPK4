@@ -144,6 +144,12 @@
     <ClInclude Include="SoundController.h">
       <Filter>Header Files\Sounds</Filter>
     </ClInclude>
+    <ClInclude Include="RandomMoveControllerImplementation.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomMoveController.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -226,6 +232,9 @@
     </ClCompile>
     <ClCompile Include="SoundController.cpp">
       <Filter>Source Files\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomMoveControllerImplementation.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
