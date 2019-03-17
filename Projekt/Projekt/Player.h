@@ -6,6 +6,8 @@
 class Player : public Moveable, public Animated, public Damageable
 {
 public:
+	void onDeath() override;
+	void onGetHit() override;
 	Player();
 	Player(sf::Texture& playerTexture);
 	~Player();

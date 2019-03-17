@@ -7,7 +7,10 @@
 
 enum class SoundIndicator
 {
-	ShootArrow
+	ShootArrow,
+	HitArrow,
+	PlayerGetHit,
+	PlayerDeath,
 };
 
 //Responsible for playing any sounds

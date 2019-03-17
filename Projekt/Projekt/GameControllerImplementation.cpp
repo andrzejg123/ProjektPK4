@@ -2,8 +2,8 @@
 #include "GameControllerImplementation.h"
 #include "WildDog.h"
 #include "DistanceHelper.h"
-#include <iostream>
 #include "SoundController.h"
+#include "GameObjectsControllerImplementation.h"
 
 void GameControllerImplementation::getFirstLayer()
 {
@@ -15,15 +15,15 @@ void GameControllerImplementation::initializeGame()
 	SoundController::getInstance()->playMusic(MusicIndicator::DEFAULT);
 	gameMapController->loadMap(MapDataIndicator::Test);
 	auto& playerTexture = gameTexturesHolder->getTexture(TextureIndicator::PlayerWarrior);
-	gameObjectsHolder->setPlayer(new Player(playerTexture));
-	gameObjectsHolder->addEnemy(new WildDog(playerTexture));
+	gameObjectsController->setPlayer(new Player(playerTexture));
+	gameObjectsController->addEnemy(new WildDog(playerTexture));
 }
 
 void GameControllerImplementation::movePlayer(const Direction direction)
 {
-	auto player = gameObjectsHolder->getPlayer();
+	auto player = gameObjectsController->getPlayer();
 	player->move(direction);
-	for (auto enemy : *gameObjectsHolder->getEnemies())
+	for (auto enemy : *gameObjectsController->getEnemies())
 	{
 		if(enemy->getFixedBounds().intersects(player->getFixedBounds()))
 			player->cancelMove();
@@ -36,24 +36,26 @@ void GameControllerImplementation::movePlayer(const Direction direction)
 
 void GameControllerImplementation::stopPlayer()
 {
-	gameObjectsHolder->getPlayer()->stopAnimate(AnimationType::Move);
+	gameObjectsController->getPlayer()->stopAnimate(AnimationType::Move);
 }
 
 void GameControllerImplementation::updateFlyingObjects(const sf::Time& elapsedTime) const
 {
-	auto list = *gameObjectsHolder->getFlyingObjects();
+	auto list = *gameObjectsController->getFlyingObjects();
 	auto it = list.begin();
 	while (it != list.end()) {
 		const auto flyingObject = *it;
 		flyingObject->move(Direction::None);
 		if (gameMapController->checkCollision(flyingObject))
 		{
+			flyingObject->hit();
 			it = list.erase(it);
-			gameObjectsHolder->removeFlyingObject(flyingObject);
+			gameObjectsController->removeFlyingObject(flyingObject);
 		}
-		else if (gameObjectsHolder->getPlayer()->getBounds().intersects(flyingObject->getFixedBounds())) {
+		else if (gameObjectsController->getPlayer()->getBounds().intersects(flyingObject->getFixedBounds())) {
+			flyingObject->hitDamageable(gameObjectsController->getPlayer());
 			it = list.erase(it);
-			gameObjectsHolder->removeFlyingObject(flyingObject);
+			gameObjectsController->removeFlyingObject(flyingObject);
 		}
 		else
 			++it;
@@ -62,9 +64,9 @@ void GameControllerImplementation::updateFlyingObjects(const sf::Time& elapsedTi
 
 void GameControllerImplementation::updateEnemies(const sf::Time& elapsedTime) const
 {
-	for (auto enemy : *gameObjectsHolder->getEnemies())
+	for (auto enemy : *gameObjectsController->getEnemies())
 	{
-		enemy->performAction(gameObjectsHolder->getPlayer(), gameObjectsHolder, gameTexturesHolder);
+		enemy->performAction(gameObjectsController->getPlayer(), gameObjectsController, gameTexturesHolder);
 		if (gameMapController->checkCollision(enemy))
 			enemy->cancelMove();
 	}
@@ -74,7 +76,7 @@ void GameControllerImplementation::updateGame(const sf::Time& elapsed)
 {
 	updateEnemies(elapsed);
 	updateFlyingObjects(elapsed);
-	for (auto animated : *gameObjectsHolder->getAnimatedList())
+	for (auto animated : *gameObjectsController->getAnimatedList())
 		animated->updateAnimation(elapsed);
 }
 
@@ -85,19 +87,19 @@ GameMap* GameControllerImplementation::getMap()
 
 std::list<Object*>* GameControllerImplementation::getObjectsToDraw()
 {
-	return gameObjectsHolder->getObjects();
+	return gameObjectsController->getObjects();
 }
 
 GameControllerImplementation::GameControllerImplementation(GameView* gameView): gameView(gameView)
 {
 	this->gameMapController = new GameMapController();
 	this->gameTexturesHolder = new GameTexturesHolder();
-	this->gameObjectsHolder = new GameObjectsHolder();
+	this->gameObjectsController = new GameObjectsControllerImplementation();
 }
 
 GameControllerImplementation::~GameControllerImplementation()
 {
 	delete this->gameMapController;
 	delete this->gameTexturesHolder;
-	delete this->gameObjectsHolder;
+	delete this->gameObjectsController;
 }

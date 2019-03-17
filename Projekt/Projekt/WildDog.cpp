@@ -1,18 +1,25 @@
 #include "stdafx.h"
 #include "WildDog.h"
-#include "GameObjectsHolder.h"
 #include "DistanceHelper.h"
-#include "Arrow.h"
 #include "GameTexturesHolder.h"
-#include <iostream>
 #include "Log.h"
+#include "FlyingObjectFactory.h"
 
-// todo problem with class gameObjectsHolder
-void WildDog::attack(Player* player, void* gameObjectsHolder, GameTexturesHolder* gameTexturesHolder)
+void WildDog::onDeath()
 {
+
+}
+
+void WildDog::onGetHit()
+{
+
+}
+
+void WildDog::attack(Player* player, GameObjectsController* gameObjectsController, GameTexturesHolder* gameTexturesHolder)
+{
+	const auto arrow = FlyingObjectFactory(gameTexturesHolder).create(this, player, TextureIndicator::PlayerWarrior);
+	gameObjectsController->addFlyingObject(arrow);
 	Log::debugS("wild dog attack");
-	const auto factor = DistanceHelper::getFactor(this->getPosition(), player->getPosition());
-	static_cast<GameObjectsHolder*>(gameObjectsHolder)->addFlyingObject(new Arrow(gameTexturesHolder->getTexture(TextureIndicator::PlayerWarrior), this, factor));
 }
 
 WildDog::WildDog(sf::Texture& wildDogTexture) : Object(wildDogTexture)

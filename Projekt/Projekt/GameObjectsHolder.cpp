@@ -1,27 +1,27 @@
 #include "stdafx.h"
-#include "GameObjectsHolder.h"
+#include "GameObjectsController.h"
 
-std::list<Object*>* GameObjectsHolder::getObjects() const
+std::list<Object*>* GameObjectsController::getObjects() const
 {
 	return objects;
 }
 
-std::list<Enemy*>* GameObjectsHolder::getEnemies() const
+std::list<Enemy*>* GameObjectsController::getEnemies() const
 {
 	return enemies;
 }
 
-std::list<Animated*>* GameObjectsHolder::getAnimatedList() const
+std::list<Animated*>* GameObjectsController::getAnimatedList() const
 {
 	return animatedList;
 }
 
-std::list<FlyingObject*>* GameObjectsHolder::getFlyingObjects() const
+std::list<FlyingObject*>* GameObjectsController::getFlyingObjects() const
 {
 	return flyingObjects;
 }
 
-void GameObjectsHolder::removeFlyingObject(FlyingObject* flyingObject) const
+void GameObjectsController::removeFlyingObject(FlyingObject* flyingObject) const
 {
 	objects->remove(flyingObject);
 	animatedList->remove(flyingObject);
@@ -29,33 +29,33 @@ void GameObjectsHolder::removeFlyingObject(FlyingObject* flyingObject) const
 	delete flyingObject;
 }
 
-Player* GameObjectsHolder::getPlayer() const
+Player* GameObjectsController::getPlayer() const
 {
 	return player;
 }
 
-void GameObjectsHolder::setPlayer(Player* player)
+void GameObjectsController::setPlayer(Player* player)
 {
 	this->player = player;
 	objects->push_back(player);
 	animatedList->push_back(player);
 }
 
-void GameObjectsHolder::addEnemy(Enemy* enemy) const
+void GameObjectsController::addEnemy(Enemy* enemy) const
 {
 	enemies->push_back(enemy);
 	objects->push_back(enemy);
 	animatedList->push_back(enemy);
 }
 
-void GameObjectsHolder::addFlyingObject(FlyingObject* flyingObject) const
+void GameObjectsController::addFlyingObject(FlyingObject* flyingObject) const
 {
 	objects->push_back(flyingObject);
 	animatedList->push_back(flyingObject);
 	flyingObjects->push_back(flyingObject);
 }
 
-GameObjectsHolder::GameObjectsHolder()
+GameObjectsController::GameObjectsController()
 {
 	objects = new std::list<Object*>();
 	enemies = new std::list<Enemy*>();
@@ -63,7 +63,7 @@ GameObjectsHolder::GameObjectsHolder()
 	flyingObjects = new std::list<FlyingObject*>();
 }
 
-GameObjectsHolder::~GameObjectsHolder()
+GameObjectsController::~GameObjectsController()
 {
 	for (auto object : *objects)
 		delete object;

@@ -5,9 +5,7 @@
 #include "Enemy.h"
 #include "FlyingObject.h"
 
-class Enemy;
-
-class GameObjectsHolder
+class GameObjectsController
 {
 	Player* player = nullptr;
 	std::list<Object*>* objects;
@@ -25,6 +23,6 @@ public:
 	void setPlayer(Player* player);
 	void addEnemy(Enemy* enemy) const;
 	void addFlyingObject(FlyingObject* flyingObject) const;
-	GameObjectsHolder();
-	~GameObjectsHolder();
+	GameObjectsController();
+	~GameObjectsController();
 };

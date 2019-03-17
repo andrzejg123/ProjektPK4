@@ -2,7 +2,7 @@
 #include "Enemy.h"
 #include "DistanceHelper.h"
 
-void Enemy::performAction(Player* player, void* gameObjectsHolder, GameTexturesHolder* gameTexturesHolder)
+void Enemy::performAction(Player* player, GameObjectsController* gameObjectsController, GameTexturesHolder* gameTexturesHolder)
 {
 	attackCounter++;
 	const auto distance = DistanceHelper::getDistance(player->getPosition(), this->getPosition());
@@ -12,7 +12,7 @@ void Enemy::performAction(Player* player, void* gameObjectsHolder, GameTexturesH
 		if(attackCounter > attackSpeed)
 		{
 			attackCounter = 0;
-			attack(player, gameObjectsHolder, gameTexturesHolder);
+			attack(player, gameObjectsController, gameTexturesHolder);
 			setFacing(DistanceHelper::directionToFacing(this->getFacing(), direction));
 		}
 		stopAnimate(AnimationType::Move);

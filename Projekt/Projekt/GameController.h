@@ -1,4 +1,6 @@
 #pragma once
+#ifndef GAME_CONTROLLER
+#define GAME_CONTROLLER
 #include "GameMap.h"
 #include "Player.h"
 #include <list>
@@ -15,4 +17,7 @@ public:
 	virtual void updateGame(const sf::Time& elapsed) = 0;
 	virtual std::list<Object*>* getObjectsToDraw() = 0;
 };
+
+#endif
+
 

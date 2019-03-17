@@ -36,8 +36,9 @@ void Moveable::move(const Direction direction)
 		moveX = speed * horizontal;
 		moveY = -speed * horizontal;
 		break;
+	case Direction::None: break;
+	default: ;
 	}
-
 	sprite.move(moveX, moveY);
 }
 

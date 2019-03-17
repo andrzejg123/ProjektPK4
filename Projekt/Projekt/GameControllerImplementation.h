@@ -3,16 +3,14 @@
 #include "GameController.h"
 #include "GameMapController.h"
 #include "GameTexturesHolder.h"
-#include "Player.h"
-#include "Enemy.h"
-#include "GameObjectsHolder.h"
+#include "GameObjectsController.h"
 
 class GameControllerImplementation : public GameController
 {
 	GameView* gameView;
 	GameMapController* gameMapController;
 	GameTexturesHolder* gameTexturesHolder;
-	GameObjectsHolder* gameObjectsHolder;
+	GameObjectsController* gameObjectsController;
 
 public:
 	void getFirstLayer() override;

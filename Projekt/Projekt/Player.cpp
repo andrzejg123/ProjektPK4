@@ -1,5 +1,16 @@
 #include "stdafx.h"
 #include "Player.h"
+#include "SoundController.h"
+
+void Player::onDeath()
+{
+	SoundController::getInstance()->playSound(SoundIndicator::PlayerDeath);
+}
+
+void Player::onGetHit()
+{
+	SoundController::getInstance()->playSound(SoundIndicator::PlayerGetHit);
+}
 
 Player::Player()
 {

@@ -160,9 +160,11 @@
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="FileReadingController.h" />
     <ClInclude Include="FlyingObject.h" />
+    <ClInclude Include="FlyingObjectFactory.h" />
     <ClInclude Include="GameControllerImplementation.h" />
     <ClInclude Include="GameMapController.h" />
-    <ClInclude Include="GameObjectsHolder.h" />
+    <ClInclude Include="GameObjectsControllerImplementation.h" />
+    <ClInclude Include="GameObjectsController.h" />
     <ClInclude Include="GameTexturesHolder.h" />
     <ClInclude Include="GameViewImplementation.h" />
     <ClInclude Include="GameController.h" />
@@ -188,9 +190,10 @@
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="FileReadingController.cpp" />
     <ClCompile Include="FlyingObject.cpp" />
+    <ClCompile Include="FlyingObjectFactory.cpp" />
     <ClCompile Include="GameControllerImplementation.cpp" />
     <ClCompile Include="GameMapController.cpp" />
-    <ClCompile Include="GameObjectsHolder.cpp" />
+    <ClCompile Include="GameObjectsControllerImplementation.cpp" />
     <ClCompile Include="GameTexturesHolder.cpp" />
     <ClCompile Include="GameViewImplementation.cpp" />
     <ClCompile Include="Keys.cpp" />
