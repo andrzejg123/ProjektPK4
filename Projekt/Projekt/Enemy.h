@@ -11,8 +11,8 @@ class Enemy : public Moveable, public Animated, public Damageable
 	RandomMoveController* randomMoveHelper;
 protected:
 	bool sawPlayer = false; // if marked as true enemy will follow player until his death
-	float visionRadius = 0.0f;
-	float attackRadius = 0.0f;
+	float visionRadius = 90.0f;
+	float attackRadius = 70.0f;
 	int attackSpeed = 100;
 	//Performs attack on player
 	virtual void attack(Player* player, GameObjectsController* gameObjectsController, GameTexturesHolder* gameTexturesHolder) = 0;

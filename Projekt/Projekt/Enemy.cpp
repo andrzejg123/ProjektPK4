@@ -7,7 +7,7 @@ void Enemy::performAction(Player* player, GameObjectsController* gameObjectsCont
 {
 	attackCounter++;
 	const auto distance = DistanceHelper::getDistance(player->getPosition(), this->getPosition());
-	const auto direction = DistanceHelper::getDirection(this->getPosition(), player->getPosition());
+	auto direction = DistanceHelper::getDirection(this->getPosition(), player->getPosition());
 	if(distance < attackRadius)
 	{
 		if(attackCounter > attackSpeed)
@@ -20,20 +20,13 @@ void Enemy::performAction(Player* player, GameObjectsController* gameObjectsCont
 		return;
 	}
 	if(sawPlayer || distance < visionRadius)
-	{
 		sawPlayer = true;
-		move(direction);
-		if (player->getFixedBounds().intersects(this->getFixedBounds()))
-			cancelMove();
-		setFacing(DistanceHelper::directionToFacing(this->getFacing(), direction));
-		animate(AnimationType::Move);
-		return;
-	}
-	const auto randomDirection = randomMoveHelper->getDirection();
-	move(randomDirection);
+	else 
+		direction = randomMoveHelper->getDirection();
+	move(direction);
 	if (player->getFixedBounds().intersects(this->getFixedBounds()))
 		cancelMove();
-	setFacing(DistanceHelper::directionToFacing(this->getFacing(), randomDirection));
+	setFacing(DistanceHelper::directionToFacing(this->getFacing(), direction));
 	animate(AnimationType::Move);
 }
 
