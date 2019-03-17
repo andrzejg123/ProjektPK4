@@ -2,6 +2,7 @@
 #include "Object.h"
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <iostream>
+#include "Log.h"
 
 void Object::draw(sf::RenderTarget& target, sf::RenderStates states) const
 {

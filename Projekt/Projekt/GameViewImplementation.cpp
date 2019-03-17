@@ -15,11 +15,10 @@ GameViewImplementation::~GameViewImplementation()
 	delete this->gameController;
 }
 
-//todo objects blinks from time to time
 void GameViewImplementation::displayGame() const
 {
 	sf::RenderWindow window(sf::VideoMode(512, 256), Keys::version);
-	//window.setFramerateLimit(60);
+	window.setFramerateLimit(60);
 	window.setVerticalSyncEnabled(true);
 
 	gameController->initializeGame();

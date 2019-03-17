@@ -63,5 +63,5 @@ Facing DistanceHelper::directionToFacing(const Facing oldFacing, Direction newDi
 		break;
 	default: return Facing(newDirection);
 	}
-	return Facing(newDirection);
+	return oldFacing;
 }
