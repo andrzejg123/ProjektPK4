@@ -3,9 +3,10 @@
 
 class WildDog : public Enemy
 {
-public:
+protected:
 	void onDeath() override;
 	void onGetHit() override;
+public:
 	void attack(Player* player, GameObjectsController* gameObjectsController, GameTexturesHolder* gameTexturesHolder) override;
 	WildDog(sf::Texture& wildDogTexture);
 	~WildDog();

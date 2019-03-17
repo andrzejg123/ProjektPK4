@@ -4,6 +4,7 @@
 #include "DistanceHelper.h"
 #include "SoundController.h"
 #include "GameObjectsControllerImplementation.h"
+#include "EnemyFactory.h"
 
 void GameControllerImplementation::getFirstLayer()
 {
@@ -14,9 +15,8 @@ void GameControllerImplementation::initializeGame()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::DEFAULT);
 	gameMapController->loadMap(MapDataIndicator::Test);
-	auto& playerTexture = gameTexturesHolder->getTexture(TextureIndicator::PlayerWarrior);
-	gameObjectsController->setPlayer(new Player(playerTexture));
-	gameObjectsController->addEnemy(new WildDog(playerTexture));
+	gameObjectsController->setPlayer(new Player(gameTexturesHolder->getTexture(TextureIndicator::PlayerWarrior)));
+	gameObjectsController->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
 }
 
 void GameControllerImplementation::movePlayer(const Direction direction)

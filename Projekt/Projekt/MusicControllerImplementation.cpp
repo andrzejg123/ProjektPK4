@@ -1,10 +1,10 @@
 #include "stdafx.h"
-#include "MusicController.h"
+#include "MusicControllerImplementation.h"
 #include "SoundController.h"
 #include "Log.h"
+#include <map>
 
-
-void MusicController::fetchAndPlay(const MusicIndicator musicIndicator) const
+void MusicControllerImplementation::fetchAndPlay(const MusicIndicator musicIndicator) const
 {
 	Log::debugS("loading new music");
 	auto music = new sf::Music();
@@ -19,26 +19,29 @@ void MusicController::fetchAndPlay(const MusicIndicator musicIndicator) const
 		delete music;
 }
 
-void MusicController::playMusic(const MusicIndicator musicIndicator)
+void MusicControllerImplementation::playMusic(const MusicIndicator musicIndicator)
 {
 	const auto i = musics->find(musicIndicator);
 	if (i == musics->end())
 	{
 		SoundController::syncThread(thread);
 		thread = new std::thread([=] { fetchAndPlay(musicIndicator); });
-	} else 
+	}
+	else
 		i->second->play();
 }
 
-MusicController::MusicController(): thread(nullptr), musics(new std::map<MusicIndicator, sf::Music*>())
+MusicControllerImplementation::MusicControllerImplementation()
 {
+	this->thread = nullptr;
+	this->musics = new std::map<MusicIndicator, sf::Music*>();
 }
 
 
-MusicController::~MusicController()
+MusicControllerImplementation::~MusicControllerImplementation()
 {
 	SoundController::syncThread(thread);
-	for(auto music: *musics)
+	for (auto music : *musics)
 	{
 		music.second->stop();
 		delete music.second;

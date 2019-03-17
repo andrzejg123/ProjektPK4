@@ -23,7 +23,7 @@ public:
 	void updateGame(const sf::Time& elapsed) override;
 	GameMap* getMap() override;
 	std::list<Object*>* getObjectsToDraw() override;
-	GameControllerImplementation(GameView* gameView);
+	explicit GameControllerImplementation(GameView* gameView);
 	~GameControllerImplementation();
 };
 

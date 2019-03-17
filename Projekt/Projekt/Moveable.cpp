@@ -5,7 +5,7 @@ void Moveable::move(const Direction direction)
 {
 	moveX = 0.0;
 	moveY = 0.0;
-	const float horizontal = 0.707107; // sqrt(2) / 2
+	const auto horizontal = 0.707107f; // sqrt(2) / 2
 	switch(direction)
 	{
 	case Direction::Up:

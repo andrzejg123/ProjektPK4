@@ -162,6 +162,7 @@
     <ClInclude Include="FlyingObject.h" />
     <ClInclude Include="FlyingObjectFactory.h" />
     <ClInclude Include="GameControllerImplementation.h" />
+    <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="GameMapController.h" />
     <ClInclude Include="GameObjectsControllerImplementation.h" />
     <ClInclude Include="GameObjectsController.h" />
@@ -175,9 +176,11 @@
     <ClInclude Include="GameMap.h" />
     <ClInclude Include="Moveable.h" />
     <ClInclude Include="MusicController.h" />
+    <ClInclude Include="MusicControllerImplementation.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="SoundController.h" />
+    <ClInclude Include="SoundControllerImplementation.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="WildDog.h" />
@@ -192,6 +195,7 @@
     <ClCompile Include="FlyingObject.cpp" />
     <ClCompile Include="FlyingObjectFactory.cpp" />
     <ClCompile Include="GameControllerImplementation.cpp" />
+    <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="GameMapController.cpp" />
     <ClCompile Include="GameObjectsControllerImplementation.cpp" />
     <ClCompile Include="GameTexturesHolder.cpp" />
@@ -201,11 +205,12 @@
     <ClCompile Include="MainController.cpp" />
     <ClCompile Include="GameMap.cpp" />
     <ClCompile Include="Moveable.cpp" />
-    <ClCompile Include="MusicController.cpp" />
+    <ClCompile Include="MusicControllerImplementation.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projekt.cpp" />
     <ClCompile Include="SoundController.cpp" />
+    <ClCompile Include="SoundControllerImplementation.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -43,6 +43,12 @@
     <Filter Include="Source Files\General">
       <UniqueIdentifier>{9f54f8a6-39d0-431a-9760-a5ec95f79cd2}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Sounds">
+      <UniqueIdentifier>{7ea2bb87-be85-4d41-a637-778722cce96f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Sounds">
+      <UniqueIdentifier>{bb6437f1-d744-49ee-af7a-fff64cd02811}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -114,12 +120,6 @@
     <ClInclude Include="Log.h">
       <Filter>Header Files\General</Filter>
     </ClInclude>
-    <ClInclude Include="SoundController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MusicController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="FlyingObjectFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -128,6 +128,21 @@
     </ClInclude>
     <ClInclude Include="GameObjectsControllerImplementation.h">
       <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyFactory.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicController.h">
+      <Filter>Header Files\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="MusicControllerImplementation.h">
+      <Filter>Header Files\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundControllerImplementation.h">
+      <Filter>Header Files\Sounds</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundController.h">
+      <Filter>Header Files\Sounds</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -194,17 +209,23 @@
     <ClCompile Include="Log.cpp">
       <Filter>Source Files\General</Filter>
     </ClCompile>
-    <ClCompile Include="SoundController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MusicController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameObjectsControllerImplementation.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
     <ClCompile Include="FlyingObjectFactory.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyFactory.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MusicControllerImplementation.cpp">
+      <Filter>Source Files\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundControllerImplementation.cpp">
+      <Filter>Source Files\Sounds</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundController.cpp">
+      <Filter>Source Files\Sounds</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
