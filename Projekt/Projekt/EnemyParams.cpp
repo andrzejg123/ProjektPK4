@@ -4,14 +4,15 @@
 
 EnemyParams::EnemyParams(const int lvl)
 {
+	const auto floatLvl = float(lvl);
 	attackRadius = 0.0f;
 	positionX = 0.0f;
 	positionY = 0.0f;
-	const float floatLvl = lvl;
 	speed = 1.0f + (floatLvl / 100.0f);
 	visionRadius = 110.0f + lvl;
 	health = 100.0f + (floatLvl * 2.0f);
 	armor = 100.0f + (floatLvl * 2.0f);
+	damage = 20.0f + floatLvl;
 }
 
 float EnemyParams::getAttackRadius() const
@@ -49,6 +50,11 @@ float EnemyParams::getArmor() const
 	return armor;
 }
 
+float EnemyParams::getDamage() const
+{
+	return damage;
+}
+
 EnemyParams::Builder& EnemyParams::Builder::multiplySpeedByValue(const float value)
 {
 	enemyParams->speed *= value;
@@ -83,6 +89,12 @@ EnemyParams::Builder& EnemyParams::Builder::multiplyVisionRadiusByValue(const fl
 EnemyParams::Builder& EnemyParams::Builder::setAttackRadius(const float attackRadius)
 {
 	enemyParams->attackRadius = attackRadius;
+	return *this;
+}
+
+EnemyParams::Builder& EnemyParams::Builder::multiplyDamageByValue(const float value)
+{
+	enemyParams->damage *= value;
 	return *this;
 }
 

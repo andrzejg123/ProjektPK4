@@ -11,6 +11,12 @@ enum class AttackType
 	Arrow
 };
 
+struct AttackData
+{
+	float damage;
+	AttackType attackType;
+};
+
 class Enemy : public Moveable, public Animated, public Damageable
 {
 	int attackCounter = 0;
@@ -19,6 +25,7 @@ protected:
 	bool sawPlayer = false; // if marked as true enemy will follow player until his death
 	float visionRadius;
 	float attackRadius;
+	float damage = 20;
 	int attackSpeed = 100;
 public:
 	bool didSawPlayer() const;
@@ -31,7 +38,7 @@ public:
 	void resetAttackCounter();
 	void makeRandomMove();
 	void makeMove(const Direction direction);
-	virtual AttackType getAttackType() = 0;
+	virtual AttackData getAttackData() = 0;
 	explicit Enemy(EnemyParams* enemyParams);
 	virtual ~Enemy();
 };

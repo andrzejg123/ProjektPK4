@@ -65,6 +65,7 @@ Enemy::Enemy(EnemyParams* enemyParams)
 	visionRadius = enemyParams->getVisionRadius();
 	setPosition(sf::Vector2f(enemyParams->getPositionX(), enemyParams->getPositionY()));
 	setSpeed(enemyParams->getSpeed());
+	damage = enemyParams->getDamage();
 	delete enemyParams;
 }
 

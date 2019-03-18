@@ -6,7 +6,8 @@
 
 void GameEnemyControllerImplementation::handleAttack(Enemy* enemy) const
 {
-	switch (enemy->getAttackType())
+	const auto data = enemy->getAttackData();
+	switch (data.attackType)
 	{
 	case AttackType::Arrow:
 		{

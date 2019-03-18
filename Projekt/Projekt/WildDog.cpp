@@ -15,9 +15,12 @@ void WildDog::onGetHit()
 
 }
 
-AttackType WildDog::getAttackType()
+AttackData WildDog::getAttackData()
 {
-	return AttackType::Arrow;
+	auto data = AttackData();
+	data.attackType = AttackType::Arrow;
+	data.damage = damage;
+	return data;
 }
 
 WildDog::WildDog(sf::Texture& wildDogTexture, EnemyParams* enemyParams) : Object(wildDogTexture), Enemy(enemyParams)
