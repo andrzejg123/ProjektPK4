@@ -6,6 +6,11 @@
 #include "RandomMoveController.h"
 #include "EnemyParams.h"
 
+enum class AttackType
+{
+	Arrow
+};
+
 class Enemy : public Moveable, public Animated, public Damageable
 {
 	int attackCounter = 0;
@@ -15,12 +20,19 @@ protected:
 	float visionRadius;
 	float attackRadius;
 	int attackSpeed = 100;
-	//Performs attack on player
-	virtual void attack(Player* player, GameObjectHolder* gameObjectsController, GameTexturesHolder* gameTexturesHolder) = 0;
 public:
-	//Checking if should attack, follow player or move and doing so
-	void performAction(Player* player, GameObjectHolder* gameObjectsController, GameTexturesHolder* gameTexturesHolder);
-	Enemy(EnemyParams* enemyParams);
+	bool didSawPlayer() const;
+	void setSawPlayer();
+	float getVisionRadius() const;
+	float getAttackRadius() const;
+	float getAttackSpeed() const;
+	int getAttackCounter() const;
+	void incrementAttackCounter();
+	void resetAttackCounter();
+	void makeRandomMove(Player* player);
+	void makeMove(Player* player, Direction direction);
+	virtual AttackType getAttackType() = 0;
+	explicit Enemy(EnemyParams* enemyParams);
 	virtual ~Enemy();
 };
 

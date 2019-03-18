@@ -4,13 +4,15 @@
 #include "GameMapController.h"
 #include "GameTexturesHolder.h"
 #include "GameObjectHolder.h"
+#include "GameEnemyController.h"
 
 class GameControllerImplementation : public GameController
 {
 	GameView* gameView;
 	GameMapController* gameMapController;
 	GameTexturesHolder* gameTexturesHolder;
-	GameObjectHolder* gameObjectsController;
+	GameObjectHolder* gameObjectsHolder;
+	GameEnemyController* gameEnemyController;
 
 public:
 	void getFirstLayer() override;
@@ -19,7 +21,6 @@ public:
 	void movePlayer(Direction direction) override;
 	void stopPlayer() override;
 	void updateFlyingObjects(const sf::Time& elapsedTime) const;
-	void updateEnemies(const sf::Time& elapsedTime) const;
 	void updateGame(const sf::Time& elapsed) override;
 	GameMap* getMap() override;
 	std::list<Object*>* getObjectsToDraw() override;

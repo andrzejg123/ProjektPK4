@@ -5,12 +5,12 @@
 Enemy* EnemyFactory::create(const TextureIndicator textureIndicator) const
 {
 	const auto enemyParams = EnemyParams::Builder(1)
-		.setPosition(60, 70)
+		.setPosition(rand() % 512, rand() % 256)
 		.multiplyVisionRadiusByValue(1.0f)
 		.multiplyArmorByValue(0.75f)
 		.multiplyHealthByValue(1.25f)
-		.setAttackRadius(90.0f)
-		.multiplySpeedByValue(0.1f)
+		.setAttackRadius(70.0f)
+		.multiplySpeedByValue(1.0f)
 		.build();
 	switch (textureIndicator)
 	{

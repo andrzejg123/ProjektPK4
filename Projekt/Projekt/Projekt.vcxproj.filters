@@ -156,6 +156,12 @@
     <ClInclude Include="GameObjectsHolderImplementation.h">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
+    <ClInclude Include="GameEnemyController.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEnemyControllerImplementation.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -246,6 +252,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GameObjectsHolderImplementation.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEnemyControllerImplementation.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>

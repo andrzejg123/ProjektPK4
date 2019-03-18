@@ -15,11 +15,9 @@ void WildDog::onGetHit()
 
 }
 
-void WildDog::attack(Player* player, GameObjectHolder* gameObjectsController, GameTexturesHolder* gameTexturesHolder)
+AttackType WildDog::getAttackType()
 {
-	const auto arrow = FlyingObjectFactory(gameTexturesHolder).create(this, player, TextureIndicator::PlayerWarrior);
-	gameObjectsController->addFlyingObject(arrow);
-	Log::debugS("wild dog attack");
+	return AttackType::Arrow;
 }
 
 WildDog::WildDog(sf::Texture& wildDogTexture, EnemyParams* enemyParams) : Object(wildDogTexture), Enemy(enemyParams)

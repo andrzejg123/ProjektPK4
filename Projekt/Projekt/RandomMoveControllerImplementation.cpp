@@ -15,9 +15,9 @@ bool RandomMoveControllerImplementation::rollRandom(const int from, const int to
 
 Direction RandomMoveControllerImplementation::getDirection()
 {
-	if(lastPosition != enemy->getPosition())
+	if(lastPosition != movable->getPosition())
 	{
-		lastPosition = enemy->getPosition();
+		lastPosition = movable->getPosition();
 		if (rollRandom(1, 100))
 			lastDirection = getRandomDirection();
 	} else
@@ -25,10 +25,9 @@ Direction RandomMoveControllerImplementation::getDirection()
 	return lastDirection;
 }
 
-RandomMoveControllerImplementation::RandomMoveControllerImplementation(Enemy* enemy)
+RandomMoveControllerImplementation::RandomMoveControllerImplementation(Moveable* movable)
 {
-	this->enemy = enemy;
+	this->movable = movable;
 	lastDirection = getRandomDirection();
-	lastPosition = enemy->getPosition();
-	srand(time(nullptr));
+	lastPosition = this->movable->getPosition();
 }

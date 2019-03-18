@@ -5,27 +5,54 @@
 #include "EnemyParams.h"
 #include "Log.h"
 
-void Enemy::performAction(Player* player, GameObjectHolder* gameObjectsController, GameTexturesHolder* gameTexturesHolder)
+bool Enemy::didSawPlayer() const
+{
+	return sawPlayer;
+}
+
+void Enemy::setSawPlayer()
+{
+	sawPlayer = true;
+}
+
+float Enemy::getVisionRadius() const
+{
+	return visionRadius;
+}
+
+float Enemy::getAttackRadius() const
+{
+	return attackRadius;
+}
+
+float Enemy::getAttackSpeed() const
+{
+	return attackSpeed;
+}
+
+int Enemy::getAttackCounter() const
+{
+	return attackCounter;
+}
+
+void Enemy::incrementAttackCounter()
 {
 	attackCounter++;
-	const auto distance = DistanceHelper::getDistance(player->getPosition(), this->getPosition());
-	auto direction = DistanceHelper::getDirection(this->getPosition(), player->getPosition());
-	if(distance < attackRadius)
-	{
-		sawPlayer = true;
-		if(attackCounter > attackSpeed)
-		{
-			attackCounter = 0;
-			attack(player, gameObjectsController, gameTexturesHolder);
-			setFacing(DistanceHelper::directionToFacing(this->getFacing(), direction));
-		}
-		stopAnimate(AnimationType::Move);
-		return;
-	}
-	if(sawPlayer || distance < visionRadius)
-		sawPlayer = true;
-	else 
-		direction = randomMoveHelper->getDirection();
+}
+
+void Enemy::resetAttackCounter()
+{
+	attackCounter = 0;
+}
+
+void Enemy::makeRandomMove(Player* player)
+{
+	const auto direction = randomMoveHelper->getDirection();
+	makeMove(player, direction);
+}
+
+void Enemy::makeMove(Player* player, const Direction direction)
+{
 	move(direction);
 	if (player->getFixedBounds().intersects(this->getFixedBounds()))
 		cancelMove();

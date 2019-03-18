@@ -7,7 +7,7 @@ protected:
 	void onDeath() override;
 	void onGetHit() override;
 public:
-	void attack(Player* player, GameObjectHolder* gameObjectsController, GameTexturesHolder* gameTexturesHolder) override;
+	AttackType getAttackType() override;
 	WildDog(sf::Texture& wildDogTexture, EnemyParams* enemyParams);
 	~WildDog();
 };

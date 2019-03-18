@@ -4,13 +4,13 @@
 
 class RandomMoveControllerImplementation: public RandomMoveController
 {
-	Enemy* enemy;
+	Moveable* movable;
 	Direction lastDirection;
 	sf::Vector2f lastPosition;
 	static Direction getRandomDirection();
 	static bool rollRandom(int from, int to);
 public:
 	Direction getDirection() override;
-	explicit RandomMoveControllerImplementation(Enemy* enemy);
+	explicit RandomMoveControllerImplementation(Moveable* movable);
 };
 

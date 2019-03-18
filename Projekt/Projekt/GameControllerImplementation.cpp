@@ -5,6 +5,7 @@
 #include "GameObjectsHolderImplementation.h"
 #include "EnemyFactory.h"
 #include "Warrior.h"
+#include "GameEnemyControllerImplementation.h"
 
 void GameControllerImplementation::getFirstLayer()
 {
@@ -15,21 +16,21 @@ void GameControllerImplementation::initializeGame()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::DEFAULT);
 	gameMapController->loadMap(MapDataIndicator::Test);
-	gameObjectsController->setPlayer(new Warrior(gameTexturesHolder->getTexture(TextureIndicator::PlayerWarrior)));
+	gameObjectsHolder->setPlayer(new Warrior(gameTexturesHolder->getTexture(TextureIndicator::PlayerWarrior)));
 	for (auto i = 0; i < 20; i++)
 	{
-		gameObjectsController->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
-		gameObjectsController->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
+		gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
+		gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
 	}
-	gameObjectsController->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
-	gameObjectsController->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
+	gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
+	gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
 }
 
 void GameControllerImplementation::movePlayer(const Direction direction)
 {
-	auto player = gameObjectsController->getPlayer();
+	auto player = gameObjectsHolder->getPlayer();
 	player->move(direction);
-	for (auto enemy : *gameObjectsController->getEnemies())
+	for (auto enemy : *gameObjectsHolder->getEnemies())
 	{
 		if(enemy->getFixedBounds().intersects(player->getFixedBounds()))
 			player->cancelMove();
@@ -42,12 +43,12 @@ void GameControllerImplementation::movePlayer(const Direction direction)
 
 void GameControllerImplementation::stopPlayer()
 {
-	gameObjectsController->getPlayer()->stopAnimate(AnimationType::Move);
+	gameObjectsHolder->getPlayer()->stopAnimate(AnimationType::Move);
 }
 
 void GameControllerImplementation::updateFlyingObjects(const sf::Time& elapsedTime) const
 {
-	auto list = *gameObjectsController->getFlyingObjects();
+	auto list = *gameObjectsHolder->getFlyingObjects();
 	auto it = list.begin();
 	while (it != list.end()) {
 		const auto flyingObject = *it;
@@ -56,33 +57,28 @@ void GameControllerImplementation::updateFlyingObjects(const sf::Time& elapsedTi
 		{
 			flyingObject->hit();
 			it = list.erase(it);
-			gameObjectsController->removeFlyingObject(flyingObject);
+			gameObjectsHolder->removeFlyingObject(flyingObject);
 		}
-		else if (gameObjectsController->getPlayer()->getBounds().intersects(flyingObject->getFixedBounds())) {
-			flyingObject->hitDamageable(gameObjectsController->getPlayer());
+		else if (gameObjectsHolder->getPlayer()->getBounds().intersects(flyingObject->getFixedBounds())) {
+			flyingObject->hitDamageable(gameObjectsHolder->getPlayer());
 			it = list.erase(it);
-			gameObjectsController->removeFlyingObject(flyingObject);
+			gameObjectsHolder->removeFlyingObject(flyingObject);
 		}
 		else
 			++it;
 	}
 }
 
-void GameControllerImplementation::updateEnemies(const sf::Time& elapsedTime) const
+void GameControllerImplementation::updateGame(const sf::Time& elapsed)
 {
-	for (auto enemy : *gameObjectsController->getEnemies())
+	for (auto enemy : *gameObjectsHolder->getEnemies())
 	{
-		enemy->performAction(gameObjectsController->getPlayer(), gameObjectsController, gameTexturesHolder);
+		gameEnemyController->updateEnemy(elapsed, enemy);
 		if (gameMapController->checkCollision(enemy))
 			enemy->cancelMove();
 	}
-}
-
-void GameControllerImplementation::updateGame(const sf::Time& elapsed)
-{
-	updateEnemies(elapsed);
 	updateFlyingObjects(elapsed);
-	for (auto animated : *gameObjectsController->getAnimatedList())
+	for (auto animated : *gameObjectsHolder->getAnimatedList())
 		animated->updateAnimation(elapsed);
 }
 
@@ -93,19 +89,21 @@ GameMap* GameControllerImplementation::getMap()
 
 std::list<Object*>* GameControllerImplementation::getObjectsToDraw()
 {
-	return gameObjectsController->getObjects();
+	return gameObjectsHolder->getObjects();
 }
 
 GameControllerImplementation::GameControllerImplementation(GameView* gameView): gameView(gameView)
 {
 	this->gameMapController = new GameMapController();
 	this->gameTexturesHolder = new GameTexturesHolder();
-	this->gameObjectsController = new GameObjectsHolderImplementation();
+	this->gameObjectsHolder = new GameObjectsHolderImplementation();
+	this->gameEnemyController = new GameEnemyControllerImplementation(gameObjectsHolder, gameTexturesHolder);
 }
 
 GameControllerImplementation::~GameControllerImplementation()
 {
 	delete this->gameMapController;
 	delete this->gameTexturesHolder;
-	delete this->gameObjectsController;
+	delete this->gameObjectsHolder;
+	delete this->gameEnemyController;
 }

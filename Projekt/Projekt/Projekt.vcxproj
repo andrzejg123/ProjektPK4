@@ -164,6 +164,8 @@
     <ClInclude Include="FlyingObjectFactory.h" />
     <ClInclude Include="GameControllerImplementation.h" />
     <ClInclude Include="EnemyFactory.h" />
+    <ClInclude Include="GameEnemyController.h" />
+    <ClInclude Include="GameEnemyControllerImplementation.h" />
     <ClInclude Include="GameMapController.h" />
     <ClInclude Include="GameObjectsHolderImplementation.h" />
     <ClInclude Include="GameObjectHolder.h" />
@@ -201,6 +203,7 @@
     <ClCompile Include="FlyingObjectFactory.cpp" />
     <ClCompile Include="GameControllerImplementation.cpp" />
     <ClCompile Include="EnemyFactory.cpp" />
+    <ClCompile Include="GameEnemyControllerImplementation.cpp" />
     <ClCompile Include="GameMapController.cpp" />
     <ClCompile Include="GameObjectsHolderImplementation.cpp" />
     <ClCompile Include="GameTexturesHolder.cpp" />
