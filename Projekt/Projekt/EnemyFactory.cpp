@@ -4,12 +4,14 @@
 
 Enemy* EnemyFactory::create(const TextureIndicator textureIndicator) const
 {
-	const auto enemyParams = EnemyParams::Builder()
-	.setPosition(60,70)
-	.setVisionRadius(100.0f)
-	.setAttackRadius(80.0f)
-	.setSpeed(4.0f)
-	.build();
+	const auto enemyParams = EnemyParams::Builder(1)
+		.setPosition(60, 70)
+		.multiplyVisionRadiusByValue(1.0f)
+		.multiplyArmorByValue(0.75f)
+		.multiplyHealthByValue(1.25f)
+		.setAttackRadius(90.0f)
+		.multiplySpeedByValue(0.1f)
+		.build();
 	switch (textureIndicator)
 	{
 	case TextureIndicator::PlayerWarrior: 

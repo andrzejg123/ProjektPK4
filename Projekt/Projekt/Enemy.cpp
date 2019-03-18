@@ -3,6 +3,7 @@
 #include "DistanceHelper.h"
 #include "RandomMoveControllerImplementation.h"
 #include "EnemyParams.h"
+#include "Log.h"
 
 void Enemy::performAction(Player* player, GameObjectHolder* gameObjectsController, GameTexturesHolder* gameTexturesHolder)
 {
@@ -11,6 +12,7 @@ void Enemy::performAction(Player* player, GameObjectHolder* gameObjectsControlle
 	auto direction = DistanceHelper::getDirection(this->getPosition(), player->getPosition());
 	if(distance < attackRadius)
 	{
+		sawPlayer = true;
 		if(attackCounter > attackSpeed)
 		{
 			attackCounter = 0;

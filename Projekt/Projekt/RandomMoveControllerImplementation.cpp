@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "RandomMoveControllerImplementation.h"
 #include <time.h>
+#include "Log.h"
 
 Direction RandomMoveControllerImplementation::getRandomDirection()
 {

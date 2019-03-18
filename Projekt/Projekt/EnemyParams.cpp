@@ -1,5 +1,18 @@
 #include "stdafx.h"
 #include "EnemyParams.h"
+#include "Log.h"
+
+EnemyParams::EnemyParams(const int lvl)
+{
+	attackRadius = 0.0f;
+	positionX = 0.0f;
+	positionY = 0.0f;
+	const float floatLvl = lvl;
+	speed = 1.0f + (floatLvl / 100.0f);
+	visionRadius = 110.0f + lvl;
+	health = 100.0f + (floatLvl * 2.0f);
+	armor = 100.0f + (floatLvl * 2.0f);
+}
 
 float EnemyParams::getAttackRadius() const
 {
@@ -26,9 +39,31 @@ float EnemyParams::getSpeed() const
 	return speed;
 }
 
-EnemyParams::Builder& EnemyParams::Builder::setSpeed(const float speed)
+float EnemyParams::getHealth() const
 {
-	enemyParams->speed = speed;
+	return health;
+}
+
+float EnemyParams::getArmor() const
+{
+	return armor;
+}
+
+EnemyParams::Builder& EnemyParams::Builder::multiplySpeedByValue(const float value)
+{
+	enemyParams->speed *= value;
+	return *this;
+}
+
+EnemyParams::Builder& EnemyParams::Builder::multiplyHealthByValue(const float value)
+{
+	enemyParams->health *= value;
+	return *this;
+}
+
+EnemyParams::Builder& EnemyParams::Builder::multiplyArmorByValue(const float value)
+{
+	enemyParams->armor *= value;
 	return *this;
 }
 
@@ -39,9 +74,9 @@ EnemyParams::Builder& EnemyParams::Builder::setPosition(const float positionX, c
 	return *this;
 }
 
-EnemyParams::Builder& EnemyParams::Builder::setVisionRadius(const float visionRadius)
+EnemyParams::Builder& EnemyParams::Builder::multiplyVisionRadiusByValue(const float value)
 {
-	enemyParams->visionRadius = visionRadius;
+	enemyParams->visionRadius *= value;
 	return *this;
 }
 
@@ -53,10 +88,12 @@ EnemyParams::Builder& EnemyParams::Builder::setAttackRadius(const float attackRa
 
 EnemyParams* EnemyParams::Builder::build() const
 {
+	if(enemyParams->visionRadius < enemyParams->attackRadius)
+		Log::debug("Warning: vision radius is lower attack radius");
 	return enemyParams;
 }
 
-EnemyParams::Builder::Builder()
+EnemyParams::Builder::Builder(const int lvl)
 {
-	this->enemyParams = new EnemyParams();
+	this->enemyParams = new EnemyParams(lvl);
 }

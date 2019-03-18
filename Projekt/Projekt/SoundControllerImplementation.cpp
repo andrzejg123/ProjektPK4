@@ -13,7 +13,7 @@ void SoundControllerImplementation::fetchAndPlay(SoundIndicator soundIndicator) 
 	sf::SoundBuffer buffer;
 	if (buffer.loadFromFile("sounds/sound_" + std::to_string(int(soundIndicator)) + ".wav"))
 	{
-		(*sounds)[soundIndicator ] = buffer;
+		(*sounds)[soundIndicator] = buffer;
 		playingSounds->push_back(sf::Sound((*sounds)[soundIndicator]));
 		playingSounds->back().play();
 	}
@@ -22,7 +22,6 @@ void SoundControllerImplementation::fetchAndPlay(SoundIndicator soundIndicator) 
 void SoundControllerImplementation::cleanUpSounds() const
 {
 	auto list = playingSounds;
-	Log::debugS(std::to_string(list->size()));
 	auto it = list->begin();
 	while (it != list->end()) {
 		if (it->getStatus() != sf::Sound::Playing)
