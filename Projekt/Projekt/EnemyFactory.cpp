@@ -6,6 +6,8 @@ Enemy* EnemyFactory::create(const TextureIndicator textureIndicator) const
 {
 	const auto enemyParams = EnemyParams::Builder()
 	.setPosition(60,70)
+	.setVisionRadius(100.0f)
+	.setAttackRadius(80.0f)
 	.setSpeed(4.0f)
 	.build();
 	switch (textureIndicator)
