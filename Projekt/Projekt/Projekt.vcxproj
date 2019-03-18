@@ -158,14 +158,15 @@
     <ClInclude Include="Damageable.h" />
     <ClInclude Include="DistanceHelper.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyParams.h" />
     <ClInclude Include="FileReadingController.h" />
     <ClInclude Include="FlyingObject.h" />
     <ClInclude Include="FlyingObjectFactory.h" />
     <ClInclude Include="GameControllerImplementation.h" />
     <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="GameMapController.h" />
-    <ClInclude Include="GameObjectsControllerImplementation.h" />
-    <ClInclude Include="GameObjectsController.h" />
+    <ClInclude Include="GameObjectsHolderImplementation.h" />
+    <ClInclude Include="GameObjectHolder.h" />
     <ClInclude Include="GameTexturesHolder.h" />
     <ClInclude Include="GameViewImplementation.h" />
     <ClInclude Include="GameController.h" />
@@ -185,6 +186,7 @@
     <ClInclude Include="SoundControllerImplementation.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Warrior.h" />
     <ClInclude Include="WildDog.h" />
   </ItemGroup>
   <ItemGroup>
@@ -193,13 +195,14 @@
     <ClCompile Include="Damageable.cpp" />
     <ClCompile Include="DistanceHelper.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyParams.cpp" />
     <ClCompile Include="FileReadingController.cpp" />
     <ClCompile Include="FlyingObject.cpp" />
     <ClCompile Include="FlyingObjectFactory.cpp" />
     <ClCompile Include="GameControllerImplementation.cpp" />
     <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="GameMapController.cpp" />
-    <ClCompile Include="GameObjectsControllerImplementation.cpp" />
+    <ClCompile Include="GameObjectsHolderImplementation.cpp" />
     <ClCompile Include="GameTexturesHolder.cpp" />
     <ClCompile Include="GameViewImplementation.cpp" />
     <ClCompile Include="Keys.cpp" />
@@ -220,6 +223,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Warrior.cpp" />
     <ClCompile Include="WildDog.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

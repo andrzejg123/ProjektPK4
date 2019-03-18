@@ -123,12 +123,6 @@
     <ClInclude Include="FlyingObjectFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjectsController.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjectsControllerImplementation.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
     <ClInclude Include="EnemyFactory.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -149,6 +143,18 @@
     </ClInclude>
     <ClInclude Include="RandomMoveController.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Warrior.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyParams.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectHolder.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="GameObjectsHolderImplementation.h">
+      <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -215,9 +221,6 @@
     <ClCompile Include="Log.cpp">
       <Filter>Source Files\General</Filter>
     </ClCompile>
-    <ClCompile Include="GameObjectsControllerImplementation.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
     <ClCompile Include="FlyingObjectFactory.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -235,6 +238,15 @@
     </ClCompile>
     <ClCompile Include="RandomMoveControllerImplementation.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Warrior.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyParams.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameObjectsHolderImplementation.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

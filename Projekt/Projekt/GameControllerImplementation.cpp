@@ -1,10 +1,10 @@
 #include "stdafx.h"
 #include "GameControllerImplementation.h"
-#include "WildDog.h"
 #include "DistanceHelper.h"
 #include "SoundController.h"
-#include "GameObjectsControllerImplementation.h"
+#include "GameObjectsHolderImplementation.h"
 #include "EnemyFactory.h"
+#include "Warrior.h"
 
 void GameControllerImplementation::getFirstLayer()
 {
@@ -15,7 +15,12 @@ void GameControllerImplementation::initializeGame()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::DEFAULT);
 	gameMapController->loadMap(MapDataIndicator::Test);
-	gameObjectsController->setPlayer(new Player(gameTexturesHolder->getTexture(TextureIndicator::PlayerWarrior)));
+	gameObjectsController->setPlayer(new Warrior(gameTexturesHolder->getTexture(TextureIndicator::PlayerWarrior)));
+	for (auto i = 0; i < 20; i++)
+	{
+		gameObjectsController->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
+		gameObjectsController->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
+	}
 	gameObjectsController->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
 	gameObjectsController->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
 }
@@ -95,7 +100,7 @@ GameControllerImplementation::GameControllerImplementation(GameView* gameView): 
 {
 	this->gameMapController = new GameMapController();
 	this->gameTexturesHolder = new GameTexturesHolder();
-	this->gameObjectsController = new GameObjectsControllerImplementation();
+	this->gameObjectsController = new GameObjectsHolderImplementation();
 }
 
 GameControllerImplementation::~GameControllerImplementation()

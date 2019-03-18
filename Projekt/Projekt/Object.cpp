@@ -45,6 +45,11 @@ sf::Vector2f Object::getPosition() const
 	return sprite.getPosition();
 }
 
+void Object::setPosition(const sf::Vector2f position)
+{
+	sprite.setPosition(position);
+}
+
 Object::Object(sf::Texture& spriteTexture)
 {
 	sprite.setTexture(spriteTexture);

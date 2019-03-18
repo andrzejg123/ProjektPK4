@@ -3,6 +3,7 @@
 #include "MusicControllerImplementation.h"
 #include "Log.h"
 #include <SFML/Audio/Sound.hpp>
+#include <iostream>
 
 SoundController* SoundControllerImplementation::instance = nullptr;
 
@@ -18,6 +19,22 @@ void SoundControllerImplementation::fetchAndPlay(SoundIndicator soundIndicator) 
 	}
 }
 
+void SoundControllerImplementation::cleanUpSounds() const
+{
+	auto list = playingSounds;
+	Log::debugS(std::to_string(list->size()));
+	auto it = list->begin();
+	while (it != list->end()) {
+		if (it->getStatus() != sf::Sound::Playing)
+		{
+			it->stop();
+			it = list->erase(it);
+		}
+		else
+			++it;
+	}
+}
+
 void SoundControllerImplementation::playMusic(const MusicIndicator musicIndicator) const
 {
 	musicController->playMusic(musicIndicator);
@@ -25,6 +42,7 @@ void SoundControllerImplementation::playMusic(const MusicIndicator musicIndicato
 
 void SoundControllerImplementation::playSound(const SoundIndicator soundIndicator)
 {
+	cleanUpSounds();
 	const auto i = sounds->find(soundIndicator);
 	if (i == sounds->end())
 	{

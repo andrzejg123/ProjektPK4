@@ -1,6 +1,6 @@
 #pragma once
 #include "FlyingObject.h"
-#include "GameObjectsController.h"
+#include "GameObjectHolder.h"
 #include "GameTexturesHolder.h"
 
 class FlyingObjectFactory

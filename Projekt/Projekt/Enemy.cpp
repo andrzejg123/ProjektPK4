@@ -2,8 +2,9 @@
 #include "Enemy.h"
 #include "DistanceHelper.h"
 #include "RandomMoveControllerImplementation.h"
+#include "EnemyParams.h"
 
-void Enemy::performAction(Player* player, GameObjectsController* gameObjectsController, GameTexturesHolder* gameTexturesHolder)
+void Enemy::performAction(Player* player, GameObjectHolder* gameObjectsController, GameTexturesHolder* gameTexturesHolder)
 {
 	attackCounter++;
 	const auto distance = DistanceHelper::getDistance(player->getPosition(), this->getPosition());
@@ -30,9 +31,14 @@ void Enemy::performAction(Player* player, GameObjectsController* gameObjectsCont
 	animate(AnimationType::Move);
 }
 
-Enemy::Enemy()
+Enemy::Enemy(EnemyParams* enemyParams)
 {
 	randomMoveHelper = new RandomMoveControllerImplementation(this);
+	attackRadius = enemyParams->getAttackRadius();
+	visionRadius = enemyParams->getVisionRadius();
+	setPosition(sf::Vector2f(enemyParams->getPositionX(), enemyParams->getPositionY()));
+	setSpeed(enemyParams->getSpeed());
+	delete enemyParams;
 }
 
 Enemy::~Enemy()

@@ -11,7 +11,6 @@ void MusicControllerImplementation::fetchAndPlay(const MusicIndicator musicIndic
 	if (music->openFromFile("music/music_" + std::to_string(int(musicIndicator)) + ".ogg"))
 	{
 		music->setLoop(true);
-		music->setVolume(100.0f);
 		(*musics)[musicIndicator] = music;
 		music->play();
 	}
@@ -19,8 +18,15 @@ void MusicControllerImplementation::fetchAndPlay(const MusicIndicator musicIndic
 		delete music;
 }
 
+void MusicControllerImplementation::stopAllMusic() const
+{
+	for (auto music : *musics)
+		music.second->stop();
+}
+
 void MusicControllerImplementation::playMusic(const MusicIndicator musicIndicator)
 {
+	stopAllMusic();
 	const auto i = musics->find(musicIndicator);
 	if (i == musics->end())
 	{

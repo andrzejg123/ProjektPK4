@@ -15,6 +15,7 @@ class SoundControllerImplementation: SoundController
 	std::thread* thread;
 	//Reads new sound from file and plays it
 	void fetchAndPlay(SoundIndicator soundIndicator) const;
+	void cleanUpSounds() const;
 	SoundControllerImplementation();
 
 public:

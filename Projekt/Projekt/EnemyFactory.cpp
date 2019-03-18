@@ -4,12 +4,16 @@
 
 Enemy* EnemyFactory::create(const TextureIndicator textureIndicator) const
 {
+	const auto enemyParams = EnemyParams::Builder()
+	.setPosition(60,70)
+	.setSpeed(4.0f)
+	.build();
 	switch (textureIndicator)
 	{
 	case TextureIndicator::PlayerWarrior: 
-		return new WildDog(gameTexturesHolder->getTexture(textureIndicator));
+		return new WildDog(gameTexturesHolder->getTexture(textureIndicator), enemyParams);
 	default: 
-		return new WildDog(gameTexturesHolder->getTexture(textureIndicator));
+		return new WildDog(gameTexturesHolder->getTexture(textureIndicator), enemyParams);
 	}
 }
 
