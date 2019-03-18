@@ -6,6 +6,7 @@
 #include "EnemyFactory.h"
 #include "Warrior.h"
 #include "GameEnemyControllerImplementation.h"
+#include "Log.h"
 
 void GameControllerImplementation::getFirstLayer()
 {
@@ -15,8 +16,9 @@ void GameControllerImplementation::getFirstLayer()
 void GameControllerImplementation::initializeGame()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::DEFAULT);
-	gameMapController->loadMap(MapDataIndicator::Test);
+	gameMapController->loadMap(MapDataIndicator::Test2);
 	gameObjectsHolder->setPlayer(new Warrior(gameTexturesHolder->getTexture(TextureIndicator::PlayerWarrior)));
+	gameObjectsHolder->getPlayer()->setPosition(sf::Vector2f(10, 80));
 	for (auto i = 0; i < 20; i++)
 	{
 		gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
@@ -80,6 +82,7 @@ void GameControllerImplementation::updateGame(const sf::Time& elapsed)
 	updateFlyingObjects(elapsed);
 	for (auto animated : *gameObjectsHolder->getAnimatedList())
 		animated->updateAnimation(elapsed);
+
 }
 
 GameMap* GameControllerImplementation::getMap()
@@ -90,6 +93,16 @@ GameMap* GameControllerImplementation::getMap()
 std::list<Object*>* GameControllerImplementation::getObjectsToDraw()
 {
 	return gameObjectsHolder->getObjects();
+}
+
+GameObjectHolder* GameControllerImplementation::getGameObjectHolder()
+{
+	return this->gameObjectsHolder;
+}
+
+std::list<sf::FloatRect>* GameControllerImplementation::getCollisionRects()
+{
+	return gameMapController->getCollisionRects();
 }
 
 GameControllerImplementation::GameControllerImplementation(GameView* gameView): gameView(gameView)

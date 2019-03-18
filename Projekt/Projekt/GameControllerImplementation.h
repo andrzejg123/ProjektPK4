@@ -24,6 +24,8 @@ public:
 	void updateGame(const sf::Time& elapsed) override;
 	GameMap* getMap() override;
 	std::list<Object*>* getObjectsToDraw() override;
+	GameObjectHolder* getGameObjectHolder() override;
+	std::list<sf::FloatRect>* getCollisionRects() override;
 	explicit GameControllerImplementation(GameView* gameView);
 	~GameControllerImplementation();
 };

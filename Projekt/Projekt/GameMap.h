@@ -6,7 +6,8 @@
 
 enum class MapDataIndicator
 {
-	Test
+	Test,
+	Test2
 };
 
 enum class MapTileSetIndicator

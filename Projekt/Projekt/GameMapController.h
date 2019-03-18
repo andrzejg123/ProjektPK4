@@ -16,5 +16,6 @@ public:
 	bool checkCollision(Moveable* entity);
 	void loadMap(MapDataIndicator dataIndicator);
 	GameMap* getMap() const;
+	std::list<sf::FloatRect>* getCollisionRects();
 };
 

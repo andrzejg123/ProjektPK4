@@ -26,7 +26,7 @@ AttackData WildDog::getAttackData()
 WildDog::WildDog(sf::Texture& wildDogTexture, EnemyParams* enemyParams) : Object(wildDogTexture), Enemy(enemyParams)
 {
 	sprite.setTextureRect(sf::IntRect(0, int(facing) * 64, 64, 64));
-}
+} 
 
 
 WildDog::~WildDog()
