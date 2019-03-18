@@ -29,8 +29,8 @@ public:
 	int getAttackCounter() const;
 	void incrementAttackCounter();
 	void resetAttackCounter();
-	void makeRandomMove(Player* player);
-	void makeMove(Player* player, Direction direction);
+	void makeRandomMove();
+	void makeMove(const Direction direction);
 	virtual AttackType getAttackType() = 0;
 	explicit Enemy(EnemyParams* enemyParams);
 	virtual ~Enemy();

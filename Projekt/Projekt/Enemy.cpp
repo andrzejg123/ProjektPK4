@@ -45,17 +45,15 @@ void Enemy::resetAttackCounter()
 	attackCounter = 0;
 }
 
-void Enemy::makeRandomMove(Player* player)
+void Enemy::makeRandomMove()
 {
 	const auto direction = randomMoveHelper->getDirection();
-	makeMove(player, direction);
+	makeMove(direction);
 }
 
-void Enemy::makeMove(Player* player, const Direction direction)
+void Enemy::makeMove(const Direction direction)
 {
 	move(direction);
-	if (player->getFixedBounds().intersects(this->getFixedBounds()))
-		cancelMove();
 	setFacing(DistanceHelper::directionToFacing(this->getFacing(), direction));
 	animate(AnimationType::Move);
 }

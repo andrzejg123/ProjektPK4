@@ -39,10 +39,12 @@ void GameEnemyControllerImplementation::updateEnemy(const sf::Time& time, Enemy*
 	if (enemy->didSawPlayer() || distance < enemy->getVisionRadius())
 	{
 		enemy->setSawPlayer();
-		enemy->makeMove(player, direction);
+		enemy->makeMove(direction);
 	}
 	else
-		enemy->makeRandomMove(player);
+		enemy->makeRandomMove();
+	if (player->getFixedBounds().intersects(enemy->getFixedBounds()))
+		enemy->cancelMove();
 }
 
 GameEnemyControllerImplementation::GameEnemyControllerImplementation(GameObjectHolder* gameObjectsHolder, GameTexturesHolder* gameTexturesHolder)
