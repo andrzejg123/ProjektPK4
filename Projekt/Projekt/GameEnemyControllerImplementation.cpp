@@ -11,7 +11,7 @@ void GameEnemyControllerImplementation::handleAttack(Enemy* enemy) const
 	{
 	case AttackType::Arrow:
 		{
-		const auto arrow = FlyingObjectFactory(gameTexturesHolder).create(enemy, gameObjectsHolder->getPlayer(), TextureIndicator::PlayerWarrior);
+		const auto arrow = FlyingObjectFactory(gameTexturesHolder).create(enemy, gameObjectsHolder->getPlayer(), ObjectIndicator::PlayerWarrior);
 		gameObjectsHolder->addFlyingObject(arrow);
 		break;
 		}

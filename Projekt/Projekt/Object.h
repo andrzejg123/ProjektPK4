@@ -6,7 +6,8 @@ enum class Facing : int
 	Up,
 	Left,
 	Down,
-	Right
+	Right,
+	None
 };
 
 class Object : public sf::Drawable

@@ -167,6 +167,7 @@
     <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="GameEnemyController.h" />
     <ClInclude Include="GameEnemyControllerImplementation.h" />
+    <ClInclude Include="GameEntityDataHolder.h" />
     <ClInclude Include="GameMapController.h" />
     <ClInclude Include="GameObjectsHolderImplementation.h" />
     <ClInclude Include="GameObjectHolder.h" />
@@ -187,6 +188,7 @@
     <ClInclude Include="RandomMoveControllerImplementation.h" />
     <ClInclude Include="SoundController.h" />
     <ClInclude Include="SoundControllerImplementation.h" />
+    <ClInclude Include="SpawnArea.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Warrior.h" />
@@ -206,6 +208,7 @@
     <ClCompile Include="GameControllerImplementation.cpp" />
     <ClCompile Include="EnemyFactory.cpp" />
     <ClCompile Include="GameEnemyControllerImplementation.cpp" />
+    <ClCompile Include="GameEntityDataHolder.cpp" />
     <ClCompile Include="GameMapController.cpp" />
     <ClCompile Include="GameObjectsHolderImplementation.cpp" />
     <ClCompile Include="GameTexturesHolder.cpp" />
@@ -222,6 +225,7 @@
     <ClCompile Include="RandomMoveControllerImplementation.cpp" />
     <ClCompile Include="SoundController.cpp" />
     <ClCompile Include="SoundControllerImplementation.cpp" />
+    <ClCompile Include="SpawnArea.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>

@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Keys.h"
+#include "DistanceHelper.h"
 
 GameViewImplementation::GameViewImplementation(): gameController(new GameControllerImplementation(this))
 {
@@ -18,7 +19,7 @@ GameViewImplementation::~GameViewImplementation()
 
 void GameViewImplementation::displayGame() const
 {
-	sf::RenderWindow window(sf::VideoMode(1024, 512), Keys::version);
+	sf::RenderWindow window(sf::VideoMode(768, 384), Keys::version);
 	window.setFramerateLimit(60);
 	window.setVerticalSyncEnabled(true);
 
@@ -26,6 +27,11 @@ void GameViewImplementation::displayGame() const
 
 	sf::Time elapsed;
 	sf::Clock gameClock;
+	sf::View camera;
+	camera.setSize(window.getSize().x, window.getSize().y);
+	camera.setCenter(camera.getSize().x / 2.0, camera.getSize().y / 2.0);
+	const auto cameraMovingFactorX = 0.45 * camera.getSize().x;
+	const auto cameraMovingFactorY = 0.45 * camera.getSize().y;
 	
 	while (window.isOpen())
 	{
@@ -43,6 +49,7 @@ void GameViewImplementation::displayGame() const
 			}
 		}
 
+		const auto oldPlayerPosition = gameController->getGameObjectHolder()->getPlayer()->getPosition();
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
 		{
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
@@ -67,6 +74,7 @@ void GameViewImplementation::displayGame() const
 			gameController->movePlayer(Direction::Right);
 		else
 			gameController->stopPlayer();
+		const auto newPlayerPosition = gameController->getGameObjectHolder()->getPlayer()->getPosition();
 
 		gameController->updateGame(elapsed);
 
@@ -78,7 +86,25 @@ void GameViewImplementation::displayGame() const
 
 		debugDrawer->draw(gameController->getCollisionRects(), gameController->getGameObjectHolder(), &window);
 
+		const auto playerDisplacement = newPlayerPosition - oldPlayerPosition;
+
+		if(playerDisplacement.x > 0.0 || playerDisplacement.y > 0.0)
+		{
+			if (newPlayerPosition.x > camera.getCenter().x + cameraMovingFactorX || newPlayerPosition.y > camera.getCenter().y + cameraMovingFactorY ||
+				newPlayerPosition.x < camera.getCenter().x - cameraMovingFactorX || newPlayerPosition.y > camera.getCenter().y - cameraMovingFactorY)
+					camera.move(playerDisplacement);
+
+			const auto cameraLeft = camera.getCenter().x - camera.getSize().x / 2.0;
+			const auto cameraTop = camera.getCenter().y - camera.getSize().y / 2.0;
+			const auto cameraRight = camera.getCenter().x + camera.getSize().x / 2.0;
+			const auto cameraBottom = camera.getCenter().y + camera.getSize().y / 2.0;
+			if (cameraLeft < 0.0 || cameraTop < 0.0 || cameraRight > 1024.0 || cameraBottom > 512.0)
+				camera.move(-playerDisplacement);
+		}
+		
+		
+		window.setView(camera);
 		window.display();
 	}
-
+	
 }

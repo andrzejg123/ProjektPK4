@@ -32,7 +32,7 @@ void DebugDrawer::draw(std::list<sf::FloatRect>* collisionRects, GameObjectHolde
 		const auto list = gameObjectHolder->getEnemies();
 		for (auto enemy : *list)
 		{
-			auto bounds = enemy->getFixedBounds();
+			const auto bounds = enemy->getFixedBounds();
 			drawRect.setPosition(bounds.left, bounds.top);
 			drawRect.setSize(sf::Vector2f(bounds.width, bounds.height));
 			window->draw(drawRect);
@@ -40,7 +40,7 @@ void DebugDrawer::draw(std::list<sf::FloatRect>* collisionRects, GameObjectHolde
 
 		//draw player fixed bounds
 		drawRect.setOutlineColor(sf::Color::Blue);
-		auto playerBounds = gameObjectHolder->getPlayer()->getFixedBounds();
+		const auto playerBounds = gameObjectHolder->getPlayer()->getFixedBounds();
 		drawRect.setPosition(playerBounds.left, playerBounds.top);
 		drawRect.setSize(sf::Vector2f(playerBounds.width, playerBounds.height));
 		window->draw(drawRect);

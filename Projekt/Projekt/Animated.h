@@ -9,6 +9,11 @@ enum class AnimationType
 
 };
 
+struct AnimationData
+{
+
+};
+
 //TODO: information about how many animation steps are in certain animation type, frame sizes
 class Animated : public virtual Object
 {

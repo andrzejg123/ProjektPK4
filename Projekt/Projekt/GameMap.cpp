@@ -8,7 +8,7 @@ void GameMap::draw(sf::RenderTarget& target, sf::RenderStates states) const
 	target.draw(secondLayerVertices, states);
 }
 
-void GameMap::load(MapData& mapData)
+void GameMap::load(MapDrawingData& mapData)
 {
 	if(this->tileSetIndicator != mapData.tileSetIndicator)
 	{

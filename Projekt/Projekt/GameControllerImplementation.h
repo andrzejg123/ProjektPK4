@@ -5,6 +5,7 @@
 #include "GameTexturesHolder.h"
 #include "GameObjectHolder.h"
 #include "GameEnemyController.h"
+#include "GameEntityDataHolder.h"
 
 class GameControllerImplementation : public GameController
 {
@@ -13,6 +14,8 @@ class GameControllerImplementation : public GameController
 	GameTexturesHolder* gameTexturesHolder;
 	GameObjectHolder* gameObjectsHolder;
 	GameEnemyController* gameEnemyController;
+	GameEntityDataHolder* gameEntityDataHolder;
+	FileReadingController* fileReadingController;
 
 public:
 	void getFirstLayer() override;

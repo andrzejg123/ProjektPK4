@@ -165,6 +165,12 @@
     <ClInclude Include="WildDog.h">
       <Filter>Header Files\SpecifiedModels</Filter>
     </ClInclude>
+    <ClInclude Include="SpawnArea.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GameEntityDataHolder.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -262,6 +268,12 @@
     </ClCompile>
     <ClCompile Include="WildDog.cpp">
       <Filter>Source Files\SpecifiedModels</Filter>
+    </ClCompile>
+    <ClCompile Include="SpawnArea.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GameEntityDataHolder.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
