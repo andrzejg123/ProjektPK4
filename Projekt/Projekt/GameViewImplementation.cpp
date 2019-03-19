@@ -27,11 +27,12 @@ void GameViewImplementation::displayGame() const
 
 	sf::Time elapsed;
 	sf::Clock gameClock;
-	sf::View camera;
+	//TODO camera
+	/*sf::View camera;
 	camera.setSize(window.getSize().x, window.getSize().y);
 	camera.setCenter(camera.getSize().x / 2.0, camera.getSize().y / 2.0);
 	const auto cameraMovingFactorX = 0.45 * camera.getSize().x;
-	const auto cameraMovingFactorY = 0.45 * camera.getSize().y;
+	const auto cameraMovingFactorY = 0.45 * camera.getSize().y;*/
 	
 	while (window.isOpen())
 	{
@@ -86,7 +87,8 @@ void GameViewImplementation::displayGame() const
 
 		debugDrawer->draw(gameController->getCollisionRects(), gameController->getGameObjectHolder(), &window);
 
-		const auto playerDisplacement = newPlayerPosition - oldPlayerPosition;
+		//TODO camera
+		/*const auto playerDisplacement = newPlayerPosition - oldPlayerPosition;
 
 		if(playerDisplacement.x > 0.0 || playerDisplacement.y > 0.0)
 		{
@@ -103,7 +105,7 @@ void GameViewImplementation::displayGame() const
 		}
 		
 		
-		window.setView(camera);
+		window.setView(camera);*/
 		window.display();
 	}
 	
