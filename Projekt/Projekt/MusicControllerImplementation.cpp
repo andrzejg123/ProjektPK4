@@ -43,7 +43,6 @@ MusicControllerImplementation::MusicControllerImplementation()
 	this->musics = new std::map<MusicIndicator, sf::Music*>();
 }
 
-
 MusicControllerImplementation::~MusicControllerImplementation()
 {
 	SoundController::syncThread(thread);

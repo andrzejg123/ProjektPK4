@@ -2,7 +2,7 @@
 #include <string>
 
 //Determines type of starting configuration
-enum ProjectType
+enum class ProjectType
 {
 	Debug,
 	DebugA,

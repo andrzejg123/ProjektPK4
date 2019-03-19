@@ -184,6 +184,8 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="RandomMoveController.h" />
     <ClInclude Include="RandomMoveControllerImplementation.h" />
+    <ClInclude Include="SettingsController.h" />
+    <ClInclude Include="SettingsControllerImplementation.h" />
     <ClInclude Include="SoundController.h" />
     <ClInclude Include="SoundControllerImplementation.h" />
     <ClInclude Include="stdafx.h" />
@@ -218,6 +220,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projekt.cpp" />
     <ClCompile Include="RandomMoveControllerImplementation.cpp" />
+    <ClCompile Include="SettingsControllerImplementation.cpp" />
     <ClCompile Include="SoundController.cpp" />
     <ClCompile Include="SoundControllerImplementation.cpp" />
     <ClCompile Include="stdafx.cpp">

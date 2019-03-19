@@ -12,6 +12,7 @@ class MusicControllerImplementation: public MusicController
 	std::map<MusicIndicator, sf::Music*>* musics;
 	void stopAllMusic() const;
 public:
+	//Playes music according to indicator
 	void playMusic(MusicIndicator musicIndicator) override;
 	MusicControllerImplementation();
 	~MusicControllerImplementation();
