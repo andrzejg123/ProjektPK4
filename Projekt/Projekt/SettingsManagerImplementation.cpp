@@ -4,7 +4,6 @@
 #include <sstream>
 #include "Log.h"
 #include <fstream>
-#include <iostream>
 
 std::vector<std::string> SettingsManagerImplementation::split(const std::string& s, const char delimiter) const
 {
@@ -77,6 +76,8 @@ void SettingsManagerImplementation::reloadSettings()
 					settingsData.frameRateLimit = value;
 				else if (key._Equal(settingVSyncOn))
 					settingsData.vSyncEnabled = value;
+				else if (key._Equal(settingLanguage))
+					settingsData.language = value;
 				else changeCounter--;
 			} catch (...)
 			{
@@ -109,6 +110,8 @@ void SettingsManagerImplementation::updateSettings(const SettingsData settingsDa
 	file << settingMusicVolume << separator << settingsData.musicVolume << "\n";
 	file << settingShouldPlaySound << separator << settingsData.playSound << "\n";
 	file << settingShouldPlayMusic << separator << settingsData.playMusic << "\n";
+	file << "\n" << settingOtherTitle << "\n";
+	file << settingLanguage << separator << settingsData.language << "\n";
 	file.close();
 }
 

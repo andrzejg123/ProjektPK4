@@ -14,9 +14,10 @@ class SettingsGeneratorImplementation : public SettingsGenerator
 	int checkIntSelection(std::vector<const char*>& options, const std::vector<int>& optionsSelections, int settingsOption) const;
 	int checkIntSelection(std::vector<const char*>& options, const std::vector<int>& optionsSelectionsA,
 		const std::vector<int>& optionsSelectionsB, int settingsOptionA, int settingsOptionB) const;
-	void generateApplyCancelSettings() const;
-	void generateSoundSettings(SettingsData settingsData) const;
-	void generateVideoSettings(SettingsData settingsData) const;
+	void generateControlSettings() const;
+	void generateSoundSettings(SettingsData& settingsData) const;
+	void generateVideoSettings(SettingsData& settingsData) const;
+	void generateOtherSettings(SettingsData& settingsData) const;
 	SubCategory* generateSettingsSubCategory(
 		const char* subCategoryName,
 		std::vector<const char*>& subCategoriesNames,
@@ -28,7 +29,7 @@ class SettingsGeneratorImplementation : public SettingsGenerator
 public:
 	SettingsConstance& getSettingsConstance() override;
 	sf::Text* createNewSettingsItem(const char* text) const override;
-	void initialize(SettingsData settingsData) override;
+	void initialize(SettingsData& settingsData) override;
 	explicit SettingsGeneratorImplementation(std::vector<Category*>* categories);
 	~SettingsGeneratorImplementation();
 };

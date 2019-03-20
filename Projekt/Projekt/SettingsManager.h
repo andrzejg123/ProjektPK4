@@ -11,6 +11,7 @@ struct SettingsData
 	int resolutionHeight = 1080;
 	int frameRateLimit = 60;
 	bool vSyncEnabled = true;
+	int language = 0;
 };
 
 class SettingsManager
@@ -33,6 +34,9 @@ protected:
 	const char* settingShouldPlayMusic = "musicOn";
 	const char* settingMusicVolume = "musicVolume";
 	const char* settingSoundVolume = "soundVolume";
+
+	const char* settingOtherTitle = "[Other]";
+	const char* settingLanguage = "language";
 
 public:
 	//Reloads settings

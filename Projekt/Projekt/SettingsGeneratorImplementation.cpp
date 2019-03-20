@@ -2,13 +2,14 @@
 #include "SettingsGeneratorImplementation.h"
 #include <iostream>
 
-void SettingsGeneratorImplementation::initialize(const SettingsData settingsData)
+void SettingsGeneratorImplementation::initialize(SettingsData& settingsData)
 {
 	if (font.loadFromFile("fonts/font_0.ttf"))
 	{
 		generateVideoSettings(settingsData);
 		generateSoundSettings(settingsData);
-		generateApplyCancelSettings();
+		generateOtherSettings(settingsData);
+		generateControlSettings();
 	}
 }
 
@@ -55,7 +56,7 @@ int SettingsGeneratorImplementation::checkIntSelection(std::vector<const char*>&
 	return options.size() - 1;
 }
 
-void SettingsGeneratorImplementation::generateApplyCancelSettings() const
+void SettingsGeneratorImplementation::generateControlSettings() const
 {
 	const auto category1Name = "Apply";
 	const auto category2Name = "Cancel";
@@ -67,7 +68,7 @@ void SettingsGeneratorImplementation::generateApplyCancelSettings() const
 	categories->push_back(generateSettingsCategory(category3Name, subCategories));
 }
 
-void SettingsGeneratorImplementation::generateSoundSettings(const SettingsData settingsData) const
+void SettingsGeneratorImplementation::generateSoundSettings(SettingsData& settingsData) const
 {
 	const auto categoryName = "Sound";
 	auto subCategories = std::vector<SubCategory*>();
@@ -95,7 +96,7 @@ void SettingsGeneratorImplementation::generateSoundSettings(const SettingsData s
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
 }
 
-void SettingsGeneratorImplementation::generateVideoSettings(const SettingsData settingsData) const
+void SettingsGeneratorImplementation::generateVideoSettings(SettingsData& settingsData) const
 {
 	const auto categoryName = "Video";
 	auto subCategories = std::vector<SubCategory*>();
@@ -120,6 +121,19 @@ void SettingsGeneratorImplementation::generateVideoSettings(const SettingsData s
 	auto options4 = std::vector<const char*>{ "Off", "On" };
 	const auto selection4 = checkBoolSelection(settingsConstance.boolSelection, settingsData.fullscreen);
 	subCategories.push_back(generateSettingsSubCategory(options4Name, options4, selection4, SubCategoryIndicator::Fullscreen));
+
+	categories->push_back(generateSettingsCategory(categoryName, subCategories));
+}
+
+void SettingsGeneratorImplementation::generateOtherSettings(SettingsData& settingsData) const
+{
+	const auto categoryName = "Others";
+	auto subCategories = std::vector<SubCategory*>();
+
+	const auto options1Name = "Language";
+	auto options1 = std::vector<const char*>{ "Eng", "Pol", "Rus" };
+	const auto selection1 = checkIntSelection(options1, settingsConstance.languageSelection, settingsData.language);
+	subCategories.push_back(generateSettingsSubCategory(options1Name, options1, selection1, SubCategoryIndicator::Language));
 
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
 }

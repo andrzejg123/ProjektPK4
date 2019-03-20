@@ -11,7 +11,8 @@ enum class SubCategoryIndicator
 	GameSound,
 	GameMusic,
 	GameSoundVolume,
-	GameMusicVolume
+	GameMusicVolume,
+	Language
 };
 
 struct SubCategory

@@ -184,6 +184,7 @@
     <ClInclude Include="RandomMoveControllerImplementation.h">
       <Filter>Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="TranslationManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">

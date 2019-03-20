@@ -49,6 +49,10 @@ void SettingsControllerImplementation::updateSettings() const
 				if (settingsGenerator->getSettingsConstance().boolSelection.size() > subCategory->currentSelection)
 					settingsData.fullscreen = settingsGenerator->getSettingsConstance().boolSelection.at(subCategory->currentSelection);
 				break;
+			case SubCategoryIndicator::Language:
+				if (settingsGenerator->getSettingsConstance().languageSelection.size() > subCategory->currentSelection)
+					settingsData.language = settingsGenerator->getSettingsConstance().languageSelection.at(subCategory->currentSelection);
+				break;
 			default: ;
 			}
 		}
@@ -69,7 +73,8 @@ void SettingsControllerImplementation::addRestartInfo()
 
 void SettingsControllerImplementation::initializeSettings()
 {
-	settingsGenerator->initialize(settingsManager->getSettingsData());
+	auto settings = settingsManager->getSettingsData();
+	settingsGenerator->initialize(settings);
 	updateSelections();
 }
 
