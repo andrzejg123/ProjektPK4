@@ -44,14 +44,16 @@ std::list<sf::FloatRect>* FileReadingController::loadCollisionRects(MapDataIndic
 	file.open("maps/map_collisions_" + std::to_string(int(dataIndicator)) + ".txt");
 	if(file.good())
 	{
-		float top, left, width, height;
+		float tilesTop, tilesLeft, tilesWidth, tilesHeight, tileSizeWidth, tileSizeHeight;
+		file >> tileSizeWidth;
+		file >> tileSizeHeight;
 		while (!file.eof())
 		{
-			file >> left;
-			file >> top;
-			file >> width;
-			file >> height;
-			collisionRects->emplace_back(left, top, width, height);
+			file >> tilesLeft;
+			file >> tilesTop;
+			file >> tilesWidth;
+			file >> tilesHeight;
+			collisionRects->emplace_back(tilesLeft * tileSizeWidth, tilesTop * tileSizeHeight, tilesWidth * tileSizeWidth, tilesHeight * tileSizeHeight);
 		}
 	}
 	return collisionRects;

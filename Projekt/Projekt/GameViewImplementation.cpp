@@ -7,17 +7,18 @@
 
 GameViewImplementation::GameViewImplementation(): gameController(new GameControllerImplementation(this))
 {
-
+	this->debugDrawer = new DebugDrawer;
 }
 
 GameViewImplementation::~GameViewImplementation()
 {
 	delete this->gameController;
+	delete this->debugDrawer;
 }
 
 void GameViewImplementation::displayGame() const
 {
-	sf::RenderWindow window(sf::VideoMode(512, 256), Keys::version);
+	sf::RenderWindow window(sf::VideoMode(1024, 512), Keys::version);
 	window.setFramerateLimit(60);
 	window.setVerticalSyncEnabled(true);
 
@@ -35,6 +36,11 @@ void GameViewImplementation::displayGame() const
 		{
 			if (e.type == sf::Event::Closed)
 				window.close();
+			if(e.type == sf::Event::KeyPressed && e.key.code == sf::Keyboard::F3)
+			{
+				if (Keys::projectType != ProjectType::Release)
+					debugDrawer->toggle();
+			}
 		}
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
@@ -69,6 +75,9 @@ void GameViewImplementation::displayGame() const
 		window.draw(*gameController->getMap());
 		for (auto objectToDraw : *gameController->getObjectsToDraw())
 			window.draw(*objectToDraw);
+
+		debugDrawer->draw(gameController->getCollisionRects(), gameController->getGameObjectHolder(), &window);
+
 		window.display();
 	}
 

@@ -156,6 +156,7 @@
     <ClInclude Include="Animated.h" />
     <ClInclude Include="Arrow.h" />
     <ClInclude Include="Damageable.h" />
+    <ClInclude Include="DebugDrawer.h" />
     <ClInclude Include="DistanceHelper.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyParams.h" />
@@ -197,6 +198,7 @@
     <ClCompile Include="Animated.cpp" />
     <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="Damageable.cpp" />
+    <ClCompile Include="DebugDrawer.cpp" />
     <ClCompile Include="DistanceHelper.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyParams.cpp" />

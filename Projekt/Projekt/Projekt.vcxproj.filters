@@ -105,9 +105,6 @@
     <ClInclude Include="Player.h">
       <Filter>Header Files\Models</Filter>
     </ClInclude>
-    <ClInclude Include="WildDog.h">
-      <Filter>Header Files\SpecifiedModels</Filter>
-    </ClInclude>
     <ClInclude Include="DistanceHelper.h">
       <Filter>Header Files\Helpers</Filter>
     </ClInclude>
@@ -161,6 +158,12 @@
     </ClInclude>
     <ClInclude Include="GameEnemyControllerImplementation.h">
       <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugDrawer.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="WildDog.h">
+      <Filter>Header Files\SpecifiedModels</Filter>
     </ClInclude>
     <ClInclude Include="SettingsController.h">
       <Filter>Header Files</Filter>
@@ -218,9 +221,6 @@
     <ClCompile Include="DistanceHelper.cpp">
       <Filter>Source Files\Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="WildDog.cpp">
-      <Filter>Source Files\SpecifiedModels</Filter>
-    </ClCompile>
     <ClCompile Include="Arrow.cpp">
       <Filter>Source Files\SpecifiedModels</Filter>
     </ClCompile>
@@ -262,6 +262,12 @@
     </ClCompile>
     <ClCompile Include="GameEnemyControllerImplementation.cpp">
       <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugDrawer.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="WildDog.cpp">
+      <Filter>Source Files\SpecifiedModels</Filter>
     </ClCompile>
     <ClCompile Include="SettingsControllerImplementation.cpp">
       <Filter>Source Files</Filter>
