@@ -45,6 +45,10 @@ void SettingsControllerImplementation::updateSettings() const
 				if (settingsGenerator->volumeSelection.size() > subCategory->currentSelection)
 					settingsData.musicVolume = settingsGenerator->volumeSelection.at(subCategory->currentSelection);
 				break;
+			case SubCategoryIndicator::Fullscreen:
+				if (settingsGenerator->boolSelection.size() > subCategory->currentSelection)
+					settingsData.fullscreen = settingsGenerator->boolSelection.at(subCategory->currentSelection);
+				break;
 			default: ;
 			}
 		}
@@ -156,16 +160,23 @@ void SettingsControllerImplementation::selectItem()
 {
 	if(currentSubItem == 0)
 	{
-		if(currentItem == categories->size() - 2)
+		if(currentItem == categories->size() - 3)
 		{
 			updateSettings();
 			settingsView->hideSettings();
 			SoundController::getInstance()->playSound(SoundIndicator::MenuClickItem);
 		}
-		if(currentItem == categories->size() - 1)
+		if(currentItem == categories->size() - 2)
 		{
 			settingsView->hideSettings();
 			SoundController::getInstance()->playSound(SoundIndicator::MenuClickItem);
+		}
+		if (currentItem == categories->size() - 1)
+		{
+			settingsManager->backToDefaultSettings();
+			SoundController::getInstance()->updateSettings();
+			SoundController::getInstance()->playSound(SoundIndicator::MenuClickItem);
+			settingsView->hideSettings();
 		}
 	}
 }

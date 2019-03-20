@@ -18,6 +18,8 @@ std::vector<std::string> SettingsManagerImplementation::split(const std::string&
 
 SettingsData SettingsManagerImplementation::getSettingsData()
 {
+	if (!dataLoaded)
+		reloadSettings();
 	return settingsData;
 }
 
@@ -37,6 +39,7 @@ void SettingsManagerImplementation::backToDefaultSettings()
 
 void SettingsManagerImplementation::reloadSettings()
 {
+	dataLoaded = true;
 	std::fstream file;
 	file.open(settingsFileName, std::fstream::in | std::fstream::out | std::fstream::app);
 	if (!file.is_open())
@@ -78,7 +81,6 @@ void SettingsManagerImplementation::reloadSettings()
 			} catch (...)
 			{
 				Log::debug("Settings invalid argument for key: " + key);
-				changeCounter--;
 			}
 		}
 	}

@@ -59,10 +59,12 @@ void SettingsGeneratorImplementation::generateApplyCancelSettings() const
 {
 	const auto category1Name = "Apply";
 	const auto category2Name = "Cancel";
+	const auto category3Name = "Restore defaults";
 	auto subCategories = std::vector<SubCategory*>();
 
 	categories->push_back(generateSettingsCategory(category1Name, subCategories));
 	categories->push_back(generateSettingsCategory(category2Name, subCategories));
+	categories->push_back(generateSettingsCategory(category3Name, subCategories));
 }
 
 void SettingsGeneratorImplementation::generateSoundSettings(const SettingsData settingsData) const
@@ -113,6 +115,11 @@ void SettingsGeneratorImplementation::generateVideoSettings(const SettingsData s
 	auto options3 = std::vector<const char*>{ "No", "Yes" };
 	const auto selection3 = checkBoolSelection(boolSelection, settingsData.vSyncEnabled);
 	subCategories.push_back(generateSettingsSubCategory(options3Name, options3, selection3, SubCategoryIndicator::VSyncEnabled));
+
+	const auto options4Name = "Fullscreen";
+	auto options4 = std::vector<const char*>{ "Off", "On" };
+	const auto selection4 = checkBoolSelection(boolSelection, settingsData.fullscreen);
+	subCategories.push_back(generateSettingsSubCategory(options4Name, options4, selection4, SubCategoryIndicator::Fullscreen));
 
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
 }

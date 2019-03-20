@@ -11,6 +11,7 @@ enum class SubCategoryIndicator
 	Resolution,
 	FrameRateLimit,
 	VSyncEnabled,
+	Fullscreen,
 	GameSound,
 	GameMusic,
 	GameSoundVolume,
