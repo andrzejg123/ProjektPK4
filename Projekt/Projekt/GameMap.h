@@ -3,8 +3,10 @@
 #include <SFML/Graphics/VertexArray.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Texture.hpp>
+#include "SpawnArea.h"
+#include <list>
 
-enum class MapDataIndicator
+enum class MapIndicator
 {
 	Test,
 	Test2
@@ -15,7 +17,7 @@ enum class MapTileSetIndicator
 	StandardForest
 };
 
-struct MapData
+struct MapDrawingData
 {
 	MapTileSetIndicator tileSetIndicator;
 	sf::Vector2u tileSize;
@@ -24,6 +26,13 @@ struct MapData
 	std::vector<int> firstLayerTiles;
 	std::vector<int> secondLayerTiles;
 
+};
+
+struct MapGameplayData
+{
+	int level;
+	std::list<SpawnArea> spawnAreas;
+	//TODO here will be placed interactive objects
 };
 
 class GameMap : public sf::Drawable
@@ -36,7 +45,7 @@ class GameMap : public sf::Drawable
 	void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 	
 public:
-	void load(MapData &mapData);
+	void load(MapDrawingData &mapData);
 	GameMap();
 	~GameMap();
 };

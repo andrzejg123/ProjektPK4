@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GameTexturesHolder.h"
 
-sf::Texture& GameTexturesHolder::getTexture(const TextureIndicator textureIndicator) const
+sf::Texture& GameTexturesHolder::getTexture(const ObjectIndicator textureIndicator) const
 {
 	const auto i = textures->find(textureIndicator);
 	if (i == textures->end()) //texture was not loaded before
@@ -17,7 +17,7 @@ sf::Texture& GameTexturesHolder::getTexture(const TextureIndicator textureIndica
 
 GameTexturesHolder::GameTexturesHolder()
 {
-	this->textures = new std::map<TextureIndicator, sf::Texture>;
+	this->textures = new std::map<ObjectIndicator, sf::Texture>;
 }
 
 GameTexturesHolder::~GameTexturesHolder()

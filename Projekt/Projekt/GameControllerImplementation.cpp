@@ -16,16 +16,17 @@ void GameControllerImplementation::getFirstLayer()
 void GameControllerImplementation::initializeGame()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::DEFAULT);
-	gameMapController->loadMap(MapDataIndicator::Test2);
-	gameObjectsHolder->setPlayer(new Warrior(gameTexturesHolder->getTexture(TextureIndicator::PlayerWarrior)));
+	gameMapController->loadMap(MapIndicator::Test2);
+	gameObjectsHolder->setPlayer(new Warrior(gameTexturesHolder->getTexture(ObjectIndicator::PlayerWarrior)));
 	gameObjectsHolder->getPlayer()->setPosition(sf::Vector2f(10, 80));
-	for (auto i = 0; i < 20; i++)
+	auto gameplayData = gameMapController->getGameplayData();
+	/*for (auto i = 0; i < 20; i++)
 	{
-		gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
-		gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
+		gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(ObjectIndicator::PlayerWarrior));
+		gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(ObjectIndicator::PlayerWarrior));
 	}
-	gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
-	gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(TextureIndicator::PlayerWarrior));
+	gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(ObjectIndicator::PlayerWarrior));
+	gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(ObjectIndicator::PlayerWarrior));*/
 }
 
 void GameControllerImplementation::movePlayer(const Direction direction)
@@ -107,10 +108,12 @@ std::list<sf::FloatRect>* GameControllerImplementation::getCollisionRects()
 
 GameControllerImplementation::GameControllerImplementation(GameView* gameView): gameView(gameView)
 {
-	this->gameMapController = new GameMapController();
+	this->fileReadingController = new FileReadingController();
+	this->gameMapController = new GameMapController(fileReadingController);
 	this->gameTexturesHolder = new GameTexturesHolder();
 	this->gameObjectsHolder = new GameObjectsHolderImplementation();
 	this->gameEnemyController = new GameEnemyControllerImplementation(gameObjectsHolder, gameTexturesHolder);
+	this->gameEntityDataHolder = new GameEntityDataHolder(fileReadingController);
 }
 
 GameControllerImplementation::~GameControllerImplementation()
@@ -119,4 +122,6 @@ GameControllerImplementation::~GameControllerImplementation()
 	delete this->gameTexturesHolder;
 	delete this->gameObjectsHolder;
 	delete this->gameEnemyController;
+	delete this->fileReadingController;
+	delete this->gameEntityDataHolder;
 }

@@ -1,4 +1,14 @@
 #pragma once
+
+struct EnemyParamsFactors
+{
+	float visionRadiusFactor;
+	float armorFactor;
+	float healthFactor;
+	float attackRadiusFactor;
+	float speedFactor;
+};
+
 class EnemyParams
 {
 	float speed;

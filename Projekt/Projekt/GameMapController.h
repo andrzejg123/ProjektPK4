@@ -3,19 +3,22 @@
 #include <list>
 #include "FileReadingController.h"
 #include "Moveable.h"
+#include "SpawnArea.h"
 
 class GameMapController
 {
 	GameMap* map;
 	std::list<sf::FloatRect>* collisionRects = nullptr;
-	FileReadingController* fileReadingController;
-	
+	FileReadingController *fileReadingController;
+	MapDrawingData* drawingData = nullptr;
+	MapGameplayData* gameplayData = nullptr;
 public:
-	GameMapController();
+	GameMapController(FileReadingController* fileReadingController);
 	~GameMapController();
 	bool checkCollision(Moveable* entity);
-	void loadMap(MapDataIndicator dataIndicator);
+	void loadMap(MapIndicator mapIndicator);
 	GameMap* getMap() const;
+	MapGameplayData* getGameplayData() const;
 	std::list<sf::FloatRect>* getCollisionRects();
 };
 

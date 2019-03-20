@@ -2,10 +2,10 @@
 #include "FileReadingController.h"
 
 
-MapData* FileReadingController::loadMapData(MapDataIndicator dataIndicator)
+MapDrawingData* FileReadingController::loadMapDrawingData(MapIndicator mapIndicator)
 {
-	auto data = new MapData;
-	file.open("maps/map_" + std::to_string(int(dataIndicator)) + ".txt");
+	auto data = new MapDrawingData;
+	file.open("maps/map_" + std::to_string(int(mapIndicator)) + ".txt");
 	if (file.good())
 	{
 		int temp, temp2;
@@ -38,7 +38,38 @@ MapData* FileReadingController::loadMapData(MapDataIndicator dataIndicator)
 	return data;
 }
 
-std::list<sf::FloatRect>* FileReadingController::loadCollisionRects(MapDataIndicator dataIndicator)
+MapGameplayData* FileReadingController::loadMapGameplayData(MapIndicator mapIndicator, const sf::Vector2u tileSize)
+{
+	auto data = new MapGameplayData;
+	file.open("maps/map_content_" + std::to_string(int(mapIndicator)) + ".txt");
+	if(file.good())
+	{
+		file >> data->level;
+		int spawnAreasNumber;
+		file >> spawnAreasNumber;
+		int minEntitiesNumber, maxEntitiesNumber, temp;
+		float spawnAreaTilesLeft, spawnAreaTilesTop, spawnAreaTilesWidth, spawnAreaTilesHeight;
+		for(auto i = 0; i < spawnAreasNumber; ++i)
+		{
+			file >> temp;
+			auto entityIndicator = ObjectIndicator(temp);
+			file >> temp;
+			auto entityKind = EntityKind(temp);
+			file >> minEntitiesNumber;
+			file >> maxEntitiesNumber;
+			file >> spawnAreaTilesLeft;
+			file >> spawnAreaTilesTop;
+			file >> spawnAreaTilesWidth;
+			file >> spawnAreaTilesHeight;
+			data->spawnAreas.emplace_back(entityIndicator, entityKind, minEntitiesNumber, maxEntitiesNumber, 
+				sf::FloatRect(spawnAreaTilesLeft * tileSize.x, spawnAreaTilesTop * tileSize.y, spawnAreaTilesWidth * tileSize.x, spawnAreaTilesHeight * tileSize.y));
+		}
+	}
+	file.close();
+	return data;
+}
+
+std::list<sf::FloatRect>* FileReadingController::loadCollisionRects(MapIndicator dataIndicator)
 {
 	auto collisionRects = new std::list<sf::FloatRect>;
 	file.open("maps/map_collisions_" + std::to_string(int(dataIndicator)) + ".txt");
@@ -57,6 +88,22 @@ std::list<sf::FloatRect>* FileReadingController::loadCollisionRects(MapDataIndic
 		}
 	}
 	return collisionRects;
+}
+
+EnemyParamsFactors FileReadingController::loadEnemyParamsFactors(ObjectIndicator enemyIndicator)
+{
+	EnemyParamsFactors enemyParamsFactors;
+	file.open("entities/enemies/enemy_" + std::to_string(int(enemyIndicator)) + ".txt");
+	if(file.good())
+	{
+		file >> enemyParamsFactors.visionRadiusFactor;
+		file >> enemyParamsFactors.armorFactor;
+		file >> enemyParamsFactors.healthFactor;
+		file >> enemyParamsFactors.attackRadiusFactor;
+		file >> enemyParamsFactors.speedFactor;
+	}
+	file.close();
+	return enemyParamsFactors;
 }
 
 FileReadingController::FileReadingController()

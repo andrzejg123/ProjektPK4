@@ -3,17 +3,22 @@
 #include <fstream>
 #include <string>
 
-GameMapController::GameMapController()
+MapGameplayData* GameMapController::getGameplayData() const
+{
+	return gameplayData;
+}
+
+GameMapController::GameMapController(FileReadingController* fileReadingController) : fileReadingController(fileReadingController)
 {
 	this->map = new GameMap;
-	this->fileReadingController = new FileReadingController;
 }
 
 GameMapController::~GameMapController()
 {
 	delete this->map;
-	delete this->fileReadingController;
 	delete this->collisionRects;
+	delete this->drawingData;
+	delete this->gameplayData;
 }
 
 bool GameMapController::checkCollision(Moveable* entity)
@@ -32,12 +37,12 @@ bool GameMapController::checkCollision(Moveable* entity)
 	return false;
 }
 
-void GameMapController::loadMap(const MapDataIndicator dataIndicator)
+void GameMapController::loadMap(const MapIndicator mapIndicator)
 {
-	const auto mapData = fileReadingController->loadMapData(dataIndicator);
-	map->load(*mapData);
-	delete mapData;
-	this->collisionRects = fileReadingController->loadCollisionRects(dataIndicator);
+	drawingData = fileReadingController->loadMapDrawingData(mapIndicator);
+	map->load(*drawingData);
+	this->collisionRects = fileReadingController->loadCollisionRects(mapIndicator);
+	gameplayData = fileReadingController->loadMapGameplayData(mapIndicator, drawingData->tileSize);
 }
 
 GameMap* GameMapController::getMap() const
