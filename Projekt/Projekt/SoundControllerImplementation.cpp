@@ -4,6 +4,7 @@
 #include "Log.h"
 #include <SFML/Audio/Sound.hpp>
 #include <iostream>
+#include "SettingsManagerImplementation.h"
 
 SoundController* SoundControllerImplementation::instance = nullptr;
 
@@ -15,6 +16,7 @@ void SoundControllerImplementation::fetchAndPlay(SoundIndicator soundIndicator) 
 	{
 		(*sounds)[soundIndicator] = buffer;
 		playingSounds->push_back(sf::Sound((*sounds)[soundIndicator]));
+		playingSounds->back().setVolume(settingsManager->getSettingsData().soundVolume);
 		playingSounds->back().play();
 	}
 }
@@ -36,12 +38,15 @@ void SoundControllerImplementation::cleanUpSounds() const
 
 void SoundControllerImplementation::playMusic(const MusicIndicator musicIndicator) const
 {
-	musicController->playMusic(musicIndicator);
+	if (settingsManager->getSettingsData().playMusic)
+		musicController->playMusic(musicIndicator, settingsManager->getSettingsData().musicVolume);
 }
 
 void SoundControllerImplementation::playSound(const SoundIndicator soundIndicator)
 {
 	cleanUpSounds();
+	if (!settingsManager->getSettingsData().playSound)
+		return;
 	const auto i = sounds->find(soundIndicator);
 	if (i == sounds->end())
 	{
@@ -50,6 +55,7 @@ void SoundControllerImplementation::playSound(const SoundIndicator soundIndicato
 	}
 	else {
 		playingSounds->push_back(sf::Sound(i->second));
+		playingSounds->back().setVolume(settingsManager->getSettingsData().soundVolume);
 		playingSounds->back().play();
 	}
 }
@@ -60,6 +66,8 @@ SoundControllerImplementation::SoundControllerImplementation()
 	this->playingSounds = new std::list<sf::Sound>();
 	this->sounds = new std::map<SoundIndicator, sf::SoundBuffer>();
 	this->thread = nullptr;
+	settingsManager = new SettingsManagerImplementation();
+	settingsManager->reloadSettings();
 }
 
 SoundController* SoundControllerImplementation::getInstance()
@@ -75,10 +83,17 @@ void SoundControllerImplementation::clearInstance()
 		delete instance;
 }
 
+void SoundControllerImplementation::updateSettings()
+{
+	settingsManager->reloadSettings();
+	musicController->updateSettings(settingsManager->getSettingsData().playMusic, settingsManager->getSettingsData().musicVolume);
+}
+
 SoundControllerImplementation::~SoundControllerImplementation()
 {
 	syncThread(thread);
 	delete sounds;
 	delete playingSounds;
 	delete musicController;
+	delete settingsManager;
 }

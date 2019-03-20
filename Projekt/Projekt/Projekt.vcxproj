@@ -178,6 +178,10 @@
     <ClInclude Include="Log.h" />
     <ClInclude Include="MainController.h" />
     <ClInclude Include="GameMap.h" />
+    <ClInclude Include="MenuController.h" />
+    <ClInclude Include="MenuControllerImplementation.h" />
+    <ClInclude Include="MenuView.h" />
+    <ClInclude Include="MenuViewImplementation.h" />
     <ClInclude Include="Moveable.h" />
     <ClInclude Include="MusicController.h" />
     <ClInclude Include="MusicControllerImplementation.h" />
@@ -187,6 +191,12 @@
     <ClInclude Include="RandomMoveControllerImplementation.h" />
     <ClInclude Include="SettingsController.h" />
     <ClInclude Include="SettingsControllerImplementation.h" />
+    <ClInclude Include="SettingsGenerator.h" />
+    <ClInclude Include="SettingsGeneratorImplementation.h" />
+    <ClInclude Include="SettingsManager.h" />
+    <ClInclude Include="SettingsManagerImplementation.h" />
+    <ClInclude Include="SettingsView.h" />
+    <ClInclude Include="SettingsViewImplementation.h" />
     <ClInclude Include="SoundController.h" />
     <ClInclude Include="SoundControllerImplementation.h" />
     <ClInclude Include="stdafx.h" />
@@ -216,6 +226,8 @@
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="MainController.cpp" />
     <ClCompile Include="GameMap.cpp" />
+    <ClCompile Include="MenuControllerImplementation.cpp" />
+    <ClCompile Include="MenuViewImplementation.cpp" />
     <ClCompile Include="Moveable.cpp" />
     <ClCompile Include="MusicControllerImplementation.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -223,6 +235,9 @@
     <ClCompile Include="Projekt.cpp" />
     <ClCompile Include="RandomMoveControllerImplementation.cpp" />
     <ClCompile Include="SettingsControllerImplementation.cpp" />
+    <ClCompile Include="SettingsGeneratorImplementation.cpp" />
+    <ClCompile Include="SettingsManagerImplementation.cpp" />
+    <ClCompile Include="SettingsViewImplementation.cpp" />
     <ClCompile Include="SoundController.cpp" />
     <ClCompile Include="SoundControllerImplementation.cpp" />
     <ClCompile Include="stdafx.cpp">

@@ -1,276 +1,95 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Source Files">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Header Files">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
-    </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="Header Files\Game">
-      <UniqueIdentifier>{24dfbe28-e9d5-414f-b746-cbdaa37c8c43}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Game">
-      <UniqueIdentifier>{112236ef-92ae-4c0a-b51d-8c95fc8819b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Models">
-      <UniqueIdentifier>{581a2e83-845d-48e6-b123-292f3d5040af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\SpecifiedModels">
-      <UniqueIdentifier>{3afd9d1c-48bd-4a71-83f0-c6e932625879}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Helpers">
-      <UniqueIdentifier>{474237ea-f283-40fa-9bcf-1c042d1d6282}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Models">
-      <UniqueIdentifier>{6e6affe1-40b7-476d-9bfc-c97f8c0a2b98}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Helpers">
-      <UniqueIdentifier>{d7e874d8-bb27-4e27-b32d-7700272f8472}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\SpecifiedModels">
-      <UniqueIdentifier>{ccc43740-c495-4479-a1a1-d9582c9a977d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\General">
-      <UniqueIdentifier>{86ee7e13-c2a4-47b5-8298-2cbdcd3fb54a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\General">
-      <UniqueIdentifier>{9f54f8a6-39d0-431a-9760-a5ec95f79cd2}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Sounds">
-      <UniqueIdentifier>{7ea2bb87-be85-4d41-a637-778722cce96f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Sounds">
-      <UniqueIdentifier>{bb6437f1-d744-49ee-af7a-fff64cd02811}</UniqueIdentifier>
-    </Filter>
+    <ClCompile Include="Animated.cpp" />
+    <ClCompile Include="Arrow.cpp" />
+    <ClCompile Include="Damageable.cpp" />
+    <ClCompile Include="DebugDrawer.cpp" />
+    <ClCompile Include="DistanceHelper.cpp" />
+    <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyParams.cpp" />
+    <ClCompile Include="FileReadingController.cpp" />
+    <ClCompile Include="FlyingObject.cpp" />
+    <ClCompile Include="FlyingObjectFactory.cpp" />
+    <ClCompile Include="GameControllerImplementation.cpp" />
+    <ClCompile Include="EnemyFactory.cpp" />
+    <ClCompile Include="GameEnemyControllerImplementation.cpp" />
+    <ClCompile Include="GameMapController.cpp" />
+    <ClCompile Include="GameObjectsHolderImplementation.cpp" />
+    <ClCompile Include="GameTexturesHolder.cpp" />
+    <ClCompile Include="GameViewImplementation.cpp" />
+    <ClCompile Include="Keys.cpp" />
+    <ClCompile Include="Log.cpp" />
+    <ClCompile Include="MainController.cpp" />
+    <ClCompile Include="GameMap.cpp" />
+    <ClCompile Include="Moveable.cpp" />
+    <ClCompile Include="MusicControllerImplementation.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Projekt.cpp" />
+    <ClCompile Include="RandomMoveControllerImplementation.cpp" />
+    <ClCompile Include="SoundController.cpp" />
+    <ClCompile Include="SoundControllerImplementation.cpp" />
+    <ClCompile Include="stdafx.cpp" />
+    <ClCompile Include="Warrior.cpp" />
+    <ClCompile Include="WildDog.cpp" />
+    <ClCompile Include="MenuViewImplementation.cpp" />
+    <ClCompile Include="MenuControllerImplementation.cpp" />
+    <ClCompile Include="SettingsViewImplementation.cpp" />
+    <ClCompile Include="SettingsManagerImplementation.cpp" />
+    <ClCompile Include="SettingsControllerImplementation.cpp" />
+    <ClCompile Include="SettingsGeneratorImplementation.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="targetver.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MainController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameControllerImplementation.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameMapController.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameTexturesHolder.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameViewImplementation.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameController.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameView.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameMap.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="FileReadingController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Animated.h">
-      <Filter>Header Files\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="Damageable.h">
-      <Filter>Header Files\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="Enemy.h">
-      <Filter>Header Files\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="FlyingObject.h">
-      <Filter>Header Files\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="Moveable.h">
-      <Filter>Header Files\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files\Models</Filter>
-    </ClInclude>
-    <ClInclude Include="DistanceHelper.h">
-      <Filter>Header Files\Helpers</Filter>
-    </ClInclude>
-    <ClInclude Include="Arrow.h">
-      <Filter>Header Files\SpecifiedModels</Filter>
-    </ClInclude>
-    <ClInclude Include="Keys.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="Log.h">
-      <Filter>Header Files\General</Filter>
-    </ClInclude>
-    <ClInclude Include="FlyingObjectFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyFactory.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MusicController.h">
-      <Filter>Header Files\Sounds</Filter>
-    </ClInclude>
-    <ClInclude Include="MusicControllerImplementation.h">
-      <Filter>Header Files\Sounds</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundControllerImplementation.h">
-      <Filter>Header Files\Sounds</Filter>
-    </ClInclude>
-    <ClInclude Include="SoundController.h">
-      <Filter>Header Files\Sounds</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomMoveControllerImplementation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomMoveController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Warrior.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EnemyParams.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjectHolder.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjectsHolderImplementation.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEnemyController.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEnemyControllerImplementation.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="DebugDrawer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="WildDog.h">
-      <Filter>Header Files\SpecifiedModels</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsController.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsControllerImplementation.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Projekt.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MainController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameViewImplementation.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameTexturesHolder.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameMapController.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameControllerImplementation.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameMap.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="FileReadingController.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Animated.cpp">
-      <Filter>Source Files\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="Damageable.cpp">
-      <Filter>Source Files\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="Enemy.cpp">
-      <Filter>Source Files\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="FlyingObject.cpp">
-      <Filter>Source Files\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="Object.cpp">
-      <Filter>Source Files\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="DistanceHelper.cpp">
-      <Filter>Source Files\Helpers</Filter>
-    </ClCompile>
-    <ClCompile Include="Arrow.cpp">
-      <Filter>Source Files\SpecifiedModels</Filter>
-    </ClCompile>
-    <ClCompile Include="Moveable.cpp">
-      <Filter>Source Files\Models</Filter>
-    </ClCompile>
-    <ClCompile Include="Keys.cpp">
-      <Filter>Source Files\General</Filter>
-    </ClCompile>
-    <ClCompile Include="Log.cpp">
-      <Filter>Source Files\General</Filter>
-    </ClCompile>
-    <ClCompile Include="FlyingObjectFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyFactory.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MusicControllerImplementation.cpp">
-      <Filter>Source Files\Sounds</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundControllerImplementation.cpp">
-      <Filter>Source Files\Sounds</Filter>
-    </ClCompile>
-    <ClCompile Include="SoundController.cpp">
-      <Filter>Source Files\Sounds</Filter>
-    </ClCompile>
-    <ClCompile Include="RandomMoveControllerImplementation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Warrior.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="EnemyParams.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObjectsHolderImplementation.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEnemyControllerImplementation.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="DebugDrawer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="WildDog.cpp">
-      <Filter>Source Files\SpecifiedModels</Filter>
-    </ClCompile>
-    <ClCompile Include="SettingsControllerImplementation.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
+    <ClInclude Include="Animated.h" />
+    <ClInclude Include="Arrow.h" />
+    <ClInclude Include="Damageable.h" />
+    <ClInclude Include="DebugDrawer.h" />
+    <ClInclude Include="DistanceHelper.h" />
+    <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyParams.h" />
+    <ClInclude Include="FileReadingController.h" />
+    <ClInclude Include="FlyingObject.h" />
+    <ClInclude Include="FlyingObjectFactory.h" />
+    <ClInclude Include="GameControllerImplementation.h" />
+    <ClInclude Include="EnemyFactory.h" />
+    <ClInclude Include="GameEnemyController.h" />
+    <ClInclude Include="GameEnemyControllerImplementation.h" />
+    <ClInclude Include="GameMapController.h" />
+    <ClInclude Include="GameObjectsHolderImplementation.h" />
+    <ClInclude Include="GameObjectHolder.h" />
+    <ClInclude Include="GameTexturesHolder.h" />
+    <ClInclude Include="GameViewImplementation.h" />
+    <ClInclude Include="GameController.h" />
+    <ClInclude Include="GameView.h" />
+    <ClInclude Include="Keys.h" />
+    <ClInclude Include="Log.h" />
+    <ClInclude Include="MainController.h" />
+    <ClInclude Include="GameMap.h" />
+    <ClInclude Include="Moveable.h" />
+    <ClInclude Include="MusicController.h" />
+    <ClInclude Include="MusicControllerImplementation.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="Player.h" />
+    <ClInclude Include="RandomMoveController.h" />
+    <ClInclude Include="RandomMoveControllerImplementation.h" />
+    <ClInclude Include="SoundController.h" />
+    <ClInclude Include="SoundControllerImplementation.h" />
+    <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
+    <ClInclude Include="Warrior.h" />
+    <ClInclude Include="WildDog.h" />
+    <ClInclude Include="MenuView.h" />
+    <ClInclude Include="MenuViewImplementation.h" />
+    <ClInclude Include="MenuController.h" />
+    <ClInclude Include="MenuControllerImplementation.h" />
+    <ClInclude Include="SettingsView.h" />
+    <ClInclude Include="SettingsViewImplementation.h" />
+    <ClInclude Include="SettingsManager.h" />
+    <ClInclude Include="SettingsManagerImplementation.h" />
+    <ClInclude Include="SettingsControllerImplementation.h" />
+    <ClInclude Include="SettingsController.h" />
+    <ClInclude Include="SettingsGenerator.h" />
+    <ClInclude Include="SettingsGeneratorImplementation.h" />
   </ItemGroup>
 </Project>

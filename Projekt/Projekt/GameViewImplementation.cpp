@@ -5,9 +5,11 @@
 #include <iostream>
 #include "Keys.h"
 
-GameViewImplementation::GameViewImplementation(): gameController(new GameControllerImplementation(this))
+GameViewImplementation::GameViewImplementation(sf::RenderWindow* window)
 {
-	this->debugDrawer = new DebugDrawer;
+	this->gameController = new GameControllerImplementation(this);
+	this->window = window;
+	this->debugDrawer = new DebugDrawer();
 }
 
 GameViewImplementation::~GameViewImplementation()
@@ -18,11 +20,8 @@ GameViewImplementation::~GameViewImplementation()
 
 void GameViewImplementation::displayGame() const
 {
-	sf::RenderWindow window(sf::VideoMode(1024, 512), Keys::version);
-	window.setFramerateLimit(60);
-	window.setVerticalSyncEnabled(true);
-
 	gameController->initializeGame();
+	auto& window = *this->window;
 
 	sf::Time elapsed;
 	sf::Clock gameClock;
