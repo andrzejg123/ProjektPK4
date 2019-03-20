@@ -74,22 +74,22 @@ void SettingsGeneratorImplementation::generateSoundSettings(const SettingsData s
 
 	const auto options1Name = "Game sound";
 	auto options1 = std::vector<const char*>{ "Off", "On" };
-	const auto selection1 = checkBoolSelection(boolSelection, settingsData.playSound);
+	const auto selection1 = checkBoolSelection(settingsConstance.boolSelection, settingsData.playSound);
 	subCategories.push_back(generateSettingsSubCategory(options1Name, options1, selection1, SubCategoryIndicator::GameSound));
 
 	const auto options2Name = "Game music";
 	auto options2 = std::vector<const char*>{ "Off", "On" };
-	const auto selection2 = checkBoolSelection(boolSelection, settingsData.playMusic);
+	const auto selection2 = checkBoolSelection(settingsConstance.boolSelection, settingsData.playMusic);
 	subCategories.push_back(generateSettingsSubCategory(options2Name, options2, selection2, SubCategoryIndicator::GameMusic));
 
 	const auto option3Name = "Game sound volume";
 	auto options3 = std::vector<const char*>{ "0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100" };
-	const auto selection3 = checkIntSelection(options3, volumeSelection, settingsData.soundVolume);
+	const auto selection3 = checkIntSelection(options3, settingsConstance.volumeSelection, settingsData.soundVolume);
 	subCategories.push_back(generateSettingsSubCategory(option3Name, options3, selection3, SubCategoryIndicator::GameSoundVolume));
 
 	const auto option4Name = "Game music volume";
 	auto options4 = std::vector<const char*>{ "0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100" };
-	const auto selection4 = checkIntSelection(options4, volumeSelection, settingsData.musicVolume);
+	const auto selection4 = checkIntSelection(options4, settingsConstance.volumeSelection, settingsData.musicVolume);
 	subCategories.push_back(generateSettingsSubCategory(option4Name, options4, selection4, SubCategoryIndicator::GameMusicVolume));
 
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
@@ -102,23 +102,23 @@ void SettingsGeneratorImplementation::generateVideoSettings(const SettingsData s
 
 	const auto options1Name = "Resolution";
 	auto options1 = std::vector<const char*>{ "800x600", "1024x768", "1280x900", "1440x900", "1600x900", "1920x1080", "1920x1200" };
-	const auto selection1 = checkIntSelection(options1, resolutionWidthSelection, resolutionHeightSelection,
+	const auto selection1 = checkIntSelection(options1, settingsConstance.resolutionWidthSelection, settingsConstance.resolutionHeightSelection,
 		settingsData.resolutionWidth, settingsData.resolutionHeight);
 	subCategories.push_back(generateSettingsSubCategory(options1Name, options1, selection1, SubCategoryIndicator::Resolution));
 
 	const auto options2Name = "Frame rate limit";
 	auto options2 = std::vector<const char*>{ "30", "60", "120", "240", "Unlimited" };
-	const auto selection2 = checkIntSelection(options2, frameRateSelection, settingsData.frameRateLimit);
+	const auto selection2 = checkIntSelection(options2, settingsConstance.frameRateSelection, settingsData.frameRateLimit);
 	subCategories.push_back(generateSettingsSubCategory(options2Name, options2, selection2, SubCategoryIndicator::FrameRateLimit));
 
 	const auto options3Name = "VSync enabled";
 	auto options3 = std::vector<const char*>{ "No", "Yes" };
-	const auto selection3 = checkBoolSelection(boolSelection, settingsData.vSyncEnabled);
+	const auto selection3 = checkBoolSelection(settingsConstance.boolSelection, settingsData.vSyncEnabled);
 	subCategories.push_back(generateSettingsSubCategory(options3Name, options3, selection3, SubCategoryIndicator::VSyncEnabled));
 
 	const auto options4Name = "Fullscreen";
 	auto options4 = std::vector<const char*>{ "Off", "On" };
-	const auto selection4 = checkBoolSelection(boolSelection, settingsData.fullscreen);
+	const auto selection4 = checkBoolSelection(settingsConstance.boolSelection, settingsData.fullscreen);
 	subCategories.push_back(generateSettingsSubCategory(options4Name, options4, selection4, SubCategoryIndicator::Fullscreen));
 
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
@@ -145,13 +145,18 @@ Category* SettingsGeneratorImplementation::generateSettingsCategory(const char* 
 	return category;
 }
 
+SettingsConstance& SettingsGeneratorImplementation::getSettingsConstance()
+{
+	return settingsConstance;
+}
+
 sf::Text* SettingsGeneratorImplementation::createNewSettingsItem(const char* text) const
 {
 	auto textView = new sf::Text();
 	textView->setString(text);
 	textView->setFont(font);
-	textView->setFillColor(normalColor);
-	textView->setCharacterSize(normalTextSize);
+	textView->setFillColor(settingsConstance.normalColor);
+	textView->setCharacterSize(settingsConstance.normalTextSize);
 	return textView;
 }
 

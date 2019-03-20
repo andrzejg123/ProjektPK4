@@ -10,12 +10,6 @@
     <Filter Include="Helpers">
       <UniqueIdentifier>{474237ea-f283-40fa-9bcf-1c042d1d6282}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Models">
-      <UniqueIdentifier>{581a2e83-845d-48e6-b123-292f3d5040af}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="SpecifiedModels">
-      <UniqueIdentifier>{3afd9d1c-48bd-4a71-83f0-c6e932625879}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Sounds">
       <UniqueIdentifier>{ebb673fc-9e18-4854-9dcf-4a5857d51b00}</UniqueIdentifier>
     </Filter>
@@ -33,6 +27,12 @@
     </Filter>
     <Filter Include="Enemy">
       <UniqueIdentifier>{d674f766-e92f-4488-ae23-ff9ee7e2565b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="AbstractModels">
+      <UniqueIdentifier>{581a2e83-845d-48e6-b123-292f3d5040af}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Models">
+      <UniqueIdentifier>{3afd9d1c-48bd-4a71-83f0-c6e932625879}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -58,31 +58,31 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="Animated.h">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClInclude>
     <ClInclude Include="Damageable.h">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClInclude>
     <ClInclude Include="Enemy.h">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClInclude>
     <ClInclude Include="FlyingObject.h">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClInclude>
     <ClInclude Include="Moveable.h">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClInclude>
     <ClInclude Include="Object.h">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClInclude>
     <ClInclude Include="DistanceHelper.h">
       <Filter>Helpers</Filter>
     </ClInclude>
     <ClInclude Include="Arrow.h">
-      <Filter>SpecifiedModels</Filter>
+      <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="Keys.h">
       <Filter>General</Filter>
@@ -103,7 +103,7 @@
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="WildDog.h">
-      <Filter>SpecifiedModels</Filter>
+      <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="GameEntityDataHolder.h">
       <Filter>Game</Filter>
@@ -164,7 +164,7 @@
       <Filter>Sounds</Filter>
     </ClInclude>
     <ClInclude Include="Warrior.h">
-      <Filter>SpecifiedModels</Filter>
+      <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>Headers</Filter>
@@ -220,28 +220,28 @@
       <Filter>Helpers</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClCompile>
     <ClCompile Include="Object.cpp">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClCompile>
     <ClCompile Include="Moveable.cpp">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClCompile>
     <ClCompile Include="FlyingObject.cpp">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClCompile>
     <ClCompile Include="Enemy.cpp">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClCompile>
     <ClCompile Include="Damageable.cpp">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClCompile>
     <ClCompile Include="Animated.cpp">
-      <Filter>Models</Filter>
+      <Filter>AbstractModels</Filter>
     </ClCompile>
     <ClCompile Include="Arrow.cpp">
-      <Filter>SpecifiedModels</Filter>
+      <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="DebugDrawer.cpp" />
     <ClCompile Include="SpawnArea.cpp" />
@@ -281,10 +281,10 @@
       <Filter>Sounds</Filter>
     </ClCompile>
     <ClCompile Include="WildDog.cpp">
-      <Filter>SpecifiedModels</Filter>
+      <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="Warrior.cpp">
-      <Filter>SpecifiedModels</Filter>
+      <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
       <Filter>Headers</Filter>

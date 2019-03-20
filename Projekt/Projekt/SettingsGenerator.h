@@ -1,9 +1,7 @@
 #pragma once
 
-class SettingsGenerator
+struct SettingsConstance
 {
-
-public:
 	unsigned int selectTextSize = 40;
 	unsigned int normalTextSize = 36;
 
@@ -15,7 +13,14 @@ public:
 	std::vector<int> resolutionWidthSelection = std::vector<int>{ 800, 1024, 1280, 1440, 1600, 1920, 1920 };
 	std::vector<int> resolutionHeightSelection = std::vector<int>{ 600, 768, 720, 900, 900, 1080, 1200 };
 	std::vector<int> frameRateSelection = std::vector<int>{ 30, 60, 120, 240, 0 };
+};
 
+class SettingsGenerator
+{
+protected:
+	SettingsConstance settingsConstance;
+public:
+	virtual SettingsConstance& getSettingsConstance() = 0;
 	virtual void initialize(SettingsData settingsData) = 0;
 	virtual sf::Text* createNewSettingsItem(const char* text) const = 0;
 	virtual ~SettingsGenerator() = default;

@@ -7,7 +7,7 @@
 #include "SoundController.h"
 #include "SettingsManager.h"
 
-class SoundControllerImplementation: SoundController
+class SoundControllerImplementation: public SoundController
 {
 	static SoundController* instance;
 	SettingsManager* settingsManager;

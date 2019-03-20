@@ -15,39 +15,39 @@ void SettingsControllerImplementation::updateSettings() const
 			switch (subCategory->subCategoryIndicator)
 			{
 			case SubCategoryIndicator::Resolution:
-				if (settingsGenerator->resolutionHeightSelection.size() > subCategory->currentSelection)
+				if (settingsGenerator->getSettingsConstance().resolutionHeightSelection.size() > subCategory->currentSelection)
 				{
-					settingsData.resolutionHeight = settingsGenerator->resolutionHeightSelection.at(subCategory->currentSelection);
-					settingsData.resolutionWidth = settingsGenerator->resolutionWidthSelection.at(subCategory->currentSelection);
+					settingsData.resolutionHeight = settingsGenerator->getSettingsConstance().resolutionHeightSelection.at(subCategory->currentSelection);
+					settingsData.resolutionWidth = settingsGenerator->getSettingsConstance().resolutionWidthSelection.at(subCategory->currentSelection);
 				}
 				break;
 			case SubCategoryIndicator::FrameRateLimit:
-				if (settingsGenerator->frameRateSelection.size() > subCategory->currentSelection)
-					settingsData.frameRateLimit = settingsGenerator->frameRateSelection.at(subCategory->currentSelection);
+				if (settingsGenerator->getSettingsConstance().frameRateSelection.size() > subCategory->currentSelection)
+					settingsData.frameRateLimit = settingsGenerator->getSettingsConstance().frameRateSelection.at(subCategory->currentSelection);
 				break;
 			case SubCategoryIndicator::VSyncEnabled:
-				if (settingsGenerator->boolSelection.size() > subCategory->currentSelection)
-					settingsData.vSyncEnabled = settingsGenerator->boolSelection.at(subCategory->currentSelection);
+				if (settingsGenerator->getSettingsConstance().boolSelection.size() > subCategory->currentSelection)
+					settingsData.vSyncEnabled = settingsGenerator->getSettingsConstance().boolSelection.at(subCategory->currentSelection);
 				break;
 			case SubCategoryIndicator::GameSound:
-				if (settingsGenerator->boolSelection.size() > subCategory->currentSelection)
-					settingsData.playSound = settingsGenerator->boolSelection.at(subCategory->currentSelection);
+				if (settingsGenerator->getSettingsConstance().boolSelection.size() > subCategory->currentSelection)
+					settingsData.playSound = settingsGenerator->getSettingsConstance().boolSelection.at(subCategory->currentSelection);
 				break;
 			case SubCategoryIndicator::GameMusic:
-				if (settingsGenerator->boolSelection.size() > subCategory->currentSelection)
-					settingsData.playMusic = settingsGenerator->boolSelection.at(subCategory->currentSelection);
+				if (settingsGenerator->getSettingsConstance().boolSelection.size() > subCategory->currentSelection)
+					settingsData.playMusic = settingsGenerator->getSettingsConstance().boolSelection.at(subCategory->currentSelection);
 				break;
 			case SubCategoryIndicator::GameSoundVolume:
-				if (settingsGenerator->volumeSelection.size() > subCategory->currentSelection)
-					settingsData.soundVolume = settingsGenerator->volumeSelection.at(subCategory->currentSelection);
+				if (settingsGenerator->getSettingsConstance().volumeSelection.size() > subCategory->currentSelection)
+					settingsData.soundVolume = settingsGenerator->getSettingsConstance().volumeSelection.at(subCategory->currentSelection);
 				break;
 			case SubCategoryIndicator::GameMusicVolume:
-				if (settingsGenerator->volumeSelection.size() > subCategory->currentSelection)
-					settingsData.musicVolume = settingsGenerator->volumeSelection.at(subCategory->currentSelection);
+				if (settingsGenerator->getSettingsConstance().volumeSelection.size() > subCategory->currentSelection)
+					settingsData.musicVolume = settingsGenerator->getSettingsConstance().volumeSelection.at(subCategory->currentSelection);
 				break;
 			case SubCategoryIndicator::Fullscreen:
-				if (settingsGenerator->boolSelection.size() > subCategory->currentSelection)
-					settingsData.fullscreen = settingsGenerator->boolSelection.at(subCategory->currentSelection);
+				if (settingsGenerator->getSettingsConstance().boolSelection.size() > subCategory->currentSelection)
+					settingsData.fullscreen = settingsGenerator->getSettingsConstance().boolSelection.at(subCategory->currentSelection);
 				break;
 			default: ;
 			}
@@ -63,7 +63,7 @@ void SettingsControllerImplementation::addRestartInfo()
 		return;
 	const auto restartInfoTitle = "Video changes may require restart";
 	restartInfo = settingsGenerator->createNewSettingsItem(restartInfoTitle);
-	restartInfo->setFillColor(settingsGenerator->selectColor);
+	restartInfo->setFillColor(settingsGenerator->getSettingsConstance().selectColor);
 	repositionView();
 }
 
@@ -85,14 +85,14 @@ void SettingsControllerImplementation::unselectAll() const
 
 void SettingsControllerImplementation::highlightItem(sf::Text* text) const
 {
-	text->setFillColor(settingsGenerator->selectColor);
-	text->setCharacterSize(settingsGenerator->selectTextSize);
+	text->setFillColor(settingsGenerator->getSettingsConstance().selectColor);
+	text->setCharacterSize(settingsGenerator->getSettingsConstance().selectTextSize);
 }
 
 void SettingsControllerImplementation::unHighlightItem(sf::Text* text) const
 {
-	text->setFillColor(settingsGenerator->normalColor);
-	text->setCharacterSize(settingsGenerator->normalTextSize);
+	text->setFillColor(settingsGenerator->getSettingsConstance().normalColor);
+	text->setCharacterSize(settingsGenerator->getSettingsConstance().normalTextSize);
 }
 
 void SettingsControllerImplementation::repositionView() const

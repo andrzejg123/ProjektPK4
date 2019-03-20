@@ -26,6 +26,7 @@ class SettingsGeneratorImplementation : public SettingsGenerator
 	
 
 public:
+	SettingsConstance& getSettingsConstance() override;
 	sf::Text* createNewSettingsItem(const char* text) const override;
 	void initialize(SettingsData settingsData) override;
 	explicit SettingsGeneratorImplementation(std::vector<Category*>* categories);

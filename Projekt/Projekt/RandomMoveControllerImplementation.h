@@ -1,5 +1,4 @@
 #pragma once
-#include "Enemy.h"
 #include "RandomMoveController.h"
 
 class RandomMoveControllerImplementation: public RandomMoveController

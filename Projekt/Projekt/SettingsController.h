@@ -2,6 +2,33 @@
 #include <SFML/Graphics/Text.hpp>
 #include <list>
 
+enum class SubCategoryIndicator
+{
+	Resolution,
+	FrameRateLimit,
+	VSyncEnabled,
+	Fullscreen,
+	GameSound,
+	GameMusic,
+	GameSoundVolume,
+	GameMusicVolume
+};
+
+struct SubCategory
+{
+	sf::Text* subCategoryName;
+	int currentSelection = 0;
+	std::vector<const char*> subCategoriesOptionTexts;
+	sf::Text* subCategoryOption;
+	SubCategoryIndicator subCategoryIndicator;
+};
+
+struct Category
+{
+	sf::Text* categoryName;
+	std::vector<SubCategory*> subCategories;
+};
+
 class SettingsController
 {
 public:
