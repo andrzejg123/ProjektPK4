@@ -34,8 +34,8 @@ void MenuControllerImplementation::repositionItems() const
 	auto totalItemsSize = 0.0f;
 	for (auto menuItem : *menuItems)
 		totalItemsSize += menuItem->getGlobalBounds().height;
-	const auto singleSpace = (height - totalItemsSize) / (6.0f + itemsCount - 1.0f);
-	auto startingPosition = singleSpace * 2;
+	const auto singleSpace = (height - totalItemsSize) / (10.0f + itemsCount - 1.0f);
+	auto startingPosition = singleSpace * 4;
 	for (auto menuItem : *menuItems)
 	{
 		const auto itemWidth = menuItem->getGlobalBounds().width;

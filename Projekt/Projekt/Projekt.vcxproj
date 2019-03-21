@@ -198,9 +198,10 @@
     <ClInclude Include="SettingsViewImplementation.h" />
     <ClInclude Include="SoundController.h" />
     <ClInclude Include="SoundControllerImplementation.h" />
-    <ClInclude Include="spawnAreaRect.h" />
+    <ClInclude Include="SpawnArea.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="Translations.h" />
     <ClInclude Include="Warrior.h" />
     <ClInclude Include="RogueArcher.h" />
   </ItemGroup>
@@ -241,13 +242,14 @@
     <ClCompile Include="SettingsViewImplementation.cpp" />
     <ClCompile Include="SoundController.cpp" />
     <ClCompile Include="SoundControllerImplementation.cpp" />
-    <ClCompile Include="spawnAreaRect.cpp" />
+    <ClCompile Include="SpawnArea.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Translations.cpp" />
     <ClCompile Include="Warrior.cpp" />
     <ClCompile Include="RogueArcher.cpp" />
   </ItemGroup>

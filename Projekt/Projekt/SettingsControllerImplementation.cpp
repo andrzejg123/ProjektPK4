@@ -65,7 +65,7 @@ void SettingsControllerImplementation::addRestartInfo()
 {
 	if(restartInfo != nullptr)
 		return;
-	const auto restartInfoTitle = "Video changes may require restart";
+	const auto restartInfoTitle = "Some changes may require restart";
 	restartInfo = settingsGenerator->createNewSettingsItem(restartInfoTitle);
 	restartInfo->setFillColor(settingsGenerator->getSettingsConstance().selectColor);
 	repositionView();
@@ -202,7 +202,7 @@ void SettingsControllerImplementation::selectLeftItem()
 		{
 			categories->at(currentItem)->subCategories.at(currentSubItem - 1)->currentSelection--;
 			SoundController::getInstance()->playSound(SoundIndicator::MenuSelectItem);
-			if (currentItem == 0)
+			if (currentItem == 0 || currentItem == 2)
 				addRestartInfo();
 		}	
 	}
@@ -235,7 +235,7 @@ void SettingsControllerImplementation::selectRightItem()
 		{
 			SoundController::getInstance()->playSound(SoundIndicator::MenuSelectItem);
 			categories->at(currentItem)->subCategories.at(currentSubItem - 1)->currentSelection++;
-			if(currentItem == 0)
+			if(currentItem == 0 || currentItem == 2)
 				addRestartInfo();
 		}
 	}

@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "MenuViewImplementation.h"
 #include "MenuControllerImplementation.h"
-#include <windows.h>
 #include "SettingsView.h"
 #include "SettingsViewImplementation.h"
 #include "GameViewImplementation.h"
