@@ -90,7 +90,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SFML\include;C:\Program Files (x86)\Visual Leak Detector\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -107,7 +107,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\SFML\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SFML\include;C:\Program Files\Visual Leak Detector\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -169,8 +169,7 @@
     <ClInclude Include="GameEnemyControllerImplementation.h" />
     <ClInclude Include="GameEntityDataHolder.h" />
     <ClInclude Include="GameMapController.h" />
-    <ClInclude Include="GameObjectsHolderImplementation.h" />
-    <ClInclude Include="GameObjectHolder.h" />
+    <ClInclude Include="GameObjectsHolder.h" />
     <ClInclude Include="GameTexturesHolder.h" />
     <ClInclude Include="GameViewImplementation.h" />
     <ClInclude Include="GameController.h" />
@@ -223,7 +222,7 @@
     <ClCompile Include="GameEnemyControllerImplementation.cpp" />
     <ClCompile Include="GameEntityDataHolder.cpp" />
     <ClCompile Include="GameMapController.cpp" />
-    <ClCompile Include="GameObjectsHolderImplementation.cpp" />
+    <ClCompile Include="GameObjectsHolder.cpp" />
     <ClCompile Include="GameTexturesHolder.cpp" />
     <ClCompile Include="GameViewImplementation.cpp" />
     <ClCompile Include="Keys.cpp" />

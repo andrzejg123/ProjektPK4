@@ -90,25 +90,15 @@
     <ClInclude Include="Log.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjectHolder.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjectsHolderImplementation.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="GameEnemyController.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="GameEnemyControllerImplementation.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="WildDog.h">
-      <Filter>Models</Filter>
-    </ClInclude>
     <ClInclude Include="GameEntityDataHolder.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="SpawnArea.h" />
     <ClInclude Include="FlyingObjectFactory.h" />
     <ClInclude Include="FileReadingController.h" />
     <ClInclude Include="DebugDrawer.h" />
@@ -185,15 +175,17 @@
       <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="TranslationManager.h" />
+    <ClInclude Include="spawnAreaRect.h" />
+    <ClInclude Include="RogueArcher.h" />
+    <ClInclude Include="GameObjectsHolder.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="GameTexturesHolder.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObjectsHolderImplementation.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="GameMapController.cpp">
@@ -245,7 +237,6 @@
       <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="DebugDrawer.cpp" />
-    <ClCompile Include="SpawnArea.cpp" />
     <ClCompile Include="FlyingObjectFactory.cpp" />
     <ClCompile Include="FileReadingController.cpp" />
     <ClCompile Include="MusicControllerImplementation.cpp">
@@ -281,9 +272,6 @@
     <ClCompile Include="SoundController.cpp">
       <Filter>Sounds</Filter>
     </ClCompile>
-    <ClCompile Include="WildDog.cpp">
-      <Filter>Models</Filter>
-    </ClCompile>
     <ClCompile Include="Warrior.cpp">
       <Filter>Models</Filter>
     </ClCompile>
@@ -298,6 +286,11 @@
     </ClCompile>
     <ClCompile Include="RandomMoveControllerImplementation.cpp">
       <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="spawnAreaRect.cpp" />
+    <ClCompile Include="RogueArcher.cpp" />
+    <ClCompile Include="GameObjectsHolder.cpp">
+      <Filter>Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@
 #include "GameMap.h"
 #include "Player.h"
 #include <list>
-#include "GameObjectHolder.h"
+#include "GameObjectsHolder.h"
 
 class GameController
 {
@@ -15,7 +15,7 @@ public:
 	virtual void stopPlayer() = 0;
 	virtual void updateGame(const sf::Time& elapsed) = 0;
 	virtual std::list<Object*>* getObjectsToDraw() = 0;
-	virtual GameObjectHolder* getGameObjectHolder() = 0;
+	virtual GameObjectsHolder* getGameObjectHolder() = 0;
 	virtual std::list<sf::FloatRect>* getCollisionRects() = 0;
 };
 

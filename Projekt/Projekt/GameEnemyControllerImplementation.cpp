@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "GameEnemyControllerImplementation.h"
 #include "DistanceHelper.h"
-#include "RandomMoveControllerImplementation.h"
 #include "FlyingObjectFactory.h"
 
 void GameEnemyControllerImplementation::handleAttack(Enemy* enemy) const
@@ -49,7 +48,7 @@ void GameEnemyControllerImplementation::updateEnemy(const sf::Time& time, Enemy*
 		enemy->cancelMove();
 }
 
-GameEnemyControllerImplementation::GameEnemyControllerImplementation(GameObjectHolder* gameObjectsHolder, GameTexturesHolder* gameTexturesHolder)
+GameEnemyControllerImplementation::GameEnemyControllerImplementation(GameObjectsHolder* gameObjectsHolder, GameTexturesHolder* gameTexturesHolder)
 {
 	this->gameObjectsHolder = gameObjectsHolder;
 	this->gameTexturesHolder = gameTexturesHolder;;
