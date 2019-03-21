@@ -1,11 +1,11 @@
 #include "stdafx.h"
-#include "SettingsReaderImplementation.h"
+#include "SettingsReader.h"
 #include <string>
 #include <sstream>
 #include "Log.h"
 #include <fstream>
 
-std::vector<std::string> SettingsReaderImplementation::split(const std::string& s, const char delimiter) const
+std::vector<std::string> SettingsReader::split(const std::string& s, const char delimiter) const
 {
 	std::vector<std::string> tokens;
 	std::string token;
@@ -15,20 +15,20 @@ std::vector<std::string> SettingsReaderImplementation::split(const std::string& 
 	return tokens;
 }
 
-SettingsData SettingsReaderImplementation::getSettingsData()
+SettingsData SettingsReader::getSettingsData()
 {
 	if (!dataLoaded)
 		reloadSettings();
 	return settingsData;
 }
 
-void SettingsReaderImplementation::updateSettingsData(const SettingsData settingsData)
+void SettingsReader::updateSettingsData(const SettingsData settingsData)
 {
 	this->settingsData = settingsData;
 	updateSettings(settingsData);
 }
 
-void SettingsReaderImplementation::backToDefaultSettings()
+void SettingsReader::backToDefaultSettings()
 {
 	Log::debugS("Generating default settings");
 	const SettingsData settingsData;
@@ -36,7 +36,7 @@ void SettingsReaderImplementation::backToDefaultSettings()
 	updateSettings(settingsData);
 }
 
-void SettingsReaderImplementation::reloadSettings()
+void SettingsReader::reloadSettings()
 {
 	dataLoaded = true;
 	std::fstream file;
@@ -92,7 +92,7 @@ void SettingsReaderImplementation::reloadSettings()
 	file.close();
 }
 
-void SettingsReaderImplementation::updateSettings(const SettingsData settingsData) const
+void SettingsReader::updateSettings(const SettingsData settingsData) const
 {
 	std::fstream file;
 	file.open(settingsFileName, std::ios::out | std::ios::trunc);

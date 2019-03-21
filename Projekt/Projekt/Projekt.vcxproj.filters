@@ -162,9 +162,7 @@
     <ClInclude Include="RandomMoveControllerImplementation.h">
       <Filter>Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="TranslationManager.h" />
     <ClInclude Include="spawnAreaRect.h" />
-    <ClInclude Include="RogueArcher.h" />
     <ClInclude Include="GameObjectsHolder.h">
       <Filter>Game</Filter>
     </ClInclude>
@@ -177,8 +175,8 @@
     <ClInclude Include="SettingsReader.h">
       <Filter>Settings</Filter>
     </ClInclude>
-    <ClInclude Include="SettingsReaderImplementation.h">
-      <Filter>Settings</Filter>
+    <ClInclude Include="RogueArcher.h">
+      <Filter>Models</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -282,15 +280,17 @@
       <Filter>Enemy</Filter>
     </ClCompile>
     <ClCompile Include="spawnAreaRect.cpp" />
-    <ClCompile Include="RogueArcher.cpp" />
     <ClCompile Include="GameObjectsHolder.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="SettingsDataControllerImplementation.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
-    <ClCompile Include="SettingsReaderImplementation.cpp">
+    <ClCompile Include="SettingsReader.cpp">
       <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="RogueArcher.cpp">
+      <Filter>Models</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

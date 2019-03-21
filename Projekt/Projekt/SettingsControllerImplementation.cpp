@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "SettingsControllerImplementation.h"
 #include "SoundController.h"
-#include "SettingsReaderImplementation.h"
+#include "SettingsReader.h"
 #include "SettingsDataController.h"
 #include "SettingsDataControllerImplementation.h"
 
@@ -252,7 +252,7 @@ SettingsControllerImplementation::SettingsControllerImplementation(SettingsView*
 	this->settingsView = settingsView;
 	this->categories = new std::vector<Category*>();
 	this->textsToDraw = new std::list<sf::Text*>();
-	this->settingsManager = new SettingsReaderImplementation();
+	this->settingsManager = new SettingsReader();
 	this->settingsManager->reloadSettings();
 	this->settingsGenerator = new SettingsDataControllerImplementation(categories);
 	this->restartInfo = nullptr;
