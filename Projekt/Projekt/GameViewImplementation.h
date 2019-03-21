@@ -7,10 +7,11 @@ class GameViewImplementation: GameView
 {
 	GameController* gameController;
 	DebugDrawer* debugDrawer;
+	sf::RenderWindow* window;
 
 public:
 	void displayGame() const;
-	GameViewImplementation();
+	GameViewImplementation(sf::RenderWindow* window);
 	~GameViewImplementation();
 };
 

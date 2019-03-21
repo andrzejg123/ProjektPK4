@@ -1,5 +1,8 @@
 #include "stdafx.h"
 #include "Keys.h"
 
-const char* Keys::version = "0.02";
-ProjectType Keys::projectType = Debug;
+//General
+
+const char* Keys::version = "0.03";
+ProjectType Keys::projectType = ProjectType::Debug;
+

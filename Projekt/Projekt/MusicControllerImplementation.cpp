@@ -4,7 +4,7 @@
 #include "Log.h"
 #include <map>
 
-void MusicControllerImplementation::fetchAndPlay(const MusicIndicator musicIndicator) const
+void MusicControllerImplementation::fetchAndPlay(const MusicIndicator musicIndicator, const float volume) const
 {
 	Log::debugS("loading new music");
 	auto music = new sf::Music();
@@ -12,6 +12,7 @@ void MusicControllerImplementation::fetchAndPlay(const MusicIndicator musicIndic
 	{
 		music->setLoop(true);
 		(*musics)[musicIndicator] = music;
+		music->setVolume(volume);
 		music->play();
 	}
 	else
@@ -24,17 +25,29 @@ void MusicControllerImplementation::stopAllMusic() const
 		music.second->stop();
 }
 
-void MusicControllerImplementation::playMusic(const MusicIndicator musicIndicator)
+void MusicControllerImplementation::updateSettings(const bool shouldPlayMusic, const int musicVolume)
+{
+	if (!shouldPlayMusic)
+		stopAllMusic();
+	else
+		for (auto music : *musics)
+			music.second->setVolume(musicVolume);
+}
+
+void MusicControllerImplementation::playMusic(const MusicIndicator musicIndicator, const float volume)
 {
 	stopAllMusic();
 	const auto i = musics->find(musicIndicator);
 	if (i == musics->end())
 	{
 		SoundController::syncThread(thread);
-		thread = new std::thread([=] { fetchAndPlay(musicIndicator); });
+		thread = new std::thread([=] { fetchAndPlay(musicIndicator, volume); });
 	}
 	else
+	{
+		i->second->setVolume(volume);
 		i->second->play();
+	}
 }
 
 MusicControllerImplementation::MusicControllerImplementation()
@@ -42,7 +55,6 @@ MusicControllerImplementation::MusicControllerImplementation()
 	this->thread = nullptr;
 	this->musics = new std::map<MusicIndicator, sf::Music*>();
 }
-
 
 MusicControllerImplementation::~MusicControllerImplementation()
 {

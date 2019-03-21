@@ -5,10 +5,12 @@
 #include <list>
 #include "MusicController.h"
 #include "SoundController.h"
+#include "SettingsManager.h"
 
-class SoundControllerImplementation: SoundController
+class SoundControllerImplementation: public SoundController
 {
 	static SoundController* instance;
+	SettingsManager* settingsManager;
 	MusicController* musicController;
 	std::list<sf::Sound>* playingSounds;
 	std::map<SoundIndicator, sf::SoundBuffer>* sounds;
@@ -21,6 +23,7 @@ class SoundControllerImplementation: SoundController
 public:
 	static SoundController* getInstance();
 	static void clearInstance();
+	void updateSettings() override;
 	void playMusic(MusicIndicator musicIndicator) const override;
 	void playSound(SoundIndicator soundIndicator) override;
 	~SoundControllerImplementation();

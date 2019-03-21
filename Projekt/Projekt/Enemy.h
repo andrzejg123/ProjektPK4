@@ -38,7 +38,7 @@ public:
 	void incrementAttackCounter();
 	void resetAttackCounter();
 	void makeRandomMove();
-	void makeMove(const Direction direction);
+	void makeMove(Direction direction);
 	virtual AttackData getAttackData() = 0;
 	explicit Enemy(EnemyParams* enemyParams, AnimationData& animationData);
 	virtual ~Enemy();
