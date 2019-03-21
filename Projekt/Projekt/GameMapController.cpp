@@ -42,7 +42,7 @@ void GameMapController::loadMap(const MapIndicator mapIndicator)
 	drawingData = fileReadingController->loadMapDrawingData(mapIndicator);
 	map->load(*drawingData);
 	this->collisionRects = fileReadingController->loadCollisionRects(mapIndicator);
-	gameplayData = fileReadingController->loadMapGameplayData(mapIndicator, drawingData->tileSize);
+	this->gameplayData = fileReadingController->loadMapGameplayData(mapIndicator, drawingData->tileSize);
 }
 
 GameMap* GameMapController::getMap() const

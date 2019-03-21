@@ -5,7 +5,8 @@
 //Symbol describing any object, it is used as a key in the holders storing objects data
 enum class ObjectIndicator
 {
-	PlayerWarrior
+	PlayerWarrior,
+	RogueArcher
 };
 
 class GameTexturesHolder

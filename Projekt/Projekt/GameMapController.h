@@ -3,7 +3,7 @@
 #include <list>
 #include "FileReadingController.h"
 #include "Moveable.h"
-#include "SpawnArea.h"
+#include "spawnAreaRect.h"
 
 class GameMapController
 {

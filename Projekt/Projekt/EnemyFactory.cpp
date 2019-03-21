@@ -1,29 +1,41 @@
 #include "stdafx.h"
 #include "EnemyFactory.h"
-#include "WildDog.h"
+#include "RogueArcher.h"
 
-Enemy* EnemyFactory::create(const ObjectIndicator textureIndicator) const
+Enemy* EnemyFactory::create(const ObjectIndicator enemyIndicator, sf::FloatRect& spawnAreaRect, const int mapLevel) const
 {
-	const auto enemyParams = EnemyParams::Builder(1)
-		.setPosition(rand() % 512, rand() % 256)
-		.multiplyVisionRadiusByValue(1.0f)
-		.multiplyArmorByValue(0.75f)
-		.multiplyHealthByValue(1.25f)
-		.setAttackRadius(70.0f)
-		.multiplySpeedByValue(1.0f)
+	const auto& enemyParamsFactors = gameEntityDataHolder->getEnemyParamsFactors(enemyIndicator);
+	const auto enemyLevel = mapLevel + rand() % 3;
+	auto& animationData = gameEntityDataHolder->getAnimationData(enemyIndicator);
+
+	const auto enemyPositionX = float(rand() % int((spawnAreaRect.left + spawnAreaRect.width) * 1000 - spawnAreaRect.left * 1000)) / 1000.0 + spawnAreaRect.left;
+	const auto enemyPositionY = float(rand() % int((spawnAreaRect.top + spawnAreaRect.height) * 1000 - spawnAreaRect.top * 1000)) / 1000.0 + spawnAreaRect.top;
+
+	//fixing position - so that the fixed bounds center will be placed in randomized position
+	const auto positionFixingX = animationData.frameSizeX / 2.0;
+	const auto positionFixingY = animationData.frameSizeY - animationData.frameSizeY / 8.4;
+
+	const auto enemyParams = EnemyParams::Builder(enemyLevel)
+		.setPosition(enemyPositionX - positionFixingX, enemyPositionY - positionFixingY)
+		.multiplyVisionRadiusByValue(enemyParamsFactors.visionRadiusFactor)
+		.multiplyArmorByValue(enemyParamsFactors.armorFactor)
+		.multiplyHealthByValue(enemyParamsFactors.healthFactor)
+		.setAttackRadius(enemyParamsFactors.attackRadiusFactor)
+		.multiplySpeedByValue(enemyParamsFactors.speedFactor)
 		.build();
-	switch (textureIndicator)
+	switch (enemyIndicator)
 	{
-	case ObjectIndicator::PlayerWarrior: 
-		return new WildDog(gameTexturesHolder->getTexture(textureIndicator), enemyParams);
+	case ObjectIndicator::RogueArcher: 
+		return new RogueArcher(gameTexturesHolder->getTexture(enemyIndicator), enemyParams, animationData);
 	default: 
-		return new WildDog(gameTexturesHolder->getTexture(textureIndicator), enemyParams);
-	}
+		return new RogueArcher(gameTexturesHolder->getTexture(enemyIndicator), enemyParams, animationData);
+	} 
 }
 
-EnemyFactory::EnemyFactory(GameTexturesHolder* gameTexturesHolder)
+EnemyFactory::EnemyFactory(GameTexturesHolder* gameTexturesHolder, GameEntityDataHolder* gameEntityDataHolder)
 {
 	this->gameTexturesHolder = gameTexturesHolder;
+	this->gameEntityDataHolder = gameEntityDataHolder;
 }
 
 EnemyFactory::~EnemyFactory()

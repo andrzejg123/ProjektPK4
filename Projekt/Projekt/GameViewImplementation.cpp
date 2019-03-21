@@ -19,8 +19,8 @@ GameViewImplementation::~GameViewImplementation()
 
 void GameViewImplementation::displayGame() const
 {
-	sf::RenderWindow window(sf::VideoMode(768, 384), Keys::version);
-	window.setFramerateLimit(60);
+	sf::RenderWindow window(sf::VideoMode(1024, 512), Keys::version);
+	//window.setFramerateLimit(60);
 	window.setVerticalSyncEnabled(true);
 
 	gameController->initializeGame();

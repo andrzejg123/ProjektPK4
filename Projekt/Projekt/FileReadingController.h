@@ -3,6 +3,7 @@
 #include <list>
 #include <fstream>
 #include "EnemyParams.h"
+#include "Animated.h"
 
 class FileReadingController
 {
@@ -13,8 +14,10 @@ public:
 	std::list<sf::FloatRect>* loadCollisionRects(MapIndicator dataIndicator);
 
 	EnemyParamsFactors loadEnemyParamsFactors(ObjectIndicator enemyIndicator);
+	AnimationData loadAnimationData(ObjectIndicator entityIndicator);
 
 	FileReadingController();
 	~FileReadingController();
+	
 };
 

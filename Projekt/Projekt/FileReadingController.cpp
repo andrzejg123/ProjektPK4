@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "FileReadingController.h"
+#include "Log.h"
 
 
 MapDrawingData* FileReadingController::loadMapDrawingData(MapIndicator mapIndicator)
@@ -34,6 +35,7 @@ MapDrawingData* FileReadingController::loadMapDrawingData(MapIndicator mapIndica
 			}
 
 	}
+	//file.clear();
 	file.close();
 	return data;
 }
@@ -87,6 +89,7 @@ std::list<sf::FloatRect>* FileReadingController::loadCollisionRects(MapIndicator
 			collisionRects->emplace_back(tilesLeft * tileSizeWidth, tilesTop * tileSizeHeight, tilesWidth * tileSizeWidth, tilesHeight * tileSizeHeight);
 		}
 	}
+	file.close();
 	return collisionRects;
 }
 
@@ -104,6 +107,32 @@ EnemyParamsFactors FileReadingController::loadEnemyParamsFactors(ObjectIndicator
 	}
 	file.close();
 	return enemyParamsFactors;
+}
+
+AnimationData FileReadingController::loadAnimationData(ObjectIndicator entityIndicator)
+{
+	AnimationData animationData;
+	file.open("entities/animations/entity_animation_" + std::to_string(int(entityIndicator)) + ".txt");
+	if(file.good())
+	{
+		file >> animationData.frameSizeX;
+		file >> animationData.frameSizeY;
+		int animationTypesNumber;
+		file >> animationTypesNumber;
+		animationData.animationTypesData.reserve(animationTypesNumber);
+		int intervalInMilliseconds;
+		int animationFrames;
+		for(auto i = 0; i < animationTypesNumber; ++i)
+		{
+			
+			file >> intervalInMilliseconds;
+			file >> animationFrames;
+			animationData.animationTypesData.emplace_back(intervalInMilliseconds, animationFrames);
+			
+		}
+	}
+	file.close();
+	return animationData;
 }
 
 FileReadingController::FileReadingController()

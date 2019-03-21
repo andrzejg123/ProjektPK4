@@ -1,4 +1,5 @@
 #pragma once
+#include "DebugDrawer.h"
 
 struct EnemyParamsFactors
 {
@@ -19,6 +20,7 @@ class EnemyParams
 	float health;
 	float armor;
 	float damage;
+	int level;
 	explicit EnemyParams(int lvl);
 public:
 	float getAttackRadius() const;
@@ -29,6 +31,8 @@ public:
 	float getHealth() const;
 	float getArmor() const;
 	float getDamage() const;
+	int getLevel() const;
+
 	class Builder
 	{
 		EnemyParams* enemyParams;

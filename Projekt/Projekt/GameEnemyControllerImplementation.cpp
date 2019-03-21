@@ -32,6 +32,7 @@ void GameEnemyControllerImplementation::updateEnemy(const sf::Time& time, Enemy*
 		{
 			enemy->resetAttackCounter();
 			handleAttack(enemy);
+			enemy->animate(AnimationType::Attack);
 			enemy->setFacing(DistanceHelper::directionToFacing(enemy->getFacing(), direction));
 		}
 		enemy->stopAnimate(AnimationType::Move);

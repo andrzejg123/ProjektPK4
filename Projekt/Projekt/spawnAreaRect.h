@@ -13,16 +13,13 @@ class SpawnArea
 	EntityKind entityKind;
 	int minEntitiesNumber;
 	int maxEntitiesNumber;
-	sf::FloatRect spawnArea;
+	sf::FloatRect spawnAreaRect;
 public:
 	ObjectIndicator getEntityIndicator() const;
-	void setEntityIndicator(ObjectIndicator entityIndicator);
+	EntityKind getEntityKind() const;
 	int getMinEntitiesNumber() const;
-	void setMinEntitiesNumber(int minEntitiesNumber);
 	int getMaxEntitiesNumber() const;
-	void setMaxEntitiesNumber(int maxEntitiesNumber);
-	sf::FloatRect getSpawnArea() const;
-	void setSpawnArea(const sf::FloatRect& spawnArea);
+	sf::FloatRect& getSpawnAreaRect();
 	SpawnArea(ObjectIndicator entityIndicator, EntityKind entityKind, int minEntitiesNumber, int maxEntitiesNumber, sf::FloatRect spawnArea);
 	~SpawnArea();
 };

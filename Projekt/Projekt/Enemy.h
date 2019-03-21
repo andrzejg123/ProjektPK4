@@ -27,6 +27,7 @@ protected:
 	float attackRadius;
 	float damage = 20;
 	int attackSpeed = 100;
+	int level;
 public:
 	bool didSawPlayer() const;
 	void setSawPlayer();
@@ -39,7 +40,7 @@ public:
 	void makeRandomMove();
 	void makeMove(const Direction direction);
 	virtual AttackData getAttackData() = 0;
-	explicit Enemy(EnemyParams* enemyParams);
+	explicit Enemy(EnemyParams* enemyParams, AnimationData& animationData);
 	virtual ~Enemy();
 };
 

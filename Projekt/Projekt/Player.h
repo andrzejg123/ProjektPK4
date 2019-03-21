@@ -8,6 +8,7 @@ class Player : public Moveable, public Animated, public Damageable
 
 public:
 	Player();
+	Player(AnimationData& animationData);
 	virtual ~Player();
 };
 

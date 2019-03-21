@@ -6,9 +6,22 @@ EnemyParamsFactors& GameEntityDataHolder::getEnemyParamsFactors(const ObjectIndi
 	const auto i = enemiesParamsFactors->find(enemyIndicator);
 	if (i == enemiesParamsFactors->end())
 	{
-		auto newEnemyParamsFactors = fileReadingController->loadEnemyParamsFactors(enemyIndicator);
+		const auto newEnemyParamsFactors = fileReadingController->loadEnemyParamsFactors(enemyIndicator);
 		(*enemiesParamsFactors)[enemyIndicator] = newEnemyParamsFactors;
 		return (*enemiesParamsFactors)[enemyIndicator];
+	}
+
+	return i->second;
+}
+
+AnimationData& GameEntityDataHolder::getAnimationData(ObjectIndicator entityIndicator)
+{
+	const auto i = animationsData->find(entityIndicator);
+	if (i == animationsData->end())
+	{
+		const auto newAnimationData = fileReadingController->loadAnimationData(entityIndicator);
+		(*animationsData)[entityIndicator] = newAnimationData;
+		return (*animationsData)[entityIndicator];
 	}
 
 	return i->second;

@@ -2,7 +2,7 @@
 #include "EnemyParams.h"
 #include "Log.h"
 
-EnemyParams::EnemyParams(const int lvl)
+EnemyParams::EnemyParams(const int lvl) : level(lvl)
 {
 	const auto floatLvl = float(lvl);
 	attackRadius = 0.0f;
@@ -53,6 +53,11 @@ float EnemyParams::getArmor() const
 float EnemyParams::getDamage() const
 {
 	return damage;
+}
+
+int EnemyParams::getLevel() const
+{
+	return level;
 }
 
 EnemyParams::Builder& EnemyParams::Builder::multiplySpeedByValue(const float value)

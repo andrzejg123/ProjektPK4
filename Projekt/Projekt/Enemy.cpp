@@ -58,7 +58,7 @@ void Enemy::makeMove(const Direction direction)
 	animate(AnimationType::Move);
 }
 
-Enemy::Enemy(EnemyParams* enemyParams)
+Enemy::Enemy(EnemyParams* enemyParams, AnimationData& animationData) : Animated(animationData)
 {
 	randomMoveHelper = new RandomMoveControllerImplementation(this);
 	attackRadius = enemyParams->getAttackRadius();
@@ -66,6 +66,7 @@ Enemy::Enemy(EnemyParams* enemyParams)
 	setPosition(sf::Vector2f(enemyParams->getPositionX(), enemyParams->getPositionY()));
 	setSpeed(enemyParams->getSpeed());
 	damage = enemyParams->getDamage();
+	level = enemyParams->getLevel();
 	delete enemyParams;
 }
 

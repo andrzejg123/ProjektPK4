@@ -162,14 +162,14 @@
     <ClInclude Include="DebugDrawer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="WildDog.h">
-      <Filter>Header Files\SpecifiedModels</Filter>
-    </ClInclude>
-    <ClInclude Include="SpawnArea.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="GameEntityDataHolder.h">
       <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="spawnAreaRect.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RogueArcher.h">
+      <Filter>Header Files\SpecifiedModels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -266,14 +266,14 @@
     <ClCompile Include="DebugDrawer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WildDog.cpp">
-      <Filter>Source Files\SpecifiedModels</Filter>
-    </ClCompile>
-    <ClCompile Include="SpawnArea.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="GameEntityDataHolder.cpp">
       <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="spawnAreaRect.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RogueArcher.cpp">
+      <Filter>Source Files\SpecifiedModels</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

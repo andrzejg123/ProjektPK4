@@ -17,16 +17,33 @@ void GameControllerImplementation::initializeGame()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::DEFAULT);
 	gameMapController->loadMap(MapIndicator::Test2);
-	gameObjectsHolder->setPlayer(new Warrior(gameTexturesHolder->getTexture(ObjectIndicator::PlayerWarrior)));
+	gameObjectsHolder->setPlayer(new Warrior(gameTexturesHolder->getTexture(ObjectIndicator::PlayerWarrior), gameEntityDataHolder->getAnimationData(ObjectIndicator::PlayerWarrior)));
 	gameObjectsHolder->getPlayer()->setPosition(sf::Vector2f(10, 80));
 	auto gameplayData = gameMapController->getGameplayData();
+	for(auto spawnArea : gameplayData->spawnAreas)
+	{
+		const auto entitiesNumber = rand() % (spawnArea.getMaxEntitiesNumber() - spawnArea.getMinEntitiesNumber() + 1) + spawnArea.getMinEntitiesNumber();
+		switch(spawnArea.getEntityKind()) 
+		{ 
+		case EntityKind::Enemy: 
+			
+			for (auto i = 0; i < entitiesNumber; ++i)
+				gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder, gameEntityDataHolder).create(
+					spawnArea.getEntityIndicator(), spawnArea.getSpawnAreaRect(), gameplayData->level));
+			break;
+		case EntityKind::Passive:
+			//TODO passive mob factory
+			break;
+		default: ;
+		}
+	}
 	/*for (auto i = 0; i < 20; i++)
 	{
 		gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(ObjectIndicator::PlayerWarrior));
 		gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(ObjectIndicator::PlayerWarrior));
 	}
-	gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(ObjectIndicator::PlayerWarrior));
 	gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(ObjectIndicator::PlayerWarrior));*/
+	//gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(ObjectIndicator::PlayerWarrior));
 }
 
 void GameControllerImplementation::movePlayer(const Direction direction)

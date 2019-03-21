@@ -3,7 +3,7 @@
 #include <SFML/Graphics/VertexArray.hpp>
 #include <SFML/Graphics/RenderTarget.hpp>
 #include <SFML/Graphics/Texture.hpp>
-#include "SpawnArea.h"
+#include "spawnAreaRect.h"
 #include <list>
 
 enum class MapIndicator
