@@ -51,8 +51,7 @@ void SoundControllerImplementation::playSound(const SoundIndicator soundIndicato
 	if (i == sounds->end())
 	{
 		syncThread(thread);
-		fetchAndPlay(soundIndicator);
-		//thread = new std::thread([=] { fetchAndPlay(soundIndicator); });
+		thread = new std::thread([=] { fetchAndPlay(soundIndicator); });
 	}
 	else {
 		playingSounds->push_back(sf::Sound(i->second));

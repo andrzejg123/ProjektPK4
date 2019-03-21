@@ -41,8 +41,7 @@ void MusicControllerImplementation::playMusic(const MusicIndicator musicIndicato
 	if (i == musics->end())
 	{
 		SoundController::syncThread(thread);
-		fetchAndPlay(musicIndicator, volume);
-		//thread = new std::thread([=] { fetchAndPlay(musicIndicator, volume); });
+		thread = new std::thread([=] { fetchAndPlay(musicIndicator, volume); });
 	}
 	else
 	{
