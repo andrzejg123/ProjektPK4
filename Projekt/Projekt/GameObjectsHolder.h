@@ -23,6 +23,6 @@ public:
 	void setPlayer(Player* player);
 	void addEnemy(Enemy* enemy) const;
 	void addFlyingObject(FlyingObject* flyingObject) const;
-	~GameObjectsHolder();
 	GameObjectsHolder();
+	~GameObjectsHolder();
 };

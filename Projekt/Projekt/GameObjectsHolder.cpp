@@ -56,7 +56,7 @@ void GameObjectsHolder::addFlyingObject(FlyingObject* flyingObject) const
 	flyingObjects->push_back(flyingObject);
 }
 
-GameObjectsHolder::~GameObjectsHolder()
+GameObjectsHolder::GameObjectsHolder()
 {
 	objects = new std::list<Object*>();
 	enemies = new std::list<Enemy*>();
@@ -64,7 +64,7 @@ GameObjectsHolder::~GameObjectsHolder()
 	flyingObjects = new std::list<FlyingObject*>();
 }
 
-GameObjectsHolder::GameObjectsHolder()
+GameObjectsHolder::~GameObjectsHolder()
 {
 	for (auto object : *objects)
 		delete object;
