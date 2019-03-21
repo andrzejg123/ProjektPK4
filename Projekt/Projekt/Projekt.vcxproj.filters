@@ -129,18 +129,6 @@
     <ClInclude Include="SettingsControllerImplementation.h">
       <Filter>Settings</Filter>
     </ClInclude>
-    <ClInclude Include="SettingsGenerator.h">
-      <Filter>Settings</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsGeneratorImplementation.h">
-      <Filter>Settings</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsManager.h">
-      <Filter>Settings</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsManagerImplementation.h">
-      <Filter>Settings</Filter>
-    </ClInclude>
     <ClInclude Include="SettingsView.h">
       <Filter>Settings</Filter>
     </ClInclude>
@@ -179,6 +167,18 @@
     <ClInclude Include="RogueArcher.h" />
     <ClInclude Include="GameObjectsHolder.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsDataController.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsDataControllerImplementation.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsReader.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsReaderImplementation.h">
+      <Filter>Settings</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -257,12 +257,6 @@
     <ClCompile Include="SettingsControllerImplementation.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
-    <ClCompile Include="SettingsGeneratorImplementation.cpp">
-      <Filter>Settings</Filter>
-    </ClCompile>
-    <ClCompile Include="SettingsManagerImplementation.cpp">
-      <Filter>Settings</Filter>
-    </ClCompile>
     <ClCompile Include="SettingsViewImplementation.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
@@ -291,6 +285,12 @@
     <ClCompile Include="RogueArcher.cpp" />
     <ClCompile Include="GameObjectsHolder.cpp">
       <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsDataControllerImplementation.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsReaderImplementation.cpp">
+      <Filter>Settings</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

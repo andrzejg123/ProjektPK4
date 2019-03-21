@@ -3,8 +3,8 @@
 #include <SFML/Graphics.hpp>
 #include "SettingsView.h"
 #include <list>
-#include "SettingsManager.h"
-#include "SettingsGenerator.h"
+#include "SettingsReader.h"
+#include "SettingsDataController.h"
 
 class SettingsControllerImplementation : public SettingsController
 {
@@ -17,8 +17,8 @@ class SettingsControllerImplementation : public SettingsController
 	int currentItem = 0;
 	int currentSubItem = 0;
 
-	SettingsManager* settingsManager;
-	SettingsGenerator* settingsGenerator;
+	SettingsReader* settingsManager;
+	SettingsDataController* settingsGenerator;
 
 	void unselectAll() const;
 	void highlightItem(sf::Text* text) const;

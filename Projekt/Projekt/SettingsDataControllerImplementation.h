@@ -2,7 +2,7 @@
 #include <SFML/Graphics/Text.hpp>
 #include "SettingsControllerImplementation.h"
 
-class SettingsGeneratorImplementation : public SettingsGenerator
+class SettingsDataControllerImplementation : public SettingsDataController
 {
 
 	sf::Font font;
@@ -30,7 +30,7 @@ public:
 	SettingsConstance& getSettingsConstance() override;
 	sf::Text* createNewSettingsItem(const char* text) const override;
 	void initialize(SettingsData& settingsData) override;
-	explicit SettingsGeneratorImplementation(std::vector<Category*>* categories);
-	~SettingsGeneratorImplementation();
+	explicit SettingsDataControllerImplementation(std::vector<Category*>* categories);
+	~SettingsDataControllerImplementation();
 };
 

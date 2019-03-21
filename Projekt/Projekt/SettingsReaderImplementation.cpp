@@ -1,11 +1,11 @@
 #include "stdafx.h"
-#include "SettingsManagerImplementation.h"
+#include "SettingsReaderImplementation.h"
 #include <string>
 #include <sstream>
 #include "Log.h"
 #include <fstream>
 
-std::vector<std::string> SettingsManagerImplementation::split(const std::string& s, const char delimiter) const
+std::vector<std::string> SettingsReaderImplementation::split(const std::string& s, const char delimiter) const
 {
 	std::vector<std::string> tokens;
 	std::string token;
@@ -15,20 +15,20 @@ std::vector<std::string> SettingsManagerImplementation::split(const std::string&
 	return tokens;
 }
 
-SettingsData SettingsManagerImplementation::getSettingsData()
+SettingsData SettingsReaderImplementation::getSettingsData()
 {
 	if (!dataLoaded)
 		reloadSettings();
 	return settingsData;
 }
 
-void SettingsManagerImplementation::updateSettingsData(const SettingsData settingsData)
+void SettingsReaderImplementation::updateSettingsData(const SettingsData settingsData)
 {
 	this->settingsData = settingsData;
 	updateSettings(settingsData);
 }
 
-void SettingsManagerImplementation::backToDefaultSettings()
+void SettingsReaderImplementation::backToDefaultSettings()
 {
 	Log::debugS("Generating default settings");
 	const SettingsData settingsData;
@@ -36,7 +36,7 @@ void SettingsManagerImplementation::backToDefaultSettings()
 	updateSettings(settingsData);
 }
 
-void SettingsManagerImplementation::reloadSettings()
+void SettingsReaderImplementation::reloadSettings()
 {
 	dataLoaded = true;
 	std::fstream file;
@@ -92,7 +92,7 @@ void SettingsManagerImplementation::reloadSettings()
 	file.close();
 }
 
-void SettingsManagerImplementation::updateSettings(const SettingsData settingsData) const
+void SettingsReaderImplementation::updateSettings(const SettingsData settingsData) const
 {
 	std::fstream file;
 	file.open(settingsFileName, std::ios::out | std::ios::trunc);

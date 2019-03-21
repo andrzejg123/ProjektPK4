@@ -1,8 +1,8 @@
 #include "stdafx.h"
-#include "SettingsGeneratorImplementation.h"
+#include "SettingsDataControllerImplementation.h"
 #include <iostream>
 
-void SettingsGeneratorImplementation::initialize(SettingsData& settingsData)
+void SettingsDataControllerImplementation::initialize(SettingsData& settingsData)
 {
 	if (font.loadFromFile("fonts/font_0.ttf"))
 	{
@@ -13,7 +13,7 @@ void SettingsGeneratorImplementation::initialize(SettingsData& settingsData)
 	}
 }
 
-int SettingsGeneratorImplementation::checkBoolSelection(const std::vector<bool>& optionsSelections, const bool settingsOption)
+int SettingsDataControllerImplementation::checkBoolSelection(const std::vector<bool>& optionsSelections, const bool settingsOption)
 {
 	auto index = 0;
 	for (auto selection : optionsSelections)
@@ -25,7 +25,7 @@ int SettingsGeneratorImplementation::checkBoolSelection(const std::vector<bool>&
 	return 0;
 }
 
-int SettingsGeneratorImplementation::checkIntSelection(std::vector<const char*>& options, const std::vector<int>& optionsSelections,
+int SettingsDataControllerImplementation::checkIntSelection(std::vector<const char*>& options, const std::vector<int>& optionsSelections,
                                                        const int settingsOption) const
 {
 	auto index = 0;
@@ -40,7 +40,7 @@ int SettingsGeneratorImplementation::checkIntSelection(std::vector<const char*>&
 	return options.size() - 1;
 }
 
-int SettingsGeneratorImplementation::checkIntSelection(std::vector<const char*>& options,
+int SettingsDataControllerImplementation::checkIntSelection(std::vector<const char*>& options,
 	const std::vector<int>& optionsSelectionsA, const std::vector<int>& optionsSelectionsB, const int settingsOptionA,
 	const int settingsOptionB) const
 {
@@ -56,7 +56,7 @@ int SettingsGeneratorImplementation::checkIntSelection(std::vector<const char*>&
 	return options.size() - 1;
 }
 
-void SettingsGeneratorImplementation::generateControlSettings() const
+void SettingsDataControllerImplementation::generateControlSettings() const
 {
 	const auto category1Name = "Apply";
 	const auto category2Name = "Cancel";
@@ -68,7 +68,7 @@ void SettingsGeneratorImplementation::generateControlSettings() const
 	categories->push_back(generateSettingsCategory(category3Name, subCategories));
 }
 
-void SettingsGeneratorImplementation::generateSoundSettings(SettingsData& settingsData) const
+void SettingsDataControllerImplementation::generateSoundSettings(SettingsData& settingsData) const
 {
 	const auto categoryName = "Sound";
 	auto subCategories = std::vector<SubCategory*>();
@@ -96,7 +96,7 @@ void SettingsGeneratorImplementation::generateSoundSettings(SettingsData& settin
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
 }
 
-void SettingsGeneratorImplementation::generateVideoSettings(SettingsData& settingsData) const
+void SettingsDataControllerImplementation::generateVideoSettings(SettingsData& settingsData) const
 {
 	const auto categoryName = "Video";
 	auto subCategories = std::vector<SubCategory*>();
@@ -125,7 +125,7 @@ void SettingsGeneratorImplementation::generateVideoSettings(SettingsData& settin
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
 }
 
-void SettingsGeneratorImplementation::generateOtherSettings(SettingsData& settingsData) const
+void SettingsDataControllerImplementation::generateOtherSettings(SettingsData& settingsData) const
 {
 	const auto categoryName = "Others";
 	auto subCategories = std::vector<SubCategory*>();
@@ -138,7 +138,7 @@ void SettingsGeneratorImplementation::generateOtherSettings(SettingsData& settin
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
 }
 
-SubCategory* SettingsGeneratorImplementation::generateSettingsSubCategory(const char* subCategoryName,
+SubCategory* SettingsDataControllerImplementation::generateSettingsSubCategory(const char* subCategoryName,
 	std::vector<const char*>& subCategoriesNames, const int currentSelection, const SubCategoryIndicator subCategoryIndicator) const
 {
 	auto subCategory = new SubCategory();
@@ -150,7 +150,7 @@ SubCategory* SettingsGeneratorImplementation::generateSettingsSubCategory(const 
 	return subCategory;
 }
 
-Category* SettingsGeneratorImplementation::generateSettingsCategory(const char* categoryName,
+Category* SettingsDataControllerImplementation::generateSettingsCategory(const char* categoryName,
 	std::vector<SubCategory*>& subCategories) const
 {
 	auto category = new Category();
@@ -159,12 +159,12 @@ Category* SettingsGeneratorImplementation::generateSettingsCategory(const char* 
 	return category;
 }
 
-SettingsConstance& SettingsGeneratorImplementation::getSettingsConstance()
+SettingsConstance& SettingsDataControllerImplementation::getSettingsConstance()
 {
 	return settingsConstance;
 }
 
-sf::Text* SettingsGeneratorImplementation::createNewSettingsItem(const char* text) const
+sf::Text* SettingsDataControllerImplementation::createNewSettingsItem(const char* text) const
 {
 	auto textView = new sf::Text();
 	textView->setString(text);
@@ -174,13 +174,13 @@ sf::Text* SettingsGeneratorImplementation::createNewSettingsItem(const char* tex
 	return textView;
 }
 
-SettingsGeneratorImplementation::SettingsGeneratorImplementation(std::vector<Category*>* categories)
+SettingsDataControllerImplementation::SettingsDataControllerImplementation(std::vector<Category*>* categories)
 {
 	this->additionalStrings = new std::list<std::string>();
 	this->categories = categories;
 }
 
-SettingsGeneratorImplementation::~SettingsGeneratorImplementation()
+SettingsDataControllerImplementation::~SettingsDataControllerImplementation()
 {
 	delete additionalStrings;
 }

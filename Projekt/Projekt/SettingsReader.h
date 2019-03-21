@@ -14,7 +14,7 @@ struct SettingsData
 	int language = 0;
 };
 
-class SettingsManager
+class SettingsReader
 {
 protected:
 	const char* settingsFileName = "Projekt.ini";
@@ -47,7 +47,7 @@ public:
 	virtual void updateSettingsData(SettingsData settingsData) = 0;
 	//Resets settings to default
 	virtual void backToDefaultSettings() = 0;
-	virtual ~SettingsManager() = default;
+	virtual ~SettingsReader() = default;
 
 };
 

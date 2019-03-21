@@ -16,7 +16,7 @@ struct SettingsConstance
 	std::vector<int> languageSelection = std::vector<int>{ 0, 1, 2 };
 };
 
-class SettingsGenerator
+class SettingsDataController
 {
 protected:
 	SettingsConstance settingsConstance;
@@ -24,7 +24,7 @@ public:
 	virtual SettingsConstance& getSettingsConstance() = 0;
 	virtual void initialize(SettingsData& settingsData) = 0;
 	virtual sf::Text* createNewSettingsItem(const char* text) const = 0;
-	virtual ~SettingsGenerator() = default;
+	virtual ~SettingsDataController() = default;
 
 };
 

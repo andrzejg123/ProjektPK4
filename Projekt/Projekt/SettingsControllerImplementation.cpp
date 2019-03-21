@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "SettingsControllerImplementation.h"
 #include "SoundController.h"
-#include "SettingsManagerImplementation.h"
-#include "SettingsGenerator.h"
-#include "SettingsGeneratorImplementation.h"
+#include "SettingsReaderImplementation.h"
+#include "SettingsDataController.h"
+#include "SettingsDataControllerImplementation.h"
 
 void SettingsControllerImplementation::updateSettings() const
 {
@@ -252,9 +252,9 @@ SettingsControllerImplementation::SettingsControllerImplementation(SettingsView*
 	this->settingsView = settingsView;
 	this->categories = new std::vector<Category*>();
 	this->textsToDraw = new std::list<sf::Text*>();
-	this->settingsManager = new SettingsManagerImplementation();
+	this->settingsManager = new SettingsReaderImplementation();
 	this->settingsManager->reloadSettings();
-	this->settingsGenerator = new SettingsGeneratorImplementation(categories);
+	this->settingsGenerator = new SettingsDataControllerImplementation(categories);
 	this->restartInfo = nullptr;
 }
 

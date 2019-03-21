@@ -191,10 +191,10 @@
     <ClInclude Include="RandomMoveControllerImplementation.h" />
     <ClInclude Include="SettingsController.h" />
     <ClInclude Include="SettingsControllerImplementation.h" />
-    <ClInclude Include="SettingsGenerator.h" />
-    <ClInclude Include="SettingsGeneratorImplementation.h" />
-    <ClInclude Include="SettingsManager.h" />
-    <ClInclude Include="SettingsManagerImplementation.h" />
+    <ClInclude Include="SettingsDataController.h" />
+    <ClInclude Include="SettingsDataControllerImplementation.h" />
+    <ClInclude Include="SettingsReader.h" />
+    <ClInclude Include="SettingsReaderImplementation.h" />
     <ClInclude Include="SettingsView.h" />
     <ClInclude Include="SettingsViewImplementation.h" />
     <ClInclude Include="SoundController.h" />
@@ -238,8 +238,8 @@
     <ClCompile Include="Projekt.cpp" />
     <ClCompile Include="RandomMoveControllerImplementation.cpp" />
     <ClCompile Include="SettingsControllerImplementation.cpp" />
-    <ClCompile Include="SettingsGeneratorImplementation.cpp" />
-    <ClCompile Include="SettingsManagerImplementation.cpp" />
+    <ClCompile Include="SettingsDataControllerImplementation.cpp" />
+    <ClCompile Include="SettingsReaderImplementation.cpp" />
     <ClCompile Include="SettingsViewImplementation.cpp" />
     <ClCompile Include="SoundController.cpp" />
     <ClCompile Include="SoundControllerImplementation.cpp" />

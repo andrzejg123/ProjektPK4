@@ -1,8 +1,8 @@
 #pragma once
-#include "SettingsManager.h"
+#include "SettingsReader.h"
 #include <vector>
 
-class SettingsManagerImplementation : public SettingsManager
+class SettingsReaderImplementation : public SettingsReader
 {
 	bool dataLoaded = false;
 	SettingsData settingsData;

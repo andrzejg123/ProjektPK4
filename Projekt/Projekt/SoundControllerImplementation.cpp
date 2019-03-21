@@ -4,7 +4,7 @@
 #include "Log.h"
 #include <SFML/Audio/Sound.hpp>
 #include <iostream>
-#include "SettingsManagerImplementation.h"
+#include "SettingsReaderImplementation.h"
 
 SoundController* SoundControllerImplementation::instance = nullptr;
 
@@ -66,7 +66,7 @@ SoundControllerImplementation::SoundControllerImplementation()
 	this->playingSounds = new std::list<sf::Sound>();
 	this->sounds = new std::map<SoundIndicator, sf::SoundBuffer>();
 	this->thread = nullptr;
-	settingsManager = new SettingsManagerImplementation();
+	settingsManager = new SettingsReaderImplementation();
 	settingsManager->reloadSettings();
 }
 
