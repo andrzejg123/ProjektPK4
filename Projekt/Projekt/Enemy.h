@@ -37,8 +37,8 @@ public:
 	int getAttackCounter() const;
 	void incrementAttackCounter();
 	void resetAttackCounter();
-	void makeRandomMove();
-	void makeMove(Direction direction);
+	void makeRandomMove(sf::Time& elapsedTime);
+	void makeMove(Direction direction, sf::Time& elapsedTime);
 	virtual AttackData getAttackData() = 0;
 	explicit Enemy(EnemyParams* enemyParams, AnimationData& animationData);
 	virtual ~Enemy();

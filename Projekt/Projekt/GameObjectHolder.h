@@ -3,6 +3,7 @@
 #include <list>
 #include "Player.h"
 #include "FlyingObject.h"
+#include "Interactive.h"
 
 class Enemy;
 
@@ -19,5 +20,6 @@ public:
 	virtual void setPlayer(Player* player) = 0;
 	virtual void addEnemy(Enemy* enemy) const = 0;
 	virtual void addFlyingObject(FlyingObject* flyingObject) const = 0;
+	virtual void addInteractiveObject(Interactive* interactiveObject) = 0;
 	virtual ~GameObjectHolder() = default;
 };

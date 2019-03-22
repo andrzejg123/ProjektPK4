@@ -17,7 +17,7 @@ Arrow::Arrow(sf::Texture& arrowTexture, Object* caster, const sf::Vector2f facto
 {
 	sprite.setTextureRect(sf::IntRect(0, int(facing) * 64, 64, 64));
 	sprite.setPosition(caster->getPosition().x, caster->getPosition().y);
-	setSpeed(2);
+	setSpeed(120);
 	SoundController::getInstance()->playSound(SoundIndicator::ShootArrow);
 }
 

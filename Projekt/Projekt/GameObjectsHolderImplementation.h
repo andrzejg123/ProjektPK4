@@ -10,6 +10,7 @@ class GameObjectsHolderImplementation : public GameObjectHolder
 	std::list<Enemy*>* enemies;
 	std::list<Animated*>* animatedList;
 	std::list<FlyingObject*>* flyingObjects;
+	std::list<Interactive*>* interactiveList;
 public:
 	std::list<Object*>* getObjects() const override;
 	std::list<Enemy*>* getEnemies() const override;
@@ -20,6 +21,7 @@ public:
 	void setPlayer(Player* player) override;
 	void addEnemy(Enemy* enemy) const override;
 	void addFlyingObject(FlyingObject* flyingObject) const override;
+	void addInteractiveObject(Interactive* interactiveObject) override;
 	GameObjectsHolderImplementation();
 	~GameObjectsHolderImplementation();
 };

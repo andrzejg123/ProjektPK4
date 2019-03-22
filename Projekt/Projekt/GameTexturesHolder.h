@@ -6,7 +6,8 @@
 enum class ObjectIndicator
 {
 	PlayerWarrior,
-	RogueArcher
+	RogueArcher,
+	Chest
 };
 
 class GameTexturesHolder

@@ -8,7 +8,7 @@ EnemyParams::EnemyParams(const int lvl) : level(lvl)
 	attackRadius = 0.0f;
 	positionX = 0.0f;
 	positionY = 0.0f;
-	speed = 1.0f + (floatLvl / 100.0f);
+	speed = 60.0f + floatLvl;
 	visionRadius = 110.0f + lvl;
 	health = 100.0f + (floatLvl * 2.0f);
 	armor = 100.0f + (floatLvl * 2.0f);

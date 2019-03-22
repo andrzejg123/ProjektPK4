@@ -19,7 +19,7 @@ void GameEnemyControllerImplementation::handleAttack(Enemy* enemy) const
 	}
 }
 
-void GameEnemyControllerImplementation::updateEnemy(const sf::Time& time, Enemy* enemy)
+void GameEnemyControllerImplementation::updateEnemy(sf::Time& elapsedTime, Enemy* enemy)
 {
 	const auto player = gameObjectsHolder->getPlayer();
 	enemy->incrementAttackCounter();
@@ -41,10 +41,10 @@ void GameEnemyControllerImplementation::updateEnemy(const sf::Time& time, Enemy*
 	if (enemy->didSawPlayer() || distance < enemy->getVisionRadius())
 	{
 		enemy->setSawPlayer();
-		enemy->makeMove(direction);
+		enemy->makeMove(direction, elapsedTime);
 	}
 	else
-		enemy->makeRandomMove();
+		enemy->makeRandomMove(elapsedTime);
 	if (player->getFixedBounds().intersects(enemy->getFixedBounds()))
 		enemy->cancelMove();
 }

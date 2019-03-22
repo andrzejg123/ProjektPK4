@@ -21,10 +21,10 @@ public:
 	void getFirstLayer() override;
 	//Loads the map and the objects
 	void initializeGame() override;
-	void movePlayer(Direction direction) override;
+	void movePlayer(Direction direction, sf::Time& elapsedTime) override;
 	void stopPlayer() override;
-	void updateFlyingObjects(const sf::Time& elapsedTime) const;
-	void updateGame(const sf::Time& elapsed) override;
+	void updateFlyingObjects(sf::Time& elapsedTime) const;
+	void updateGame(sf::Time& elapsed) override;
 	GameMap* getMap() override;
 	std::list<Object*>* getObjectsToDraw() override;
 	GameObjectHolder* getGameObjectHolder() override;

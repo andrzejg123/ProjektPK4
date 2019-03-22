@@ -6,6 +6,7 @@
 void Warrior::onDeath()
 {
 	SoundController::getInstance()->playSound(SoundIndicator::PlayerDeath);
+	animate(AnimationType::Death);
 }
 
 void Warrior::onGetHit()

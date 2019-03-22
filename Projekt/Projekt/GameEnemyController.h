@@ -6,6 +6,6 @@ class GameEnemyController
 {
 public:
 	virtual ~GameEnemyController() = default;
-	virtual void updateEnemy(const sf::Time& time, Enemy* enemy) = 0;
+	virtual void updateEnemy(sf::Time& elapsedTime, Enemy* enemy) = 0;
 };
 

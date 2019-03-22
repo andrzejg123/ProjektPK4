@@ -5,6 +5,7 @@
 #include <SFML/Graphics/Texture.hpp>
 #include "spawnAreaRect.h"
 #include <list>
+#include "Interactive.h"
 
 enum class MapIndicator
 {
@@ -32,7 +33,7 @@ struct MapGameplayData
 {
 	int level;
 	std::list<SpawnArea> spawnAreas;
-	//TODO here will be placed interactive objects
+	std::list<InteractiveData> interactivesData;
 };
 
 class GameMap : public sf::Drawable

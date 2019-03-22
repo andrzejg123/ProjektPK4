@@ -53,25 +53,25 @@ void GameViewImplementation::displayGame() const
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
 		{
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
-				gameController->movePlayer(Direction::UpLeft);
+				gameController->movePlayer(Direction::UpLeft, elapsed);
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
-				gameController->movePlayer(Direction::UpRight);
+				gameController->movePlayer(Direction::UpRight, elapsed);
 			else
-				gameController->movePlayer(Direction::Up);
+				gameController->movePlayer(Direction::Up, elapsed);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
 		{
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
-				gameController->movePlayer(Direction::DownLeft);
+				gameController->movePlayer(Direction::DownLeft, elapsed);
 			else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
-				gameController->movePlayer(Direction::DownRight);
+				gameController->movePlayer(Direction::DownRight, elapsed);
 			else
-				gameController->movePlayer(Direction::Down);
+				gameController->movePlayer(Direction::Down, elapsed);
 		}
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
-			gameController->movePlayer(Direction::Left);
+			gameController->movePlayer(Direction::Left, elapsed);
 		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
-			gameController->movePlayer(Direction::Right);
+			gameController->movePlayer(Direction::Right, elapsed);
 		else
 			gameController->stopPlayer();
 		const auto newPlayerPosition = gameController->getGameObjectHolder()->getPlayer()->getPosition();

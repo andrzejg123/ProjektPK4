@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Moveable.h"
 
-void Moveable::move(const Direction direction)
+void Moveable::move(const Direction direction, sf::Time& elapsedTime)
 {
 	moveX = 0.0;
 	moveY = 0.0;
@@ -39,13 +39,17 @@ void Moveable::move(const Direction direction)
 	case Direction::None: break;
 	default: ;
 	}
+	const auto seconds = elapsedTime.asSeconds();
+	moveX *= seconds;
+	moveY *= seconds;
 	sprite.move(moveX, moveY);
 }
 
-void Moveable::move(const float xFactor, const float yFactor)
+void Moveable::move(const float xFactor, const float yFactor, sf::Time& elapsedTime)
 {
-	moveX = speed * xFactor;
-	moveY = speed * yFactor;
+	const auto seconds = elapsedTime.asSeconds();
+	moveX = speed * xFactor * seconds;
+	moveY = speed * yFactor * seconds;
 	sprite.move(moveX, moveY);
 }
 

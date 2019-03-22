@@ -7,6 +7,7 @@
 #include "Warrior.h"
 #include "GameEnemyControllerImplementation.h"
 #include "Log.h"
+#include "InteractiveFactory.h"
 
 void GameControllerImplementation::getFirstLayer()
 {
@@ -17,9 +18,9 @@ void GameControllerImplementation::initializeGame()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::DEFAULT);
 	gameMapController->loadMap(MapIndicator::Test2);
-	gameObjectsHolder->setPlayer(new Warrior(gameTexturesHolder->getTexture(ObjectIndicator::PlayerWarrior), gameEntityDataHolder->getAnimationData(ObjectIndicator::PlayerWarrior)));
-	gameObjectsHolder->getPlayer()->setPosition(sf::Vector2f(10, 80));
 	auto gameplayData = gameMapController->getGameplayData();
+
+	//creating enemies
 	for(auto spawnArea : gameplayData->spawnAreas)
 	{
 		const auto entitiesNumber = rand() % (spawnArea.getMaxEntitiesNumber() - spawnArea.getMinEntitiesNumber() + 1) + spawnArea.getMinEntitiesNumber();
@@ -37,19 +38,21 @@ void GameControllerImplementation::initializeGame()
 		default: ;
 		}
 	}
-	/*for (auto i = 0; i < 20; i++)
+
+	//creating interactive objects
+	for (auto interactiveData : gameplayData->interactivesData)
 	{
-		gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(ObjectIndicator::PlayerWarrior));
-		gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(ObjectIndicator::PlayerWarrior));
+		gameObjectsHolder->addInteractiveObject(InteractiveFactory(gameTexturesHolder, gameEntityDataHolder).create(interactiveData));
 	}
-	gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(ObjectIndicator::PlayerWarrior));*/
-	//gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder).create(ObjectIndicator::PlayerWarrior));
+
+	gameObjectsHolder->setPlayer(new Warrior(gameTexturesHolder->getTexture(ObjectIndicator::PlayerWarrior), gameEntityDataHolder->getAnimationData(ObjectIndicator::PlayerWarrior)));
+	gameObjectsHolder->getPlayer()->setPosition(sf::Vector2f(10, 80));
 }
 
-void GameControllerImplementation::movePlayer(const Direction direction)
+void GameControllerImplementation::movePlayer(const Direction direction, sf::Time& elapsedTime)
 {
 	auto player = gameObjectsHolder->getPlayer();
-	player->move(direction);
+	player->move(direction, elapsedTime);
 	for (auto enemy : *gameObjectsHolder->getEnemies())
 	{
 		if(enemy->getFixedBounds().intersects(player->getFixedBounds()))
@@ -66,13 +69,13 @@ void GameControllerImplementation::stopPlayer()
 	gameObjectsHolder->getPlayer()->stopAnimate(AnimationType::Move);
 }
 
-void GameControllerImplementation::updateFlyingObjects(const sf::Time& elapsedTime) const
+void GameControllerImplementation::updateFlyingObjects(sf::Time& elapsedTime) const
 {
 	auto list = *gameObjectsHolder->getFlyingObjects();
 	auto it = list.begin();
 	while (it != list.end()) {
 		const auto flyingObject = *it;
-		flyingObject->move(Direction::None);
+		flyingObject->move(Direction::None, elapsedTime);
 		if (gameMapController->checkCollision(flyingObject))
 		{
 			flyingObject->hit();
@@ -89,7 +92,7 @@ void GameControllerImplementation::updateFlyingObjects(const sf::Time& elapsedTi
 	}
 }
 
-void GameControllerImplementation::updateGame(const sf::Time& elapsed)
+void GameControllerImplementation::updateGame(sf::Time& elapsed)
 {
 	for (auto enemy : *gameObjectsHolder->getEnemies())
 	{

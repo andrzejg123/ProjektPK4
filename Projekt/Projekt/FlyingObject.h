@@ -9,7 +9,7 @@ class FlyingObject : public Moveable, public Animated
 protected:
 	float damage = 20;
 public:
-	void move(Direction direction) override;
+	void move(Direction direction, sf::Time& elapsedTime) override;
 	virtual void hitDamageable(Damageable* damageable) = 0;
 	virtual void hit() = 0;
 	FlyingObject(float xFactor, float yFactor);

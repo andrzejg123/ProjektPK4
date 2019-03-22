@@ -102,13 +102,9 @@
     <ClInclude Include="GameEnemyControllerImplementation.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="WildDog.h">
-      <Filter>Models</Filter>
-    </ClInclude>
     <ClInclude Include="GameEntityDataHolder.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="SpawnArea.h" />
     <ClInclude Include="FlyingObjectFactory.h" />
     <ClInclude Include="FileReadingController.h" />
     <ClInclude Include="DebugDrawer.h" />
@@ -185,6 +181,13 @@
       <Filter>Enemy</Filter>
     </ClInclude>
     <ClInclude Include="TranslationManager.h" />
+    <ClInclude Include="spawnAreaRect.h" />
+    <ClInclude Include="RogueArcher.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Interactive.h" />
+    <ClInclude Include="Chest.h" />
+    <ClInclude Include="InteractiveFactory.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
@@ -245,7 +248,6 @@
       <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="DebugDrawer.cpp" />
-    <ClCompile Include="SpawnArea.cpp" />
     <ClCompile Include="FlyingObjectFactory.cpp" />
     <ClCompile Include="FileReadingController.cpp" />
     <ClCompile Include="MusicControllerImplementation.cpp">
@@ -281,9 +283,6 @@
     <ClCompile Include="SoundController.cpp">
       <Filter>Sounds</Filter>
     </ClCompile>
-    <ClCompile Include="WildDog.cpp">
-      <Filter>Models</Filter>
-    </ClCompile>
     <ClCompile Include="Warrior.cpp">
       <Filter>Models</Filter>
     </ClCompile>
@@ -299,5 +298,12 @@
     <ClCompile Include="RandomMoveControllerImplementation.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="spawnAreaRect.cpp" />
+    <ClCompile Include="RogueArcher.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Interactive.cpp" />
+    <ClCompile Include="Chest.cpp" />
+    <ClCompile Include="InteractiveFactory.cpp" />
   </ItemGroup>
 </Project>

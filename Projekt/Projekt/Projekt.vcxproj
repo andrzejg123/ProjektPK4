@@ -155,6 +155,7 @@
   <ItemGroup>
     <ClInclude Include="Animated.h" />
     <ClInclude Include="Arrow.h" />
+    <ClInclude Include="Chest.h" />
     <ClInclude Include="Damageable.h" />
     <ClInclude Include="DebugDrawer.h" />
     <ClInclude Include="DistanceHelper.h" />
@@ -175,6 +176,8 @@
     <ClInclude Include="GameViewImplementation.h" />
     <ClInclude Include="GameController.h" />
     <ClInclude Include="GameView.h" />
+    <ClInclude Include="Interactive.h" />
+    <ClInclude Include="InteractiveFactory.h" />
     <ClInclude Include="Keys.h" />
     <ClInclude Include="Log.h" />
     <ClInclude Include="MainController.h" />
@@ -210,6 +213,7 @@
   <ItemGroup>
     <ClCompile Include="Animated.cpp" />
     <ClCompile Include="Arrow.cpp" />
+    <ClCompile Include="Chest.cpp" />
     <ClCompile Include="Damageable.cpp" />
     <ClCompile Include="DebugDrawer.cpp" />
     <ClCompile Include="DistanceHelper.cpp" />
@@ -226,6 +230,8 @@
     <ClCompile Include="GameObjectsHolderImplementation.cpp" />
     <ClCompile Include="GameTexturesHolder.cpp" />
     <ClCompile Include="GameViewImplementation.cpp" />
+    <ClCompile Include="Interactive.cpp" />
+    <ClCompile Include="InteractiveFactory.cpp" />
     <ClCompile Include="Keys.cpp" />
     <ClCompile Include="Log.cpp" />
     <ClCompile Include="MainController.cpp" />

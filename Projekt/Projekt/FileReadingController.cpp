@@ -66,6 +66,19 @@ MapGameplayData* FileReadingController::loadMapGameplayData(MapIndicator mapIndi
 			data->spawnAreas.emplace_back(entityIndicator, entityKind, minEntitiesNumber, maxEntitiesNumber, 
 				sf::FloatRect(spawnAreaTilesLeft * tileSize.x, spawnAreaTilesTop * tileSize.y, spawnAreaTilesWidth * tileSize.x, spawnAreaTilesHeight * tileSize.y));
 		}
+		int interactivesNumber;
+		float interactiveTilesLeft, interactiveTilesTop;
+		file >> interactivesNumber;
+		for (auto i = 0; i < interactivesNumber; ++i)
+		{
+			file >> temp;
+			auto interactiveIndicator = ObjectIndicator(temp);
+			file >> temp;
+			auto interactionType = InteractionType(temp);
+			file >> interactiveTilesLeft;
+			file >> interactiveTilesTop;
+			data->interactivesData.emplace_back(interactiveIndicator, interactionType, sf::Vector2f(interactiveTilesLeft * tileSize.x, interactiveTilesTop * tileSize.y));
+		}
 	}
 	file.close();
 	return data;

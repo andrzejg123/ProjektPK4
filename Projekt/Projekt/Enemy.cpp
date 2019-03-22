@@ -45,15 +45,15 @@ void Enemy::resetAttackCounter()
 	attackCounter = 0;
 }
 
-void Enemy::makeRandomMove()
+void Enemy::makeRandomMove(sf::Time& elapsedTime)
 {
 	const auto direction = randomMoveHelper->getDirection();
-	makeMove(direction);
+	makeMove(direction, elapsedTime);
 }
 
-void Enemy::makeMove(const Direction direction)
+void Enemy::makeMove(const Direction direction, sf::Time& elapsedTime)
 {
-	move(direction);
+	move(direction, elapsedTime);
 	setFacing(DistanceHelper::directionToFacing(this->getFacing(), direction));
 	animate(AnimationType::Move);
 }
