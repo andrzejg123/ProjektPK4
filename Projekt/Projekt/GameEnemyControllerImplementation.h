@@ -9,7 +9,7 @@ class GameEnemyControllerImplementation : public GameEnemyController
 	void handleAttack(Enemy* enemy) const;
 public:
 	void updateEnemy(sf::Time& elapsedTime, Enemy* enemy) override;
-	GameEnemyControllerImplementation(GameObjectHolder* gameObjectsHolder, GameTexturesHolder* gameTexturesHolder);
+	GameEnemyControllerImplementation(GameObjectsHolder* gameObjectsHolder, GameTexturesHolder* gameTexturesHolder);
 	~GameEnemyControllerImplementation();
 };
 
