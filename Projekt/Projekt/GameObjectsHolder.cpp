@@ -56,12 +56,20 @@ void GameObjectsHolder::addFlyingObject(FlyingObject* flyingObject) const
 	flyingObjects->push_back(flyingObject);
 }
 
+void GameObjectsHolder::addInteractiveObject(Interactive* interactiveObject) const
+{
+	objects->push_back(interactiveObject);
+	animatedList->push_back(interactiveObject);
+	interactiveList->push_back(interactiveObject);
+}
+
 GameObjectsHolder::GameObjectsHolder()
 {
 	objects = new std::list<Object*>();
 	enemies = new std::list<Enemy*>();
 	animatedList = new std::list<Animated*>();
 	flyingObjects = new std::list<FlyingObject*>();
+	interactiveList = new std::list<Interactive*>();
 }
 
 GameObjectsHolder::~GameObjectsHolder()
@@ -72,4 +80,5 @@ GameObjectsHolder::~GameObjectsHolder()
 	delete objects;
 	delete enemies;
 	delete flyingObjects;
+	delete interactiveList;
 }
