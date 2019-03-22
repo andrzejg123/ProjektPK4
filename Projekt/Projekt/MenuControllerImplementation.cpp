@@ -1,27 +1,31 @@
 #include "stdafx.h"
 #include "MenuControllerImplementation.h"
 #include "SoundController.h"
+#include "Translations.h"
+#include "ViewHelper.h"
+#include "FileNameHelper.h"
 
-sf::Text* MenuControllerImplementation::createNewMenuItem(const char* text) const
+sf::Text* MenuControllerImplementation::createNewMenuItem(const sf::String text) const
 {
 	auto textView = new sf::Text();
 	textView->setString(text);
 	textView->setFont(font);
 	textView->setFillColor(normalColor);
-	textView->setCharacterSize(normalTextSize);
+	textView->setCharacterSize(ViewHelper::adjustFontSize(normalTextSize, menuView->getWindowSize()));
 	return textView;
 }
 
 void MenuControllerImplementation::handleSelection() const
 {
+	const auto normal = ViewHelper::adjustFontSize(normalTextSize, menuView->getWindowSize());
 	for (auto menuItem : *menuItems)
 	{
 		menuItem->setFillColor(normalColor);
-		menuItem->setCharacterSize(normalTextSize);
+		menuItem->setCharacterSize(normal);
 	}
 	auto selectedItem = menuItems->at(currentItem);
 	selectedItem->setFillColor(selectColor);
-	selectedItem->setCharacterSize(selectTextSize);
+	selectedItem->setCharacterSize(ViewHelper::adjustFontSize(selectTextSize, menuView->getWindowSize()));
 	repositionItems();
 }
 
@@ -34,8 +38,8 @@ void MenuControllerImplementation::repositionItems() const
 	auto totalItemsSize = 0.0f;
 	for (auto menuItem : *menuItems)
 		totalItemsSize += menuItem->getGlobalBounds().height;
-	const auto singleSpace = (height - totalItemsSize) / (6.0f + itemsCount - 1.0f);
-	auto startingPosition = singleSpace * 2;
+	const auto singleSpace = (height - totalItemsSize) / (10.0f + itemsCount - 1.0f);
+	auto startingPosition = singleSpace * 4;
 	for (auto menuItem : *menuItems)
 	{
 		const auto itemWidth = menuItem->getGlobalBounds().width;
@@ -79,13 +83,13 @@ void MenuControllerImplementation::selectLowerItem()
 void MenuControllerImplementation::initializeMenu()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::MENU);
-	if(font.loadFromFile("fonts/font_0.ttf"))
+	if(font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial)))
 	{
-		menuItems->push_back(createNewMenuItem(menuText1));
-		menuItems->push_back(createNewMenuItem(menuText2));
-		menuItems->push_back(createNewMenuItem(menuText3));
-		menuItems->push_back(createNewMenuItem(menuText4));
-		menuItems->push_back(createNewMenuItem(menuText5));
+		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::StartNewGame)));
+		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::LoadGame)));
+		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Settings)));
+		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Extras)));
+		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Quit)));
 	}
 	repositionItems();
 	handleSelection();

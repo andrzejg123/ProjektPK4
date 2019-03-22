@@ -1,4 +1,5 @@
 #pragma once
+#include <vector>
 
 struct SettingsData
 {
@@ -14,9 +15,8 @@ struct SettingsData
 	int language = 0;
 };
 
-class SettingsManager
+class SettingsReader
 {
-protected:
 	const char* settingsFileName = "Projekt.ini";
 	const char separator = '=';
 
@@ -38,16 +38,15 @@ protected:
 	const char* settingOtherTitle = "[Other]";
 	const char* settingLanguage = "language";
 
-public:
-	//Reloads settings
-	virtual void reloadSettings() = 0;
-	//Return settings data
-	virtual SettingsData getSettingsData() = 0;
-	//Updates settings data
-	virtual void updateSettingsData(SettingsData settingsData) = 0;
-	//Resets settings to default
-	virtual void backToDefaultSettings() = 0;
-	virtual ~SettingsManager() = default;
+	bool dataLoaded = false;
+	SettingsData settingsData;
+	std::vector<std::string> split(const std::string& s, char delimiter) const;
+	void updateSettings(SettingsData settingsData) const;
 
+public:
+	void backToDefaultSettings();
+	void reloadSettings();
+	SettingsData getSettingsData();
+	void updateSettingsData(SettingsData settingsData);
 };
 

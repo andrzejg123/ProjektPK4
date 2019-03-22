@@ -90,7 +90,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\SFML\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SFML\include;C:\Program Files (x86)\Visual Leak Detector\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -107,7 +107,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\SFML\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\SFML\include;C:\Program Files\Visual Leak Detector\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,6 +161,7 @@
     <ClInclude Include="DistanceHelper.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyParams.h" />
+    <ClInclude Include="FileNameHelper.h" />
     <ClInclude Include="FileReadingController.h" />
     <ClInclude Include="FlyingObject.h" />
     <ClInclude Include="FlyingObjectFactory.h" />
@@ -170,8 +171,7 @@
     <ClInclude Include="GameEnemyControllerImplementation.h" />
     <ClInclude Include="GameEntityDataHolder.h" />
     <ClInclude Include="GameMapController.h" />
-    <ClInclude Include="GameObjectsHolderImplementation.h" />
-    <ClInclude Include="GameObjectHolder.h" />
+    <ClInclude Include="GameObjectsHolder.h" />
     <ClInclude Include="GameTexturesHolder.h" />
     <ClInclude Include="GameViewImplementation.h" />
     <ClInclude Include="GameController.h" />
@@ -195,18 +195,18 @@
     <ClInclude Include="RandomMoveControllerImplementation.h" />
     <ClInclude Include="SettingsController.h" />
     <ClInclude Include="SettingsControllerImplementation.h" />
-    <ClInclude Include="SettingsGenerator.h" />
-    <ClInclude Include="SettingsGeneratorImplementation.h" />
-    <ClInclude Include="SettingsManager.h" />
-    <ClInclude Include="SettingsManagerImplementation.h" />
+    <ClInclude Include="SettingsDataController.h" />
+    <ClInclude Include="SettingsDataControllerImplementation.h" />
+    <ClInclude Include="SettingsReader.h" />
     <ClInclude Include="SettingsView.h" />
     <ClInclude Include="SettingsViewImplementation.h" />
     <ClInclude Include="SoundController.h" />
     <ClInclude Include="SoundControllerImplementation.h" />
-    <ClInclude Include="spawnAreaRect.h" />
+    <ClInclude Include="SpawnArea.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
-    <ClInclude Include="TranslationManager.h" />
+    <ClInclude Include="Translations.h" />
+    <ClInclude Include="ViewHelper.h" />
     <ClInclude Include="Warrior.h" />
     <ClInclude Include="RogueArcher.h" />
   </ItemGroup>
@@ -219,6 +219,7 @@
     <ClCompile Include="DistanceHelper.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyParams.cpp" />
+    <ClCompile Include="FileNameHelper.cpp" />
     <ClCompile Include="FileReadingController.cpp" />
     <ClCompile Include="FlyingObject.cpp" />
     <ClCompile Include="FlyingObjectFactory.cpp" />
@@ -227,7 +228,7 @@
     <ClCompile Include="GameEnemyControllerImplementation.cpp" />
     <ClCompile Include="GameEntityDataHolder.cpp" />
     <ClCompile Include="GameMapController.cpp" />
-    <ClCompile Include="GameObjectsHolderImplementation.cpp" />
+    <ClCompile Include="GameObjectsHolder.cpp" />
     <ClCompile Include="GameTexturesHolder.cpp" />
     <ClCompile Include="GameViewImplementation.cpp" />
     <ClCompile Include="Interactive.cpp" />
@@ -245,18 +246,20 @@
     <ClCompile Include="Projekt.cpp" />
     <ClCompile Include="RandomMoveControllerImplementation.cpp" />
     <ClCompile Include="SettingsControllerImplementation.cpp" />
-    <ClCompile Include="SettingsGeneratorImplementation.cpp" />
-    <ClCompile Include="SettingsManagerImplementation.cpp" />
+    <ClCompile Include="SettingsDataControllerImplementation.cpp" />
+    <ClCompile Include="SettingsReader.cpp" />
     <ClCompile Include="SettingsViewImplementation.cpp" />
     <ClCompile Include="SoundController.cpp" />
     <ClCompile Include="SoundControllerImplementation.cpp" />
-    <ClCompile Include="spawnAreaRect.cpp" />
+    <ClCompile Include="SpawnArea.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="Translations.cpp" />
+    <ClCompile Include="ViewHelper.cpp" />
     <ClCompile Include="Warrior.cpp" />
     <ClCompile Include="RogueArcher.cpp" />
   </ItemGroup>

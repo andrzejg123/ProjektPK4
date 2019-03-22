@@ -3,7 +3,7 @@
 #include "GameController.h"
 #include "GameMapController.h"
 #include "GameTexturesHolder.h"
-#include "GameObjectHolder.h"
+#include "GameObjectsHolder.h"
 #include "GameEnemyController.h"
 #include "GameEntityDataHolder.h"
 
@@ -12,7 +12,7 @@ class GameControllerImplementation : public GameController
 	GameView* gameView;
 	GameMapController* gameMapController;
 	GameTexturesHolder* gameTexturesHolder;
-	GameObjectHolder* gameObjectsHolder;
+	GameObjectsHolder* gameObjectsHolder;
 	GameEnemyController* gameEnemyController;
 	GameEntityDataHolder* gameEntityDataHolder;
 	FileReadingController* fileReadingController;
@@ -27,7 +27,7 @@ public:
 	void updateGame(sf::Time& elapsed) override;
 	GameMap* getMap() override;
 	std::list<Object*>* getObjectsToDraw() override;
-	GameObjectHolder* getGameObjectHolder() override;
+	GameObjectsHolder* getGameObjectHolder() override;
 	std::list<sf::FloatRect>* getCollisionRects() override;
 	explicit GameControllerImplementation(GameView* gameView);
 	~GameControllerImplementation();

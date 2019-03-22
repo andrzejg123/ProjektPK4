@@ -90,12 +90,6 @@
     <ClInclude Include="Log.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="GameObjectHolder.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameObjectsHolderImplementation.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="GameEnemyController.h">
       <Filter>Game</Filter>
     </ClInclude>
@@ -135,18 +129,6 @@
     <ClInclude Include="SettingsControllerImplementation.h">
       <Filter>Settings</Filter>
     </ClInclude>
-    <ClInclude Include="SettingsGenerator.h">
-      <Filter>Settings</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsGeneratorImplementation.h">
-      <Filter>Settings</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsManager.h">
-      <Filter>Settings</Filter>
-    </ClInclude>
-    <ClInclude Include="SettingsManagerImplementation.h">
-      <Filter>Settings</Filter>
-    </ClInclude>
     <ClInclude Include="SettingsView.h">
       <Filter>Settings</Filter>
     </ClInclude>
@@ -180,23 +162,31 @@
     <ClInclude Include="RandomMoveControllerImplementation.h">
       <Filter>Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="TranslationManager.h" />
-    <ClInclude Include="spawnAreaRect.h" />
+    <ClInclude Include="GameObjectsHolder.h">
+      <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsDataController.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsDataControllerImplementation.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
+    <ClInclude Include="SettingsReader.h">
+      <Filter>Settings</Filter>
+    </ClInclude>
     <ClInclude Include="RogueArcher.h">
       <Filter>Models</Filter>
     </ClInclude>
-    <ClInclude Include="Interactive.h" />
-    <ClInclude Include="Chest.h" />
-    <ClInclude Include="InteractiveFactory.h" />
+    <ClInclude Include="SpawnArea.h" />
+    <ClInclude Include="Translations.h" />
+    <ClInclude Include="FileNameHelper.h" />
+    <ClInclude Include="ViewHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="GameTexturesHolder.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameObjectsHolderImplementation.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="GameMapController.cpp">
@@ -268,12 +258,6 @@
     <ClCompile Include="SettingsControllerImplementation.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
-    <ClCompile Include="SettingsGeneratorImplementation.cpp">
-      <Filter>Settings</Filter>
-    </ClCompile>
-    <ClCompile Include="SettingsManagerImplementation.cpp">
-      <Filter>Settings</Filter>
-    </ClCompile>
     <ClCompile Include="SettingsViewImplementation.cpp">
       <Filter>Settings</Filter>
     </ClCompile>
@@ -298,12 +282,21 @@
     <ClCompile Include="RandomMoveControllerImplementation.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="spawnAreaRect.cpp" />
+    <ClCompile Include="GameObjectsHolder.cpp">
+      <Filter>Game</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsDataControllerImplementation.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
+    <ClCompile Include="SettingsReader.cpp">
+      <Filter>Settings</Filter>
+    </ClCompile>
     <ClCompile Include="RogueArcher.cpp">
       <Filter>Models</Filter>
     </ClCompile>
-    <ClCompile Include="Interactive.cpp" />
-    <ClCompile Include="Chest.cpp" />
-    <ClCompile Include="InteractiveFactory.cpp" />
+    <ClCompile Include="SpawnArea.cpp" />
+    <ClCompile Include="Translations.cpp" />
+    <ClCompile Include="FileNameHelper.cpp" />
+    <ClCompile Include="ViewHelper.cpp" />
   </ItemGroup>
 </Project>

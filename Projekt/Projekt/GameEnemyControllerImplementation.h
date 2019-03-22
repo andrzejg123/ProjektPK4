@@ -1,9 +1,10 @@
 #pragma once
 #include "GameEnemyController.h"
+#include "GameTexturesHolder.h"
 
 class GameEnemyControllerImplementation : public GameEnemyController
 {
-	GameObjectHolder* gameObjectsHolder;
+	GameObjectsHolder* gameObjectsHolder;
 	GameTexturesHolder* gameTexturesHolder;
 	void handleAttack(Enemy* enemy) const;
 public:

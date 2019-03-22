@@ -1,0 +1,30 @@
+Game name
+Start new game
+Load game
+Settings
+Extras
+Quit
+Video
+Sound
+Others
+Apply
+Cancel
+Restore defaults
+Resolution
+Frame rate limit
+VSync enabled
+Fullscreen
+Game sound
+Game music
+Game sound volume
+Game music volume
+Language
+Some changes may require restart
+Unlimited
+English
+Silesian
+Polish
+Yes
+No
+On
+Off

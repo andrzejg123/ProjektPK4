@@ -9,6 +9,7 @@ class SettingsViewImplementation : public SettingsView
 	SettingsController* settingsController;
 	bool shouldShowSettings = true;
 public:
+	void updateWindowParams(SettingsData settingsData) override;
 	sf::Vector2u getWindowSize() override;
 	void showSettings() override;
 	void hideSettings() override;

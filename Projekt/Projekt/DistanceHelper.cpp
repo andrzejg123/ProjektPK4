@@ -3,7 +3,6 @@
 #include <cmath>
 #include <valarray>
 #include <complex>
-#include <iostream>
 
 float DistanceHelper::getDistance(const sf::Vector2f vector1, const sf::Vector2f vector2)
 {
@@ -64,4 +63,20 @@ Facing DistanceHelper::directionToFacing(const Facing oldFacing, Direction newDi
 	default: return Facing(newDirection);
 	}
 	return oldFacing;
+}
+
+Direction DistanceHelper::getOppositeDirection(const Direction direction)
+{
+	switch (direction) { 
+		case Direction::Up: return Direction::Down;
+		case Direction::Left: return Direction::Right;
+		case Direction::Down: return Direction::Up;
+		case Direction::Right: return Direction::Left;
+		case Direction::UpLeft: return Direction::DownRight;
+		case Direction::DownLeft: return Direction::UpRight;
+		case Direction::DownRight:return Direction::UpLeft;
+		case Direction::UpRight: return Direction::DownLeft;
+		case Direction::None: return Direction::None;
+	default: return Direction::None;
+	}
 }

@@ -1,0 +1,30 @@
+Nazwa gry
+Rozpocznij now¹ grê
+Wczytaj gre
+Ustawienia
+Dodatki
+WyjdŸ
+Wideo
+DŸwiêk
+Inne
+Zastosuj
+Anuluj
+Przywróæ domyœlne
+Rozdzielczoœæ
+Limit liczby klatek na sekundê
+W³¹czony VSync
+Pe³ny ekran
+DŸwiêki w grze
+Muzyka w grze
+G³oœnoœæ dŸwiêku w grze
+G³oœnoœæ muzyki z gry
+Jêzyk
+Niektóre zmiany mog¹ wymagaæ ponownego uruchomienia
+Nieograniczone
+Angielski
+Œl¹ski
+Polski
+Tak
+Nie
+W³¹cz
+Wy³¹cz

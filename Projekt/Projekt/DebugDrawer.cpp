@@ -9,7 +9,7 @@ void DebugDrawer::toggle()
 	isWorking = !isWorking;
 }
 
-void DebugDrawer::draw(std::list<sf::FloatRect>* collisionRects, GameObjectHolder* gameObjectHolder,
+void DebugDrawer::draw(std::list<sf::FloatRect>* collisionRects, GameObjectsHolder* gameObjectHolder,
 	sf::RenderWindow* window)
 {
 	if(isWorking)

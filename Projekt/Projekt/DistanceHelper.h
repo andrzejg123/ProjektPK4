@@ -13,5 +13,7 @@ public:
 	static sf::Vector2f getFactor(sf::Vector2f fromVector, sf::Vector2f toVector);
 	//Converts direction to facing according to old facing and new direction
 	static Facing directionToFacing(Facing oldFacing, Direction newDirection);
+	//Returns opposite direction
+	static Direction getOppositeDirection(Direction direction);
 };
 

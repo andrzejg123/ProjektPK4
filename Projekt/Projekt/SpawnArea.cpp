@@ -1,6 +1,5 @@
 #include "stdafx.h"
-#include "spawnAreaRect.h"
-
+#include "SpawnArea.h"
 
 ObjectIndicator SpawnArea::getEntityIndicator() const
 {

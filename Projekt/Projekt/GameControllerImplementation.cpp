@@ -2,7 +2,6 @@
 #include "GameControllerImplementation.h"
 #include "DistanceHelper.h"
 #include "SoundController.h"
-#include "GameObjectsHolderImplementation.h"
 #include "EnemyFactory.h"
 #include "Warrior.h"
 #include "GameEnemyControllerImplementation.h"
@@ -116,7 +115,7 @@ std::list<Object*>* GameControllerImplementation::getObjectsToDraw()
 	return gameObjectsHolder->getObjects();
 }
 
-GameObjectHolder* GameControllerImplementation::getGameObjectHolder()
+GameObjectsHolder* GameControllerImplementation::getGameObjectHolder()
 {
 	return this->gameObjectsHolder;
 }
@@ -131,7 +130,7 @@ GameControllerImplementation::GameControllerImplementation(GameView* gameView): 
 	this->fileReadingController = new FileReadingController();
 	this->gameMapController = new GameMapController(fileReadingController);
 	this->gameTexturesHolder = new GameTexturesHolder();
-	this->gameObjectsHolder = new GameObjectsHolderImplementation();
+	this->gameObjectsHolder = new GameObjectsHolder();
 	this->gameEnemyController = new GameEnemyControllerImplementation(gameObjectsHolder, gameTexturesHolder);
 	this->gameEntityDataHolder = new GameEntityDataHolder(fileReadingController);
 }

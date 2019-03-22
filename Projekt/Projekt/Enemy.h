@@ -1,8 +1,6 @@
 #pragma once
 #include "Damageable.h"
-#include "Player.h"
-#include "GameObjectHolder.h"
-#include "GameTexturesHolder.h"
+#include "GameObjectsHolder.h"
 #include "RandomMoveController.h"
 #include "EnemyParams.h"
 
