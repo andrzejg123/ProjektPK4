@@ -4,12 +4,6 @@
 
 class MenuControllerImplementation : public MenuController
 {
-	const char* menuText1 = "Start new game";
-	const char* menuText2 = "Load game";
-	const char* menuText3 = "Settings";
-	const char* menuText4 = "Extras";
-	const char* menuText5 = "Quit";
-
 	unsigned int selectTextSize = 44;
 	unsigned int normalTextSize = 36;
 
@@ -21,7 +15,7 @@ class MenuControllerImplementation : public MenuController
 	std::vector<sf::Text*>* menuItems;
 	int currentItem = 0;
 
-	sf::Text* createNewMenuItem(const char* text) const;
+	sf::Text* createNewMenuItem(sf::String text) const;
 	void handleSelection() const;
 	void repositionItems() const;
 

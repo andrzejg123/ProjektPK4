@@ -19,7 +19,7 @@ struct SubCategory
 {
 	sf::Text* subCategoryName;
 	int currentSelection = 0;
-	std::vector<const char*> subCategoriesOptionTexts;
+	std::vector<sf::String> subCategoriesOptionTexts;
 	sf::Text* subCategoryOption;
 	SubCategoryIndicator subCategoryIndicator;
 };

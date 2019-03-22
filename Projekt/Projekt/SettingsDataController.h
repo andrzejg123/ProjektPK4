@@ -2,8 +2,8 @@
 
 struct SettingsConstance
 {
-	unsigned int selectTextSize = 40;
-	unsigned int normalTextSize = 36;
+	unsigned int selectTextSize = 30;
+	unsigned int normalTextSize = 26;
 
 	sf::Color selectColor = sf::Color::Yellow;
 	sf::Color normalColor = sf::Color::White;
@@ -23,7 +23,7 @@ protected:
 public:
 	virtual SettingsConstance& getSettingsConstance() = 0;
 	virtual void initialize(SettingsData& settingsData) = 0;
-	virtual sf::Text* createNewSettingsItem(const char* text) const = 0;
+	virtual sf::Text* createNewSettingsItem(sf::String text) const = 0;
 	virtual ~SettingsDataController() = default;
 
 };

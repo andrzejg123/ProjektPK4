@@ -3,6 +3,12 @@
 #include "SettingsControllerImplementation.h"
 #include <SFML/Graphics.hpp>
 
+void SettingsViewImplementation::updateWindowParams(const SettingsData settingsData)
+{
+	window->setFramerateLimit(settingsData.frameRateLimit);
+	window->setVerticalSyncEnabled(settingsData.vSyncEnabled);
+}
+
 sf::Vector2u SettingsViewImplementation::getWindowSize()
 {
 	return window->getSize();

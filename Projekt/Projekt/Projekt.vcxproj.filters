@@ -179,6 +179,8 @@
     </ClInclude>
     <ClInclude Include="SpawnArea.h" />
     <ClInclude Include="Translations.h" />
+    <ClInclude Include="FileNameHelper.h" />
+    <ClInclude Include="ViewHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
@@ -294,5 +296,7 @@
     </ClCompile>
     <ClCompile Include="SpawnArea.cpp" />
     <ClCompile Include="Translations.cpp" />
+    <ClCompile Include="FileNameHelper.cpp" />
+    <ClCompile Include="ViewHelper.cpp" />
   </ItemGroup>
 </Project>

@@ -5,14 +5,15 @@
 #include <SFML/Audio/Sound.hpp>
 #include <iostream>
 #include "SettingsReader.h"
+#include "FileNameHelper.h"
 
 SoundController* SoundControllerImplementation::instance = nullptr;
 
-void SoundControllerImplementation::fetchAndPlay(SoundIndicator soundIndicator) const
+void SoundControllerImplementation::fetchAndPlay(const SoundIndicator soundIndicator) const
 {
 	Log::debugS("reading new sound from file");
 	sf::SoundBuffer buffer;
-	if (buffer.loadFromFile("sounds/sound_" + std::to_string(int(soundIndicator)) + ".wav"))
+	if (buffer.loadFromFile(FileNameHelper::getSoundFileName(soundIndicator)))
 	{
 		(*sounds)[soundIndicator] = buffer;
 		playingSounds->push_back(sf::Sound((*sounds)[soundIndicator]));

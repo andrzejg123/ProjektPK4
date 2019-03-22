@@ -160,6 +160,7 @@
     <ClInclude Include="DistanceHelper.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyParams.h" />
+    <ClInclude Include="FileNameHelper.h" />
     <ClInclude Include="FileReadingController.h" />
     <ClInclude Include="FlyingObject.h" />
     <ClInclude Include="FlyingObjectFactory.h" />
@@ -202,6 +203,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Translations.h" />
+    <ClInclude Include="ViewHelper.h" />
     <ClInclude Include="Warrior.h" />
     <ClInclude Include="RogueArcher.h" />
   </ItemGroup>
@@ -213,6 +215,7 @@
     <ClCompile Include="DistanceHelper.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyParams.cpp" />
+    <ClCompile Include="FileNameHelper.cpp" />
     <ClCompile Include="FileReadingController.cpp" />
     <ClCompile Include="FlyingObject.cpp" />
     <ClCompile Include="FlyingObjectFactory.cpp" />
@@ -250,6 +253,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="Translations.cpp" />
+    <ClCompile Include="ViewHelper.cpp" />
     <ClCompile Include="Warrior.cpp" />
     <ClCompile Include="RogueArcher.cpp" />
   </ItemGroup>

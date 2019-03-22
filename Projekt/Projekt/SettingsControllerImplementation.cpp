@@ -4,6 +4,8 @@
 #include "SettingsReader.h"
 #include "SettingsDataController.h"
 #include "SettingsDataControllerImplementation.h"
+#include "Translations.h"
+#include "ViewHelper.h"
 
 void SettingsControllerImplementation::updateSettings() const
 {
@@ -59,14 +61,14 @@ void SettingsControllerImplementation::updateSettings() const
 	}
 	settingsManager->updateSettingsData(settingsData);
 	SoundController::getInstance()->updateSettings();
+	settingsView->updateWindowParams(settingsData);
 }
 
 void SettingsControllerImplementation::addRestartInfo()
 {
 	if(restartInfo != nullptr)
 		return;
-	const auto restartInfoTitle = "Some changes may require restart";
-	restartInfo = settingsGenerator->createNewSettingsItem(restartInfoTitle);
+	restartInfo = settingsGenerator->createNewSettingsItem(Translations::getText(TextId::SomeChangesMayRequireRestart));
 	restartInfo->setFillColor(settingsGenerator->getSettingsConstance().selectColor);
 	repositionView();
 }
@@ -91,13 +93,13 @@ void SettingsControllerImplementation::unselectAll() const
 void SettingsControllerImplementation::highlightItem(sf::Text* text) const
 {
 	text->setFillColor(settingsGenerator->getSettingsConstance().selectColor);
-	text->setCharacterSize(settingsGenerator->getSettingsConstance().selectTextSize);
+	text->setCharacterSize(ViewHelper::adjustFontSize(settingsGenerator->getSettingsConstance().selectTextSize, settingsView->getWindowSize()));
 }
 
 void SettingsControllerImplementation::unHighlightItem(sf::Text* text) const
 {
 	text->setFillColor(settingsGenerator->getSettingsConstance().normalColor);
-	text->setCharacterSize(settingsGenerator->getSettingsConstance().normalTextSize);
+	text->setCharacterSize(ViewHelper::adjustFontSize(settingsGenerator->getSettingsConstance().normalTextSize, settingsView->getWindowSize()));
 }
 
 void SettingsControllerImplementation::repositionView() const
@@ -254,7 +256,7 @@ SettingsControllerImplementation::SettingsControllerImplementation(SettingsView*
 	this->textsToDraw = new std::list<sf::Text*>();
 	this->settingsManager = new SettingsReader();
 	this->settingsManager->reloadSettings();
-	this->settingsGenerator = new SettingsDataControllerImplementation(categories);
+	this->settingsGenerator = new SettingsDataControllerImplementation(categories, settingsView);
 	this->restartInfo = nullptr;
 }
 

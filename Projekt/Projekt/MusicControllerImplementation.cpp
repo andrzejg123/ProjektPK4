@@ -3,12 +3,13 @@
 #include "SoundController.h"
 #include "Log.h"
 #include <map>
+#include "FileNameHelper.h"
 
 void MusicControllerImplementation::fetchAndPlay(const MusicIndicator musicIndicator, const float volume) const
 {
 	Log::debugS("loading new music");
 	auto music = new sf::Music();
-	if (music->openFromFile("music/music_" + std::to_string(int(musicIndicator)) + ".ogg"))
+	if (music->openFromFile(FileNameHelper::getMusicFileName(musicIndicator)))
 	{
 		music->setLoop(true);
 		(*musics)[musicIndicator] = music;

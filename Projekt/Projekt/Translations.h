@@ -1,31 +1,63 @@
 #pragma once
 #include <map>
 #include <vector>
+#include <xlocale>
+#include <SFML/System/String.hpp>
 
-enum class Language
+enum class LanguageIndicator
 {
 	English,
 	Polish,
-	Russian
+	Silesian
 };
 
 enum class TextId
 {
+	GameName,
+	StartNewGame,
+	LoadGame,
+	Settings,
+	Extras,
+	Quit,
+	Video,
+	Sound,
+	Others,
+	Apply,
+	Cancel,
+	RestoreDefaults,
+	Resolution,
+	FrameRateLimit,
+	VSyncEnabled,
+	Fullscreen,
+	GameSound,
+	GameMusic,
+	GameSoundVolume,
+	GameMusicVolume,
+	Language,
+	SomeChangesMayRequireRestart,
+	Unlimited,
+	English,
+	Silesian,
+	Polish,
 	Yes,
 	No,
-	Unlimited
+	On,
+	Off
 };
 
-class Translations
+class Translations final
 {
-	Translations();
-	std::vector<std::string>* translations;
+	LanguageIndicator language;
+	std::locale locale;
+	explicit Translations(LanguageIndicator language);
+	std::vector<sf::String>* translations;
 	static Translations* instance;
-	void fetchTranslations(Language language) const;
+	void fetchTranslations(LanguageIndicator language) const;
+	void setLocale(LanguageIndicator language);
 public:
-	static void open(Language language);
+	static void open(LanguageIndicator language);
 	static void close();
-	static std::string getText(TextId textId);
+	static sf::String getText(TextId textId);
 	~Translations();
 };
 
