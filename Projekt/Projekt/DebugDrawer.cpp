@@ -3,7 +3,6 @@
 #include <SFML/Graphics/RectangleShape.hpp>
 #include "Enemy.h"
 
-
 void DebugDrawer::toggle()
 {
 	isWorking = !isWorking;

@@ -172,7 +172,6 @@
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="SpawnArea.h" />
-    <ClInclude Include="Translations.h" />
     <ClInclude Include="Interactive.h" />
     <ClInclude Include="InteractiveFactory.h" />
     <ClInclude Include="OptionsViewImplementation.h">
@@ -205,6 +204,9 @@
     </ClInclude>
     <ClInclude Include="RandomMoveHelper.h">
       <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Translations.h">
+      <Filter>Helpers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -314,7 +316,6 @@
       <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="SpawnArea.cpp" />
-    <ClCompile Include="Translations.cpp" />
     <ClCompile Include="Interactive.cpp" />
     <ClCompile Include="InteractiveFactory.cpp" />
     <ClCompile Include="OptionsViewImplementation.cpp">
@@ -338,6 +339,9 @@
     </ClCompile>
     <ClCompile Include="RandomMoveHelper.cpp">
       <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Translations.cpp">
+      <Filter>Helpers</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
