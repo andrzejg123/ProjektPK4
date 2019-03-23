@@ -60,6 +60,8 @@ Facing DistanceHelper::directionToFacing(const Facing oldFacing, Direction newDi
 		if (oldFacing != Facing::Right)
 			return Facing::Up;
 		break;
+	case  Direction::None:
+		return oldFacing;
 	default: return Facing(newDirection);
 	}
 	return oldFacing;

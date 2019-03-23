@@ -196,8 +196,7 @@
     <ClInclude Include="OptionsView.h" />
     <ClInclude Include="OptionsViewImplementation.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="RandomMoveController.h" />
-    <ClInclude Include="RandomMoveControllerImplementation.h" />
+    <ClInclude Include="RandomMoveHelper.h" />
     <ClInclude Include="SettingsController.h" />
     <ClInclude Include="SettingsControllerImplementation.h" />
     <ClInclude Include="SettingsDataController.h" />
@@ -252,7 +251,7 @@
     <ClCompile Include="OptionsViewImplementation.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projekt.cpp" />
-    <ClCompile Include="RandomMoveControllerImplementation.cpp" />
+    <ClCompile Include="RandomMoveHelper.cpp" />
     <ClCompile Include="SettingsControllerImplementation.cpp" />
     <ClCompile Include="SettingsDataControllerImplementation.cpp" />
     <ClCompile Include="SettingsReader.cpp" />

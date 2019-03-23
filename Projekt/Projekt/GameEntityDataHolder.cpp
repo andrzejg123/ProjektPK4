@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GameEntityDataHolder.h"
 
-EnemyParamsFactors& GameEntityDataHolder::getEnemyParamsFactors(const ObjectIndicator enemyIndicator)
+EnemyParamsFactors& GameEntityDataHolder::getEnemyParamsFactors(const ObjectIndicator enemyIndicator) const
 {
 	const auto i = enemiesParamsFactors->find(enemyIndicator);
 	if (i == enemiesParamsFactors->end())
@@ -14,7 +14,7 @@ EnemyParamsFactors& GameEntityDataHolder::getEnemyParamsFactors(const ObjectIndi
 	return i->second;
 }
 
-AnimationData& GameEntityDataHolder::getAnimationData(ObjectIndicator entityIndicator)
+AnimationData& GameEntityDataHolder::getAnimationData(const ObjectIndicator entityIndicator) const
 {
 	const auto i = animationsData->find(entityIndicator);
 	if (i == animationsData->end())

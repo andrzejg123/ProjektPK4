@@ -58,6 +58,7 @@ void OptionsViewImplementation::openOptions()
 		window.clear();
 		window.draw(background);
 		window.draw(*overlay);
+		window.draw(*optionsController->getBackgroundBorders());
 		window.draw(*optionsController->getItemsBackground());
 		for (auto optionsItem : *optionsController->getOptionsItems())
 			window.draw(*optionsItem);

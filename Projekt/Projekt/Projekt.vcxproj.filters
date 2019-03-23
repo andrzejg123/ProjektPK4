@@ -156,12 +156,6 @@
     <ClInclude Include="EnemyFactory.h">
       <Filter>Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="RandomMoveController.h">
-      <Filter>Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomMoveControllerImplementation.h">
-      <Filter>Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="GameObjectsHolder.h">
       <Filter>Game</Filter>
     </ClInclude>
@@ -208,6 +202,9 @@
     </ClInclude>
     <ClInclude Include="GameViewCloseCallback.h">
       <Filter>Game</Filter>
+    </ClInclude>
+    <ClInclude Include="RandomMoveHelper.h">
+      <Filter>Enemy</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -304,9 +301,6 @@
     <ClCompile Include="EnemyFactory.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="RandomMoveControllerImplementation.cpp">
-      <Filter>Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="GameObjectsHolder.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -341,6 +335,9 @@
     </ClCompile>
     <ClCompile Include="ViewRouter.cpp">
       <Filter>Main</Filter>
+    </ClCompile>
+    <ClCompile Include="RandomMoveHelper.cpp">
+      <Filter>Enemy</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

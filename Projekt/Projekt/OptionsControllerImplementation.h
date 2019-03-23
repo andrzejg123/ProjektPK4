@@ -7,7 +7,10 @@ class OptionsControllerImplementation : public OptionsController
 	OptionsView* optionsView;
 	unsigned int selectTextSize = 30;
 	unsigned int normalTextSize = 26;
+	const float backgroundPadding = 40.0f;
+	const float borderThickness = 2.0f;
 
+	sf::Color borderColor = sf::Color::Yellow;
 	sf::Color selectColor = sf::Color::Yellow;
 	sf::Color normalColor = sf::Color::White;
 	sf::Font font;
@@ -17,6 +20,7 @@ class OptionsControllerImplementation : public OptionsController
 
 	sf::Text* createNewItem(sf::String text) const;
 
+	sf::RectangleShape* backgroundBorders;
 	sf::Sprite* background;
 
 	void handleSelection() const;
@@ -25,6 +29,7 @@ class OptionsControllerImplementation : public OptionsController
 
 public:
 	std::vector<sf::Text*>* getOptionsItems() override;
+	sf::RectangleShape* getBackgroundBorders() override;
 	sf::Sprite* getItemsBackground() override;
 	void initializeOptions() override;
 	void selectHigherItem() override;

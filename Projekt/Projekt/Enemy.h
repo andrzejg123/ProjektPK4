@@ -1,8 +1,8 @@
 #pragma once
 #include "Damageable.h"
 #include "GameObjectsHolder.h"
-#include "RandomMoveController.h"
 #include "EnemyParams.h"
+#include "RandomMoveHelper.h"
 
 enum class AttackType
 {
@@ -18,13 +18,13 @@ struct AttackData
 class Enemy : public Moveable, public Animated, public Damageable
 {
 	int attackCounter = 0;
-	RandomMoveController* randomMoveHelper;
+	RandomMoveHelper* randomMoveHelper;
 protected:
 	bool sawPlayer = false; // if marked as true enemy will follow player until his death
 	float visionRadius;
 	float attackRadius;
 	float damage = 20;
-	int attackSpeed = 100;
+	float attackSpeed = 100;
 	int level;
 public:
 	bool didSawPlayer() const;

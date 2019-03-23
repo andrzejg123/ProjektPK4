@@ -9,8 +9,8 @@ class GameEntityDataHolder
 	FileReadingController* fileReadingController;
 
 public:
-	EnemyParamsFactors& getEnemyParamsFactors(ObjectIndicator enemyIndicator);
-	AnimationData& getAnimationData(ObjectIndicator entityIndicator);
+	EnemyParamsFactors& getEnemyParamsFactors(ObjectIndicator enemyIndicator) const;
+	AnimationData& getAnimationData(ObjectIndicator entityIndicator) const;
 	GameEntityDataHolder(FileReadingController* fileReadingController);
 	~GameEntityDataHolder();
 };

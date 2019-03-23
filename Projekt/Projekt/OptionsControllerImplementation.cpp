@@ -52,6 +52,11 @@ std::vector<sf::Text*>* OptionsControllerImplementation::getOptionsItems()
 	return optionsItems;
 }
 
+sf::RectangleShape* OptionsControllerImplementation::getBackgroundBorders()
+{
+	return backgroundBorders;
+}
+
 sf::Sprite* OptionsControllerImplementation::getItemsBackground()
 {
 	return background;
@@ -61,7 +66,6 @@ void OptionsControllerImplementation::adjustBackgroundSize() const
 {
 	if (optionsItems->size() > 0)
 	{
-		const auto padding = 40.0f;
 		auto maxWidth = 0.0f;
 		for (auto menuItem : *optionsItems)
 		{
@@ -72,16 +76,19 @@ void OptionsControllerImplementation::adjustBackgroundSize() const
 		const auto windowWidth = optionsView->getWindowSize().x;
 		const auto firstItem = (*optionsItems).front();
 		const auto lastItem = (*optionsItems).back();
-		const auto backWidth = maxWidth + (4 * padding);
-		const auto backHeight = lastItem->getPosition().y + (3 * padding) - firstItem->getPosition().y;
-		const auto backX = (windowWidth - maxWidth - (4 * padding)) / 2;
-		const auto backY = firstItem->getPosition().y - padding;
+		const auto backWidth = maxWidth + (4 * backgroundPadding);
+		const auto backHeight = lastItem->getPosition().y + (3 * backgroundPadding) - firstItem->getPosition().y;
+		const auto backX = (windowWidth - maxWidth - (4 * backgroundPadding)) / 2;
+		const auto backY = firstItem->getPosition().y - backgroundPadding;
 		auto& texture = TexturesHolder::getInstance()->getTexture(ObjectIndicator::MenuBackground);
 		texture.setRepeated(true);
 		const auto rects = sf::IntRect(backX, backY, backWidth, backHeight);
 		background->setPosition(backX, backY);
 		background->setTextureRect(rects);
 		background->setTexture(texture);
+		backgroundBorders->setPosition(backX - borderThickness, backY - borderThickness);
+		backgroundBorders->setSize(sf::Vector2f(backWidth + (2 * borderThickness), backHeight + (2 * borderThickness)));
+		backgroundBorders->setFillColor(borderColor);
 	}
 }
 
@@ -135,6 +142,7 @@ OptionsControllerImplementation::OptionsControllerImplementation(OptionsView* op
 	this->optionsView = optionsView;
 	optionsItems = new std::vector<sf::Text*>();
 	background = new sf::Sprite();
+	backgroundBorders = new sf::RectangleShape();
 }
 
 OptionsControllerImplementation::~OptionsControllerImplementation()
@@ -143,4 +151,5 @@ OptionsControllerImplementation::~OptionsControllerImplementation()
 		delete menuItem;
 	delete optionsItems;
 	delete background;
+	delete backgroundBorders;
 }

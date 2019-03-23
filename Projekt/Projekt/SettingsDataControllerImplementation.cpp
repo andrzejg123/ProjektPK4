@@ -102,6 +102,11 @@ void SettingsDataControllerImplementation::generateVideoSettings(SettingsData& s
 	const auto categoryName = Translations::getText(TextId::Video);
 	auto subCategories = std::vector<SubCategory*>();
 
+	const auto options4Name = Translations::getText(TextId::Fullscreen);
+	auto options4 = std::vector<sf::String>{ Translations::getText(TextId::Off), Translations::getText(TextId::On) };
+	const auto selection4 = checkBoolSelection(settingsConstance.boolSelection, settingsData.fullscreen);
+	subCategories.push_back(generateSettingsSubCategory(options4Name, options4, selection4, SubCategoryIndicator::Fullscreen));
+
 	const auto options1Name = Translations::getText(TextId::Resolution);
 	auto options1 = std::vector<sf::String>{ "800x600", "1024x768", "1280x900", "1440x900", "1600x900", "1920x1080", "1920x1200" };
 	const auto selection1 = checkIntSelection(options1, settingsConstance.resolutionWidthSelection, settingsConstance.resolutionHeightSelection,
@@ -117,11 +122,6 @@ void SettingsDataControllerImplementation::generateVideoSettings(SettingsData& s
 	auto options3 = std::vector<sf::String>{ Translations::getText(TextId::No), Translations::getText(TextId::Yes) };
 	const auto selection3 = checkBoolSelection(settingsConstance.boolSelection, settingsData.vSyncEnabled);
 	subCategories.push_back(generateSettingsSubCategory(options3Name, options3, selection3, SubCategoryIndicator::VSyncEnabled));
-
-	const auto options4Name = Translations::getText(TextId::Fullscreen);
-	auto options4 = std::vector<sf::String>{ Translations::getText(TextId::Off), Translations::getText(TextId::On) };
-	const auto selection4 = checkBoolSelection(settingsConstance.boolSelection, settingsData.fullscreen);
-	subCategories.push_back(generateSettingsSubCategory(options4Name, options4, selection4, SubCategoryIndicator::Fullscreen));
 
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
 }
