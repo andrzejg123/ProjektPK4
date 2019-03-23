@@ -52,6 +52,8 @@ void GameControllerImplementation::initializeGame()
 void GameControllerImplementation::movePlayer(const Direction direction, sf::Time& elapsedTime)
 {
 	auto player = gameObjectsHolder->getPlayer();
+	if (player->isDead())
+		return;
 	player->move(direction, elapsedTime);
 	for (auto enemy : *gameObjectsHolder->getEnemies())
 	{
@@ -103,7 +105,6 @@ void GameControllerImplementation::updateGame(sf::Time& elapsed)
 	updateFlyingObjects(elapsed);
 	for (auto animated : *gameObjectsHolder->getAnimatedList())
 		animated->updateAnimation(elapsed);
-
 }
 
 GameMap* GameControllerImplementation::getMap()

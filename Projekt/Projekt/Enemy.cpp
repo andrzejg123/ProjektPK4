@@ -35,9 +35,9 @@ int Enemy::getAttackCounter() const
 	return attackCounter;
 }
 
-void Enemy::incrementAttackCounter()
+void Enemy::incrementAttackCounter(sf::Time& elapsedTime)
 {
-	attackCounter++;
+	attackCounter += elapsedTime.asSeconds();
 }
 
 void Enemy::resetAttackCounter()
