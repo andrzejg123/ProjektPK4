@@ -6,7 +6,7 @@
 #include "GameViewImplementation.h"
 #include "ViewRouter.h"
 
-void MenuViewImplementation::showMenu()
+void MenuViewImplementation::show()
 {
 	auto& window = *this->window;
 	menuController->initializeMenu();
@@ -29,6 +29,7 @@ void MenuViewImplementation::showMenu()
 		}
 		window.clear();
 		window.draw(*menuController->getBackground());
+		window.draw(*menuController->getGameName());
 		for(auto menuItem: *menuController->getMenuItems())
 			window.draw(*menuItem);
 		window.display();
@@ -52,7 +53,7 @@ void MenuViewImplementation::loadGame()
 
 void MenuViewImplementation::showExtras()
 {
-
+	ViewRouter::openExtras(window);
 }
 
 void MenuViewImplementation::showSettings()

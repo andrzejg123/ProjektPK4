@@ -7,13 +7,10 @@
 
 void SettingsDataControllerImplementation::initialize(SettingsData& settingsData)
 {
-	if (font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial)))
-	{
-		generateVideoSettings(settingsData);
-		generateSoundSettings(settingsData);
-		generateOtherSettings(settingsData);
-		generateControlSettings();
-	}
+	generateVideoSettings(settingsData);
+	generateSoundSettings(settingsData);
+	generateOtherSettings(settingsData);
+	generateControlSettings();
 }
 
 int SettingsDataControllerImplementation::checkBoolSelection(const std::vector<bool>& optionsSelections, const bool settingsOption)
@@ -180,4 +177,5 @@ SettingsDataControllerImplementation::SettingsDataControllerImplementation(std::
 {
 	this->categories = categories;
 	this->settingsView = settingsView;
+	font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial));
 }

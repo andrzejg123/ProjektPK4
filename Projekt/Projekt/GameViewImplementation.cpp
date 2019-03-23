@@ -23,12 +23,12 @@ GameViewImplementation::~GameViewImplementation()
 
 void GameViewImplementation::closeGame()
 {
-	shouldShowGame = false;
+	shouldShowWindow = false;
 }
 
-void GameViewImplementation::displayGame()
+void GameViewImplementation::show()
 {
-	shouldShowGame = true;
+	shouldShowWindow = true;
 	gameController->initializeGame();
 	auto& window = *this->window;
 
@@ -40,7 +40,7 @@ void GameViewImplementation::displayGame()
 	const auto cameraMovingFactorX = 0.45 * camera.getSize().x;
 	const auto cameraMovingFactorY = 0.45 * camera.getSize().y;*/
 	
-	while (window.isOpen() && shouldShowGame)
+	while (window.isOpen() && shouldShowWindow)
 	{
 		auto elapsed = gameClock.restart();
 		// handle events

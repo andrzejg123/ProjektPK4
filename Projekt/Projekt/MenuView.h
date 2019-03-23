@@ -5,7 +5,6 @@ class MenuView
 {
 public:
 	virtual sf::Vector2u getWindowSize() = 0;
-	virtual void showMenu() = 0;
 	virtual void hideMenu() = 0;
 	virtual void startNewGame() const = 0;
 	virtual void showSettings() = 0;

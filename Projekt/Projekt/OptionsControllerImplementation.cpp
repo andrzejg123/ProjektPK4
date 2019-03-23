@@ -95,13 +95,6 @@ void OptionsControllerImplementation::adjustBackgroundSize() const
 void OptionsControllerImplementation::initializeOptions()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::MENU);
-	if (font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial)))
-	{
-		optionsItems->push_back(createNewItem(Translations::getText(TextId::ResumeGame)));
-		optionsItems->push_back(createNewItem(Translations::getText(TextId::Settings)));
-		optionsItems->push_back(createNewItem(Translations::getText(TextId::BackToMainMenu)));
-		optionsItems->push_back(createNewItem(Translations::getText(TextId::Quit)));
-	}
 	handleSelection();
 	adjustBackgroundSize();
 }
@@ -143,6 +136,12 @@ OptionsControllerImplementation::OptionsControllerImplementation(OptionsView* op
 	optionsItems = new std::vector<sf::Text*>();
 	background = new sf::Sprite();
 	backgroundBorders = new sf::RectangleShape();
+
+	font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial));
+	optionsItems->push_back(createNewItem(Translations::getText(TextId::ResumeGame)));
+	optionsItems->push_back(createNewItem(Translations::getText(TextId::Settings)));
+	optionsItems->push_back(createNewItem(Translations::getText(TextId::BackToMainMenu)));
+	optionsItems->push_back(createNewItem(Translations::getText(TextId::Quit)));
 }
 
 OptionsControllerImplementation::~OptionsControllerImplementation()

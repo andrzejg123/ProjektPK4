@@ -4,8 +4,9 @@
 #include <SFML/Graphics.hpp>
 #include "GameViewCloseCallback.h"
 #include "SettingsView.h"
+#include "View.h"
 
-class OptionsViewImplementation : public OptionsView
+class OptionsViewImplementation : public OptionsView, public View
 {
 	GameViewCloseCallback* gameCloseCallback;
 	OptionsController* optionsController;
@@ -19,7 +20,7 @@ public:
 	void openMainMenu() override;
 	sf::Vector2u getWindowSize() override;
 	void resumeGame() override;
-	void openOptions() override;
+	void show() override;
 	explicit OptionsViewImplementation(GameViewCloseCallback* gameCloseCallback, sf::RenderWindow* window);
 	~OptionsViewImplementation();
 };

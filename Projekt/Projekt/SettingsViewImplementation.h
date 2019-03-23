@@ -2,8 +2,9 @@
 #include "SettingsView.h"
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "SettingsController.h"
+#include "View.h"
 
-class SettingsViewImplementation : public SettingsView
+class SettingsViewImplementation : public SettingsView, public View
 {
 	sf::RenderWindow* window;
 	SettingsController* settingsController;
@@ -11,7 +12,7 @@ class SettingsViewImplementation : public SettingsView
 public:
 	void updateWindowParams(SettingsData settingsData) override;
 	sf::Vector2u getWindowSize() override;
-	void showSettings() override;
+	void show() override;
 	void hideSettings() override;
 	explicit SettingsViewImplementation(sf::RenderWindow* window);
 	~SettingsViewImplementation();

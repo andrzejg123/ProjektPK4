@@ -8,7 +8,6 @@ public:
 	virtual void openMainMenu() = 0;
 	virtual void openSettings() = 0;
 	virtual void resumeGame() = 0;
-	virtual void openOptions() = 0;
 	virtual sf::Vector2u getWindowSize() = 0;
 	virtual ~OptionsView() = default;
 };

@@ -30,7 +30,7 @@ void OptionsViewImplementation::resumeGame()
 	shouldShowOptions = false;
 }
 
-void OptionsViewImplementation::openOptions()
+void OptionsViewImplementation::show()
 {
 	auto& window = *this->window;
 	sf::Texture a;

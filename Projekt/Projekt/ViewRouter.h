@@ -9,5 +9,6 @@ public:
 	static void openMenu(sf::RenderWindow* window);
 	static void openSettings(sf::RenderWindow* window);
 	static void openOptions(sf::RenderWindow* window, GameViewCloseCallback* gameCloseCallback);
+	static void openExtras(sf::RenderWindow* window);
 };
 

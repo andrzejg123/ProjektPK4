@@ -4,17 +4,18 @@
 #include "DebugDrawer.h"
 #include "OptionsView.h"
 #include "GameViewCloseCallback.h"
+#include "View.h"
 
-class GameViewImplementation: public GameView, public GameViewCloseCallback
+class GameViewImplementation: public GameView, public GameViewCloseCallback, public View
 {
 	GameController* gameController;
 	DebugDrawer* debugDrawer;
 	sf::RenderWindow* window;
-	bool shouldShowGame = true;
+	bool shouldShowWindow = true;
 
 public:
 	void closeGame() override;
-	void displayGame() override;
+	void show() override;
 	sf::Vector2u getWindowSize() override;
 	explicit GameViewImplementation(sf::RenderWindow* window);
 	~GameViewImplementation();

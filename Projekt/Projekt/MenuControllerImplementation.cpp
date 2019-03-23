@@ -39,14 +39,20 @@ void MenuControllerImplementation::repositionItems() const
 	auto totalItemsSize = 0.0f;
 	for (auto menuItem : *menuItems)
 		totalItemsSize += menuItem->getGlobalBounds().height;
-	const auto singleSpace = (height - totalItemsSize) / (10.0f + itemsCount - 1.0f);
-	auto startingPosition = singleSpace * 4;
+	const auto singleSpace = (height - totalItemsSize) / (12.0f + itemsCount - 1.0f);
+	auto startingPosition = singleSpace * 6;
+	gameName->setPosition(sf::Vector2f((width - gameName->getGlobalBounds().width) / 2, singleSpace));
 	for (auto menuItem : *menuItems)
 	{
 		const auto itemWidth = menuItem->getGlobalBounds().width;
 		menuItem->setPosition((width - itemWidth) / 2, singleSpace + startingPosition);
 		startingPosition += menuItem->getGlobalBounds().height + singleSpace;
 	}
+}
+
+sf::Text* MenuControllerImplementation::getGameName()
+{
+	return gameName;
 }
 
 sf::Sprite* MenuControllerImplementation::getBackground()
@@ -89,14 +95,6 @@ void MenuControllerImplementation::selectLowerItem()
 void MenuControllerImplementation::initializeMenu()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::MENU);
-	if (font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial)))
-	{
-		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::StartNewGame)));
-		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::LoadGame)));
-		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Settings)));
-		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Extras)));
-		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Quit)));
-	}
 	handleSelection();
 }
 
@@ -107,9 +105,20 @@ std::vector<sf::Text*>* MenuControllerImplementation::getMenuItems()
 
 MenuControllerImplementation::MenuControllerImplementation(MenuView* menuView)
 {
-	this->menuView = menuView;
 	menuItems = new std::vector<sf::Text*>();
+	this->menuView = menuView;
 	const auto windowSize = menuView->getWindowSize();
+
+	font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial));
+
+	gameName = createNewMenuItem(Translations::getText(TextId::GameName));
+	gameName->setCharacterSize(ViewHelper::adjustFontSize(gameNameTextSize, windowSize));
+	menuItems->push_back(createNewMenuItem(Translations::getText(TextId::StartNewGame)));
+	menuItems->push_back(createNewMenuItem(Translations::getText(TextId::LoadGame)));
+	menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Settings)));
+	menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Extras)));
+	menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Quit)));
+
 	auto& texture = TexturesHolder::getInstance()->getTexture(ObjectIndicator::MenuBackground);
 	texture.setRepeated(true);
 	const auto rects = sf::IntRect(0, 0, windowSize.x, windowSize.y);
@@ -122,4 +131,5 @@ MenuControllerImplementation::~MenuControllerImplementation()
 		delete menuItem;
 	delete menuItems;
 	delete background;
+	delete gameName;
 }

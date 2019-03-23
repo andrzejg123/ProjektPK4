@@ -161,6 +161,7 @@
     <ClInclude Include="DistanceHelper.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyParams.h" />
+    <ClInclude Include="ExtrasView.h" />
     <ClInclude Include="FileNameHelper.h" />
     <ClInclude Include="FileReadingController.h" />
     <ClInclude Include="FlyingObject.h" />
@@ -210,6 +211,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Translations.h" />
+    <ClInclude Include="View.h" />
     <ClInclude Include="ViewHelper.h" />
     <ClInclude Include="ViewRouter.h" />
     <ClInclude Include="Warrior.h" />
@@ -224,6 +226,7 @@
     <ClCompile Include="DistanceHelper.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyParams.cpp" />
+    <ClCompile Include="ExtrasView.cpp" />
     <ClCompile Include="FileNameHelper.cpp" />
     <ClCompile Include="FileReadingController.cpp" />
     <ClCompile Include="FlyingObject.cpp" />

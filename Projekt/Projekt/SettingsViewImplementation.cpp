@@ -14,7 +14,7 @@ sf::Vector2u SettingsViewImplementation::getWindowSize()
 	return window->getSize();
 }
 
-void SettingsViewImplementation::showSettings()
+void SettingsViewImplementation::show()
 {
 	auto& window = *this->window;
 	settingsController->initializeSettings();
