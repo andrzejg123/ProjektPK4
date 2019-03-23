@@ -4,6 +4,7 @@
 #include "Translations.h"
 #include "ViewHelper.h"
 #include "FileNameHelper.h"
+#include "TexturesHolder.h"
 
 sf::Text* MenuControllerImplementation::createNewMenuItem(const sf::String text) const
 {
@@ -48,6 +49,11 @@ void MenuControllerImplementation::repositionItems() const
 	}
 }
 
+sf::Sprite* MenuControllerImplementation::getBackground()
+{
+	return background;
+}
+
 void MenuControllerImplementation::selectItem()
 {
 	SoundController::getInstance()->playSound(SoundIndicator::MenuClickItem);
@@ -83,7 +89,7 @@ void MenuControllerImplementation::selectLowerItem()
 void MenuControllerImplementation::initializeMenu()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::MENU);
-	if(font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial)))
+	if (font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial)))
 	{
 		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::StartNewGame)));
 		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::LoadGame)));
@@ -91,7 +97,6 @@ void MenuControllerImplementation::initializeMenu()
 		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Extras)));
 		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Quit)));
 	}
-	repositionItems();
 	handleSelection();
 }
 
@@ -104,13 +109,17 @@ MenuControllerImplementation::MenuControllerImplementation(MenuView* menuView)
 {
 	this->menuView = menuView;
 	menuItems = new std::vector<sf::Text*>();
+	const auto windowSize = menuView->getWindowSize();
+	auto& texture = TexturesHolder::getInstance()->getTexture(ObjectIndicator::MenuBackground);
+	texture.setRepeated(true);
+	const auto rects = sf::IntRect(0, 0, windowSize.x, windowSize.y);
+	background = new sf::Sprite(texture, rects);
 }
 
 MenuControllerImplementation::~MenuControllerImplementation()
 {
 	for (auto menuItem : *menuItems)
-	{
 		delete menuItem;
-	}
 	delete menuItems;
+	delete background;
 }

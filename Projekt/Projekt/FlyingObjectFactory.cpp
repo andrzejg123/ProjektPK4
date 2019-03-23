@@ -3,7 +3,7 @@
 #include "DistanceHelper.h"
 #include "Enemy.h"
 #include "Arrow.h"
-#include "GameTexturesHolder.h"
+#include "TexturesHolder.h"
 #include "SoundController.h"
 
 FlyingObject* FlyingObjectFactory::create(Enemy* caster, Object* destination, const ObjectIndicator textureIndicator) const
@@ -18,7 +18,7 @@ FlyingObject* FlyingObjectFactory::create(Enemy* caster, Object* destination, co
 	}
 }
 
-FlyingObjectFactory::FlyingObjectFactory(GameTexturesHolder* gameTexturesHolder)
+FlyingObjectFactory::FlyingObjectFactory(TexturesHolder* gameTexturesHolder)
 {
 	this->gameTexturesHolder = gameTexturesHolder;
 }

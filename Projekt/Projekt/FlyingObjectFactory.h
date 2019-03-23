@@ -1,15 +1,15 @@
 #pragma once
 #include "FlyingObject.h"
 #include "GameObjectsHolder.h"
-#include "GameTexturesHolder.h"
+#include "TexturesHolder.h"
 
 class FlyingObjectFactory
 {
-	GameTexturesHolder* gameTexturesHolder;
+	TexturesHolder* gameTexturesHolder;
 public:
 	//Creates flyingObject according to texture indicator
 	FlyingObject* create(Enemy* caster, Object* destination, ObjectIndicator textureIndicator) const;
-	explicit FlyingObjectFactory(GameTexturesHolder* gameTexturesHolder);
+	explicit FlyingObjectFactory(TexturesHolder* gameTexturesHolder);
 	~FlyingObjectFactory();
 };
 

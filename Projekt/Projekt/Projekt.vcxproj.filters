@@ -34,15 +34,15 @@
     <Filter Include="Models">
       <UniqueIdentifier>{3afd9d1c-48bd-4a71-83f0-c6e932625879}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Options">
+      <UniqueIdentifier>{10d8ac60-b22e-4ead-b5ff-5523090fe835}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameControllerImplementation.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="GameMapController.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameTexturesHolder.h">
       <Filter>Game</Filter>
     </ClInclude>
     <ClInclude Include="GameViewImplementation.h">
@@ -179,14 +179,39 @@
     </ClInclude>
     <ClInclude Include="SpawnArea.h" />
     <ClInclude Include="Translations.h" />
-    <ClInclude Include="FileNameHelper.h" />
-    <ClInclude Include="ViewHelper.h" />
+    <ClInclude Include="Interactive.h" />
+    <ClInclude Include="InteractiveFactory.h" />
+    <ClInclude Include="OptionsViewImplementation.h">
+      <Filter>Options</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsView.h">
+      <Filter>Options</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsControllerImplementation.h">
+      <Filter>Options</Filter>
+    </ClInclude>
+    <ClInclude Include="OptionsController.h">
+      <Filter>Options</Filter>
+    </ClInclude>
+    <ClInclude Include="TexturesHolder.h" />
+    <ClInclude Include="FileNameHelper.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="Chest.h">
+      <Filter>Models</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewHelper.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ViewRouter.h">
+      <Filter>Main</Filter>
+    </ClInclude>
+    <ClInclude Include="GameViewCloseCallback.h">
+      <Filter>Game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameTexturesHolder.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="GameMapController.cpp">
@@ -296,7 +321,26 @@
     </ClCompile>
     <ClCompile Include="SpawnArea.cpp" />
     <ClCompile Include="Translations.cpp" />
-    <ClCompile Include="FileNameHelper.cpp" />
-    <ClCompile Include="ViewHelper.cpp" />
+    <ClCompile Include="Interactive.cpp" />
+    <ClCompile Include="InteractiveFactory.cpp" />
+    <ClCompile Include="OptionsViewImplementation.cpp">
+      <Filter>Options</Filter>
+    </ClCompile>
+    <ClCompile Include="OptionsControllerImplementation.cpp">
+      <Filter>Options</Filter>
+    </ClCompile>
+    <ClCompile Include="TexturesHolder.cpp" />
+    <ClCompile Include="FileNameHelper.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="Chest.cpp">
+      <Filter>Models</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewHelper.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="ViewRouter.cpp">
+      <Filter>Main</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

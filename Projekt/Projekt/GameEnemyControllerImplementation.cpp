@@ -48,7 +48,7 @@ void GameEnemyControllerImplementation::updateEnemy(sf::Time& elapsedTime, Enemy
 		enemy->cancelMove();
 }
 
-GameEnemyControllerImplementation::GameEnemyControllerImplementation(GameObjectsHolder* gameObjectsHolder, GameTexturesHolder* gameTexturesHolder)
+GameEnemyControllerImplementation::GameEnemyControllerImplementation(GameObjectsHolder* gameObjectsHolder, TexturesHolder* gameTexturesHolder)
 {
 	this->gameObjectsHolder = gameObjectsHolder;
 	this->gameTexturesHolder = gameTexturesHolder;;

@@ -17,6 +17,7 @@ class SettingsControllerImplementation : public SettingsController
 	int currentItem = 0;
 	int currentSubItem = 0;
 
+	sf::Sprite* background;
 	SettingsReader* settingsManager;
 	SettingsDataController* settingsGenerator;
 
@@ -30,6 +31,7 @@ class SettingsControllerImplementation : public SettingsController
 	void addRestartInfo();
 
 public:
+	sf::Sprite* getBackground() override;
 	void initializeSettings() override;
 	void selectHigherItem() override;
 	void selectItem() override;

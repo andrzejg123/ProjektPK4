@@ -5,6 +5,8 @@
 #include <iostream>
 #include "Keys.h"
 #include "DistanceHelper.h"
+#include "OptionsViewImplementation.h"
+#include "ViewRouter.h"
 
 GameViewImplementation::GameViewImplementation(sf::RenderWindow* window)
 {
@@ -19,12 +21,17 @@ GameViewImplementation::~GameViewImplementation()
 	delete this->debugDrawer;
 }
 
-void GameViewImplementation::displayGame() const
+void GameViewImplementation::closeGame()
 {
+	shouldShowGame = false;
+}
+
+void GameViewImplementation::displayGame()
+{
+	shouldShowGame = true;
 	gameController->initializeGame();
 	auto& window = *this->window;
 
-	sf::Time elapsed;
 	sf::Clock gameClock;
 	//TODO camera
 	/*sf::View camera;
@@ -33,19 +40,28 @@ void GameViewImplementation::displayGame() const
 	const auto cameraMovingFactorX = 0.45 * camera.getSize().x;
 	const auto cameraMovingFactorY = 0.45 * camera.getSize().y;*/
 	
-	while (window.isOpen())
+	while (window.isOpen() && shouldShowGame)
 	{
-		elapsed = gameClock.restart();
+		auto elapsed = gameClock.restart();
 		// handle events
 		sf::Event e;
 		while (window.pollEvent(e))
 		{
 			if (e.type == sf::Event::Closed)
 				window.close();
-			if(e.type == sf::Event::KeyPressed && e.key.code == sf::Keyboard::F3)
+			if(e.type == sf::Event::KeyPressed)
 			{
-				if (Keys::projectType != ProjectType::Release)
-					debugDrawer->toggle();
+				if(e.key.code == sf::Keyboard::F3)
+				{
+					if (Keys::projectType != ProjectType::Release)
+						debugDrawer->toggle();
+				}
+				else if (e.key.code == sf::Keyboard::Escape)
+				{
+					ViewRouter::openOptions(this->window, this);
+					elapsed = gameClock.restart();
+					elapsed = gameClock.restart();
+				}
 			}
 		}
 
@@ -108,4 +124,9 @@ void GameViewImplementation::displayGame() const
 		window.display();
 	}
 	
+}
+
+sf::Vector2u GameViewImplementation::getWindowSize()
+{
+	return window->getSize();
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include <SFML/Graphics/Text.hpp>
 #include <list>
+#include <SFML/Graphics/Sprite.hpp>
 
 enum class SubCategoryIndicator
 {
@@ -33,6 +34,7 @@ struct Category
 class SettingsController
 {
 public:
+	virtual sf::Sprite* getBackground() = 0;
 	virtual void initializeSettings() = 0;
 	virtual void selectHigherItem() = 0;
 	virtual void selectLowerItem() = 0;

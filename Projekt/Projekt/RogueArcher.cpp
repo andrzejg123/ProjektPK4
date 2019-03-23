@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "RogueArcher.h"
 #include "DistanceHelper.h"
-#include "GameTexturesHolder.h"
+#include "TexturesHolder.h"
 #include "Log.h"
 #include "FlyingObjectFactory.h"
 

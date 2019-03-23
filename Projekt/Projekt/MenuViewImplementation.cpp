@@ -4,6 +4,7 @@
 #include "SettingsView.h"
 #include "SettingsViewImplementation.h"
 #include "GameViewImplementation.h"
+#include "ViewRouter.h"
 
 void MenuViewImplementation::showMenu()
 {
@@ -27,6 +28,7 @@ void MenuViewImplementation::showMenu()
 			}
 		}
 		window.clear();
+		window.draw(*menuController->getBackground());
 		for(auto menuItem: *menuController->getMenuItems())
 			window.draw(*menuItem);
 		window.display();
@@ -40,9 +42,7 @@ void MenuViewImplementation::hideMenu()
 
 void MenuViewImplementation::startNewGame() const
 {
-	const auto gameView = new GameViewImplementation(window);
-	gameView->displayGame();
-	delete gameView;
+	ViewRouter::openGame(window);
 }
 
 void MenuViewImplementation::loadGame()
@@ -57,9 +57,7 @@ void MenuViewImplementation::showExtras()
 
 void MenuViewImplementation::showSettings()
 {
-	SettingsView* settingsView = new SettingsViewImplementation(window);
-	settingsView->showSettings();
-	delete settingsView;
+	ViewRouter::openSettings(window);
 }
 
 sf::Vector2u MenuViewImplementation::getWindowSize()

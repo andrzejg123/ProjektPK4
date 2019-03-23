@@ -32,7 +32,7 @@ Enemy* EnemyFactory::create(const ObjectIndicator enemyIndicator, sf::FloatRect&
 	} 
 }
 
-EnemyFactory::EnemyFactory(GameTexturesHolder* gameTexturesHolder, GameEntityDataHolder* gameEntityDataHolder)
+EnemyFactory::EnemyFactory(TexturesHolder* gameTexturesHolder, GameEntityDataHolder* gameEntityDataHolder)
 {
 	this->gameTexturesHolder = gameTexturesHolder;
 	this->gameEntityDataHolder = gameEntityDataHolder;

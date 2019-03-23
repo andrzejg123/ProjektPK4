@@ -42,7 +42,9 @@ enum class TextId
 	Yes,
 	No,
 	On,
-	Off
+	Off,
+	ResumeGame,
+	BackToMainMenu
 };
 
 class Translations final

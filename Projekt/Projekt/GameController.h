@@ -1,8 +1,8 @@
 #pragma once
 #include "GameMap.h"
-#include "Player.h"
 #include <list>
 #include "GameObjectsHolder.h"
+#include <SFML/Graphics.hpp>
 
 class GameController
 {

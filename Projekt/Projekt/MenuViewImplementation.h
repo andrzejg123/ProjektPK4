@@ -1,6 +1,9 @@
 #pragma once
 #include "MenuView.h"
 #include "MenuController.h"
+#include "GameView.h"
+#include "SettingsView.h"
+#include "TexturesHolder.h"
 
 class MenuViewImplementation :
 	public MenuView

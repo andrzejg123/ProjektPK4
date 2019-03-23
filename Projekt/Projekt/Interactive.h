@@ -1,7 +1,7 @@
 #pragma once
 #include "Object.h"
 #include "Animated.h"
-#include "GameTexturesHolder.h"
+#include "TexturesHolder.h"
 
 enum class InteractionType
 {

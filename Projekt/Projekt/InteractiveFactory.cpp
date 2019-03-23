@@ -17,7 +17,7 @@ Interactive* InteractiveFactory::create(InteractiveData& interactiveData)
 	}
 }
 
-InteractiveFactory::InteractiveFactory(GameTexturesHolder* gameTexturesHolder,
+InteractiveFactory::InteractiveFactory(TexturesHolder* gameTexturesHolder,
 	GameEntityDataHolder* gameEntityDataHolder) : gameTexturesHolder(gameTexturesHolder), gameEntityDataHolder(gameEntityDataHolder)
 {
 }

@@ -28,3 +28,5 @@ Yes
 No
 On
 Off
+Resume game
+Main menu

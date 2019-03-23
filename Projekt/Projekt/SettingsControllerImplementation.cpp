@@ -6,6 +6,7 @@
 #include "SettingsDataControllerImplementation.h"
 #include "Translations.h"
 #include "ViewHelper.h"
+#include "GameObjectsHolder.h"
 
 void SettingsControllerImplementation::updateSettings() const
 {
@@ -71,6 +72,11 @@ void SettingsControllerImplementation::addRestartInfo()
 	restartInfo = settingsGenerator->createNewSettingsItem(Translations::getText(TextId::SomeChangesMayRequireRestart));
 	restartInfo->setFillColor(settingsGenerator->getSettingsConstance().selectColor);
 	repositionView();
+}
+
+sf::Sprite* SettingsControllerImplementation::getBackground()
+{
+	return background;
 }
 
 void SettingsControllerImplementation::initializeSettings()
@@ -258,6 +264,11 @@ SettingsControllerImplementation::SettingsControllerImplementation(SettingsView*
 	this->settingsManager->reloadSettings();
 	this->settingsGenerator = new SettingsDataControllerImplementation(categories, settingsView);
 	this->restartInfo = nullptr;
+	const auto windowSize = settingsView->getWindowSize();
+	auto& texture = TexturesHolder::getInstance()->getTexture(ObjectIndicator::MenuBackground);
+	texture.setRepeated(true);
+	const auto rects = sf::IntRect(0, 0, windowSize.x, windowSize.y);
+	background = new sf::Sprite(texture, rects);
 }
 
 SettingsControllerImplementation::~SettingsControllerImplementation()
@@ -278,4 +289,5 @@ SettingsControllerImplementation::~SettingsControllerImplementation()
 	delete settingsManager;
 	delete settingsGenerator;
 	delete restartInfo;
+	delete background;
 }

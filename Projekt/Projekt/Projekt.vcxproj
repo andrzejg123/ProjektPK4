@@ -165,6 +165,7 @@
     <ClInclude Include="FileReadingController.h" />
     <ClInclude Include="FlyingObject.h" />
     <ClInclude Include="FlyingObjectFactory.h" />
+    <ClInclude Include="GameViewCloseCallback.h" />
     <ClInclude Include="GameControllerImplementation.h" />
     <ClInclude Include="EnemyFactory.h" />
     <ClInclude Include="GameEnemyController.h" />
@@ -172,7 +173,7 @@
     <ClInclude Include="GameEntityDataHolder.h" />
     <ClInclude Include="GameMapController.h" />
     <ClInclude Include="GameObjectsHolder.h" />
-    <ClInclude Include="GameTexturesHolder.h" />
+    <ClInclude Include="TexturesHolder.h" />
     <ClInclude Include="GameViewImplementation.h" />
     <ClInclude Include="GameController.h" />
     <ClInclude Include="GameView.h" />
@@ -190,6 +191,10 @@
     <ClInclude Include="MusicController.h" />
     <ClInclude Include="MusicControllerImplementation.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="OptionsController.h" />
+    <ClInclude Include="OptionsControllerImplementation.h" />
+    <ClInclude Include="OptionsView.h" />
+    <ClInclude Include="OptionsViewImplementation.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="RandomMoveController.h" />
     <ClInclude Include="RandomMoveControllerImplementation.h" />
@@ -207,6 +212,7 @@
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Translations.h" />
     <ClInclude Include="ViewHelper.h" />
+    <ClInclude Include="ViewRouter.h" />
     <ClInclude Include="Warrior.h" />
     <ClInclude Include="RogueArcher.h" />
   </ItemGroup>
@@ -229,7 +235,7 @@
     <ClCompile Include="GameEntityDataHolder.cpp" />
     <ClCompile Include="GameMapController.cpp" />
     <ClCompile Include="GameObjectsHolder.cpp" />
-    <ClCompile Include="GameTexturesHolder.cpp" />
+    <ClCompile Include="TexturesHolder.cpp" />
     <ClCompile Include="GameViewImplementation.cpp" />
     <ClCompile Include="Interactive.cpp" />
     <ClCompile Include="InteractiveFactory.cpp" />
@@ -242,6 +248,8 @@
     <ClCompile Include="Moveable.cpp" />
     <ClCompile Include="MusicControllerImplementation.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="OptionsControllerImplementation.cpp" />
+    <ClCompile Include="OptionsViewImplementation.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projekt.cpp" />
     <ClCompile Include="RandomMoveControllerImplementation.cpp" />
@@ -260,6 +268,7 @@
     </ClCompile>
     <ClCompile Include="Translations.cpp" />
     <ClCompile Include="ViewHelper.cpp" />
+    <ClCompile Include="ViewRouter.cpp" />
     <ClCompile Include="Warrior.cpp" />
     <ClCompile Include="RogueArcher.cpp" />
   </ItemGroup>

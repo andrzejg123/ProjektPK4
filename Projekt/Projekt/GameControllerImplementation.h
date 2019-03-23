@@ -2,16 +2,17 @@
 #include "GameView.h"
 #include "GameController.h"
 #include "GameMapController.h"
-#include "GameTexturesHolder.h"
+#include "TexturesHolder.h"
 #include "GameObjectsHolder.h"
 #include "GameEnemyController.h"
 #include "GameEntityDataHolder.h"
+#include "OptionsView.h"
 
 class GameControllerImplementation : public GameController
 {
 	GameView* gameView;
 	GameMapController* gameMapController;
-	GameTexturesHolder* gameTexturesHolder;
+	TexturesHolder* gameTexturesHolder;
 	GameObjectsHolder* gameObjectsHolder;
 	GameEnemyController* gameEnemyController;
 	GameEntityDataHolder* gameEntityDataHolder;

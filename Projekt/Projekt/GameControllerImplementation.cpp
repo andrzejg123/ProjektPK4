@@ -7,6 +7,7 @@
 #include "GameEnemyControllerImplementation.h"
 #include "Log.h"
 #include "InteractiveFactory.h"
+#include "OptionsViewImplementation.h"
 
 void GameControllerImplementation::getFirstLayer()
 {
@@ -129,7 +130,7 @@ GameControllerImplementation::GameControllerImplementation(GameView* gameView): 
 {
 	this->fileReadingController = new FileReadingController();
 	this->gameMapController = new GameMapController(fileReadingController);
-	this->gameTexturesHolder = new GameTexturesHolder();
+	this->gameTexturesHolder = TexturesHolder::getInstance();
 	this->gameObjectsHolder = new GameObjectsHolder();
 	this->gameEnemyController = new GameEnemyControllerImplementation(gameObjectsHolder, gameTexturesHolder);
 	this->gameEntityDataHolder = new GameEntityDataHolder(fileReadingController);
@@ -138,7 +139,6 @@ GameControllerImplementation::GameControllerImplementation(GameView* gameView): 
 GameControllerImplementation::~GameControllerImplementation()
 {
 	delete this->gameMapController;
-	delete this->gameTexturesHolder;
 	delete this->gameObjectsHolder;
 	delete this->gameEnemyController;
 	delete this->fileReadingController;

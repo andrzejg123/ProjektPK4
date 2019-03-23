@@ -40,6 +40,7 @@ void SettingsViewImplementation::showSettings()
 			}
 		}
 		window.clear();
+		window.draw(*settingsController->getBackground());
 		for (auto menuItem : *settingsController->getMenuItems())
 			window.draw(*menuItem);
 		window.display();

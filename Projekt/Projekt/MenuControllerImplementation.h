@@ -1,6 +1,7 @@
 #pragma once
 #include "MenuController.h"
 #include "MenuView.h"
+#include "TexturesHolder.h"
 
 class MenuControllerImplementation : public MenuController
 {
@@ -14,12 +15,14 @@ class MenuControllerImplementation : public MenuController
 	MenuView* menuView;
 	std::vector<sf::Text*>* menuItems;
 	int currentItem = 0;
+	sf::Sprite* background;
 
 	sf::Text* createNewMenuItem(sf::String text) const;
 	void handleSelection() const;
 	void repositionItems() const;
 
 public:
+	sf::Sprite* getBackground() override;
 	void selectItem() override;
 	void selectHigherItem() override;
 	void selectLowerItem() override;

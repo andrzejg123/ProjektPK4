@@ -1,14 +1,14 @@
 #pragma once
-#include "GameTexturesHolder.h"
+#include "TexturesHolder.h"
 #include "GameEntityDataHolder.h"
 
 class InteractiveFactory
 {
-	GameTexturesHolder* gameTexturesHolder;
+	TexturesHolder* gameTexturesHolder;
 	GameEntityDataHolder* gameEntityDataHolder;
 public:
 	Interactive* create(InteractiveData& interactiveData);
-	InteractiveFactory(GameTexturesHolder* gameTexturesHolder, GameEntityDataHolder* gameEntityDataHolder);
+	InteractiveFactory(TexturesHolder* gameTexturesHolder, GameEntityDataHolder* gameEntityDataHolder);
 	~InteractiveFactory();
 };
 
