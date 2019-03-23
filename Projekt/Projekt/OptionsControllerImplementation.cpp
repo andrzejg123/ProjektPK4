@@ -73,7 +73,7 @@ void OptionsControllerImplementation::adjustBackgroundSize() const
 		const auto firstItem = (*optionsItems).front();
 		const auto lastItem = (*optionsItems).back();
 		const auto backWidth = maxWidth + (4 * padding);
-		const auto backHeight = lastItem->getPosition().y + (3 * padding) - firstItem->getPosition().y + lastItem->getGlobalBounds().height;
+		const auto backHeight = lastItem->getPosition().y + (3 * padding) - firstItem->getPosition().y;
 		const auto backX = (windowWidth - maxWidth - (4 * padding)) / 2;
 		const auto backY = firstItem->getPosition().y - padding;
 		auto& texture = TexturesHolder::getInstance()->getTexture(ObjectIndicator::MenuBackground);
@@ -82,7 +82,6 @@ void OptionsControllerImplementation::adjustBackgroundSize() const
 		background->setPosition(backX, backY);
 		background->setTextureRect(rects);
 		background->setTexture(texture);
-
 	}
 }
 
