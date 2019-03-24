@@ -101,19 +101,23 @@ int OptionsControllerImplementation::getNumberOfItem(const float x, const float 
 			return index;
 		index++;
 	}
-	return currentItem;
+	return -1;
 }
 
 void OptionsControllerImplementation::mouseClick(const float x, const float y)
 {
-	currentItem = getNumberOfItem(x, y);
-	selectItem();
+	const auto newNumber = getNumberOfItem(x, y);
+	if(newNumber >= 0)
+	{
+		currentItem = getNumberOfItem(x, y);
+		selectItem();
+	}
 }
 
 void OptionsControllerImplementation::mouseMove(const float x, const float y)
 {
 	const auto newNumber = getNumberOfItem(x, y);
-	if (newNumber != currentItem)
+	if (newNumber != currentItem && newNumber >= 0)
 	{
 		SoundController::getInstance()->playSound(SoundIndicator::MenuSelectItem);
 		currentItem = newNumber;

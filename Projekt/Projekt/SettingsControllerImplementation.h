@@ -30,8 +30,8 @@ class SettingsControllerImplementation : public SettingsController
 	void updateSettings() const;
 	void addRestartInfo();
 
-	void updateItemsIndexes(int item, int subItem);
-	void updateCurrentItems(float x, float y);
+	bool updateItemsIndexes(int item, int subItem);
+	bool updateCurrentItems(float x, float y);
 
 public:
 	void mouseLeftClick(float x, float y) override;

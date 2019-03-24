@@ -74,20 +74,21 @@ void SettingsControllerImplementation::addRestartInfo()
 	repositionView();
 }
 
-void SettingsControllerImplementation::updateItemsIndexes(const int item, const int subItem)
+bool SettingsControllerImplementation::updateItemsIndexes(const int item, const int subItem)
 {
 	currentItem = item;
 	currentSubItem = subItem;
+	return true;
 }
 
-void SettingsControllerImplementation::updateCurrentItems(const float x, const float y)
+bool SettingsControllerImplementation::updateCurrentItems(const float x, const float y)
 {
 	sf::Text* foundedItem = nullptr;
 	for (auto toDraw : *textsToDraw)
 		if (toDraw->getGlobalBounds().contains(x, y))
 			foundedItem = toDraw;
 	if (foundedItem == nullptr)
-		return;
+		return false;
 	auto item = 0;
 	for (auto category : *categories)
 	{
@@ -102,24 +103,25 @@ void SettingsControllerImplementation::updateCurrentItems(const float x, const f
 		}
 		item++;
 	}
+	return false;
 }
 
 void SettingsControllerImplementation::mouseLeftClick(const float x, const float y)
 {
-	updateCurrentItems(x, y);
-	if (currentSubItem != 0)
-		selectRightItem();
-	else
-		selectItem();
+	if(updateCurrentItems(x, y))
+		if (currentSubItem != 0)
+			selectRightItem();
+		else
+			selectItem();
 }
 
-void SettingsControllerImplementation::mouseRightClick(float x, float y)
+void SettingsControllerImplementation::mouseRightClick(const float x, const float y)
 {
-	updateCurrentItems(x, y);
-	if (currentSubItem != 0)
-		selectLeftItem();
-	else
-		selectItem();
+	if (updateCurrentItems(x, y))
+		if (currentSubItem != 0)
+			selectLeftItem();
+		else
+			selectItem();
 }
 
 void SettingsControllerImplementation::mouseMove(const float x, const float y)
