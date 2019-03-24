@@ -131,18 +131,18 @@ void OptionsControllerImplementation::initializeOptions()
 void OptionsControllerImplementation::selectHigherItem()
 {
 	SoundController::getInstance()->playSound(SoundIndicator::MenuSelectItem);
-	currentItem++;
-	if (currentItem >= optionsItems->size())
-		currentItem = 0;
+	currentItem--;
+	if (currentItem < 0)
+		currentItem = optionsItems->size() - 1;
 	handleSelection();
 }
 
 void OptionsControllerImplementation::selectLowerItem()
 {
 	SoundController::getInstance()->playSound(SoundIndicator::MenuSelectItem);
-	currentItem--;
-	if (currentItem < 0)
-		currentItem = optionsItems->size() - 1;
+	currentItem++;
+	if (currentItem >= optionsItems->size())
+		currentItem = 0;
 	handleSelection();
 }
 
