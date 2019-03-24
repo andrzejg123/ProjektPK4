@@ -6,7 +6,7 @@
 #include "FileNameHelper.h"
 #include "TexturesHolder.h"
 
-sf::Text* MenuControllerImplementation::createNewMenuItem(const sf::String text) const
+sf::Text* MenuControllerImplementation::createNewMenuItem(const sf::String& text) const
 {
 	auto textView = new sf::Text();
 	textView->setString(text);

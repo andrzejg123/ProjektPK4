@@ -4,7 +4,7 @@
 #include "FileNameHelper.h"
 #include "TexturesHolder.h"
 
-sf::Text* OptionsControllerImplementation::createNewItem(const sf::String text) const
+sf::Text* OptionsControllerImplementation::createNewItem(const sf::String& text) const
 {
 	auto textView = new sf::Text();
 	textView->setString(text);

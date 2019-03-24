@@ -66,7 +66,7 @@ void SettingsDataControllerImplementation::generateControlSettings() const
 	categories->push_back(generateSettingsCategory(category3Name, subCategories));
 }
 
-void SettingsDataControllerImplementation::generateSoundSettings(SettingsData& settingsData) const
+void SettingsDataControllerImplementation::generateSoundSettings(const SettingsData& settingsData) const
 {
 	const auto categoryName = Translations::getText(TextId::Sound);
 	auto subCategories = std::vector<SubCategory*>();
@@ -94,7 +94,7 @@ void SettingsDataControllerImplementation::generateSoundSettings(SettingsData& s
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
 }
 
-void SettingsDataControllerImplementation::generateVideoSettings(SettingsData& settingsData) const
+void SettingsDataControllerImplementation::generateVideoSettings(const SettingsData& settingsData) const
 {
 	const auto categoryName = Translations::getText(TextId::Video);
 	auto subCategories = std::vector<SubCategory*>();
@@ -123,7 +123,7 @@ void SettingsDataControllerImplementation::generateVideoSettings(SettingsData& s
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
 }
 
-void SettingsDataControllerImplementation::generateOtherSettings(SettingsData& settingsData) const
+void SettingsDataControllerImplementation::generateOtherSettings(const SettingsData& settingsData) const
 {
 	const auto categoryName = Translations::getText(TextId::Others);
 	auto subCategories = std::vector<SubCategory*>();
@@ -137,7 +137,7 @@ void SettingsDataControllerImplementation::generateOtherSettings(SettingsData& s
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
 }
 
-SubCategory* SettingsDataControllerImplementation::generateSettingsSubCategory(const sf::String subCategoryName,
+SubCategory* SettingsDataControllerImplementation::generateSettingsSubCategory(const sf::String& subCategoryName,
 	std::vector<sf::String>& subCategoriesNames, const int currentSelection, const SubCategoryIndicator subCategoryIndicator) const
 {
 	auto subCategory = new SubCategory();
@@ -149,7 +149,7 @@ SubCategory* SettingsDataControllerImplementation::generateSettingsSubCategory(c
 	return subCategory;
 }
 
-Category* SettingsDataControllerImplementation::generateSettingsCategory(const sf::String categoryName,
+Category* SettingsDataControllerImplementation::generateSettingsCategory(const sf::String& categoryName,
 	std::vector<SubCategory*>& subCategories) const
 {
 	auto category = new Category();
@@ -163,7 +163,7 @@ SettingsConstance& SettingsDataControllerImplementation::getSettingsConstance()
 	return settingsConstance;
 }
 
-sf::Text* SettingsDataControllerImplementation::createNewSettingsItem(const sf::String text) const
+sf::Text* SettingsDataControllerImplementation::createNewSettingsItem(const sf::String& text) const
 {
 	auto textView = new sf::Text();
 	textView->setString(text);

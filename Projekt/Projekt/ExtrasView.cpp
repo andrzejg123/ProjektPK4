@@ -4,7 +4,7 @@
 #include "ViewHelper.h"
 #include "TexturesHolder.h"
 
-sf::Text* ExtrasView::createNewItem(const sf::String text) const
+sf::Text* ExtrasView::createNewItem(const sf::String& text) const
 {
 	auto textView = new sf::Text();
 	textView->setString(text);

@@ -19,7 +19,7 @@ class MenuControllerImplementation : public MenuController
 	int currentItem = 0;
 	sf::Sprite* background;
 
-	sf::Text* createNewMenuItem(sf::String text) const;
+	sf::Text* createNewMenuItem(const sf::String& text) const;
 	void handleSelection() const;
 	void repositionItems() const;
 	int getNumberOfItem(float x, float y) const;

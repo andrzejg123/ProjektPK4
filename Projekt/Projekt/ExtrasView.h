@@ -7,7 +7,7 @@ class ExtrasView: public View
 	float speed = 60.0f;
 	sf::RenderWindow* window;
 	bool shouldShowWindow = true;
-	sf::Text* createNewItem(sf::String text) const;
+	sf::Text* createNewItem(const sf::String& text) const;
 
 	unsigned int textSize = 48;
 	sf::Color color = sf::Color::White;

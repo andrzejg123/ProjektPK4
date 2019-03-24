@@ -18,7 +18,7 @@ class OptionsControllerImplementation : public OptionsController
 	std::vector<sf::Text*>* optionsItems;
 	int currentItem = 0;
 
-	sf::Text* createNewItem(sf::String text) const;
+	sf::Text* createNewItem(const sf::String& text) const;
 
 	sf::RectangleShape* backgroundBorders;
 	sf::Sprite* background;

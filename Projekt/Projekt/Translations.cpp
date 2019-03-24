@@ -59,12 +59,12 @@ void Translations::close()
 		delete instance;
 }
 
-sf::String Translations::getText(const TextId textId)
+sf::String& Translations::getText(const TextId textId)
 {
 	const auto id = static_cast<int>(textId);
 	if (instance != nullptr && instance->translations->size() > id)
 		return instance->translations->at(id);
-	return "???";
+	return instance->notTranslated;
 }
 
 Translations::~Translations()
