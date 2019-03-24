@@ -13,6 +13,7 @@ class OptionsViewImplementation : public OptionsView, public View
 	sf::RectangleShape* overlay;
 	sf::RenderWindow* window;
 	bool shouldShowOptions = true;
+	void handleEvent(sf::RenderWindow& window);
 
 public:
 	void quitGame() override;

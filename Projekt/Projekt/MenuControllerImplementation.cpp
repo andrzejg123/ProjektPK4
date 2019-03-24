@@ -50,6 +50,35 @@ void MenuControllerImplementation::repositionItems() const
 	}
 }
 
+int MenuControllerImplementation::getNumberOfItem(const float x, const float y) const
+{
+	auto index = 0;
+	for (auto menuItem : *menuItems)
+	{
+		if (menuItem->getGlobalBounds().contains(x, y))
+			return index;
+		index++;
+	}
+	return currentItem;
+}
+
+void MenuControllerImplementation::mouseClick(const float x, const float y)
+{
+	currentItem = getNumberOfItem(x, y);
+	selectItem();
+}
+
+void MenuControllerImplementation::mouseMove(const float x, const float y)
+{
+	const auto newNumber = getNumberOfItem(x, y);
+	if(newNumber != currentItem)
+	{
+		SoundController::getInstance()->playSound(SoundIndicator::MenuSelectItem);
+		currentItem = newNumber;
+		handleSelection();
+	}
+}
+
 sf::Text* MenuControllerImplementation::getGameName()
 {
 	return gameName;

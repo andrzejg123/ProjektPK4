@@ -26,8 +26,11 @@ class OptionsControllerImplementation : public OptionsController
 	void handleSelection() const;
 	void repositionItems() const;
 	void adjustBackgroundSize() const;
+	int getNumberOfItem(float x, float y) const;
 
 public:
+	void mouseClick(float x, float y) override;
+	void mouseMove(float x, float y) override;
 	std::vector<sf::Text*>* getOptionsItems() override;
 	sf::RectangleShape* getBackgroundBorders() override;
 	sf::Sprite* getItemsBackground() override;

@@ -5,6 +5,32 @@
 #include "SettingsViewImplementation.h"
 #include "GameViewImplementation.h"
 #include "ViewRouter.h"
+#include <iostream>
+
+void MenuViewImplementation::handleEvent(sf::RenderWindow& window)
+{
+	sf::Event e;
+	while (window.pollEvent(e))
+	{
+		if (e.type == sf::Event::MouseMoved)
+			menuController->mouseMove(e.mouseMove.x, e.mouseMove.y);
+		else if (e.type == sf::Event::KeyPressed)
+		{
+			if (e.key.code == sf::Keyboard::W)
+				menuController->selectHigherItem();
+			else if (e.key.code == sf::Keyboard::S)
+				menuController->selectLowerItem();
+			else if (e.key.code == sf::Keyboard::Enter)
+				menuController->selectItem();
+			else if (e.key.code == sf::Keyboard::Escape)
+				quitGame();
+		}
+		else if (e.type == sf::Event::MouseButtonPressed && e.mouseButton.button == sf::Mouse::Left)
+			menuController->mouseClick(e.mouseButton.x, e.mouseButton.y);
+		else if (e.type == sf::Event::Closed)
+			window.close();
+	}
+}
 
 void MenuViewImplementation::show()
 {
@@ -12,23 +38,7 @@ void MenuViewImplementation::show()
 	menuController->initializeMenu();
 	while (window.isOpen())
 	{
-		sf::Event e;
-		while (window.pollEvent(e))
-		{
-			if (e.type == sf::Event::Closed)
-				window.close();
-			if (e.type == sf::Event::KeyPressed)
-			{
-				if (e.key.code == sf::Keyboard::W)
-					menuController->selectHigherItem();
-				else if (e.key.code == sf::Keyboard::S)
-					menuController->selectLowerItem();
-				else if (e.key.code == sf::Keyboard::Enter)
-					menuController->selectItem();
-				else if (e.key.code == sf::Keyboard::Escape)
-					quitGame();
-			}
-		}
+		handleEvent(window);
 		window.clear();
 		window.draw(*menuController->getBackground());
 		window.draw(*menuController->getGameName());

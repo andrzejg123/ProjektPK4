@@ -34,6 +34,9 @@ struct Category
 class SettingsController
 {
 public:
+	virtual void mouseMove(float x, float y) = 0;
+	virtual void mouseLeftClick(float x, float y) = 0;
+	virtual void mouseRightClick(float x, float y) = 0;
 	virtual sf::Sprite* getBackground() = 0;
 	virtual void initializeSettings() = 0;
 	virtual void selectHigherItem() = 0;

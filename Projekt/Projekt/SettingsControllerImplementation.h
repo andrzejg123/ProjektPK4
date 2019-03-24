@@ -30,7 +30,13 @@ class SettingsControllerImplementation : public SettingsController
 	void updateSettings() const;
 	void addRestartInfo();
 
+	void updateItemsIndexes(int item, int subItem);
+	void updateCurrentItems(float x, float y);
+
 public:
+	void mouseLeftClick(float x, float y) override;
+	void mouseRightClick(float x, float y) override;
+	void mouseMove(float x, float y) override;
 	sf::Sprite* getBackground() override;
 	void initializeSettings() override;
 	void selectHigherItem() override;

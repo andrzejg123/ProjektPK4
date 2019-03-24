@@ -92,6 +92,35 @@ void OptionsControllerImplementation::adjustBackgroundSize() const
 	}
 }
 
+int OptionsControllerImplementation::getNumberOfItem(const float x, const float y) const
+{
+	auto index = 0;
+	for (auto item : *optionsItems)
+	{
+		if (item->getGlobalBounds().contains(x, y))
+			return index;
+		index++;
+	}
+	return currentItem;
+}
+
+void OptionsControllerImplementation::mouseClick(const float x, const float y)
+{
+	currentItem = getNumberOfItem(x, y);
+	selectItem();
+}
+
+void OptionsControllerImplementation::mouseMove(const float x, const float y)
+{
+	const auto newNumber = getNumberOfItem(x, y);
+	if (newNumber != currentItem)
+	{
+		SoundController::getInstance()->playSound(SoundIndicator::MenuSelectItem);
+		currentItem = newNumber;
+		handleSelection();
+	}
+}
+
 void OptionsControllerImplementation::initializeOptions()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::MENU);

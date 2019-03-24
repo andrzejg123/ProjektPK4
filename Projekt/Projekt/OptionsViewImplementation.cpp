@@ -30,6 +30,31 @@ void OptionsViewImplementation::resumeGame()
 	shouldShowOptions = false;
 }
 
+void OptionsViewImplementation::handleEvent(sf::RenderWindow& window)
+{
+	sf::Event e;
+	while (window.pollEvent(e))
+	{
+		if (e.type == sf::Event::MouseMoved)
+			optionsController->mouseMove(e.mouseMove.x, e.mouseMove.y);
+		else if (e.type == sf::Event::KeyPressed)
+		{
+			if (e.key.code == sf::Keyboard::W)
+				optionsController->selectHigherItem();
+			else if (e.key.code == sf::Keyboard::S)
+				optionsController->selectLowerItem();
+			else if (e.key.code == sf::Keyboard::Enter)
+				optionsController->selectItem();
+			else if (e.key.code == sf::Keyboard::Escape)
+				resumeGame();
+		}
+		else if (e.type == sf::Event::MouseButtonPressed && e.mouseButton.button == sf::Mouse::Left)
+			optionsController->mouseClick(e.mouseButton.x, e.mouseButton.y);
+		else if (e.type == sf::Event::Closed)
+			window.close();
+	}
+}
+
 void OptionsViewImplementation::show()
 {
 	auto& window = *this->window;
@@ -40,23 +65,7 @@ void OptionsViewImplementation::show()
 	optionsController->initializeOptions();
 	while (window.isOpen() && shouldShowOptions)
 	{
-		sf::Event e;
-		while (window.pollEvent(e))
-		{
-			if (e.type == sf::Event::Closed)
-				window.close();
-			if (e.type == sf::Event::KeyPressed)
-			{
-				if (e.key.code == sf::Keyboard::W)
-					optionsController->selectLowerItem();
-				else if (e.key.code == sf::Keyboard::S)
-					optionsController->selectHigherItem();
-				else if (e.key.code == sf::Keyboard::Enter)
-					optionsController->selectItem();
-				else if (e.key.code == sf::Keyboard::Escape)
-					resumeGame();
-			}
-		}
+		handleEvent(window);
 		window.clear();
 		window.draw(background);
 		window.draw(*overlay);

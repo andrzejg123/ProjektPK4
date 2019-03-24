@@ -8,7 +8,8 @@ class SettingsViewImplementation : public SettingsView, public View
 {
 	sf::RenderWindow* window;
 	SettingsController* settingsController;
-	bool shouldShowSettings = true;
+	bool shouldShowWindow = true;
+	void handleEvent(sf::RenderWindow& window);
 public:
 	void updateWindowParams(SettingsData settingsData) override;
 	sf::Vector2u getWindowSize() override;

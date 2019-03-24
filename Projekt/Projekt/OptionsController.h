@@ -4,6 +4,8 @@
 class OptionsController
 {
 public:
+	virtual void mouseMove(float x, float y) = 0;
+	virtual void mouseClick(float x, float y) = 0;
 	virtual sf::Sprite* getItemsBackground() = 0;
 	virtual sf::RectangleShape* getBackgroundBorders() = 0;
 	virtual std::vector<sf::Text*>* getOptionsItems() = 0;

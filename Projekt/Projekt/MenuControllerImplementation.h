@@ -22,8 +22,11 @@ class MenuControllerImplementation : public MenuController
 	sf::Text* createNewMenuItem(sf::String text) const;
 	void handleSelection() const;
 	void repositionItems() const;
+	int getNumberOfItem(float x, float y) const;
 
 public:
+	void mouseClick(float x, float y) override;
+	void mouseMove(float x, float y) override;
 	sf::Text* getGameName() override;
 	sf::Sprite* getBackground() override;
 	void selectItem() override;

@@ -8,6 +8,7 @@ class MenuViewImplementation : public MenuView, public View
 {
 	MenuController* menuController;
 	sf::RenderWindow* window;
+	void handleEvent(sf::RenderWindow& window);
 
 public:
 	void show() override;
