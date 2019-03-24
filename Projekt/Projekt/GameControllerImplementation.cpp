@@ -28,7 +28,7 @@ void GameControllerImplementation::initializeGame()
 		{ 
 		case EntityKind::Enemy: 
 			
-			for (auto i = 0; i < entitiesNumber; ++i)
+			for (auto i = 0; i < entitiesNumber + 100; ++i)
 				gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder, gameEntityDataHolder).create(
 					spawnArea.getEntityIndicator(), spawnArea.getSpawnAreaRect(), gameplayData->level));
 			break;
@@ -46,7 +46,7 @@ void GameControllerImplementation::initializeGame()
 	}
 
 	gameObjectsHolder->setPlayer(new Warrior(gameTexturesHolder->getTexture(ObjectIndicator::PlayerWarrior), gameEntityDataHolder->getAnimationData(ObjectIndicator::PlayerWarrior)));
-	gameObjectsHolder->getPlayer()->setPosition(sf::Vector2f(10, 80));
+	gameObjectsHolder->getPlayer()->setPosition(sf::Vector2f(30, 100));
 }
 
 void GameControllerImplementation::movePlayer(const Direction direction, sf::Time& elapsedTime)

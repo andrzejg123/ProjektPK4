@@ -37,6 +37,8 @@ void SettingsViewImplementation::show()
 					settingsController->selectRightItem();
 				else if (e.key.code == sf::Keyboard::Enter)
 					settingsController->selectItem();
+				else if (e.key.code == sf::Keyboard::Escape)
+					hideSettings();
 			}
 		}
 		window.clear();

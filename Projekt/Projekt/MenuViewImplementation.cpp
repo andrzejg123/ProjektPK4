@@ -25,6 +25,8 @@ void MenuViewImplementation::show()
 					menuController->selectLowerItem();
 				else if (e.key.code == sf::Keyboard::Enter)
 					menuController->selectItem();
+				else if (e.key.code == sf::Keyboard::Escape)
+					quitGame();
 			}
 		}
 		window.clear();
@@ -36,7 +38,7 @@ void MenuViewImplementation::show()
 	}
 }
 
-void MenuViewImplementation::hideMenu()
+void MenuViewImplementation::quitGame()
 {
 	window->close();
 }

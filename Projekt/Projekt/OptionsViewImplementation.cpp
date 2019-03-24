@@ -53,6 +53,8 @@ void OptionsViewImplementation::show()
 					optionsController->selectHigherItem();
 				else if (e.key.code == sf::Keyboard::Enter)
 					optionsController->selectItem();
+				else if (e.key.code == sf::Keyboard::Escape)
+					resumeGame();
 			}
 		}
 		window.clear();

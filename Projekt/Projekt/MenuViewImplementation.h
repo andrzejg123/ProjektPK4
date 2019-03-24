@@ -11,7 +11,7 @@ class MenuViewImplementation : public MenuView, public View
 
 public:
 	void show() override;
-	void hideMenu() override;
+	void quitGame() override;
 	void startNewGame() const override;
 	void loadGame() override;
 	void showExtras() override;

@@ -69,7 +69,7 @@ void MenuControllerImplementation::selectItem()
 		case 1: return menuView->loadGame();
 		case 2: return menuView->showSettings();
 		case 3: return menuView->showExtras();
-		case 4: return menuView->hideMenu();
+		case 4: return menuView->quitGame();
 		default: ;
 	}
 }

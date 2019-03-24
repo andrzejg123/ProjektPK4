@@ -7,7 +7,7 @@ class RandomMoveHelper
 	float currentTimeToWait = -1.0f;
 	float timeToWait = 5.0f;
 	int changeDirectionChance = 60;
-	int waitChance = 4;
+	int waitChance = 3;
 	Moveable* movable;
 	Direction lastDirection;
 	sf::Vector2f lastPosition;
