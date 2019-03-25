@@ -53,11 +53,15 @@ void GameControllerImplementation::movePlayer(const Direction direction, sf::Tim
 {
 	auto player = gameObjectsHolder->getPlayer();
 	player->move(direction, elapsedTime);
+
 	for (auto enemy : *gameObjectsHolder->getEnemies())
-	{
 		if(enemy->getFixedBounds().intersects(player->getFixedBounds()))
 			player->cancelMove();
-	}
+
+	for (auto interactive : *gameObjectsHolder->getInteractiveList())
+		if (interactive->getFixedBounds().intersects(player->getFixedBounds()))
+			player->cancelMove();
+	
 	if (gameMapController->checkCollision(player))
 		player->cancelMove();
 	player->setFacing(DistanceHelper::directionToFacing(player->getFacing(), direction));
@@ -134,6 +138,7 @@ GameControllerImplementation::GameControllerImplementation(GameView* gameView): 
 	this->gameObjectsHolder = new GameObjectsHolder();
 	this->gameEnemyController = new GameEnemyControllerImplementation(gameObjectsHolder, gameTexturesHolder);
 	this->gameEntityDataHolder = new GameEntityDataHolder(fileReadingController);
+	this->interactionController = new GameInteractionController(gameObjectsHolder);
 }
 
 GameControllerImplementation::~GameControllerImplementation()
@@ -143,4 +148,5 @@ GameControllerImplementation::~GameControllerImplementation()
 	delete this->gameEnemyController;
 	delete this->fileReadingController;
 	delete this->gameEntityDataHolder;
+	delete this->interactionController;
 }

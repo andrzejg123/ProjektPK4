@@ -24,7 +24,6 @@ struct AnimationData
 	std::vector<AnimationTypeData> animationTypesData;
 };
 
-//TODO: information about how many animation steps are in certain animation type, frame sizes
 class Animated : public virtual Object
 {
 	bool animating = false;

@@ -7,6 +7,7 @@
 #include "DistanceHelper.h"
 #include "OptionsViewImplementation.h"
 #include "ViewRouter.h"
+#include "Log.h"
 
 GameViewImplementation::GameViewImplementation(sf::RenderWindow* window)
 {

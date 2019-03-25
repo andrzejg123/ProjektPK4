@@ -4,6 +4,7 @@
 class Damageable : public virtual Object
 {
 	float healthPoints = 100.0;
+	float maxHealthPoints = 100.0;
 	float armorPoints = 100.0;
 protected:	
 	virtual void onGetHit() = 0;

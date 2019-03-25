@@ -7,6 +7,11 @@ Chest::Chest(sf::Texture& chestTexture, InteractionType interactionType, Animati
 	sprite.setTextureRect(sf::IntRect(0, 0, animationData.frameSizeX, animationData.frameSizeY));
 }
 
+sf::FloatRect Chest::getFixedBounds() const
+{
+	return sprite.getGlobalBounds();
+}
+
 Chest::~Chest()
 {
 }

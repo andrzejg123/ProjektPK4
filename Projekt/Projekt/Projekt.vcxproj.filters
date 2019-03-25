@@ -209,6 +209,8 @@
     <ClInclude Include="GameViewCloseCallback.h">
       <Filter>Game</Filter>
     </ClInclude>
+    <ClInclude Include="GameInteractionController.h" />
+    <ClInclude Include="GameViewInterfaceDrawer.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
@@ -342,5 +344,7 @@
     <ClCompile Include="ViewRouter.cpp">
       <Filter>Main</Filter>
     </ClCompile>
+    <ClCompile Include="GameInteractionController.cpp" />
+    <ClCompile Include="GameViewInterfaceDrawer.cpp" />
   </ItemGroup>
 </Project>
