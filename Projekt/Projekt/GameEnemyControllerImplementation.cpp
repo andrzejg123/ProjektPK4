@@ -21,7 +21,7 @@ void GameEnemyControllerImplementation::handleAttack(Enemy* enemy) const
 void GameEnemyControllerImplementation::updateEnemy(sf::Time& elapsedTime, Enemy* enemy)
 {
 	const auto player = gameObjectsHolder->getPlayer();
-	enemy->incrementAttackCounter();
+	enemy->incrementAttackCounter(elapsedTime);
 	const auto distance = DistanceHelper::getDistance(player->getPosition(), enemy->getPosition());
 	const auto direction = DistanceHelper::getDirection(enemy->getPosition(), player->getPosition());
 	if (distance < enemy->getAttackRadius())

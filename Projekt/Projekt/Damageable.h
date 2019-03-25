@@ -11,6 +11,7 @@ protected:
 	virtual void onDeath() = 0;
 public:
 	void onDamage(float damage);
+	bool isDead() const;
 	Damageable();
 	~Damageable();
 };

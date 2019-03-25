@@ -74,6 +74,68 @@ void SettingsControllerImplementation::addRestartInfo()
 	repositionView();
 }
 
+bool SettingsControllerImplementation::updateItemsIndexes(const int item, const int subItem)
+{
+	currentItem = item;
+	currentSubItem = subItem;
+	return true;
+}
+
+bool SettingsControllerImplementation::updateCurrentItems(const float x, const float y)
+{
+	sf::Text* foundedItem = nullptr;
+	for (auto toDraw : *textsToDraw)
+		if (toDraw->getGlobalBounds().contains(x, y))
+			foundedItem = toDraw;
+	if (foundedItem == nullptr)
+		return false;
+	auto item = 0;
+	for (auto category : *categories)
+	{
+		auto subItem = 1;
+		if (category->categoryName == foundedItem)
+			return updateItemsIndexes(item, 0);
+		for (auto subCategory : category->subCategories)
+		{
+			if (subCategory->subCategoryName == foundedItem)
+				return updateItemsIndexes(item, subItem);
+			subItem++;
+		}
+		item++;
+	}
+	return false;
+}
+
+void SettingsControllerImplementation::mouseLeftClick(const float x, const float y)
+{
+	if(updateCurrentItems(x, y))
+		if (currentSubItem != 0)
+			selectRightItem();
+		else
+			selectItem();
+}
+
+void SettingsControllerImplementation::mouseRightClick(const float x, const float y)
+{
+	if (updateCurrentItems(x, y))
+		if (currentSubItem != 0)
+			selectLeftItem();
+		else
+			selectItem();
+}
+
+void SettingsControllerImplementation::mouseMove(const float x, const float y)
+{
+	const auto oldItem = currentItem;
+	const auto oldSubItem = currentSubItem;
+	updateCurrentItems(x, y);
+	if(oldItem != currentItem || oldSubItem != currentSubItem)
+	{
+		SoundController::getInstance()->playSound(SoundIndicator::MenuSelectItem);
+		updateSelections();
+	}
+}
+
 sf::Sprite* SettingsControllerImplementation::getBackground()
 {
 	return background;

@@ -4,7 +4,7 @@
 #include "FileNameHelper.h"
 #include "TexturesHolder.h"
 
-sf::Text* OptionsControllerImplementation::createNewItem(const sf::String text) const
+sf::Text* OptionsControllerImplementation::createNewItem(const sf::String& text) const
 {
 	auto textView = new sf::Text();
 	textView->setString(text);
@@ -52,6 +52,11 @@ std::vector<sf::Text*>* OptionsControllerImplementation::getOptionsItems()
 	return optionsItems;
 }
 
+sf::RectangleShape* OptionsControllerImplementation::getBackgroundBorders()
+{
+	return backgroundBorders;
+}
+
 sf::Sprite* OptionsControllerImplementation::getItemsBackground()
 {
 	return background;
@@ -61,7 +66,6 @@ void OptionsControllerImplementation::adjustBackgroundSize() const
 {
 	if (optionsItems->size() > 0)
 	{
-		const auto padding = 40.0f;
 		auto maxWidth = 0.0f;
 		for (auto menuItem : *optionsItems)
 		{
@@ -72,29 +76,58 @@ void OptionsControllerImplementation::adjustBackgroundSize() const
 		const auto windowWidth = optionsView->getWindowSize().x;
 		const auto firstItem = (*optionsItems).front();
 		const auto lastItem = (*optionsItems).back();
-		const auto backWidth = maxWidth + (4 * padding);
-		const auto backHeight = lastItem->getPosition().y + (3 * padding) - firstItem->getPosition().y;
-		const auto backX = (windowWidth - maxWidth - (4 * padding)) / 2;
-		const auto backY = firstItem->getPosition().y - padding;
+		const auto backWidth = maxWidth + (4 * backgroundPadding);
+		const auto backHeight = lastItem->getPosition().y + (3 * backgroundPadding) - firstItem->getPosition().y;
+		const auto backX = (windowWidth - maxWidth - (4 * backgroundPadding)) / 2;
+		const auto backY = firstItem->getPosition().y - backgroundPadding;
 		auto& texture = TexturesHolder::getInstance()->getTexture(ObjectIndicator::MenuBackground);
 		texture.setRepeated(true);
 		const auto rects = sf::IntRect(backX, backY, backWidth, backHeight);
 		background->setPosition(backX, backY);
 		background->setTextureRect(rects);
 		background->setTexture(texture);
+		backgroundBorders->setPosition(backX - borderThickness, backY - borderThickness);
+		backgroundBorders->setSize(sf::Vector2f(backWidth + (2 * borderThickness), backHeight + (2 * borderThickness)));
+		backgroundBorders->setFillColor(borderColor);
+	}
+}
+
+int OptionsControllerImplementation::getNumberOfItem(const float x, const float y) const
+{
+	auto index = 0;
+	for (auto item : *optionsItems)
+	{
+		if (item->getGlobalBounds().contains(x, y))
+			return index;
+		index++;
+	}
+	return -1;
+}
+
+void OptionsControllerImplementation::mouseClick(const float x, const float y)
+{
+	const auto newNumber = getNumberOfItem(x, y);
+	if(newNumber >= 0)
+	{
+		currentItem = getNumberOfItem(x, y);
+		selectItem();
+	}
+}
+
+void OptionsControllerImplementation::mouseMove(const float x, const float y)
+{
+	const auto newNumber = getNumberOfItem(x, y);
+	if (newNumber != currentItem && newNumber >= 0)
+	{
+		SoundController::getInstance()->playSound(SoundIndicator::MenuSelectItem);
+		currentItem = newNumber;
+		handleSelection();
 	}
 }
 
 void OptionsControllerImplementation::initializeOptions()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::MENU);
-	if (font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial)))
-	{
-		optionsItems->push_back(createNewItem(Translations::getText(TextId::ResumeGame)));
-		optionsItems->push_back(createNewItem(Translations::getText(TextId::Settings)));
-		optionsItems->push_back(createNewItem(Translations::getText(TextId::BackToMainMenu)));
-		optionsItems->push_back(createNewItem(Translations::getText(TextId::Quit)));
-	}
 	handleSelection();
 	adjustBackgroundSize();
 }
@@ -102,18 +135,18 @@ void OptionsControllerImplementation::initializeOptions()
 void OptionsControllerImplementation::selectHigherItem()
 {
 	SoundController::getInstance()->playSound(SoundIndicator::MenuSelectItem);
-	currentItem++;
-	if (currentItem >= optionsItems->size())
-		currentItem = 0;
+	currentItem--;
+	if (currentItem < 0)
+		currentItem = optionsItems->size() - 1;
 	handleSelection();
 }
 
 void OptionsControllerImplementation::selectLowerItem()
 {
 	SoundController::getInstance()->playSound(SoundIndicator::MenuSelectItem);
-	currentItem--;
-	if (currentItem < 0)
-		currentItem = optionsItems->size() - 1;
+	currentItem++;
+	if (currentItem >= optionsItems->size())
+		currentItem = 0;
 	handleSelection();
 }
 
@@ -135,6 +168,13 @@ OptionsControllerImplementation::OptionsControllerImplementation(OptionsView* op
 	this->optionsView = optionsView;
 	optionsItems = new std::vector<sf::Text*>();
 	background = new sf::Sprite();
+	backgroundBorders = new sf::RectangleShape();
+
+	font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial));
+	optionsItems->push_back(createNewItem(Translations::getText(TextId::ResumeGame)));
+	optionsItems->push_back(createNewItem(Translations::getText(TextId::Settings)));
+	optionsItems->push_back(createNewItem(Translations::getText(TextId::BackToMainMenu)));
+	optionsItems->push_back(createNewItem(Translations::getText(TextId::Quit)));
 }
 
 OptionsControllerImplementation::~OptionsControllerImplementation()
@@ -143,4 +183,5 @@ OptionsControllerImplementation::~OptionsControllerImplementation()
 		delete menuItem;
 	delete optionsItems;
 	delete background;
+	delete backgroundBorders;
 }

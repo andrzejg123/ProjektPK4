@@ -18,7 +18,7 @@ enum class Direction
 
 class Moveable : public virtual Object
 {
-	float speed = 60.0;
+	float speed = 80.0;
 	float moveX = 0, moveY = 0;
 
 public:

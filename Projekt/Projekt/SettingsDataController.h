@@ -23,7 +23,7 @@ protected:
 public:
 	virtual SettingsConstance& getSettingsConstance() = 0;
 	virtual void initialize(SettingsData& settingsData) = 0;
-	virtual sf::Text* createNewSettingsItem(sf::String text) const = 0;
+	virtual sf::Text* createNewSettingsItem(const sf::String& text) const = 0;
 	virtual ~SettingsDataController() = default;
 
 };

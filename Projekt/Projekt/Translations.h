@@ -53,13 +53,14 @@ class Translations final
 	std::locale locale;
 	explicit Translations(LanguageIndicator language);
 	std::vector<sf::String>* translations;
+	sf::String notTranslated = sf::String("???");
 	static Translations* instance;
 	void fetchTranslations(LanguageIndicator language) const;
 	void setLocale(LanguageIndicator language);
 public:
 	static void open(LanguageIndicator language);
 	static void close();
-	static sf::String getText(TextId textId);
+	static sf::String& getText(TextId textId);
 	~Translations();
 };
 

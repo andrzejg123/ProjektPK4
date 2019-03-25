@@ -2,18 +2,17 @@
 #include "MenuView.h"
 #include "MenuController.h"
 #include "GameView.h"
-#include "SettingsView.h"
-#include "TexturesHolder.h"
+#include "View.h"
 
-class MenuViewImplementation :
-	public MenuView
+class MenuViewImplementation : public MenuView, public View
 {
 	MenuController* menuController;
 	sf::RenderWindow* window;
+	void handleEvent(sf::RenderWindow& window);
 
 public:
-	void showMenu() override;
-	void hideMenu() override;
+	void show() override;
+	void quitGame() override;
 	void startNewGame() const override;
 	void loadGame() override;
 	void showExtras() override;

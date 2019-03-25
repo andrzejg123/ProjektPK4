@@ -161,6 +161,7 @@
     <ClInclude Include="DistanceHelper.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyParams.h" />
+    <ClInclude Include="ExtrasView.h" />
     <ClInclude Include="FileNameHelper.h" />
     <ClInclude Include="FileReadingController.h" />
     <ClInclude Include="FlyingObject.h" />
@@ -198,8 +199,7 @@
     <ClInclude Include="OptionsView.h" />
     <ClInclude Include="OptionsViewImplementation.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="RandomMoveController.h" />
-    <ClInclude Include="RandomMoveControllerImplementation.h" />
+    <ClInclude Include="RandomMoveHelper.h" />
     <ClInclude Include="SettingsController.h" />
     <ClInclude Include="SettingsControllerImplementation.h" />
     <ClInclude Include="SettingsDataController.h" />
@@ -213,6 +213,7 @@
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
     <ClInclude Include="Translations.h" />
+    <ClInclude Include="View.h" />
     <ClInclude Include="ViewHelper.h" />
     <ClInclude Include="ViewRouter.h" />
     <ClInclude Include="Warrior.h" />
@@ -227,6 +228,7 @@
     <ClCompile Include="DistanceHelper.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyParams.cpp" />
+    <ClCompile Include="ExtrasView.cpp" />
     <ClCompile Include="FileNameHelper.cpp" />
     <ClCompile Include="FileReadingController.cpp" />
     <ClCompile Include="FlyingObject.cpp" />
@@ -256,7 +258,7 @@
     <ClCompile Include="OptionsViewImplementation.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Projekt.cpp" />
-    <ClCompile Include="RandomMoveControllerImplementation.cpp" />
+    <ClCompile Include="RandomMoveHelper.cpp" />
     <ClCompile Include="SettingsControllerImplementation.cpp" />
     <ClCompile Include="SettingsDataControllerImplementation.cpp" />
     <ClCompile Include="SettingsReader.cpp" />

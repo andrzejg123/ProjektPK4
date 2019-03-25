@@ -36,7 +36,6 @@ void Moveable::move(const Direction direction, sf::Time& elapsedTime)
 		moveX = speed * horizontal;
 		moveY = -speed * horizontal;
 		break;
-	case Direction::None: break;
 	default: ;
 	}
 	const auto seconds = elapsedTime.asSeconds();

@@ -1,37 +1,66 @@
 #include "stdafx.h"
-#include "RandomMoveControllerImplementation.h"
-#include <time.h>
+#include "RandomMoveHelper.h"
+#include "Log.h"
+#include "DistanceHelper.h"
 
-Direction RandomMoveControllerImplementation::getRandomDirection()
+Direction RandomMoveHelper::getRandomDirection()
 {
 	return static_cast<Direction>(rand() % 8);
 }
 
-bool RandomMoveControllerImplementation::rollRandom(const int from, const int to)
+bool RandomMoveHelper::rollRandom(const int from, const int to)
 {
-	return from < (rand() % to);
+	return from > getRandomInt(to);
 }
 
-Direction RandomMoveControllerImplementation::getDirection()
+int RandomMoveHelper::getRandomInt(const int number)
 {
-	if(lastPosition != enemy->getPosition())
+	return rand() % number;
+}
+
+Direction RandomMoveHelper::handleWait(const sf::Time& time)
+{
+	currentTimeToWait -= time.asSeconds();
+	return Direction::None;
+}
+
+Direction RandomMoveHelper::checkNewDirection(sf::Time& elapsedTime)
+{
+	lastPosition = movable->getPosition();
+	if (rollRandom(1, waitChance / elapsedTime.asSeconds()))
 	{
-		lastPosition = enemy->getPosition();
-		if (rollRandom(1, 100))
-			lastDirection = getRandomDirection();
-	} else
+		Log::debugS("waiting");
+		currentTimeToWait = timeToWait;
+		return Direction::None;
+	}
+	if (maxDistance < DistanceHelper::getDistance(lastPosition, startPosition))
+	{
+		Log::debugS("coming back to spawn");
+		return DistanceHelper::getDirection(lastPosition, startPosition);
+	}
+	if (rollRandom(1, changeDirectionChance / elapsedTime.asSeconds()))
+	{
+		Log::debugS("changed direction"); 
+		return getRandomDirection();
+	}
+	return lastDirection;
+}
+
+Direction RandomMoveHelper::getDirection(sf::Time& elapsedTime)
+{
+	if (currentTimeToWait > 0)
+		return handleWait(elapsedTime);
+	if (lastPosition != movable->getPosition())
+		lastDirection = checkNewDirection(elapsedTime);
+	else
 		lastDirection = getRandomDirection();
 	return lastDirection;
 }
 
-RandomMoveControllerImplementation::RandomMoveControllerImplementation(Enemy* enemy)
+RandomMoveHelper::RandomMoveHelper(Moveable* movable)
 {
-	this->enemy = enemy;
+	this->movable = movable;
 	lastDirection = getRandomDirection();
-	lastPosition = enemy->getPosition();
-	srand(time(nullptr));
-}
-
-RandomMoveControllerImplementation::~RandomMoveControllerImplementation()
-{
+	lastPosition = this->movable->getPosition();
+	startPosition = lastPosition;
 }

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "Enemy.h"
 #include "DistanceHelper.h"
-#include "RandomMoveControllerImplementation.h"
+#include "RandomMoveHelper.h"
 #include "EnemyParams.h"
 #include "Log.h"
 
@@ -35,9 +35,9 @@ int Enemy::getAttackCounter() const
 	return attackCounter;
 }
 
-void Enemy::incrementAttackCounter()
+void Enemy::incrementAttackCounter(sf::Time& elapsedTime)
 {
-	attackCounter++;
+	attackCounter += elapsedTime.asSeconds();
 }
 
 void Enemy::resetAttackCounter()
@@ -47,8 +47,11 @@ void Enemy::resetAttackCounter()
 
 void Enemy::makeRandomMove(sf::Time& elapsedTime)
 {
-	const auto direction = randomMoveHelper->getDirection();
-	makeMove(direction, elapsedTime);
+	const auto direction = randomMoveHelper->getDirection(elapsedTime);
+	if (direction != Direction::None)
+		makeMove(direction, elapsedTime);
+	else
+		stopAnimate(AnimationType::Move);
 }
 
 void Enemy::makeMove(const Direction direction, sf::Time& elapsedTime)
@@ -60,7 +63,7 @@ void Enemy::makeMove(const Direction direction, sf::Time& elapsedTime)
 
 Enemy::Enemy(EnemyParams* enemyParams, AnimationData& animationData) : Animated(animationData)
 {
-	randomMoveHelper = new RandomMoveControllerImplementation(this);
+	randomMoveHelper = new RandomMoveHelper(this);
 	attackRadius = enemyParams->getAttackRadius();
 	visionRadius = enemyParams->getVisionRadius();
 	setPosition(sf::Vector2f(enemyParams->getPositionX(), enemyParams->getPositionY()));

@@ -10,6 +10,11 @@ void Damageable::onDamage(const float damage)
 		onGetHit();
 }
 
+bool Damageable::isDead() const
+{
+	return healthPoints <= 0;
+}
+
 Damageable::Damageable()
 {
 }

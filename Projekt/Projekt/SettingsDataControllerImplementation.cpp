@@ -7,13 +7,10 @@
 
 void SettingsDataControllerImplementation::initialize(SettingsData& settingsData)
 {
-	if (font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial)))
-	{
-		generateVideoSettings(settingsData);
-		generateSoundSettings(settingsData);
-		generateOtherSettings(settingsData);
-		generateControlSettings();
-	}
+	generateVideoSettings(settingsData);
+	generateSoundSettings(settingsData);
+	generateOtherSettings(settingsData);
+	generateControlSettings();
 }
 
 int SettingsDataControllerImplementation::checkBoolSelection(const std::vector<bool>& optionsSelections, const bool settingsOption)
@@ -69,7 +66,7 @@ void SettingsDataControllerImplementation::generateControlSettings() const
 	categories->push_back(generateSettingsCategory(category3Name, subCategories));
 }
 
-void SettingsDataControllerImplementation::generateSoundSettings(SettingsData& settingsData) const
+void SettingsDataControllerImplementation::generateSoundSettings(const SettingsData& settingsData) const
 {
 	const auto categoryName = Translations::getText(TextId::Sound);
 	auto subCategories = std::vector<SubCategory*>();
@@ -97,10 +94,15 @@ void SettingsDataControllerImplementation::generateSoundSettings(SettingsData& s
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
 }
 
-void SettingsDataControllerImplementation::generateVideoSettings(SettingsData& settingsData) const
+void SettingsDataControllerImplementation::generateVideoSettings(const SettingsData& settingsData) const
 {
 	const auto categoryName = Translations::getText(TextId::Video);
 	auto subCategories = std::vector<SubCategory*>();
+
+	const auto options4Name = Translations::getText(TextId::Fullscreen);
+	auto options4 = std::vector<sf::String>{ Translations::getText(TextId::Off), Translations::getText(TextId::On) };
+	const auto selection4 = checkBoolSelection(settingsConstance.boolSelection, settingsData.fullscreen);
+	subCategories.push_back(generateSettingsSubCategory(options4Name, options4, selection4, SubCategoryIndicator::Fullscreen));
 
 	const auto options1Name = Translations::getText(TextId::Resolution);
 	auto options1 = std::vector<sf::String>{ "800x600", "1024x768", "1280x900", "1440x900", "1600x900", "1920x1080", "1920x1200" };
@@ -118,15 +120,10 @@ void SettingsDataControllerImplementation::generateVideoSettings(SettingsData& s
 	const auto selection3 = checkBoolSelection(settingsConstance.boolSelection, settingsData.vSyncEnabled);
 	subCategories.push_back(generateSettingsSubCategory(options3Name, options3, selection3, SubCategoryIndicator::VSyncEnabled));
 
-	const auto options4Name = Translations::getText(TextId::Fullscreen);
-	auto options4 = std::vector<sf::String>{ Translations::getText(TextId::Off), Translations::getText(TextId::On) };
-	const auto selection4 = checkBoolSelection(settingsConstance.boolSelection, settingsData.fullscreen);
-	subCategories.push_back(generateSettingsSubCategory(options4Name, options4, selection4, SubCategoryIndicator::Fullscreen));
-
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
 }
 
-void SettingsDataControllerImplementation::generateOtherSettings(SettingsData& settingsData) const
+void SettingsDataControllerImplementation::generateOtherSettings(const SettingsData& settingsData) const
 {
 	const auto categoryName = Translations::getText(TextId::Others);
 	auto subCategories = std::vector<SubCategory*>();
@@ -140,7 +137,7 @@ void SettingsDataControllerImplementation::generateOtherSettings(SettingsData& s
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));
 }
 
-SubCategory* SettingsDataControllerImplementation::generateSettingsSubCategory(const sf::String subCategoryName,
+SubCategory* SettingsDataControllerImplementation::generateSettingsSubCategory(const sf::String& subCategoryName,
 	std::vector<sf::String>& subCategoriesNames, const int currentSelection, const SubCategoryIndicator subCategoryIndicator) const
 {
 	auto subCategory = new SubCategory();
@@ -152,7 +149,7 @@ SubCategory* SettingsDataControllerImplementation::generateSettingsSubCategory(c
 	return subCategory;
 }
 
-Category* SettingsDataControllerImplementation::generateSettingsCategory(const sf::String categoryName,
+Category* SettingsDataControllerImplementation::generateSettingsCategory(const sf::String& categoryName,
 	std::vector<SubCategory*>& subCategories) const
 {
 	auto category = new Category();
@@ -166,7 +163,7 @@ SettingsConstance& SettingsDataControllerImplementation::getSettingsConstance()
 	return settingsConstance;
 }
 
-sf::Text* SettingsDataControllerImplementation::createNewSettingsItem(const sf::String text) const
+sf::Text* SettingsDataControllerImplementation::createNewSettingsItem(const sf::String& text) const
 {
 	auto textView = new sf::Text();
 	textView->setString(text);
@@ -180,4 +177,5 @@ SettingsDataControllerImplementation::SettingsDataControllerImplementation(std::
 {
 	this->categories = categories;
 	this->settingsView = settingsView;
+	font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial));
 }

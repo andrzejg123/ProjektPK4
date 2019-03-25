@@ -6,7 +6,7 @@
 #include "FileNameHelper.h"
 #include "TexturesHolder.h"
 
-sf::Text* MenuControllerImplementation::createNewMenuItem(const sf::String text) const
+sf::Text* MenuControllerImplementation::createNewMenuItem(const sf::String& text) const
 {
 	auto textView = new sf::Text();
 	textView->setString(text);
@@ -39,14 +39,53 @@ void MenuControllerImplementation::repositionItems() const
 	auto totalItemsSize = 0.0f;
 	for (auto menuItem : *menuItems)
 		totalItemsSize += menuItem->getGlobalBounds().height;
-	const auto singleSpace = (height - totalItemsSize) / (10.0f + itemsCount - 1.0f);
-	auto startingPosition = singleSpace * 4;
+	const auto singleSpace = (height - totalItemsSize) / (12.0f + itemsCount - 1.0f);
+	auto startingPosition = singleSpace * 6;
+	gameName->setPosition(sf::Vector2f((width - gameName->getGlobalBounds().width) / 2, singleSpace));
 	for (auto menuItem : *menuItems)
 	{
 		const auto itemWidth = menuItem->getGlobalBounds().width;
 		menuItem->setPosition((width - itemWidth) / 2, singleSpace + startingPosition);
 		startingPosition += menuItem->getGlobalBounds().height + singleSpace;
 	}
+}
+
+int MenuControllerImplementation::getNumberOfItem(const float x, const float y) const
+{
+	auto index = 0;
+	for (auto menuItem : *menuItems)
+	{
+		if (menuItem->getGlobalBounds().contains(x, y))
+			return index;
+		index++;
+	}
+	return -1;
+}
+
+void MenuControllerImplementation::mouseClick(const float x, const float y)
+{
+	const auto newNumber = getNumberOfItem(x, y);
+	if(newNumber >= 0)
+	{
+		currentItem = getNumberOfItem(x, y);
+		selectItem();
+	}
+}
+
+void MenuControllerImplementation::mouseMove(const float x, const float y)
+{
+	const auto newNumber = getNumberOfItem(x, y);
+	if(newNumber != currentItem && newNumber >= 0)
+	{
+		SoundController::getInstance()->playSound(SoundIndicator::MenuSelectItem);
+		currentItem = newNumber;
+		handleSelection();
+	}
+}
+
+sf::Text* MenuControllerImplementation::getGameName()
+{
+	return gameName;
 }
 
 sf::Sprite* MenuControllerImplementation::getBackground()
@@ -63,7 +102,7 @@ void MenuControllerImplementation::selectItem()
 		case 1: return menuView->loadGame();
 		case 2: return menuView->showSettings();
 		case 3: return menuView->showExtras();
-		case 4: return menuView->hideMenu();
+		case 4: return menuView->quitGame();
 		default: ;
 	}
 }
@@ -89,14 +128,6 @@ void MenuControllerImplementation::selectLowerItem()
 void MenuControllerImplementation::initializeMenu()
 {
 	SoundController::getInstance()->playMusic(MusicIndicator::MENU);
-	if (font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial)))
-	{
-		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::StartNewGame)));
-		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::LoadGame)));
-		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Settings)));
-		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Extras)));
-		menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Quit)));
-	}
 	handleSelection();
 }
 
@@ -107,9 +138,20 @@ std::vector<sf::Text*>* MenuControllerImplementation::getMenuItems()
 
 MenuControllerImplementation::MenuControllerImplementation(MenuView* menuView)
 {
-	this->menuView = menuView;
 	menuItems = new std::vector<sf::Text*>();
+	this->menuView = menuView;
 	const auto windowSize = menuView->getWindowSize();
+
+	font.loadFromFile(FileNameHelper::getFontFileName(FontIndicator::Arial));
+
+	gameName = createNewMenuItem(Translations::getText(TextId::GameName));
+	gameName->setCharacterSize(ViewHelper::adjustFontSize(gameNameTextSize, windowSize));
+	menuItems->push_back(createNewMenuItem(Translations::getText(TextId::StartNewGame)));
+	menuItems->push_back(createNewMenuItem(Translations::getText(TextId::LoadGame)));
+	menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Settings)));
+	menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Extras)));
+	menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Quit)));
+
 	auto& texture = TexturesHolder::getInstance()->getTexture(ObjectIndicator::MenuBackground);
 	texture.setRepeated(true);
 	const auto rects = sf::IntRect(0, 0, windowSize.x, windowSize.y);
@@ -122,4 +164,5 @@ MenuControllerImplementation::~MenuControllerImplementation()
 		delete menuItem;
 	delete menuItems;
 	delete background;
+	delete gameName;
 }

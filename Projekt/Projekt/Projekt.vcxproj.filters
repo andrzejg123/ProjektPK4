@@ -37,6 +37,9 @@
     <Filter Include="Options">
       <UniqueIdentifier>{10d8ac60-b22e-4ead-b5ff-5523090fe835}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Extras">
+      <UniqueIdentifier>{e4b8d02c-81b9-4819-bf96-b567ae1db796}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GameControllerImplementation.h">
@@ -156,12 +159,6 @@
     <ClInclude Include="EnemyFactory.h">
       <Filter>Enemy</Filter>
     </ClInclude>
-    <ClInclude Include="RandomMoveController.h">
-      <Filter>Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="RandomMoveControllerImplementation.h">
-      <Filter>Enemy</Filter>
-    </ClInclude>
     <ClInclude Include="GameObjectsHolder.h">
       <Filter>Game</Filter>
     </ClInclude>
@@ -178,7 +175,6 @@
       <Filter>Models</Filter>
     </ClInclude>
     <ClInclude Include="SpawnArea.h" />
-    <ClInclude Include="Translations.h" />
     <ClInclude Include="Interactive.h" />
     <ClInclude Include="InteractiveFactory.h" />
     <ClInclude Include="OptionsViewImplementation.h">
@@ -209,8 +205,16 @@
     <ClInclude Include="GameViewCloseCallback.h">
       <Filter>Game</Filter>
     </ClInclude>
-    <ClInclude Include="GameInteractionController.h" />
-    <ClInclude Include="GameViewInterfaceDrawer.h" />
+    <ClInclude Include="RandomMoveHelper.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="Translations.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="View.h" />
+    <ClInclude Include="ExtrasView.h">
+      <Filter>Extras</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
@@ -306,9 +310,6 @@
     <ClCompile Include="EnemyFactory.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
-    <ClCompile Include="RandomMoveControllerImplementation.cpp">
-      <Filter>Enemy</Filter>
-    </ClCompile>
     <ClCompile Include="GameObjectsHolder.cpp">
       <Filter>Game</Filter>
     </ClCompile>
@@ -322,7 +323,6 @@
       <Filter>Models</Filter>
     </ClCompile>
     <ClCompile Include="SpawnArea.cpp" />
-    <ClCompile Include="Translations.cpp" />
     <ClCompile Include="Interactive.cpp" />
     <ClCompile Include="InteractiveFactory.cpp" />
     <ClCompile Include="OptionsViewImplementation.cpp">
@@ -344,7 +344,14 @@
     <ClCompile Include="ViewRouter.cpp">
       <Filter>Main</Filter>
     </ClCompile>
-    <ClCompile Include="GameInteractionController.cpp" />
-    <ClCompile Include="GameViewInterfaceDrawer.cpp" />
+    <ClCompile Include="RandomMoveHelper.cpp">
+      <Filter>Enemy</Filter>
+    </ClCompile>
+    <ClCompile Include="Translations.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="ExtrasView.cpp">
+      <Filter>Extras</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

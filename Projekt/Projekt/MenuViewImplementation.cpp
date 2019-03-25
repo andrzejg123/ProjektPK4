@@ -5,37 +5,50 @@
 #include "SettingsViewImplementation.h"
 #include "GameViewImplementation.h"
 #include "ViewRouter.h"
+#include <iostream>
 
-void MenuViewImplementation::showMenu()
+void MenuViewImplementation::handleEvent(sf::RenderWindow& window)
+{
+	sf::Event e;
+	while (window.pollEvent(e))
+	{
+		if (e.type == sf::Event::MouseMoved)
+			menuController->mouseMove(e.mouseMove.x, e.mouseMove.y);
+		else if (e.type == sf::Event::KeyPressed)
+		{
+			if (e.key.code == sf::Keyboard::W)
+				menuController->selectHigherItem();
+			else if (e.key.code == sf::Keyboard::S)
+				menuController->selectLowerItem();
+			else if (e.key.code == sf::Keyboard::Enter)
+				menuController->selectItem();
+			else if (e.key.code == sf::Keyboard::Escape)
+				quitGame();
+		}
+		else if (e.type == sf::Event::MouseButtonPressed && e.mouseButton.button == sf::Mouse::Left)
+			menuController->mouseClick(e.mouseButton.x, e.mouseButton.y);
+		else if (e.type == sf::Event::Closed)
+			window.close();
+	}
+}
+
+void MenuViewImplementation::show()
 {
 	auto& window = *this->window;
 	menuController->initializeMenu();
 	while (window.isOpen())
 	{
-		sf::Event e;
-		while (window.pollEvent(e))
-		{
-			if (e.type == sf::Event::Closed)
-				window.close();
-			if (e.type == sf::Event::KeyPressed)
-			{
-				if (e.key.code == sf::Keyboard::W)
-					menuController->selectHigherItem();
-				else if (e.key.code == sf::Keyboard::S)
-					menuController->selectLowerItem();
-				else if (e.key.code == sf::Keyboard::Enter)
-					menuController->selectItem();
-			}
-		}
+		handleEvent(window);
 		window.clear();
 		window.draw(*menuController->getBackground());
+		window.draw(*menuController->getGameName());
 		for(auto menuItem: *menuController->getMenuItems())
 			window.draw(*menuItem);
 		window.display();
 	}
 }
 
-void MenuViewImplementation::hideMenu()
+void MenuViewImplementation::quitGame()
 {
 	window->close();
 }
@@ -52,7 +65,7 @@ void MenuViewImplementation::loadGame()
 
 void MenuViewImplementation::showExtras()
 {
-
+	ViewRouter::openExtras(window);
 }
 
 void MenuViewImplementation::showSettings()

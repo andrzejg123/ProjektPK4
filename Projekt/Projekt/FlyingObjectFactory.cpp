@@ -6,21 +6,21 @@
 #include "TexturesHolder.h"
 #include "SoundController.h"
 
-FlyingObject* FlyingObjectFactory::create(Enemy* caster, Object* destination, const ObjectIndicator textureIndicator) const
+FlyingObject* FlyingObjectFactory::create(Enemy* caster, Object* destination, const ObjectIndicator objectIndicator) const
 {
 	const auto factor = DistanceHelper::getFactor(caster->getPosition(), destination->getPosition());
-	switch (textureIndicator)
+	switch (objectIndicator)
 	{
 		case ObjectIndicator::PlayerWarrior:
-			return new Arrow(gameTexturesHolder->getTexture(textureIndicator), caster, factor);
+			return new Arrow(texturesHolder->getTexture(objectIndicator), caster, factor);
 		default:
-			return new Arrow(gameTexturesHolder->getTexture(textureIndicator), caster, factor);
+			return new Arrow(texturesHolder->getTexture(objectIndicator), caster, factor);
 	}
 }
 
-FlyingObjectFactory::FlyingObjectFactory(TexturesHolder* gameTexturesHolder)
+FlyingObjectFactory::FlyingObjectFactory(TexturesHolder* texturesHolder)
 {
-	this->gameTexturesHolder = gameTexturesHolder;
+	this->texturesHolder = texturesHolder;
 }
 
 FlyingObjectFactory::~FlyingObjectFactory()
