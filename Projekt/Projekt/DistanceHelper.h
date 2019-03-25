@@ -15,5 +15,7 @@ public:
 	static Facing directionToFacing(Facing oldFacing, Direction newDirection);
 	//Returns opposite direction
 	static Direction getOppositeDirection(Direction direction);
+	//Get rotation from direction vector (initialRotationOffset equals if image is faced: DOWN 0, RIGHT -90, TOP -180, LEFT - 270)
+	static float getRotation(float xFactor, float yFactor, float initialRotationOffset);
 };
 

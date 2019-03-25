@@ -82,3 +82,8 @@ Direction DistanceHelper::getOppositeDirection(const Direction direction)
 	default: return Direction::None;
 	}
 }
+
+float DistanceHelper::getRotation(const float xFactor, const float yFactor, const float initialRotationOffset)
+{
+	return std::abs(std::atan2(xFactor, yFactor) * (180.0f / 3.14f) + initialRotationOffset);
+}
