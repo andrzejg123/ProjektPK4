@@ -1,12 +1,16 @@
 #pragma once
 #include "GameObjectsHolder.h"
+#include "GameView.h"
 
 class GameInteractionController
 {
 	GameObjectsHolder* gameObjectsHolder;
+	Interactive* possibleInteractionObject;
+	GameView* gameView;
 public:
-
-	GameInteractionController(GameObjectsHolder* gameObjectsHolder);
+	void checkInteractions();
+	GameInteractionController(GameObjectsHolder* gameObjectsHolder, GameView* gameView);
 	~GameInteractionController();
+	void handleInteraction();
 };
 

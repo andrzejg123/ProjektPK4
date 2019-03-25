@@ -17,6 +17,7 @@ public:
 	virtual std::list<Object*>* getObjectsToDraw() = 0;
 	virtual GameObjectsHolder* getGameObjectHolder() = 0;
 	virtual std::list<sf::FloatRect>* getCollisionRects() = 0;
+	virtual void playerInteract() = 0;
 };
 
 

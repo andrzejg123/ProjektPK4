@@ -176,6 +176,7 @@
     <ClInclude Include="GameObjectsHolder.h" />
     <ClInclude Include="GameInteractionController.h" />
     <ClInclude Include="GameViewInterfaceDrawer.h" />
+    <ClInclude Include="InterfaceTexturesHolder.h" />
     <ClInclude Include="TexturesHolder.h" />
     <ClInclude Include="GameViewImplementation.h" />
     <ClInclude Include="GameController.h" />
@@ -241,6 +242,7 @@
     <ClCompile Include="GameObjectsHolder.cpp" />
     <ClCompile Include="GameInteractionController.cpp" />
     <ClCompile Include="GameViewInterfaceDrawer.cpp" />
+    <ClCompile Include="InterfaceTexturesHolder.cpp" />
     <ClCompile Include="TexturesHolder.cpp" />
     <ClCompile Include="GameViewImplementation.cpp" />
     <ClCompile Include="Interactive.cpp" />

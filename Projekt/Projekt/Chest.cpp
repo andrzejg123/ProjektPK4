@@ -1,6 +1,11 @@
 #include "stdafx.h"
 #include "Chest.h"
 
+void Chest::onInteract()
+{
+	animate(AnimationType::ChestOpen);
+}
+
 Chest::Chest(sf::Texture& chestTexture, InteractionType interactionType, AnimationData& animationData) : Object(chestTexture), Interactive(interactionType, animationData)
 {
 	setFacing(Facing::None);

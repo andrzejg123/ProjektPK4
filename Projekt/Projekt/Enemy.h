@@ -23,7 +23,7 @@ protected:
 	bool sawPlayer = false; // if marked as true enemy will follow player until his death
 	float visionRadius;
 	float attackRadius;
-	float damage = 20;
+	float damage = 1;
 	float attackSpeed = 2;
 	int level;
 public:

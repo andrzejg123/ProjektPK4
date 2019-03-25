@@ -28,7 +28,7 @@ void GameControllerImplementation::initializeGame()
 		{ 
 		case EntityKind::Enemy: 
 			
-			for (auto i = 0; i < entitiesNumber + 100; ++i)
+			for (auto i = 0; i < entitiesNumber; ++i)
 				gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder, gameEntityDataHolder).create(
 					spawnArea.getEntityIndicator(), spawnArea.getSpawnAreaRect(), gameplayData->level));
 			break;
@@ -68,6 +68,7 @@ void GameControllerImplementation::movePlayer(const Direction direction, sf::Tim
 		player->cancelMove();
 	player->setFacing(DistanceHelper::directionToFacing(player->getFacing(), direction));
 	player->animate(AnimationType::Move);
+	interactionController->checkInteractions();
 }
 
 void GameControllerImplementation::stopPlayer()
@@ -111,6 +112,11 @@ void GameControllerImplementation::updateGame(sf::Time& elapsed)
 		animated->updateAnimation(elapsed);
 }
 
+void GameControllerImplementation::playerInteract()
+{
+	interactionController->handleInteraction();
+}
+
 GameMap* GameControllerImplementation::getMap()
 {
 	return gameMapController->getMap();
@@ -139,7 +145,7 @@ GameControllerImplementation::GameControllerImplementation(GameView* gameView): 
 	this->gameObjectsHolder = new GameObjectsHolder();
 	this->gameEnemyController = new GameEnemyControllerImplementation(gameObjectsHolder, gameTexturesHolder);
 	this->gameEntityDataHolder = new GameEntityDataHolder(fileReadingController);
-	this->interactionController = new GameInteractionController(gameObjectsHolder);
+	this->interactionController = new GameInteractionController(gameObjectsHolder, gameView);
 }
 
 GameControllerImplementation::~GameControllerImplementation()

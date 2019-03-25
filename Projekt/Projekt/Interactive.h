@@ -24,6 +24,7 @@ class Interactive : public Animated
 {
 	InteractionType interactionType;
 public:
+	virtual void onInteract() = 0;
 	Interactive(InteractionType interactionType, AnimationData& animationData);
 	~Interactive();
 };

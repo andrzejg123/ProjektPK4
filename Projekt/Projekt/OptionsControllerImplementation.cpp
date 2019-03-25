@@ -3,6 +3,7 @@
 #include "ViewHelper.h"
 #include "FileNameHelper.h"
 #include "TexturesHolder.h"
+#include "InterfaceTexturesHolder.h"
 
 sf::Text* OptionsControllerImplementation::createNewItem(const sf::String& text) const
 {
@@ -80,7 +81,7 @@ void OptionsControllerImplementation::adjustBackgroundSize() const
 		const auto backHeight = lastItem->getPosition().y + (3 * backgroundPadding) - firstItem->getPosition().y;
 		const auto backX = (windowWidth - maxWidth - (4 * backgroundPadding)) / 2;
 		const auto backY = firstItem->getPosition().y - backgroundPadding;
-		auto& texture = TexturesHolder::getInstance()->getTexture(ObjectIndicator::MenuBackground);
+		auto& texture = InterfaceTexturesHolder::getInstance()->getTexture(InterfaceTextureIndicator::MenuBackground);
 		texture.setRepeated(true);
 		const auto rects = sf::IntRect(backX, backY, backWidth, backHeight);
 		background->setPosition(backX, backY);

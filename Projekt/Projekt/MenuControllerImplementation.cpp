@@ -5,6 +5,7 @@
 #include "ViewHelper.h"
 #include "FileNameHelper.h"
 #include "TexturesHolder.h"
+#include "InterfaceTexturesHolder.h"
 
 sf::Text* MenuControllerImplementation::createNewMenuItem(const sf::String& text) const
 {
@@ -152,7 +153,7 @@ MenuControllerImplementation::MenuControllerImplementation(MenuView* menuView)
 	menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Extras)));
 	menuItems->push_back(createNewMenuItem(Translations::getText(TextId::Quit)));
 
-	auto& texture = TexturesHolder::getInstance()->getTexture(ObjectIndicator::MenuBackground);
+	auto& texture = InterfaceTexturesHolder::getInstance()->getTexture(InterfaceTextureIndicator::MenuBackground);
 	texture.setRepeated(true);
 	const auto rects = sf::IntRect(0, 0, windowSize.x, windowSize.y);
 	background = new sf::Sprite(texture, rects);

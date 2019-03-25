@@ -8,13 +8,16 @@ enum class AnimationType
 	Move,
 	Attack,
 	Death,
+	ChestOpen = 0
 };
 
 struct AnimationTypeData
 {
 	sf::Time interval;
 	int animationFrames;
-	AnimationTypeData(const int intervalInMilliseconds, const int animationFrames) : interval(sf::milliseconds(intervalInMilliseconds)), animationFrames(animationFrames) {}
+	int autoPausingFrame;
+	AnimationTypeData(const int intervalInMilliseconds, const int animationFrames, const int autoPausingFrame) : 
+			interval(sf::milliseconds(intervalInMilliseconds)), animationFrames(animationFrames), autoPausingFrame(autoPausingFrame) {}
 };
 
 struct AnimationData

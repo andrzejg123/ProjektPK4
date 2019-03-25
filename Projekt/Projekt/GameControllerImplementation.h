@@ -28,6 +28,7 @@ public:
 	void stopPlayer() override;
 	void updateFlyingObjects(sf::Time& elapsedTime) const;
 	void updateGame(sf::Time& elapsed) override;
+	void playerInteract() override;
 	GameMap* getMap() override;
 	std::list<Object*>* getObjectsToDraw() override;
 	GameObjectsHolder* getGameObjectHolder() override;

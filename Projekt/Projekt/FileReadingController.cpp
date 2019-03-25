@@ -135,12 +135,14 @@ AnimationData FileReadingController::loadAnimationData(ObjectIndicator entityInd
 		animationData.animationTypesData.reserve(animationTypesNumber);
 		int intervalInMilliseconds;
 		int animationFrames;
+		int autoPausingFrame;
 		for(auto i = 0; i < animationTypesNumber; ++i)
 		{
 			
 			file >> intervalInMilliseconds;
 			file >> animationFrames;
-			animationData.animationTypesData.emplace_back(intervalInMilliseconds, animationFrames);
+			file >> autoPausingFrame;
+			animationData.animationTypesData.emplace_back(intervalInMilliseconds, animationFrames, autoPausingFrame);
 			
 		}
 	}

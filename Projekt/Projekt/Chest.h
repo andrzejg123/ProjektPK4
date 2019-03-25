@@ -5,6 +5,7 @@
 class Chest : public Interactive
 {
 public:
+	void onInteract() override;
 	Chest(sf::Texture& chestTexture, InteractionType interactionType, AnimationData& animationData);
 	sf::FloatRect getFixedBounds() const;
 	~Chest();

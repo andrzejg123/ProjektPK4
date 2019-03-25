@@ -14,12 +14,14 @@ GameViewImplementation::GameViewImplementation(sf::RenderWindow* window)
 	this->gameController = new GameControllerImplementation(this);
 	this->window = window;
 	this->debugDrawer = new DebugDrawer();
+	this->interfaceDrawer = new GameViewInterfaceDrawer(window);
 }
 
 GameViewImplementation::~GameViewImplementation()
 {
 	delete this->gameController;
 	delete this->debugDrawer;
+	delete this->interfaceDrawer;
 }
 
 void GameViewImplementation::closeGame()
@@ -52,7 +54,7 @@ void GameViewImplementation::show()
 				window.close();
 			if(e.type == sf::Event::KeyPressed)
 			{
-				if(e.key.code == sf::Keyboard::F3)
+				if (e.key.code == sf::Keyboard::F3)
 				{
 					if (Keys::projectType != ProjectType::Release)
 						debugDrawer->toggle();
@@ -63,6 +65,8 @@ void GameViewImplementation::show()
 					elapsed = gameClock.restart();
 					elapsed = gameClock.restart();
 				}
+				else if (e.key.code == sf::Keyboard::E)
+					gameController->playerInteract();
 			}
 		}
 
@@ -122,6 +126,8 @@ void GameViewImplementation::show()
 		
 		
 		window.setView(camera);*/
+
+		interfaceDrawer->draw(gameController->getGameObjectHolder()->getPlayer());
 		window.display();
 	}
 	
@@ -130,4 +136,9 @@ void GameViewImplementation::show()
 sf::Vector2u GameViewImplementation::getWindowSize()
 {
 	return window->getSize();
+}
+
+void GameViewImplementation::setPossibleInteraction(Interactive* newPossibleInteraction)
+{
+	interfaceDrawer->setPossibleInteraction(newPossibleInteraction);
 }
