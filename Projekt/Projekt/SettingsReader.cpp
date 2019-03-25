@@ -4,6 +4,7 @@
 #include <sstream>
 #include "Log.h"
 #include <fstream>
+#include <iostream>
 
 std::vector<std::string> SettingsReader::split(const std::string& s, const char delimiter) const
 {
@@ -49,7 +50,7 @@ void SettingsReader::reloadSettings()
 	while (std::getline(file, line))
 	{
 		auto separated = split(line, separator);
-		if(separated.size() == 2)
+		if (separated.size() == 2)
 		{
 			changeCounter++;
 			auto key = separated.at(0);
@@ -79,7 +80,8 @@ void SettingsReader::reloadSettings()
 				else if (key._Equal(settingLanguage))
 					settingsData.language = value;
 				else changeCounter--;
-			} catch (...)
+			}
+			catch (...)
 			{
 				Log::debug("Settings invalid argument for key: " + key);
 			}

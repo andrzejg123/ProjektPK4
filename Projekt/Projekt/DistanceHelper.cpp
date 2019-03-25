@@ -31,6 +31,22 @@ Direction DistanceHelper::getDirection(const sf::Vector2f fromVector, const sf::
 	return Direction::Right;
 }
 
+float DistanceHelper::getAngle(const Direction direction)
+{
+	switch (direction) { 
+		case Direction::Up: return 90.0f;
+		case Direction::Left: return 180.0f;
+		case Direction::Down: return 270.0f;
+		case Direction::Right: return 0.0f;
+		case Direction::UpLeft: return 135.0f;
+		case Direction::DownLeft: return 225.0f;
+		case Direction::DownRight: return 315.0f;
+		case Direction::UpRight: return 45.0f;
+		case Direction::None: return 0.0f;
+		default: return 0.0f;
+	}
+}
+
 sf::Vector2f DistanceHelper::getFactor(const sf::Vector2f fromVector, sf::Vector2f toVector)
 {
 	const auto c = getDistance(fromVector, toVector);
@@ -83,7 +99,7 @@ Direction DistanceHelper::getOppositeDirection(const Direction direction)
 	}
 }
 
-float DistanceHelper::getRotation(const float xFactor, const float yFactor, const float initialRotationOffset)
+float DistanceHelper::getRotation(const float xFactor, const float yFactor, const Direction sourceTextureDirection)
 {
-	return std::abs(std::atan2(xFactor, yFactor) * (180.0f / 3.14f) + initialRotationOffset);
+	return std::abs(std::atan2(xFactor, yFactor) * (180.0f / 3.14f) - 90.0f - getAngle(sourceTextureDirection));
 }

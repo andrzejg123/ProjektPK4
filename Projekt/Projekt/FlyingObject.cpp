@@ -12,5 +12,5 @@ void FlyingObject::move(Direction direction, sf::Time& elapsedTime)
 FlyingObject::FlyingObject(const float xFactor, const float yFactor): xFactor(xFactor), yFactor(yFactor)
 {
 	sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
-	sprite.setRotation(DistanceHelper::getRotation(xFactor, yFactor, -90.0f));
+	sprite.setRotation(DistanceHelper::getRotation(xFactor, yFactor, Direction::Up));
 }

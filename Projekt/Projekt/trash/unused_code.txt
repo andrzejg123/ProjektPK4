@@ -1,0 +1,37 @@
+const auto lambda = [](auto func) {
+	return [=](auto&&... params)
+	{
+		return [=] { func(params...); };
+	};
+};
+
+SettingsReader* t;
+std::list<idEnemy, std::function<void()>> list;
+
+void add()
+{
+	int a = 5, b, c;
+	t = new SettingsReader();
+	const auto p1 = lambda([=](auto v1, auto v2, SettingsReader* v3)
+	{
+		v3->reloadSettings();
+		std::cout << " p1  ---  " << v1 << v2 << v3->getSettingsData().frameRateLimit << "  " << a << std::endl;
+	})(1, 'a', t);
+
+	const auto p2 = lambda([](auto v1)
+	{
+		std::cout << " p2  ---  " << v1 << std::endl;
+	})(1);
+
+	list.push_back(p1);
+	list.push_back(p2);
+	delete t;
+	//list.for
+	//	remove(enemy);
+	//t = nullptr;
+}
+
+add();
+Sleep(3000);
+for (auto value : list)
+value();
