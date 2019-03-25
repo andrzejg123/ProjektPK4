@@ -8,7 +8,6 @@ enum class ObjectIndicator
 	PlayerWarrior,
 	RogueArcher,
 	Chest,
-	MenuBackground,
 	Arrow
 };
 
