@@ -5,8 +5,8 @@
 
 class FlyingObject : public Moveable, public Animated
 {
-	float xFactor, yFactor;
 protected:
+	float xFactor, yFactor;
 	float damage = 1.0f;
 public:
 	void move(Direction direction, sf::Time& elapsedTime) override;

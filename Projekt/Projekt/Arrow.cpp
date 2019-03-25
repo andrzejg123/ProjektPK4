@@ -6,10 +6,12 @@ sf::FloatRect Arrow::getFixedBounds() const
 {
 	sf::FloatRect fixedBounds;
 	const auto defaultBounds = sprite.getGlobalBounds();
+	const auto centerHeight = defaultBounds.height / 2.0f;
+	const auto centerWidth = defaultBounds.width / 2.0f;
 	fixedBounds.height = defaultBounds.height / 10.0f;
 	fixedBounds.width = defaultBounds.width / 10.0f;
-	fixedBounds.top = defaultBounds.height / 2.0f + defaultBounds.top;
-	fixedBounds.left = defaultBounds.width + defaultBounds.left;
+	fixedBounds.top = centerHeight + defaultBounds.top + (centerHeight * yFactor);
+	fixedBounds.left = centerWidth + defaultBounds.left + (centerWidth * xFactor);
 	return fixedBounds;
 }
 

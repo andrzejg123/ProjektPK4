@@ -45,6 +45,14 @@ sf::Vector2f Object::getPosition() const
 	return sprite.getPosition();
 }
 
+sf::Vector2f Object::getCenter() const
+{
+	auto pos = sprite.getPosition();
+	pos.x += sprite.getGlobalBounds().height / 2.0f;
+	pos.y += sprite.getGlobalBounds().width / 2.0f;
+	return pos;
+}
+
 void Object::setPosition(const sf::Vector2f position)
 {
 	sprite.setPosition(position);

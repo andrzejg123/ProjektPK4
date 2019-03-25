@@ -25,6 +25,7 @@ public:
 	Facing getFacing() const;
 	void setFacing(Facing facing);
 	sf::Vector2f getPosition() const;
+	sf::Vector2f getCenter() const;
 	void setPosition(sf::Vector2f position);
 	Object(sf::Texture& spriteTexture);
 	Object();

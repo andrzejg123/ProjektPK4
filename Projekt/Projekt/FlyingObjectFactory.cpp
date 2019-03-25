@@ -8,7 +8,7 @@
 
 FlyingObject* FlyingObjectFactory::create(Enemy* caster, Object* destination, const ObjectIndicator objectIndicator) const
 {
-	const auto factor = DistanceHelper::getFactor(caster->getPosition(), destination->getPosition());
+	const auto factor = DistanceHelper::getFactor(caster->getCenter(), destination->getCenter());
 	switch (objectIndicator)
 	{
 		case ObjectIndicator::PlayerWarrior:
