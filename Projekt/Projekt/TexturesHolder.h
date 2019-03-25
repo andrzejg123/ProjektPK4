@@ -8,7 +8,8 @@ enum class ObjectIndicator
 	PlayerWarrior,
 	RogueArcher,
 	Chest,
-	MenuBackground
+	MenuBackground,
+	Arrow
 };
 
 class TexturesHolder

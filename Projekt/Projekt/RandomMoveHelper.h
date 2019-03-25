@@ -5,9 +5,9 @@ class RandomMoveHelper
 {
 	float maxDistance = 500.0f;
 	float currentTimeToWait = -1.0f;
-	float timeToWait = 5.0f;
-	int changeDirectionChance = 60;
-	int waitChance = 3;
+	int maxTimeToWait = 15;
+	sf::Vector2i changeDirectionChance = sf::Vector2i{ 1, 6 };
+	sf::Vector2i waitChance = sf::Vector2i{2, 5 };
 	Moveable* movable;
 	Direction lastDirection;
 	sf::Vector2f lastPosition;

@@ -10,7 +10,7 @@ Direction RandomMoveHelper::getRandomDirection()
 
 bool RandomMoveHelper::rollRandom(const int from, const int to)
 {
-	return from > getRandomInt(to);
+	return from > getRandomInt(to + 1);
 }
 
 int RandomMoveHelper::getRandomInt(const int number)
@@ -27,21 +27,21 @@ Direction RandomMoveHelper::handleWait(const sf::Time& time)
 Direction RandomMoveHelper::checkNewDirection(sf::Time& elapsedTime)
 {
 	lastPosition = movable->getPosition();
-	if (rollRandom(1, waitChance / elapsedTime.asSeconds()))
+	if (rollRandom(changeDirectionChance.x, changeDirectionChance.y / elapsedTime.asSeconds()))
+	{
+		Log::debugS("changed direction");
+		return getRandomDirection();
+	}
+	if (rollRandom(waitChance.x, waitChance.y / elapsedTime.asSeconds()))
 	{
 		Log::debugS("waiting");
-		currentTimeToWait = timeToWait;
+		currentTimeToWait = getRandomInt(maxTimeToWait);
 		return Direction::None;
 	}
 	if (maxDistance < DistanceHelper::getDistance(lastPosition, startPosition))
 	{
-		Log::debugS("coming back to spawn");
+		//Log::debugS("coming back to spawn");
 		return DistanceHelper::getDirection(lastPosition, startPosition);
-	}
-	if (rollRandom(1, changeDirectionChance / elapsedTime.asSeconds()))
-	{
-		Log::debugS("changed direction"); 
-		return getRandomDirection();
 	}
 	return lastDirection;
 }

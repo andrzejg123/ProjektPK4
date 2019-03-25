@@ -37,6 +37,15 @@ void DebugDrawer::draw(std::list<sf::FloatRect>* collisionRects, GameObjectsHold
 			window->draw(drawRect);
 		}
 
+		const auto list2 = gameObjectHolder->getFlyingObjects();
+		for (auto enemy : *list2)
+		{
+			const auto bounds = enemy->getFixedBounds();
+			drawRect.setPosition(bounds.left, bounds.top);
+			drawRect.setSize(sf::Vector2f(bounds.width, bounds.height));
+			window->draw(drawRect);
+		}
+
 		//draw player fixed bounds
 		drawRect.setOutlineColor(sf::Color::Blue);
 		const auto playerBounds = gameObjectHolder->getPlayer()->getFixedBounds();

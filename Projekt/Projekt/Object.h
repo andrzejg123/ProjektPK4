@@ -19,7 +19,7 @@ protected:
 	Facing facing = Facing::Right;
 
 public:
-	sf::FloatRect getFixedBounds() const;
+	virtual sf::FloatRect getFixedBounds() const;
 	sf::FloatRect getBounds() const;
 	void setTexture(sf::Texture &texture);
 	Facing getFacing() const;

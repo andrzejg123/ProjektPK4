@@ -28,7 +28,7 @@ void GameControllerImplementation::initializeGame()
 		{ 
 		case EntityKind::Enemy: 
 			
-			for (auto i = 0; i < entitiesNumber + 100; ++i)
+			for (auto i = 0; i < 1; ++i)
 				gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder, gameEntityDataHolder).create(
 					spawnArea.getEntityIndicator(), spawnArea.getSpawnAreaRect(), gameplayData->level));
 			break;
@@ -37,6 +37,7 @@ void GameControllerImplementation::initializeGame()
 			break;
 		default: ;
 		}
+		break;
 	}
 
 	//creating interactive objects
