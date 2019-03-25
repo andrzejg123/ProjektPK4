@@ -28,7 +28,7 @@ void GameControllerImplementation::initializeGame()
 		{ 
 		case EntityKind::Enemy: 
 			
-			for (auto i = 0; i < 1; ++i)
+			for (auto i = 0; i < entitiesNumber; ++i)
 				gameObjectsHolder->addEnemy(EnemyFactory(gameTexturesHolder, gameEntityDataHolder).create(
 					spawnArea.getEntityIndicator(), spawnArea.getSpawnAreaRect(), gameplayData->level));
 			break;
@@ -37,7 +37,6 @@ void GameControllerImplementation::initializeGame()
 			break;
 		default: ;
 		}
-		break;
 	}
 
 	//creating interactive objects
@@ -56,15 +55,20 @@ void GameControllerImplementation::movePlayer(const Direction direction, sf::Tim
 	if (player->isDead())
 		return;
 	player->move(direction, elapsedTime);
+
 	for (auto enemy : *gameObjectsHolder->getEnemies())
-	{
 		if(enemy->getFixedBounds().intersects(player->getFixedBounds()))
 			player->cancelMove();
-	}
+
+	for (auto interactive : *gameObjectsHolder->getInteractiveList())
+		if (interactive->getFixedBounds().intersects(player->getFixedBounds()))
+			player->cancelMove();
+	
 	if (gameMapController->checkCollision(player))
 		player->cancelMove();
 	player->setFacing(DistanceHelper::directionToFacing(player->getFacing(), direction));
 	player->animate(AnimationType::Move);
+	interactionController->checkInteractions();
 }
 
 void GameControllerImplementation::stopPlayer()
@@ -108,6 +112,11 @@ void GameControllerImplementation::updateGame(sf::Time& elapsed)
 		animated->updateAnimation(elapsed);
 }
 
+void GameControllerImplementation::playerInteract()
+{
+	interactionController->handleInteraction();
+}
+
 GameMap* GameControllerImplementation::getMap()
 {
 	return gameMapController->getMap();
@@ -136,6 +145,7 @@ GameControllerImplementation::GameControllerImplementation(GameView* gameView): 
 	this->gameObjectsHolder = new GameObjectsHolder();
 	this->gameEnemyController = new GameEnemyControllerImplementation(gameObjectsHolder, gameTexturesHolder);
 	this->gameEntityDataHolder = new GameEntityDataHolder(fileReadingController);
+	this->interactionController = new GameInteractionController(gameObjectsHolder, gameView);
 }
 
 GameControllerImplementation::~GameControllerImplementation()
@@ -145,4 +155,5 @@ GameControllerImplementation::~GameControllerImplementation()
 	delete this->gameEnemyController;
 	delete this->fileReadingController;
 	delete this->gameEntityDataHolder;
+	delete this->interactionController;
 }

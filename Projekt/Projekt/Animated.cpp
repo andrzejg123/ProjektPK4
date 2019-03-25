@@ -4,7 +4,8 @@
 void Animated::nextFrame()
 {
 	animationStep = (animationStep + 1) % animationTypesData[int(animationType)].animationFrames;
-	if (autoPausing && animationType != AnimationType::Death ? animationStep == 0 : animationStep == animationTypesData[int(AnimationType::Death)].animationFrames - 1)
+	//if (autoPausing && animationType != AnimationType::Death ? animationStep == 0 : animationStep == animationTypesData[int(AnimationType::Death)].animationFrames - 1)
+	if (autoPausing && animationStep == animationTypesData[int(animationType)].autoPausingFrame)
 		animating = false;
 	if(facing != Facing::None)
 		sprite.setTextureRect(sf::IntRect(animationStep * frameSize.x, (int(animationType) * 4 + int(facing)) * frameSize.y, frameSize.x, frameSize.y));

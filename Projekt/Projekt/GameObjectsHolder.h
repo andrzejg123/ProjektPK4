@@ -20,6 +20,7 @@ public:
 	std::list<Enemy*>* getEnemies() const;
 	std::list<Animated*>* getAnimatedList() const;
 	std::list<FlyingObject*>* getFlyingObjects() const;
+	std::list<Interactive*>* getInteractiveList() const;
 	void removeFlyingObject(FlyingObject* flyingObject) const;
 	Player* getPlayer() const;
 	void setPlayer(Player* player);

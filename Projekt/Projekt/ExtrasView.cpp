@@ -3,6 +3,7 @@
 #include "FileNameHelper.h"
 #include "ViewHelper.h"
 #include "TexturesHolder.h"
+#include "InterfaceTexturesHolder.h"
 
 sf::Text* ExtrasView::createNewItem(const sf::String& text) const
 {
@@ -83,7 +84,7 @@ ExtrasView::ExtrasView(sf::RenderWindow* window)
 	texts->push_back(createNewItem(Translations::getText(TextId::Extras)));
 	texts->push_back(createNewItem(Translations::getText(TextId::Quit)));
 
-	auto& texture = TexturesHolder::getInstance()->getTexture(ObjectIndicator::MenuBackground);
+	auto& texture = InterfaceTexturesHolder::getInstance()->getTexture(InterfaceTextureIndicator::MenuBackground);
 	texture.setRepeated(true);
 	const auto rects = sf::IntRect(0, 0, windowSize.x, windowSize.y);
 	background = new sf::Sprite(texture, rects);

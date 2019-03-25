@@ -7,6 +7,7 @@
 #include "GameEnemyController.h"
 #include "GameEntityDataHolder.h"
 #include "OptionsView.h"
+#include "GameInteractionController.h"
 
 class GameControllerImplementation : public GameController
 {
@@ -17,6 +18,7 @@ class GameControllerImplementation : public GameController
 	GameEnemyController* gameEnemyController;
 	GameEntityDataHolder* gameEntityDataHolder;
 	FileReadingController* fileReadingController;
+	GameInteractionController* interactionController;
 
 public:
 	void getFirstLayer() override;
@@ -26,6 +28,7 @@ public:
 	void stopPlayer() override;
 	void updateFlyingObjects(sf::Time& elapsedTime) const;
 	void updateGame(sf::Time& elapsed) override;
+	void playerInteract() override;
 	GameMap* getMap() override;
 	std::list<Object*>* getObjectsToDraw() override;
 	GameObjectsHolder* getGameObjectHolder() override;

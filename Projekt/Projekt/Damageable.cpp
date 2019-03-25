@@ -15,6 +15,17 @@ bool Damageable::isDead() const
 	return healthPoints <= 0;
 }
 
+float Damageable::getMaxHealthPoints()
+{
+	//TODO in overrides computing bonuses
+	return maxHealthPoints;
+}
+
+float Damageable::getHealthPoints()
+{
+	return healthPoints;
+}
+
 Damageable::Damageable()
 {
 }

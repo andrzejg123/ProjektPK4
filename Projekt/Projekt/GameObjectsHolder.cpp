@@ -22,6 +22,11 @@ std::list<FlyingObject*>* GameObjectsHolder::getFlyingObjects() const
 	return flyingObjects;
 }
 
+std::list<Interactive*>* GameObjectsHolder::getInteractiveList() const
+{
+	return interactiveList;
+}
+
 void GameObjectsHolder::removeFlyingObject(FlyingObject* flyingObject) const
 {
 	objects->remove(flyingObject);

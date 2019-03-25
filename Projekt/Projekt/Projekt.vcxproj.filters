@@ -215,6 +215,9 @@
     <ClInclude Include="ExtrasView.h">
       <Filter>Extras</Filter>
     </ClInclude>
+    <ClInclude Include="GameInteractionController.h" />
+    <ClInclude Include="GameViewInterfaceDrawer.h" />
+    <ClInclude Include="InterfaceTexturesHolder.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
@@ -353,5 +356,8 @@
     <ClCompile Include="ExtrasView.cpp">
       <Filter>Extras</Filter>
     </ClCompile>
+    <ClCompile Include="GameInteractionController.cpp" />
+    <ClCompile Include="GameViewInterfaceDrawer.cpp" />
+    <ClCompile Include="InterfaceTexturesHolder.cpp" />
   </ItemGroup>
 </Project>

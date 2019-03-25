@@ -7,6 +7,7 @@
 #include "Translations.h"
 #include "ViewHelper.h"
 #include "GameObjectsHolder.h"
+#include "InterfaceTexturesHolder.h"
 
 void SettingsControllerImplementation::updateSettings() const
 {
@@ -327,7 +328,7 @@ SettingsControllerImplementation::SettingsControllerImplementation(SettingsView*
 	this->settingsGenerator = new SettingsDataControllerImplementation(categories, settingsView);
 	this->restartInfo = nullptr;
 	const auto windowSize = settingsView->getWindowSize();
-	auto& texture = TexturesHolder::getInstance()->getTexture(ObjectIndicator::MenuBackground);
+	auto& texture = InterfaceTexturesHolder::getInstance()->getTexture(InterfaceTextureIndicator::MenuBackground);
 	texture.setRepeated(true);
 	const auto rects = sf::IntRect(0, 0, windowSize.x, windowSize.y);
 	background = new sf::Sprite(texture, rects);
