@@ -23,8 +23,8 @@ void GameMap::load(MapDrawingData& mapData)
 	secondLayerVertices.resize(mapData.width * mapData.height * 4);
 
 	// populate the vertex array, with one quad per tile
-	for (unsigned int i = 0; i < mapData.width; ++i)
-		for (unsigned int j = 0; j < mapData.height; ++j)
+	for (unsigned i = 0; i < mapData.width; ++i)
+		for (unsigned j = 0; j < mapData.height; ++j)
 		{
 			// get the current tile number
 			const auto tileNumber = mapData.firstLayerTiles[i + j * mapData.width];

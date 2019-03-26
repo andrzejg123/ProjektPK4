@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GameEnemyControllerImplementation.h"
-#include "DistanceHelper.h"
+#include "MathHelper.h"
 #include "FlyingObjectFactory.h"
 
 void GameEnemyControllerImplementation::handleAttack(Enemy* enemy) const
@@ -24,8 +24,8 @@ void GameEnemyControllerImplementation::updateEnemy(sf::Time& elapsedTime, Enemy
 	if (player->isDead())
 		return;
 	enemy->incrementAttackCounter(elapsedTime);
-	const auto distance = DistanceHelper::getDistance(player->getPosition(), enemy->getPosition());
-	const auto direction = DistanceHelper::getDirection(enemy->getPosition(), player->getPosition());
+	const auto distance = MathHelper::getDistance(player->getPosition(), enemy->getPosition());
+	const auto direction = MathHelper::getDirection(enemy->getPosition(), player->getPosition());
 	if (distance < enemy->getAttackRadius())
 	{
 		enemy->setSawPlayer();
@@ -34,7 +34,7 @@ void GameEnemyControllerImplementation::updateEnemy(sf::Time& elapsedTime, Enemy
 			enemy->resetAttackCounter();
 			handleAttack(enemy);
 			enemy->animate(AnimationType::Attack);
-			enemy->setFacing(DistanceHelper::directionToFacing(enemy->getFacing(), direction));
+			enemy->setFacing(MathHelper::directionToFacing(enemy->getFacing(), direction));
 		}
 		enemy->stopAnimate(AnimationType::Move);
 		return;

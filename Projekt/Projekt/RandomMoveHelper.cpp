@@ -1,19 +1,19 @@
 #include "stdafx.h"
 #include "RandomMoveHelper.h"
 #include "Log.h"
-#include "DistanceHelper.h"
+#include "MathHelper.h"
 
 Direction RandomMoveHelper::getRandomDirection()
 {
 	return static_cast<Direction>(rand() % 8);
 }
 
-bool RandomMoveHelper::rollRandom(const int from, const int to)
+bool RandomMoveHelper::rollRandom(const unsigned from, const unsigned to)
 {
 	return from > getRandomInt(to + 1);
 }
 
-int RandomMoveHelper::getRandomInt(const int number)
+unsigned RandomMoveHelper::getRandomInt(const unsigned number)
 {
 	return rand() % number;
 }
@@ -27,21 +27,21 @@ Direction RandomMoveHelper::handleWait(const sf::Time& time)
 Direction RandomMoveHelper::checkNewDirection(sf::Time& elapsedTime)
 {
 	lastPosition = movable->getPosition();
-	if (rollRandom(changeDirectionChance.x, changeDirectionChance.y / elapsedTime.asSeconds()))
+	if (rollRandom(changeDirectionChance.x, static_cast<unsigned>(changeDirectionChance.y / elapsedTime.asSeconds())))
 	{
 		Log::debugS("changed direction");
 		return getRandomDirection();
 	}
-	if (rollRandom(waitChance.x, waitChance.y / elapsedTime.asSeconds()))
+	if (rollRandom(waitChance.x, static_cast<unsigned>(waitChance.y / elapsedTime.asSeconds())))
 	{
 		Log::debugS("waiting");
-		currentTimeToWait = getRandomInt(maxTimeToWait);
+		currentTimeToWait = static_cast<float>(getRandomInt(maxTimeToWait));
 		return Direction::None;
 	}
-	if (maxDistance < DistanceHelper::getDistance(lastPosition, startPosition))
+	if (maxDistance < MathHelper::getDistance(lastPosition, startPosition))
 	{
 		//Log::debugS("coming back to spawn");
-		return DistanceHelper::getDirection(lastPosition, startPosition);
+		return MathHelper::getDirection(lastPosition, startPosition);
 	}
 	return lastDirection;
 }

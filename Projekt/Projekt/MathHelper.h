@@ -2,7 +2,7 @@
 #include <SFML/System/Vector2.hpp>
 #include "Moveable.h"
 
-class DistanceHelper
+class MathHelper
 {
 public:
 	//Returns distance between two points

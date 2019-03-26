@@ -28,7 +28,7 @@ void ExtrasView::repositionItems(const sf::Time& elapsedTime)
 
 void ExtrasView::setInitialPosition(const sf::Vector2u& windowSize) const
 {
-	auto nextPosition = windowSize.y;
+	auto nextPosition = static_cast<float>(windowSize.y);
 	for (auto text : *texts)
 	{
 		const auto x = (windowSize.x - text->getGlobalBounds().width) / 2;

@@ -83,12 +83,12 @@ void SettingsDataControllerImplementation::generateSoundSettings(const SettingsD
 
 	const auto option3Name = Translations::getText(TextId::GameSoundVolume);
 	auto options3 = std::vector<sf::String>{ "0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100" };
-	const auto selection3 = checkIntSelection(options3, settingsConstance.volumeSelection, settingsData.soundVolume);
+	const auto selection3 = checkIntSelection(options3, settingsConstance.volumeSelection, static_cast<int>(settingsData.soundVolume));
 	subCategories.push_back(generateSettingsSubCategory(option3Name, options3, selection3, SubCategoryIndicator::GameSoundVolume));
 
 	const auto option4Name = Translations::getText(TextId::GameMusicVolume);
 	auto options4 = std::vector<sf::String>{ "0", "10", "20", "30", "40", "50", "60", "70", "80", "90", "100" };
-	const auto selection4 = checkIntSelection(options4, settingsConstance.volumeSelection, settingsData.musicVolume);
+	const auto selection4 = checkIntSelection(options4, settingsConstance.volumeSelection, static_cast<int>(settingsData.musicVolume));
 	subCategories.push_back(generateSettingsSubCategory(option4Name, options4, selection4, SubCategoryIndicator::GameMusicVolume));
 
 	categories->push_back(generateSettingsCategory(categoryName, subCategories));

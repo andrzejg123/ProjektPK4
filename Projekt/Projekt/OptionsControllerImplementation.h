@@ -16,7 +16,7 @@ class OptionsControllerImplementation : public OptionsController
 	sf::Font font;
 
 	std::vector<sf::Text*>* optionsItems;
-	int currentItem = 0;
+	unsigned currentItem = 0;
 
 	sf::Text* createNewItem(const sf::String& text) const;
 
@@ -26,11 +26,11 @@ class OptionsControllerImplementation : public OptionsController
 	void handleSelection() const;
 	void repositionItems() const;
 	void adjustBackgroundSize() const;
-	int getNumberOfItem(float x, float y) const;
+	int getNumberOfItem(int x, int y) const;
 
 public:
-	void mouseClick(float x, float y) override;
-	void mouseMove(float x, float y) override;
+	void mouseClick(int x, int y) override;
+	void mouseMove(int x, int y) override;
 	std::vector<sf::Text*>* getOptionsItems() override;
 	sf::RectangleShape* getBackgroundBorders() override;
 	sf::Sprite* getItemsBackground() override;

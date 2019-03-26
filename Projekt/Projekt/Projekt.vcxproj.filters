@@ -81,9 +81,6 @@
     <ClInclude Include="Player.h">
       <Filter>AbstractModels</Filter>
     </ClInclude>
-    <ClInclude Include="DistanceHelper.h">
-      <Filter>Helpers</Filter>
-    </ClInclude>
     <ClInclude Include="Arrow.h">
       <Filter>Models</Filter>
     </ClInclude>
@@ -218,6 +215,9 @@
     <ClInclude Include="GameInteractionController.h" />
     <ClInclude Include="GameViewInterfaceDrawer.h" />
     <ClInclude Include="InterfaceTexturesHolder.h" />
+    <ClInclude Include="MathHelper.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
@@ -243,9 +243,6 @@
     </ClCompile>
     <ClCompile Include="Log.cpp">
       <Filter>General</Filter>
-    </ClCompile>
-    <ClCompile Include="DistanceHelper.cpp">
-      <Filter>Helpers</Filter>
     </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>AbstractModels</Filter>
@@ -359,5 +356,8 @@
     <ClCompile Include="GameInteractionController.cpp" />
     <ClCompile Include="GameViewInterfaceDrawer.cpp" />
     <ClCompile Include="InterfaceTexturesHolder.cpp" />
+    <ClCompile Include="MathHelper.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

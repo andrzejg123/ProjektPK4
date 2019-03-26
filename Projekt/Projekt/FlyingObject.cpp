@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "FlyingObject.h"
 #include "Log.h"
-#include "DistanceHelper.h"
+#include "MathHelper.h"
 
 void FlyingObject::move(Direction direction, sf::Time& elapsedTime)
 {
@@ -14,5 +14,5 @@ FlyingObject::FlyingObject(const float xFactor, const float yFactor, const float
 	this->xFactor = xFactor;
 	this->yFactor = yFactor;
 	sprite.setOrigin(sprite.getGlobalBounds().width / 2, sprite.getGlobalBounds().height / 2);
-	sprite.setRotation(DistanceHelper::getRotation(xFactor, yFactor, imageDirection));
+	sprite.setRotation(MathHelper::getRotation(xFactor, yFactor, imageDirection));
 }

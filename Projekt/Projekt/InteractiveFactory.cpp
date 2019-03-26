@@ -11,9 +11,9 @@ Interactive* InteractiveFactory::create(InteractiveData& interactiveData)
 		auto chest = new Chest(gameTexturesHolder->getTexture(interactiveData.interactiveIndicator), interactiveData.interactionType,
 			gameEntityDataHolder->getAnimationData(interactiveData.interactiveIndicator));
 		chest->setPosition(interactiveData.position);
-		return chest; }
-
-	default: ;
+		return chest; 
+	}
+	default:;
 	}
 }
 

@@ -16,17 +16,17 @@ class MenuControllerImplementation : public MenuController
 	MenuView* menuView;
 	std::vector<sf::Text*>* menuItems;
 	sf::Text* gameName;
-	int currentItem = 0;
+	unsigned currentItem = 0;
 	sf::Sprite* background;
 
 	sf::Text* createNewMenuItem(const sf::String& text) const;
 	void handleSelection() const;
 	void repositionItems() const;
-	int getNumberOfItem(float x, float y) const;
+	int getNumberOfItem(int x, int y) const;
 
 public:
-	void mouseClick(float x, float y) override;
-	void mouseMove(float x, float y) override;
+	void mouseClick(int x, int y) override;
+	void mouseMove(int x, int y) override;
 	sf::Text* getGameName() override;
 	sf::Sprite* getBackground() override;
 	void selectItem() override;

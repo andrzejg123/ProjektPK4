@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "RogueArcher.h"
-#include "DistanceHelper.h"
+#include "MathHelper.h"
 #include "TexturesHolder.h"
 #include "Log.h"
 #include "FlyingObjectFactory.h"

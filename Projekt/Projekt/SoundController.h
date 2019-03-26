@@ -27,7 +27,7 @@ public:
 	virtual void playMusic(MusicIndicator musicIndicator) const = 0;
 	//Return instance of class
 	static SoundController* getInstance();
-	//Clears instance
+	//Clears instance and frees memory
 	static void clearInstance();
 	virtual ~SoundController() = default;
 };

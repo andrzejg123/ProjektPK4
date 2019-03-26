@@ -4,8 +4,8 @@
 class MenuController
 {
 public:
-	virtual void mouseMove(float x, float y) = 0;
-	virtual void mouseClick(float x, float y) = 0;
+	virtual void mouseMove(int x, int y) = 0;
+	virtual void mouseClick(int x, int y) = 0;
 	virtual sf::Sprite* getBackground() = 0;
 	virtual std::vector<sf::Text*>* getMenuItems() = 0;
 	virtual sf::Text* getGameName() = 0;

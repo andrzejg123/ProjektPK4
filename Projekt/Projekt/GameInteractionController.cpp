@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GameInteractionController.h"
-#include "DistanceHelper.h"
+#include "MathHelper.h"
 
 void GameInteractionController::checkInteractions()
 {
@@ -8,14 +8,14 @@ void GameInteractionController::checkInteractions()
 	const auto playerPosition = player->getPosition();
 	possibleInteractionObject = nullptr;
 	auto interactiveList = gameObjectsHolder->getInteractiveList();
-	auto smallestDistance = DistanceHelper::getDistance(playerPosition, (*interactiveList->begin())->getPosition());
+	auto smallestDistance = MathHelper::getDistance(playerPosition, (*interactiveList->begin())->getPosition());
 
 	if (smallestDistance <= player->getInteractionRadius())
 		possibleInteractionObject = *interactiveList->begin();
 
 ;	for(auto interactive : *gameObjectsHolder->getInteractiveList())
 	{
-		auto distance = DistanceHelper::getDistance(playerPosition, interactive->getPosition());
+		auto distance = MathHelper::getDistance(playerPosition, interactive->getPosition());
 		if(distance < player->getInteractionRadius() && distance < smallestDistance)
 		{
 			smallestDistance = distance;
@@ -25,8 +25,8 @@ void GameInteractionController::checkInteractions()
 
 	if(possibleInteractionObject != nullptr)
 	{
-		auto direction = DistanceHelper::getDirection(playerPosition, possibleInteractionObject->getPosition());;
-		if (DistanceHelper::directionToFacing(player->getFacing(), direction) != player->getFacing())
+		auto direction = MathHelper::getDirection(playerPosition, possibleInteractionObject->getPosition());;
+		if (MathHelper::directionToFacing(player->getFacing(), direction) != player->getFacing())
 			possibleInteractionObject = nullptr;
 	}
 

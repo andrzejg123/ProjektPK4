@@ -17,14 +17,14 @@ struct AttackData
 
 class Enemy : public Moveable, public Animated, public Damageable
 {
-	float attackCounter = 0.0f;
+	float attackCounter = -1.0f;
 	RandomMoveHelper* randomMoveHelper;
 protected:
 	bool sawPlayer = false; // if marked as true enemy will follow player until his death
 	float visionRadius;
 	float attackRadius;
 	float damage;
-	float attackSpeed;
+	float attackSpeed = 2.0f;
 	int level;
 public:
 	bool didSawPlayer() const;
@@ -32,7 +32,7 @@ public:
 	float getVisionRadius() const;
 	float getAttackRadius() const;
 	float getAttackSpeed() const;
-	int getAttackCounter() const;
+	float getAttackCounter() const;
 	void incrementAttackCounter(sf::Time& elapsedTime);
 	void resetAttackCounter();
 	void makeRandomMove(sf::Time& elapsedTime);

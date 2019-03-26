@@ -66,9 +66,9 @@ void SettingsReader::reloadSettings()
 				else if (key._Equal(settingResolutionWidth))
 					settingsData.resolutionWidth = value;
 				else if (key._Equal(settingMusicVolume))
-					settingsData.musicVolume = value;
+					settingsData.musicVolume = static_cast<float>(value);
 				else if (key._Equal(settingSoundVolume))
-					settingsData.soundVolume = value;
+					settingsData.soundVolume = static_cast<float>(value);
 				else if (key._Equal(settingShouldPlayMusic))
 					settingsData.playMusic = value;
 				else if (key._Equal(settingShouldPlaySound))

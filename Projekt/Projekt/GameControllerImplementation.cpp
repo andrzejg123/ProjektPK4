@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "GameControllerImplementation.h"
-#include "DistanceHelper.h"
+#include "MathHelper.h"
 #include "SoundController.h"
 #include "EnemyFactory.h"
 #include "Warrior.h"
@@ -66,7 +66,7 @@ void GameControllerImplementation::movePlayer(const Direction direction, sf::Tim
 	
 	if (gameMapController->checkCollision(player))
 		player->cancelMove();
-	player->setFacing(DistanceHelper::directionToFacing(player->getFacing(), direction));
+	player->setFacing(MathHelper::directionToFacing(player->getFacing(), direction));
 	player->animate(AnimationType::Move);
 	interactionController->checkInteractions();
 }
