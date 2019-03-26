@@ -12,9 +12,9 @@ FlyingObject* FlyingObjectFactory::create(Enemy* caster, Object* destination, co
 	switch (objectIndicator)
 	{
 		case ObjectIndicator::PlayerWarrior:
-			return new Arrow(texturesHolder->getTexture(objectIndicator), caster, factor);
+			return new Arrow(texturesHolder->getTexture(objectIndicator), caster, factor, caster->getAttackData().damage);
 		default:
-			return new Arrow(texturesHolder->getTexture(objectIndicator), caster, factor);
+			return new Arrow(texturesHolder->getTexture(objectIndicator), caster, factor, caster->getAttackData().damage);
 	}
 }
 

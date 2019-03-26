@@ -44,8 +44,10 @@ public:
 		EnemyParams::Builder& setPosition(float positionX, float positionY);
 		EnemyParams::Builder& setAttackRadius(float attackRadius);
 		EnemyParams::Builder& multiplyDamageByValue(float value);
-		EnemyParams* build() const;
+		EnemyParams build() const;
 		explicit Builder(int lvl);
+		~Builder();
+
 	};
 
 };

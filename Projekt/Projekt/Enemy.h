@@ -23,8 +23,8 @@ protected:
 	bool sawPlayer = false; // if marked as true enemy will follow player until his death
 	float visionRadius;
 	float attackRadius;
-	float damage = 1;
-	float attackSpeed = 2;
+	float damage;
+	float attackSpeed;
 	int level;
 public:
 	bool didSawPlayer() const;
@@ -38,7 +38,7 @@ public:
 	void makeRandomMove(sf::Time& elapsedTime);
 	void makeMove(Direction direction, sf::Time& elapsedTime);
 	virtual AttackData getAttackData() = 0;
-	explicit Enemy(EnemyParams* enemyParams, AnimationData& animationData);
+	explicit Enemy(const EnemyParams& enemyParams, AnimationData& animationData);
 	virtual ~Enemy();
 };
 

@@ -61,16 +61,15 @@ void Enemy::makeMove(const Direction direction, sf::Time& elapsedTime)
 	animate(AnimationType::Move);
 }
 
-Enemy::Enemy(EnemyParams* enemyParams, AnimationData& animationData) : Animated(animationData)
+Enemy::Enemy(const EnemyParams& enemyParams, AnimationData& animationData) : Animated(animationData)
 {
 	randomMoveHelper = new RandomMoveHelper(this);
-	attackRadius = enemyParams->getAttackRadius();
-	visionRadius = enemyParams->getVisionRadius();
-	setPosition(sf::Vector2f(enemyParams->getPositionX(), enemyParams->getPositionY()));
-	setSpeed(enemyParams->getSpeed());
-	damage = enemyParams->getDamage();
-	level = enemyParams->getLevel();
-	delete enemyParams;
+	attackRadius = enemyParams.getAttackRadius();
+	visionRadius = enemyParams.getVisionRadius();
+	setPosition(sf::Vector2f(enemyParams.getPositionX(), enemyParams.getPositionY()));
+	setSpeed(enemyParams.getSpeed());
+	damage = enemyParams.getDamage();
+	level = enemyParams.getLevel();
 }
 
 Enemy::~Enemy()
