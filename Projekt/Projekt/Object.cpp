@@ -13,10 +13,10 @@ sf::FloatRect Object::getFixedBounds() const
 {
 	sf::FloatRect fixedBounds;
 	const auto defaultBounds = sprite.getGlobalBounds();
-	fixedBounds.height = defaultBounds.height / 4.2;
-	fixedBounds.width = defaultBounds.width / 2.85;
+	fixedBounds.height = defaultBounds.height / 4.2f;
+	fixedBounds.width = defaultBounds.width / 2.85f;
 	fixedBounds.top = defaultBounds.top + defaultBounds.height - fixedBounds.height;
-	fixedBounds.left = defaultBounds.left + (defaultBounds.width - fixedBounds.width) / 2.0;
+	fixedBounds.left = defaultBounds.left + (defaultBounds.width - fixedBounds.width) / 2.0f;
 	return fixedBounds;
 }
 

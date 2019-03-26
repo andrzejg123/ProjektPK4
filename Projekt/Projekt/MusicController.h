@@ -15,6 +15,6 @@ public:
 	virtual void playMusic(MusicIndicator musicIndicator, float volume) = 0;
 	virtual ~MusicController() = default;
 	//Updates music, if need stops it
-	virtual void updateSettings(bool shouldPlayMusic, int musicVolume) = 0;
+	virtual void updateSettings(bool shouldPlayMusic, float musicVolume) = 0;
 };
 

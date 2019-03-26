@@ -14,8 +14,8 @@ class SettingsControllerImplementation : public SettingsController
 
 	SettingsView* settingsView;
 
-	int currentItem = 0;
-	int currentSubItem = 0;
+	unsigned currentItem = 0;
+	unsigned currentSubItem = 0;
 
 	sf::Sprite* background;
 	SettingsReader* settingsManager;
@@ -31,12 +31,12 @@ class SettingsControllerImplementation : public SettingsController
 	void addRestartInfo();
 
 	bool updateItemsIndexes(int item, int subItem);
-	bool updateCurrentItems(float x, float y);
+	bool updateCurrentItems(int x, int y);
 
 public:
-	void mouseLeftClick(float x, float y) override;
-	void mouseRightClick(float x, float y) override;
-	void mouseMove(float x, float y) override;
+	void mouseLeftClick(int x, int y) override;
+	void mouseRightClick(int x, int y) override;
+	void mouseMove(int x, int y) override;
 	sf::Sprite* getBackground() override;
 	void initializeSettings() override;
 	void selectHigherItem() override;

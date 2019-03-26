@@ -1,19 +1,19 @@
 #include "stdafx.h"
-#include "DistanceHelper.h"
+#include "MathHelper.h"
 #include <cmath>
 #include <valarray>
 #include <complex>
 
-float DistanceHelper::getDistance(const sf::Vector2f vector1, const sf::Vector2f vector2)
+float MathHelper::getDistance(const sf::Vector2f vector1, const sf::Vector2f vector2)
 {
 	const auto vector = vector1 - vector2;
 	return sqrt((vector.x * vector.x) + (vector.y * vector.y));
 }
 
-Direction DistanceHelper::getDirection(const sf::Vector2f fromVector, const sf::Vector2f toVector)
+Direction MathHelper::getDirection(const sf::Vector2f fromVector, const sf::Vector2f toVector)
 {
 	const auto vector = fromVector - toVector;
-	const auto tan = abs(std::atan2(vector.y, vector.x) * 180 / 3.14 - 180.0f);
+	const auto tan = abs(std::atan2(vector.y, vector.x) * 180.0f / 3.14f - 180.0f);
 	if (tan >= 22.5f && tan <= 67.5f)
 		return Direction::UpRight;
 	if (tan >= 67.5f && tan <= 112.5f)
@@ -31,7 +31,7 @@ Direction DistanceHelper::getDirection(const sf::Vector2f fromVector, const sf::
 	return Direction::Right;
 }
 
-float DistanceHelper::getAngle(const Direction direction)
+float MathHelper::getAngle(const Direction direction)
 {
 	switch (direction) { 
 		case Direction::Up: return 90.0f;
@@ -47,7 +47,7 @@ float DistanceHelper::getAngle(const Direction direction)
 	}
 }
 
-sf::Vector2f DistanceHelper::getFactor(const sf::Vector2f fromVector, sf::Vector2f toVector)
+sf::Vector2f MathHelper::getFactor(const sf::Vector2f fromVector, sf::Vector2f toVector)
 {
 	const auto c = getDistance(fromVector, toVector);
 	toVector -= fromVector;
@@ -56,7 +56,7 @@ sf::Vector2f DistanceHelper::getFactor(const sf::Vector2f fromVector, sf::Vector
 	return toVector;
 }
 
-Facing DistanceHelper::directionToFacing(const Facing oldFacing, Direction newDirection)
+Facing MathHelper::directionToFacing(const Facing oldFacing, Direction newDirection)
 {
 	switch (newDirection)
 	{
@@ -83,7 +83,7 @@ Facing DistanceHelper::directionToFacing(const Facing oldFacing, Direction newDi
 	return oldFacing;
 }
 
-Direction DistanceHelper::getOppositeDirection(const Direction direction)
+Direction MathHelper::getOppositeDirection(const Direction direction)
 {
 	switch (direction) { 
 		case Direction::Up: return Direction::Down;
@@ -99,7 +99,7 @@ Direction DistanceHelper::getOppositeDirection(const Direction direction)
 	}
 }
 
-float DistanceHelper::getRotation(const float xFactor, const float yFactor, const Direction sourceTextureDirection)
+float MathHelper::getRotation(const float xFactor, const float yFactor, const Direction sourceTextureDirection)
 {
 	return std::abs(std::atan2(xFactor, yFactor) * (180.0f / 3.14f) - 90.0f - getAngle(sourceTextureDirection));
 }

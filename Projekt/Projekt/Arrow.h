@@ -7,7 +7,7 @@ public:
 	sf::FloatRect getFixedBounds() const override;
 	void hitDamageable(Damageable* damageable) override;
 	void hit() override;
-	Arrow(sf::Texture& arrowTexture, Object* caster, sf::Vector2f factor);
+	Arrow(sf::Texture& arrowTexture, Object* caster, sf::Vector2f factor, float damage);
 	~Arrow();
 };
 

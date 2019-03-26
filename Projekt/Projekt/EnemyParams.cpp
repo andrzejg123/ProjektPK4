@@ -103,14 +103,19 @@ EnemyParams::Builder& EnemyParams::Builder::multiplyDamageByValue(const float va
 	return *this;
 }
 
-EnemyParams* EnemyParams::Builder::build() const
+EnemyParams EnemyParams::Builder::build() const
 {
 	if(enemyParams->visionRadius < enemyParams->attackRadius)
 		Log::debug("Warning: vision radius is lower attack radius");
-	return enemyParams;
+	return *enemyParams;
 }
 
 EnemyParams::Builder::Builder(const int lvl)
 {
 	this->enemyParams = new EnemyParams(lvl);
+}
+
+EnemyParams::Builder::~Builder()
+{
+	delete this->enemyParams;
 }

@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "Enemy.h"
-#include "DistanceHelper.h"
+#include "MathHelper.h"
 #include "RandomMoveHelper.h"
 #include "EnemyParams.h"
 #include "Log.h"
@@ -40,7 +40,7 @@ float Enemy::getAttackSpeed() const
 	return attackSpeed;
 }
 
-int Enemy::getAttackCounter() const
+float Enemy::getAttackCounter() const
 {
 	return attackCounter;
 }
@@ -67,20 +67,19 @@ void Enemy::makeRandomMove(sf::Time& elapsedTime)
 void Enemy::makeMove(const Direction direction, sf::Time& elapsedTime)
 {
 	move(direction, elapsedTime);
-	setFacing(DistanceHelper::directionToFacing(this->getFacing(), direction));
+	setFacing(MathHelper::directionToFacing(this->getFacing(), direction));
 	animate(AnimationType::Move);
 }
 
-Enemy::Enemy(EnemyParams* enemyParams, AnimationData& animationData) : Animated(animationData)
+Enemy::Enemy(const EnemyParams& enemyParams, AnimationData& animationData) : Animated(animationData)
 {
 	randomMoveHelper = new RandomMoveHelper(this);
-	attackRadius = enemyParams->getAttackRadius();
-	visionRadius = enemyParams->getVisionRadius();
-	setPosition(sf::Vector2f(enemyParams->getPositionX(), enemyParams->getPositionY()));
-	setSpeed(enemyParams->getSpeed());
-	damage = enemyParams->getDamage();
-	level = enemyParams->getLevel();
-	delete enemyParams;
+	attackRadius = enemyParams.getAttackRadius();
+	visionRadius = enemyParams.getVisionRadius();
+	setPosition(sf::Vector2f(enemyParams.getPositionX(), enemyParams.getPositionY()));
+	setSpeed(enemyParams.getSpeed());
+	damage = enemyParams.getDamage();
+	level = enemyParams.getLevel();
 }
 
 Enemy::~Enemy()

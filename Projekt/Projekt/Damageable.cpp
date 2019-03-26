@@ -1,10 +1,20 @@
 #include "stdafx.h"
 #include "Damageable.h"
 
+void Damageable::onGetHit()
+{
+}
+
+void Damageable::onDeath()
+{
+}
+
 void Damageable::onDamage(const float damage)
 {
+	if (isDead())
+		return;
 	healthPoints -= damage;
-	if (healthPoints <= 0)
+	if (isDead())
 		onDeath();
 	else
 		onGetHit();

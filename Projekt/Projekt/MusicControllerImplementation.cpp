@@ -26,7 +26,7 @@ void MusicControllerImplementation::stopAllMusic() const
 		music.second->stop();
 }
 
-void MusicControllerImplementation::updateSettings(const bool shouldPlayMusic, const int musicVolume)
+void MusicControllerImplementation::updateSettings(const bool shouldPlayMusic, const float musicVolume)
 {
 	if (!shouldPlayMusic)
 		stopAllMusic();

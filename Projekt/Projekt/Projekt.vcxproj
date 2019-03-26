@@ -158,7 +158,7 @@
     <ClInclude Include="Chest.h" />
     <ClInclude Include="Damageable.h" />
     <ClInclude Include="DebugDrawer.h" />
-    <ClInclude Include="DistanceHelper.h" />
+    <ClInclude Include="MathHelper.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyParams.h" />
     <ClInclude Include="ExtrasView.h" />
@@ -229,7 +229,7 @@
     <ClCompile Include="Chest.cpp" />
     <ClCompile Include="Damageable.cpp" />
     <ClCompile Include="DebugDrawer.cpp" />
-    <ClCompile Include="DistanceHelper.cpp" />
+    <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyParams.cpp" />
     <ClCompile Include="ExtrasView.cpp" />

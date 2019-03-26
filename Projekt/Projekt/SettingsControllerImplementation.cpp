@@ -43,11 +43,11 @@ void SettingsControllerImplementation::updateSettings() const
 				break;
 			case SubCategoryIndicator::GameSoundVolume:
 				if (settingsGenerator->getSettingsConstance().volumeSelection.size() > subCategory->currentSelection)
-					settingsData.soundVolume = settingsGenerator->getSettingsConstance().volumeSelection.at(subCategory->currentSelection);
+					settingsData.soundVolume = static_cast<float>(settingsGenerator->getSettingsConstance().volumeSelection.at(subCategory->currentSelection));
 				break;
 			case SubCategoryIndicator::GameMusicVolume:
 				if (settingsGenerator->getSettingsConstance().volumeSelection.size() > subCategory->currentSelection)
-					settingsData.musicVolume = settingsGenerator->getSettingsConstance().volumeSelection.at(subCategory->currentSelection);
+					settingsData.musicVolume = static_cast<float>(settingsGenerator->getSettingsConstance().volumeSelection.at(subCategory->currentSelection));
 				break;
 			case SubCategoryIndicator::Fullscreen:
 				if (settingsGenerator->getSettingsConstance().boolSelection.size() > subCategory->currentSelection)
@@ -82,11 +82,11 @@ bool SettingsControllerImplementation::updateItemsIndexes(const int item, const 
 	return true;
 }
 
-bool SettingsControllerImplementation::updateCurrentItems(const float x, const float y)
+bool SettingsControllerImplementation::updateCurrentItems(const int x, const int y)
 {
 	sf::Text* foundedItem = nullptr;
 	for (auto toDraw : *textsToDraw)
-		if (toDraw->getGlobalBounds().contains(x, y))
+		if (toDraw->getGlobalBounds().contains(static_cast<float>(x), static_cast<float>(y)))
 			foundedItem = toDraw;
 	if (foundedItem == nullptr)
 		return false;
@@ -107,7 +107,7 @@ bool SettingsControllerImplementation::updateCurrentItems(const float x, const f
 	return false;
 }
 
-void SettingsControllerImplementation::mouseLeftClick(const float x, const float y)
+void SettingsControllerImplementation::mouseLeftClick(const int x, const int y)
 {
 	if(updateCurrentItems(x, y))
 		if (currentSubItem != 0)
@@ -116,7 +116,7 @@ void SettingsControllerImplementation::mouseLeftClick(const float x, const float
 			selectItem();
 }
 
-void SettingsControllerImplementation::mouseRightClick(const float x, const float y)
+void SettingsControllerImplementation::mouseRightClick(const int x, const int y)
 {
 	if (updateCurrentItems(x, y))
 		if (currentSubItem != 0)
@@ -125,7 +125,7 @@ void SettingsControllerImplementation::mouseRightClick(const float x, const floa
 			selectItem();
 }
 
-void SettingsControllerImplementation::mouseMove(const float x, const float y)
+void SettingsControllerImplementation::mouseMove(const int x, const int y)
 {
 	const auto oldItem = currentItem;
 	const auto oldSubItem = currentSubItem;

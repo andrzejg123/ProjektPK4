@@ -3,8 +3,8 @@
 
 struct SettingsData
 {
-	int musicVolume = 100;
-	int soundVolume = 100;
+	float musicVolume = 100;
+	float soundVolume = 100;
 	bool playSound = true;
 	bool playMusic = true;
 	bool fullscreen = true;
@@ -44,9 +44,13 @@ class SettingsReader
 	void updateSettings(SettingsData settingsData) const;
 
 public:
+	//Updates settings to its default value
 	void backToDefaultSettings();
+	//Reloads settings from source file
 	void reloadSettings();
+	//Returns currently used settings data (if settings have changed you have to use reload settings before this method)
 	SettingsData getSettingsData();
+	//Updates settings and source file
 	void updateSettingsData(SettingsData settingsData);
 };
 

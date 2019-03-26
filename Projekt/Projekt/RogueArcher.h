@@ -8,7 +8,7 @@ protected:
 	void onGetHit() override;
 public:
 	AttackData getAttackData() override;
-	RogueArcher(sf::Texture& wildDogTexture, EnemyParams* enemyParams, AnimationData& animationData);
+	RogueArcher(sf::Texture& wildDogTexture, const EnemyParams& enemyParams, AnimationData& animationData);
 	~RogueArcher();
 };
 

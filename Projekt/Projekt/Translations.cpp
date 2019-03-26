@@ -61,7 +61,7 @@ void Translations::close()
 
 sf::String& Translations::getText(const TextId textId)
 {
-	const auto id = static_cast<int>(textId);
+	const auto id = static_cast<unsigned>(textId);
 	if (instance != nullptr && instance->translations->size() > id)
 		return instance->translations->at(id);
 	return instance->notTranslated;

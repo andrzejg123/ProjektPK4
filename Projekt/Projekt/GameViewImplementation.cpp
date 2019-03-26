@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include "Keys.h"
-#include "DistanceHelper.h"
+#include "MathHelper.h"
 #include "OptionsViewImplementation.h"
 #include "ViewRouter.h"
 #include "Log.h"

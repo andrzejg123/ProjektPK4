@@ -44,13 +44,13 @@ enum class TextId
 	On,
 	Off,
 	ResumeGame,
-	BackToMainMenu
+	BackToMainMenu,
 };
 
 class Translations final
 {
-	LanguageIndicator language;
-	std::locale locale;
+	LanguageIndicator language = LanguageIndicator::English;
+	std::locale locale = std::locale("en");
 	explicit Translations(LanguageIndicator language);
 	std::vector<sf::String>* translations;
 	sf::String notTranslated = sf::String("???");

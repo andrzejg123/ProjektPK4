@@ -26,7 +26,8 @@ void Arrow::hit()
 	SoundController::getInstance()->playSound(SoundIndicator::HitArrow);
 }
 
-Arrow::Arrow(sf::Texture& arrowTexture, Object* caster, const sf::Vector2f factor): Object(arrowTexture), FlyingObject(factor.x, factor.y)
+Arrow::Arrow(sf::Texture& arrowTexture, Object* caster, const sf::Vector2f factor, const float damage): 
+Object(arrowTexture), FlyingObject(factor.x, factor.y, damage, Direction::Up)
 {
 	sprite.setPosition(caster->getPosition().x + (caster->getBounds().width / 2), caster->getPosition().y + (caster->getBounds().height / 2));
 	setSpeed(120);

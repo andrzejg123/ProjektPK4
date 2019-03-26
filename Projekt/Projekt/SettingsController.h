@@ -18,25 +18,25 @@ enum class SubCategoryIndicator
 
 struct SubCategory
 {
-	sf::Text* subCategoryName;
-	int currentSelection = 0;
+	sf::Text* subCategoryName = nullptr;
+	unsigned currentSelection = 0;
 	std::vector<sf::String> subCategoriesOptionTexts;
-	sf::Text* subCategoryOption;
+	sf::Text* subCategoryOption = nullptr;
 	SubCategoryIndicator subCategoryIndicator;
 };
 
 struct Category
 {
-	sf::Text* categoryName;
+	sf::Text* categoryName = nullptr;
 	std::vector<SubCategory*> subCategories;
 };
 
 class SettingsController
 {
 public:
-	virtual void mouseMove(float x, float y) = 0;
-	virtual void mouseLeftClick(float x, float y) = 0;
-	virtual void mouseRightClick(float x, float y) = 0;
+	virtual void mouseMove(int x, int y) = 0;
+	virtual void mouseLeftClick(int x, int y) = 0;
+	virtual void mouseRightClick(int x, int y) = 0;
 	virtual sf::Sprite* getBackground() = 0;
 	virtual void initializeSettings() = 0;
 	virtual void selectHigherItem() = 0;

@@ -34,11 +34,10 @@ void OptionsControllerImplementation::repositionItems() const
 	const auto windowSize = optionsView->getWindowSize();
 	const auto height = windowSize.y;
 	const auto width = windowSize.x;
-	const float itemsCount = optionsItems->size();
 	auto totalItemsSize = 0.0f;
 	for (auto menuItem : *optionsItems)
 		totalItemsSize += menuItem->getGlobalBounds().height;
-	const auto singleSpace = (height - totalItemsSize) / (10.0f + itemsCount - 1.0f);
+	const auto singleSpace = (height - totalItemsSize) / (10.0f + optionsItems->size() - 1.0f);
 	auto startingPosition = singleSpace * 4;
 	for (auto menuItem : *optionsItems)
 	{
@@ -83,7 +82,7 @@ void OptionsControllerImplementation::adjustBackgroundSize() const
 		const auto backY = firstItem->getPosition().y - backgroundPadding;
 		auto& texture = InterfaceTexturesHolder::getInstance()->getTexture(InterfaceTextureIndicator::MenuBackground);
 		texture.setRepeated(true);
-		const auto rects = sf::IntRect(backX, backY, backWidth, backHeight);
+		const auto rects = sf::IntRect(static_cast<int>(backX), static_cast<int>(backY), static_cast<int>(backWidth), static_cast<int>(backHeight));
 		background->setPosition(backX, backY);
 		background->setTextureRect(rects);
 		background->setTexture(texture);
@@ -93,19 +92,19 @@ void OptionsControllerImplementation::adjustBackgroundSize() const
 	}
 }
 
-int OptionsControllerImplementation::getNumberOfItem(const float x, const float y) const
+int OptionsControllerImplementation::getNumberOfItem(const int x, const int y) const
 {
 	auto index = 0;
 	for (auto item : *optionsItems)
 	{
-		if (item->getGlobalBounds().contains(x, y))
+		if (item->getGlobalBounds().contains(static_cast<float>(x), static_cast<float>(y)))
 			return index;
 		index++;
 	}
 	return -1;
 }
 
-void OptionsControllerImplementation::mouseClick(const float x, const float y)
+void OptionsControllerImplementation::mouseClick(const int x, const int y)
 {
 	const auto newNumber = getNumberOfItem(x, y);
 	if(newNumber >= 0)
@@ -115,7 +114,7 @@ void OptionsControllerImplementation::mouseClick(const float x, const float y)
 	}
 }
 
-void OptionsControllerImplementation::mouseMove(const float x, const float y)
+void OptionsControllerImplementation::mouseMove(const int x, const int y)
 {
 	const auto newNumber = getNumberOfItem(x, y);
 	if (newNumber != currentItem && newNumber >= 0)

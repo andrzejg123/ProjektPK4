@@ -83,7 +83,7 @@ OptionsViewImplementation::OptionsViewImplementation(GameViewCloseCallback* game
 	this->gameCloseCallback = gameCloseCallback;
 	const auto windowSize = window->getSize();
 	overlay = new sf::RectangleShape(sf::Vector2f(0, 0));
-	overlay->setSize(sf::Vector2f(windowSize.x, windowSize.y));
+	overlay->setSize(sf::Vector2f(static_cast<float>(windowSize.x), static_cast<float>(windowSize.y)));
 	overlay->setFillColor(sf::Color(255, 255, 255, 64));
 	this->optionsController = new OptionsControllerImplementation(this);
 }

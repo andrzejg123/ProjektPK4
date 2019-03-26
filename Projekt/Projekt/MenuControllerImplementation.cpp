@@ -36,11 +36,10 @@ void MenuControllerImplementation::repositionItems() const
 	const auto windowSize = menuView->getWindowSize();
 	const auto height = windowSize.y;
 	const auto width = windowSize.x;
-	const float itemsCount = menuItems->size();
 	auto totalItemsSize = 0.0f;
 	for (auto menuItem : *menuItems)
 		totalItemsSize += menuItem->getGlobalBounds().height;
-	const auto singleSpace = (height - totalItemsSize) / (12.0f + itemsCount - 1.0f);
+	const auto singleSpace = (height - totalItemsSize) / (12.0f + menuItems->size() - 1.0f);
 	auto startingPosition = singleSpace * 6;
 	gameName->setPosition(sf::Vector2f((width - gameName->getGlobalBounds().width) / 2, singleSpace));
 	for (auto menuItem : *menuItems)
@@ -51,29 +50,29 @@ void MenuControllerImplementation::repositionItems() const
 	}
 }
 
-int MenuControllerImplementation::getNumberOfItem(const float x, const float y) const
+int MenuControllerImplementation::getNumberOfItem(const int x, const int y) const
 {
 	auto index = 0;
 	for (auto menuItem : *menuItems)
 	{
-		if (menuItem->getGlobalBounds().contains(x, y))
+		if (menuItem->getGlobalBounds().contains(static_cast<float>(x), static_cast<float>(y)))
 			return index;
 		index++;
 	}
 	return -1;
 }
 
-void MenuControllerImplementation::mouseClick(const float x, const float y)
+void MenuControllerImplementation::mouseClick(const int x, const int y)
 {
 	const auto newNumber = getNumberOfItem(x, y);
 	if(newNumber >= 0)
 	{
-		currentItem = getNumberOfItem(x, y);
+		currentItem = static_cast<unsigned>(getNumberOfItem(x, y));
 		selectItem();
 	}
 }
 
-void MenuControllerImplementation::mouseMove(const float x, const float y)
+void MenuControllerImplementation::mouseMove(const int x, const int y)
 {
 	const auto newNumber = getNumberOfItem(x, y);
 	if(newNumber != currentItem && newNumber >= 0)
