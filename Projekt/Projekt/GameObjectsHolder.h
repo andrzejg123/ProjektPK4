@@ -22,6 +22,7 @@ public:
 	std::list<FlyingObject*>* getFlyingObjects() const;
 	std::list<Interactive*>* getInteractiveList() const;
 	void removeFlyingObject(FlyingObject* flyingObject) const;
+	void removeEnemy(Enemy* enemy);
 	Player* getPlayer() const;
 	void setPlayer(Player* player);
 	void addEnemy(Enemy* enemy) const;

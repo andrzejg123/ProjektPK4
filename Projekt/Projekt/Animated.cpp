@@ -1,10 +1,11 @@
 #include "stdafx.h"
 #include "Animated.h"
+#include "Log.h"
 
 void Animated::nextFrame()
 {
 	animationStep = (animationStep + 1) % animationTypesData[int(animationType)].animationFrames;
-	//if (autoPausing && animationType != AnimationType::Death ? animationStep == 0 : animationStep == animationTypesData[int(AnimationType::Death)].animationFrames - 1)
+
 	if (autoPausing && animationStep == animationTypesData[int(animationType)].autoPausingFrame)
 		animating = false;
 	if(facing != Facing::None)
@@ -37,6 +38,22 @@ void Animated::updateAnimation(const sf::Time& elapsed)
 		nextFrame();
 		currentElapsed = sf::seconds(0);
 	}
+}
+
+int Animated::getAnimationProgress()
+{
+	if (animating)
+		return int(float(animationStep + 1) * 100 / float(animationTypesData[int(animationType)].animationFrames));
+	else
+		return 0;
+}
+
+float Animated::getAnimationDuration(float animationPercent, AnimationType animationType)
+{
+	auto animationTypeData = animationTypesData[int(animationType)];
+	auto animationPercentFrames = animationTypeData.animationFrames * animationPercent;
+	return animationPercentFrames * animationTypeData.interval.asSeconds();
+	
 }
 
 Animated::Animated()

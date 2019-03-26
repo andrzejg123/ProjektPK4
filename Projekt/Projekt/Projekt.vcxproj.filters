@@ -218,6 +218,9 @@
     <ClInclude Include="GameInteractionController.h" />
     <ClInclude Include="GameViewInterfaceDrawer.h" />
     <ClInclude Include="InterfaceTexturesHolder.h" />
+    <ClInclude Include="PendingActionsController.h" />
+    <ClInclude Include="PendingAction.h" />
+    <ClInclude Include="PendingObjectEvent.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
@@ -359,5 +362,7 @@
     <ClCompile Include="GameInteractionController.cpp" />
     <ClCompile Include="GameViewInterfaceDrawer.cpp" />
     <ClCompile Include="InterfaceTexturesHolder.cpp" />
+    <ClCompile Include="PendingActionsController.cpp" />
+    <ClCompile Include="PendingAction.cpp" />
   </ItemGroup>
 </Project>

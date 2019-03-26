@@ -3,6 +3,7 @@
 #include "GameObjectsHolder.h"
 #include "EnemyParams.h"
 #include "RandomMoveHelper.h"
+#include "PendingObjectEvent.h"
 
 enum class AttackType
 {
@@ -19,6 +20,7 @@ class Enemy : public Moveable, public Animated, public Damageable
 {
 	float attackCounter = 0.0f;
 	RandomMoveHelper* randomMoveHelper;
+	PendingObjectEvent* pendingAction = nullptr;
 protected:
 	bool sawPlayer = false; // if marked as true enemy will follow player until his death
 	float visionRadius;
@@ -27,6 +29,8 @@ protected:
 	float attackSpeed = 2;
 	int level;
 public:
+	void setPendingAction(PendingObjectEvent* pendingAction);
+	bool hasPendingAction() const;
 	bool didSawPlayer() const;
 	void setSawPlayer();
 	float getVisionRadius() const;

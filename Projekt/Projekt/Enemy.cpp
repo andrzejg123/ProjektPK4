@@ -5,6 +5,16 @@
 #include "EnemyParams.h"
 #include "Log.h"
 
+void Enemy::setPendingAction(PendingObjectEvent* pendingAction)
+{
+	this->pendingAction = pendingAction;
+}
+
+bool Enemy::hasPendingAction() const
+{
+	return pendingAction != nullptr;
+}
+
 bool Enemy::didSawPlayer() const
 {
 	return sawPlayer;
@@ -76,4 +86,6 @@ Enemy::Enemy(EnemyParams* enemyParams, AnimationData& animationData) : Animated(
 Enemy::~Enemy()
 {
 	delete randomMoveHelper;
+	if(hasPendingAction())
+		pendingAction->cancel();
 }
