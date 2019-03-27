@@ -35,6 +35,14 @@ void GameObjectsHolder::removeFlyingObject(FlyingObject* flyingObject) const
 	delete flyingObject;
 }
 
+void GameObjectsHolder::removeEnemy(Enemy* enemy)
+{
+	objects->remove(enemy);
+	animatedList->remove(enemy);
+	enemies->remove(enemy);
+	delete enemy;
+}
+
 Player* GameObjectsHolder::getPlayer() const
 {
 	return player;

@@ -67,9 +67,10 @@ void GameViewImplementation::show()
 				}
 				else if (e.key.code == sf::Keyboard::E)
 					gameController->playerInteract();
+				
 			}
 		}
-
+		
 		const auto oldPlayerPosition = gameController->getGameObjectHolder()->getPlayer()->getPosition();
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
 		{
@@ -96,7 +97,7 @@ void GameViewImplementation::show()
 		else
 			gameController->stopPlayer();
 		const auto newPlayerPosition = gameController->getGameObjectHolder()->getPlayer()->getPosition();
-
+		
 		gameController->updateGame(elapsed);
 
 		// draw the map

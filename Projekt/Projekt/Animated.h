@@ -41,6 +41,8 @@ public:
 	void animate(AnimationType animationType, bool autoPausing = true);
 	void stopAnimate(AnimationType animationType);
 	void updateAnimation(const sf::Time &elapsed);
+	int getAnimationProgress();
+	float getAnimationDuration(float animationPercent, AnimationType animationType);
 	Animated();
 	Animated(AnimationData& animationData);
 	~Animated();

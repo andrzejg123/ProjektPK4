@@ -2,9 +2,11 @@
 #include "GameEnemyControllerImplementation.h"
 #include "MathHelper.h"
 #include "FlyingObjectFactory.h"
+#include "Log.h"
 
 void GameEnemyControllerImplementation::handleAttack(Enemy* enemy) const
 {
+	enemy->setPendingAction(nullptr);
 	const auto data = enemy->getAttackData();
 	switch (data.attackType)
 	{
@@ -18,7 +20,7 @@ void GameEnemyControllerImplementation::handleAttack(Enemy* enemy) const
 	}
 }
 
-void GameEnemyControllerImplementation::updateEnemy(sf::Time& elapsedTime, Enemy* enemy)
+void GameEnemyControllerImplementation::updateEnemy(sf::Time& elapsedTime, Enemy* enemy, PendingActionsController* pendingActionsController)
 {
 	const auto player = gameObjectsHolder->getPlayer();
 	if (player->isDead())
@@ -32,7 +34,11 @@ void GameEnemyControllerImplementation::updateEnemy(sf::Time& elapsedTime, Enemy
 		if (enemy->getAttackCounter() > enemy->getAttackSpeed())
 		{
 			enemy->resetAttackCounter();
-			handleAttack(enemy);
+			const auto boundAction = std::bind(&GameEnemyControllerImplementation::handleAttack, this, enemy);
+			Log::debugA("binding action");
+			const auto pendingAttack = new PendingAction(boundAction, sf::seconds(enemy->getAnimationDuration(0.9, AnimationType::Attack)));
+			enemy->setPendingAction(pendingAttack);
+			pendingActionsController->addPendingAction(pendingAttack);
 			enemy->animate(AnimationType::Attack);
 			enemy->setFacing(MathHelper::directionToFacing(enemy->getFacing(), direction));
 		}
@@ -42,10 +48,15 @@ void GameEnemyControllerImplementation::updateEnemy(sf::Time& elapsedTime, Enemy
 	if (enemy->didSawPlayer() || distance < enemy->getVisionRadius())
 	{
 		enemy->setSawPlayer();
-		enemy->makeMove(direction, elapsedTime);
+		if(!enemy->hasPendingAction())
+			enemy->makeMove(direction, elapsedTime);
 	}
 	else
-		enemy->makeRandomMove(elapsedTime);
+	{
+		if (!enemy->hasPendingAction())
+			enemy->makeRandomMove(elapsedTime);
+	}
+		
 	if (player->getFixedBounds().intersects(enemy->getFixedBounds()))
 		enemy->cancelMove();
 }

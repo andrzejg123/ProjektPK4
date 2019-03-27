@@ -8,6 +8,7 @@
 #include "GameEntityDataHolder.h"
 #include "OptionsView.h"
 #include "GameInteractionController.h"
+#include "PendingActionsController.h"
 
 class GameControllerImplementation : public GameController
 {
@@ -19,6 +20,7 @@ class GameControllerImplementation : public GameController
 	GameEntityDataHolder* gameEntityDataHolder;
 	FileReadingController* fileReadingController;
 	GameInteractionController* interactionController;
+	PendingActionsController* pendingActionsController;
 
 public:
 	void getFirstLayer() override;

@@ -103,13 +103,15 @@ void GameControllerImplementation::updateGame(sf::Time& elapsed)
 {
 	for (auto enemy : *gameObjectsHolder->getEnemies())
 	{
-		gameEnemyController->updateEnemy(elapsed, enemy);
+		gameEnemyController->updateEnemy(elapsed, enemy, pendingActionsController);
 		if (gameMapController->checkCollision(enemy))
 			enemy->cancelMove();
 	}
 	updateFlyingObjects(elapsed);
 	for (auto animated : *gameObjectsHolder->getAnimatedList())
 		animated->updateAnimation(elapsed);
+
+	pendingActionsController->checkPendingActions(elapsed);
 }
 
 void GameControllerImplementation::playerInteract()
@@ -146,6 +148,7 @@ GameControllerImplementation::GameControllerImplementation(GameView* gameView): 
 	this->gameEnemyController = new GameEnemyControllerImplementation(gameObjectsHolder, gameTexturesHolder);
 	this->gameEntityDataHolder = new GameEntityDataHolder(fileReadingController);
 	this->interactionController = new GameInteractionController(gameObjectsHolder, gameView);
+	this->pendingActionsController = new PendingActionsController();
 }
 
 GameControllerImplementation::~GameControllerImplementation()
@@ -156,4 +159,5 @@ GameControllerImplementation::~GameControllerImplementation()
 	delete this->fileReadingController;
 	delete this->gameEntityDataHolder;
 	delete this->interactionController;
+	delete this->pendingActionsController;
 }
