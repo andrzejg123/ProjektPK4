@@ -218,7 +218,12 @@
     <ClInclude Include="MathHelper.h">
       <Filter>Helpers</Filter>
     </ClInclude>
-    <ClInclude Include="DamageHelper.h" />
+    <ClInclude Include="PendingAction.h" />
+    <ClInclude Include="PendingActionsController.h" />
+    <ClInclude Include="PendingObjectEvent.h" />
+    <ClInclude Include="DamageHelper.h">
+      <Filter>Helpers</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
@@ -360,6 +365,10 @@
     <ClCompile Include="MathHelper.cpp">
       <Filter>Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="DamageHelper.cpp" />
+    <ClCompile Include="PendingAction.cpp" />
+    <ClCompile Include="PendingActionsController.cpp" />
+    <ClCompile Include="DamageHelper.cpp">
+      <Filter>Helpers</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>
