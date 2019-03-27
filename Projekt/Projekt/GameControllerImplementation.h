@@ -4,7 +4,7 @@
 #include "GameMapController.h"
 #include "TexturesHolder.h"
 #include "GameObjectsHolder.h"
-#include "GameEnemyController.h"
+#include "EnemyController.h"
 #include "GameEntityDataHolder.h"
 #include "OptionsView.h"
 #include "GameInteractionController.h"
@@ -16,7 +16,7 @@ class GameControllerImplementation : public GameController
 	GameMapController* gameMapController;
 	TexturesHolder* gameTexturesHolder;
 	GameObjectsHolder* gameObjectsHolder;
-	GameEnemyController* gameEnemyController;
+	EnemyController* gameEnemyController;
 	GameEntityDataHolder* gameEntityDataHolder;
 	FileReadingController* fileReadingController;
 	GameInteractionController* interactionController;

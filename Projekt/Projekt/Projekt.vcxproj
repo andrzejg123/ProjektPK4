@@ -170,8 +170,8 @@
     <ClInclude Include="GameViewCloseCallback.h" />
     <ClInclude Include="GameControllerImplementation.h" />
     <ClInclude Include="EnemyFactory.h" />
-    <ClInclude Include="GameEnemyController.h" />
-    <ClInclude Include="GameEnemyControllerImplementation.h" />
+    <ClInclude Include="EnemyController.h" />
+    <ClInclude Include="EnemyControllerImplementation.h" />
     <ClInclude Include="GameEntityDataHolder.h" />
     <ClInclude Include="GameMapController.h" />
     <ClInclude Include="GameObjectsHolder.h" />
@@ -241,7 +241,7 @@
     <ClCompile Include="FlyingObjectFactory.cpp" />
     <ClCompile Include="GameControllerImplementation.cpp" />
     <ClCompile Include="EnemyFactory.cpp" />
-    <ClCompile Include="GameEnemyControllerImplementation.cpp" />
+    <ClCompile Include="EnemyControllerImplementation.cpp" />
     <ClCompile Include="GameEntityDataHolder.cpp" />
     <ClCompile Include="GameMapController.cpp" />
     <ClCompile Include="GameObjectsHolder.cpp" />

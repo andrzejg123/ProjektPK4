@@ -1,10 +1,11 @@
 #include "stdafx.h"
-#include "GameEnemyControllerImplementation.h"
+#include "EnemyControllerImplementation.h"
 #include "MathHelper.h"
 #include "FlyingObjectFactory.h"
 #include "Log.h"
+#include "Enemy.h"
 
-void GameEnemyControllerImplementation::handleAttack(Enemy* enemy) const
+void EnemyControllerImplementation::handleAttack(Enemy* enemy) const
 {
 	enemy->setPendingAction(nullptr);
 	const auto data = enemy->getAttackData();
@@ -20,7 +21,7 @@ void GameEnemyControllerImplementation::handleAttack(Enemy* enemy) const
 	}
 }
 
-void GameEnemyControllerImplementation::updateEnemy(sf::Time& elapsedTime, Enemy* enemy, PendingActionsController* pendingActionsController)
+void EnemyControllerImplementation::updateEnemy(sf::Time& elapsedTime, Enemy* enemy, PendingActionsController* pendingActionsController)
 {
 	const auto player = gameObjectsHolder->getPlayer();
 	if (player->isDead())
@@ -34,7 +35,7 @@ void GameEnemyControllerImplementation::updateEnemy(sf::Time& elapsedTime, Enemy
 		if (enemy->getAttackCounter() > enemy->getAttackSpeed())
 		{
 			enemy->resetAttackCounter();
-			const auto boundAction = std::bind(&GameEnemyControllerImplementation::handleAttack, this, enemy);
+			const auto boundAction = std::bind(&EnemyControllerImplementation::handleAttack, this, enemy);
 			Log::debugA("binding action");
 			const auto pendingAttack = new PendingAction(boundAction, sf::seconds(enemy->getAnimationDuration(0.9, AnimationType::Attack)));
 			enemy->setPendingAction(pendingAttack);
@@ -61,12 +62,12 @@ void GameEnemyControllerImplementation::updateEnemy(sf::Time& elapsedTime, Enemy
 		enemy->cancelMove();
 }
 
-GameEnemyControllerImplementation::GameEnemyControllerImplementation(GameObjectsHolder* gameObjectsHolder, TexturesHolder* gameTexturesHolder)
+EnemyControllerImplementation::EnemyControllerImplementation(GameObjectsHolder* gameObjectsHolder, TexturesHolder* gameTexturesHolder)
 {
 	this->gameObjectsHolder = gameObjectsHolder;
 	this->gameTexturesHolder = gameTexturesHolder;;
 }
 
-GameEnemyControllerImplementation::~GameEnemyControllerImplementation()
+EnemyControllerImplementation::~EnemyControllerImplementation()
 {
 }

@@ -4,19 +4,66 @@
 
 EnemyParams::EnemyParams()
 {
+	setDefaultValues();
+}
+
+void EnemyParams::setDefaultValues()
+{
 	rank = Rank::Normal;
 	ranged = false;
 	level = 1;
-	attackRadius = 25.0f;
 	positionX = 0.0f;
 	positionY = 0.0f;
+	attackRadius = 40.0f;
+
 	speed = 60.0f;
 	visionRadius = 110.0f;
 	health = 100.0f;
-	defense.armor = 100.0f;
-	defense.magicDefense = 100.0f;
-	damage.baseDamage = 20.0f;
+	defense.armor = 20.0f;
+	defense.magicDefense = 10.0f;
+	damage.baseDamage = 10.0f;
+	damage.piercingAttackChance = 5.0f;
+	damage.criticalAttackChance = 5.0f;
+	defense.dodgeChance = 5.0f;
 	attackSpeed = 2.0f;
+}
+
+void EnemyParams::scaleWithLevel()
+{
+	auto floatLvl = float(level);
+	switch (rank) {
+	case Rank::Normal: break;;
+	case Rank::Special:
+		floatLvl += 5.0f;
+		break;
+	case Rank::Epic:
+		floatLvl += 10.0f;
+		break;
+	case Rank::Boss:
+		floatLvl += 20.0f;
+		break;
+	default:;
+	}
+	if (ranged)
+		attackRadius += 60.0f;
+
+	health += (floatLvl * 2.0f);
+	damage.baseDamage += (floatLvl * 1.0f);
+	defense.armor += (floatLvl * 2.0f);
+	defense.magicDefense += (floatLvl * 1.5f);
+	visionRadius += (floatLvl * 0.1f);
+	speed += (floatLvl * 0.2f);
+	attackSpeed += (floatLvl * 0.01f);
+	defense.fireResistance += (floatLvl * 0.5f);
+	defense.iceResistance += (floatLvl * 0.5f);
+	defense.twoHandedWeaponResistance += (floatLvl * 0.5f);
+	defense.oneHandedWeaponResistance += (floatLvl * 0.5f);
+	defense.daggerResistance += (floatLvl * 0.5f);
+	defense.arrowResistance += (floatLvl * 0.5f);
+	defense.quarrelResistance += (floatLvl * 0.5f);
+	damage.piercingAttackChance += (floatLvl / 0.25f);
+	damage.criticalAttackChance += (floatLvl * 0.25f);
+	defense.dodgeChance += (floatLvl / 0.1f);
 }
 
 float EnemyParams::getAttackRadius() const
@@ -262,7 +309,7 @@ EnemyParams::Builder& EnemyParams::Builder::setRank(const Rank rank)
 
 EnemyParams::Builder& EnemyParams::Builder::setRanged(const bool ranged)
 {
-	enemyParams->ranged = true;
+	enemyParams->ranged = ranged;
 	return *this;
 }
 
@@ -274,24 +321,11 @@ EnemyParams::Builder& EnemyParams::Builder::setLevel(const int level)
 
 EnemyParams EnemyParams::Builder::build() const
 {
-	const auto floatLvl = float(enemyParams->level);
-	switch (enemyParams->rank) { 
-		case Rank::Normal: break;
-		case Rank::Special: break;
-		case Rank::Epic: break;
-	default: ;
-	}
-	if(enemyParams->ranged)
-		enemyParams->attackRadius += 80.0f;
-	enemyParams->speed += floatLvl;
-	enemyParams->visionRadius += floatLvl;
-	enemyParams->health += (floatLvl * 2.0f);
-	enemyParams->defense.armor += (floatLvl * 2.0f);
-	enemyParams->defense.magicDefense += (floatLvl * 2.0f);
-	enemyParams->damage.baseDamage += floatLvl;
-	enemyParams->attackSpeed = 2.0f;
+	enemyParams->scaleWithLevel();
+
 	if(enemyParams->visionRadius < enemyParams->attackRadius)
 		Log::debug("Warning: vision radius is lower attack radius");
+
 	const auto enemyParams = *this->enemyParams;
 	delete this->enemyParams;
 	return enemyParams;

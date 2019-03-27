@@ -4,7 +4,7 @@
 #include "SoundController.h"
 #include "EnemyFactory.h"
 #include "Warrior.h"
-#include "GameEnemyControllerImplementation.h"
+#include "EnemyControllerImplementation.h"
 #include "Log.h"
 #include "InteractiveFactory.h"
 #include "OptionsViewImplementation.h"
@@ -145,7 +145,7 @@ GameControllerImplementation::GameControllerImplementation(GameView* gameView): 
 	this->gameMapController = new GameMapController(fileReadingController);
 	this->gameTexturesHolder = TexturesHolder::getInstance();
 	this->gameObjectsHolder = new GameObjectsHolder();
-	this->gameEnemyController = new GameEnemyControllerImplementation(gameObjectsHolder, gameTexturesHolder);
+	this->gameEnemyController = new EnemyControllerImplementation(gameObjectsHolder, gameTexturesHolder);
 	this->gameEntityDataHolder = new GameEntityDataHolder(fileReadingController);
 	this->interactionController = new GameInteractionController(gameObjectsHolder, gameView);
 	this->pendingActionsController = new PendingActionsController();

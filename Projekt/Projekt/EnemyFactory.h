@@ -9,7 +9,7 @@ class EnemyFactory
 	GameEntityDataHolder* gameEntityDataHolder;
 public:
 	//Creates enemy according to texture indicator
-	Enemy* create(ObjectIndicator enemyIndicator, sf::FloatRect& spawnAreaRect, int mapLevel) const;
+	Enemy* create(ObjectIndicator objectIndicator, sf::FloatRect& spawnAreaRect, int mapLevel) const;
 	explicit EnemyFactory(TexturesHolder* gameTexturesHolder, GameEntityDataHolder* gameEntityDataHolder);
 	~EnemyFactory();
 };

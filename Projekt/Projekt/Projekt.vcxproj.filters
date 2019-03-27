@@ -90,12 +90,6 @@
     <ClInclude Include="Log.h">
       <Filter>General</Filter>
     </ClInclude>
-    <ClInclude Include="GameEnemyController.h">
-      <Filter>Game</Filter>
-    </ClInclude>
-    <ClInclude Include="GameEnemyControllerImplementation.h">
-      <Filter>Game</Filter>
-    </ClInclude>
     <ClInclude Include="GameEntityDataHolder.h">
       <Filter>Game</Filter>
     </ClInclude>
@@ -224,6 +218,12 @@
     <ClInclude Include="DamageHelper.h">
       <Filter>Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="EnemyController.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
+    <ClInclude Include="EnemyControllerImplementation.h">
+      <Filter>Enemy</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
@@ -236,9 +236,6 @@
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="GameMap.cpp">
-      <Filter>Game</Filter>
-    </ClCompile>
-    <ClCompile Include="GameEnemyControllerImplementation.cpp">
       <Filter>Game</Filter>
     </ClCompile>
     <ClCompile Include="GameControllerImplementation.cpp">
@@ -369,6 +366,9 @@
     <ClCompile Include="PendingActionsController.cpp" />
     <ClCompile Include="DamageHelper.cpp">
       <Filter>Helpers</Filter>
+    </ClCompile>
+    <ClCompile Include="EnemyControllerImplementation.cpp">
+      <Filter>Enemy</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

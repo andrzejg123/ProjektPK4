@@ -1,12 +1,11 @@
 #pragma once
 #include "GameObjectsHolder.h"
-#include "Enemy.h"
 #include "PendingActionsController.h"
 
-class GameEnemyController
+class EnemyController
 {
 public:
-	virtual ~GameEnemyController() = default;
+	virtual ~EnemyController() = default;
 	virtual void updateEnemy(sf::Time& elapsedTime, Enemy* enemy, PendingActionsController* pendingActionsController) = 0;
 };
 

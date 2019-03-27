@@ -7,7 +7,8 @@ enum class Rank
 {
 	Normal,
 	Special,
-	Epic
+	Epic,
+	Boss
 };
 
 class EnemyParams
@@ -24,7 +25,8 @@ class EnemyParams
 	Damage damage;
 	Defense defense;
 	Rank rank;
-
+	void setDefaultValues();
+	void scaleWithLevel();
 	explicit EnemyParams();
 public:
 	float getAttackRadius() const;
@@ -37,6 +39,8 @@ public:
 	Defense getDefense() const;
 	Damage getDamage() const;
 	int getLevel() const;
+
+
 
 	class Builder
 	{

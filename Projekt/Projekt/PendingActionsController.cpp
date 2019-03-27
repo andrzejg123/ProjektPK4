@@ -1,6 +1,6 @@
 #include "stdafx.h"
 #include "PendingActionsController.h"
-#include "GameEnemyControllerImplementation.h"
+#include "EnemyControllerImplementation.h"
 
 
 void PendingActionsController::addPendingAction(std::function<void()> action, sf::Time delay)

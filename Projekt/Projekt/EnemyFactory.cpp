@@ -2,11 +2,11 @@
 #include "EnemyFactory.h"
 #include "RogueArcher.h"
 
-Enemy* EnemyFactory::create(const ObjectIndicator enemyIndicator, sf::FloatRect& spawnAreaRect, const int mapLevel) const
+Enemy* EnemyFactory::create(const ObjectIndicator objectIndicator, sf::FloatRect& spawnAreaRect, const int mapLevel) const
 {
-	const auto& enemyParamsFactors = gameEntityDataHolder->getEnemyParamsFactors(enemyIndicator);
+	const auto& enemyParamsFactors = gameEntityDataHolder->getEnemyParamsFactors(objectIndicator);
 	const auto enemyLevel = mapLevel + rand() % 3;
-	auto& animationData = gameEntityDataHolder->getAnimationData(enemyIndicator);
+	auto& animationData = gameEntityDataHolder->getAnimationData(objectIndicator);
 
 	const auto enemyPositionX = float(rand() % int((spawnAreaRect.left + spawnAreaRect.width) * 1000 - spawnAreaRect.left * 1000)) / 1000.0f + spawnAreaRect.left;
 	const auto enemyPositionY = float(rand() % int((spawnAreaRect.top + spawnAreaRect.height) * 1000 - spawnAreaRect.top * 1000)) / 1000.0f + spawnAreaRect.top;
@@ -19,12 +19,12 @@ Enemy* EnemyFactory::create(const ObjectIndicator enemyIndicator, sf::FloatRect&
 		.setLevel(enemyLevel)
 		.setRank(Rank::Normal)
 		.setPosition(enemyPositionX - positionFixingX, enemyPositionY - positionFixingY);
-	switch (enemyIndicator)
+	switch (objectIndicator)
 	{
 	case ObjectIndicator::RogueArcher: 
-		return new RogueArcher(gameTexturesHolder->getTexture(enemyIndicator), builder.setRanged(true).setDamageType(DamageType::Arrow).build(), animationData);
+		return new RogueArcher(gameTexturesHolder->getTexture(objectIndicator), builder.setRanged(true).setDamageType(DamageType::Arrow).build(), animationData);
 	default: 
-		return new RogueArcher(gameTexturesHolder->getTexture(enemyIndicator), builder.setRanged(true).setDamageType(DamageType::Quarrel).build(), animationData);
+		return new RogueArcher(gameTexturesHolder->getTexture(objectIndicator), builder.setRanged(true).setDamageType(DamageType::Quarrel).build(), animationData);
 	};
 }
 

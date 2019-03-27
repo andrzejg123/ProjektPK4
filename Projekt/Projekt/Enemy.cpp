@@ -82,6 +82,8 @@ Enemy::Enemy(EnemyParams& enemyParams, AnimationData& animationData) : Animated(
 	defense = enemyParams.getDefense();
 	attackSpeed = enemyParams.getAttackSpeed();
 	level = enemyParams.getLevel();
+	damage = enemyParams.getDamage();
+	defense = enemyParams.getDefense();
 }
 
 Enemy::~Enemy()

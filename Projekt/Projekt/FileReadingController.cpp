@@ -118,7 +118,8 @@ std::map<std::string, float> FileReadingController::loadEnemyParamsFactors(const
 	while (std::getline(file, line))
 	{
 		auto separated = SettingsReader::split(line, '=');
-		map[separated[0]] = stof(separated[1]);
+		if(separated.size() == 2)
+			map[separated[0]] = stof(separated[1]);
 	}
 	file.close();
 	return map;
