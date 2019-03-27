@@ -6,16 +6,6 @@
 #include <fstream>
 #include <iostream>
 
-std::vector<std::string> SettingsReader::split(const std::string& s, const char delimiter) const
-{
-	std::vector<std::string> tokens;
-	std::string token;
-	std::istringstream tokenStream(s);
-	while (std::getline(tokenStream, token, delimiter))
-		tokens.push_back(token);
-	return tokens;
-}
-
 SettingsData SettingsReader::getSettingsData()
 {
 	if (!dataLoaded)
@@ -92,6 +82,16 @@ void SettingsReader::reloadSettings()
 	else
 		this->settingsData = settingsData;
 	file.close();
+}
+
+std::vector<std::string> SettingsReader::split(const std::string& s, const char delimiter)
+{
+	std::vector<std::string> tokens;
+	std::string token;
+	std::istringstream tokenStream(s);
+	while (std::getline(tokenStream, token, delimiter))
+		tokens.push_back(token);
+	return tokens;
 }
 
 void SettingsReader::updateSettings(const SettingsData settingsData) const

@@ -1,27 +1,31 @@
 #pragma once
-#include "DebugDrawer.h"
+#include "DamageHelper.h"
+#include <string>
+#include <map>
 
-struct EnemyParamsFactors
+enum class Rank
 {
-	float visionRadiusFactor;
-	float armorFactor;
-	float healthFactor;
-	float attackRadiusFactor;
-	float speedFactor;
+	Normal,
+	Special,
+	Epic
 };
 
 class EnemyParams
 {
+	bool ranged;
+	int level;
 	float speed;
 	float positionX;
 	float positionY;
 	float visionRadius;
 	float attackRadius;
 	float health;
-	float armor;
-	float damage;
-	int level;
-	explicit EnemyParams(int lvl);
+	float attackSpeed;
+	Damage damage;
+	Defense defense;
+	Rank rank;
+
+	explicit EnemyParams();
 public:
 	float getAttackRadius() const;
 	float getVisionRadius() const;
@@ -29,24 +33,64 @@ public:
 	float getPositionY() const;
 	float getSpeed() const;
 	float getHealth() const;
-	float getArmor() const;
-	float getDamage() const;
+	float getAttackSpeed() const;
+	Defense getDefense() const;
+	Damage getDamage() const;
 	int getLevel() const;
 
 	class Builder
 	{
+		std::string attackRadiusKey = "multiplyAttackRadius";
+		std::string visionRadiusKey = "multiplyVisionRadius";
+		std::string speedKey = "multiplySpeed";
+		std::string healthKey = "multiplyHealth";
+		std::string attackSpeedKey = "multiplyAttackSpeed";
+		std::string armorKey = "multiplyArmor";
+		std::string magicDefenseKey = "multiplyMagicDefense";
+		std::string damageKey = "multiplyDamage";
+
+		std::string dodgeChanceKey = "setDodgeChance";
+		std::string globalResistanceKey = "setGlobalResistance";
+		std::string fireResistanceKey = "setFireResistance";
+		std::string iceResistanceKey = "setIceResistance";
+		std::string twoHandedResistanceKey = "setTwoHandedWeaponResistance";
+		std::string oneHandedResistanceKey = "setOneHandedWeaponResistance";
+		std::string daggerResistanceKey = "setDaggerResistance";
+		std::string arrowResistanceKey = "setArrowResistance";
+		std::string quarrelResistanceKey = "setQuarrelResistance";
+		std::string	piercingAttackChanceKey = "setPiercingAttackChance";
+		std::string criticalAttackChanceKey = "setCriticalAttackChance";
 		EnemyParams* enemyParams;
 	public:
-		EnemyParams::Builder& multiplyVisionRadiusByValue(float value);
-		EnemyParams::Builder& multiplySpeedByValue(float value);
-		EnemyParams::Builder& multiplyHealthByValue(float value);
-		EnemyParams::Builder& multiplyArmorByValue(float value);
-		EnemyParams::Builder& setPosition(float positionX, float positionY);
-		EnemyParams::Builder& setAttackRadius(float attackRadius);
-		EnemyParams::Builder& multiplyDamageByValue(float value);
+		Builder& setPosition(float positionX, float positionY);
+
+		Builder& multiplyAttackRadiusByValue(float value);
+		Builder& multiplyVisionRadiusByValue(float value);
+		Builder& multiplySpeedByValue(float value);
+		Builder& multiplyHealthByValue(float value);
+		Builder& multiplyArmorByValue(float value);
+		Builder& multiplyMagicDefenseByValue(float value);
+		Builder& multiplyDamageByValue(float value);
+		Builder& multiplyAttackSpeed(float value);
+		Builder& addFileEnemyParams(const std::map<std::string, float>& enemyParamsFactors);
+
+		Builder& setRank(Rank rank);
+		Builder& setRanged(bool ranged);
+		Builder& setLevel(int level);
+		Builder& setDodgeChance(float dodgeChance);
+		Builder& setGlobalResistance(float globalResistance);
+		Builder& setFireResistance(float fireResistance);
+		Builder& setIceResistance(float iceResistance);
+		Builder& setTwoHandedWeaponResistance(float twoHandedWeaponResistance);
+		Builder& setOneHandedWeaponResistance(float oneHandedWeaponResistance);
+		Builder& setDaggerResistance(float daggerResistance);
+		Builder& setArrowResistance(float arrowResistance);
+		Builder& setQuarrelResistance(float quarrelResistance);
+		Builder& setPiercingAttackChance(float piercingAttackChance);
+		Builder& setCriticalAttackChance(float criticalAttackChance);
+		Builder& setDamageType(const DamageType& damageType);
 		EnemyParams build() const;
-		explicit Builder(int lvl);
-		~Builder();
+		explicit Builder();
 
 	};
 

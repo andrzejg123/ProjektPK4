@@ -218,6 +218,7 @@
     <ClInclude Include="MathHelper.h">
       <Filter>Helpers</Filter>
     </ClInclude>
+    <ClInclude Include="DamageHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
@@ -359,5 +360,6 @@
     <ClCompile Include="MathHelper.cpp">
       <Filter>Helpers</Filter>
     </ClCompile>
+    <ClCompile Include="DamageHelper.cpp" />
   </ItemGroup>
 </Project>

@@ -8,7 +8,7 @@ void FlyingObject::move(Direction direction, sf::Time& elapsedTime)
 	Moveable::move(xFactor, yFactor, elapsedTime);
 }
 
-FlyingObject::FlyingObject(const float xFactor, const float yFactor, const float damage, const Direction imageDirection)
+FlyingObject::FlyingObject(const float xFactor, const float yFactor, Damage& damage, const Direction imageDirection)
 {
 	this->damage = damage;
 	this->xFactor = xFactor;

@@ -1,0 +1,2 @@
+multiplyAttackRadius=0.99
+setDodgeChance=1.5

@@ -13,7 +13,8 @@ public:
 	MapGameplayData* loadMapGameplayData(MapIndicator mapIndicator, sf::Vector2u tileSize);
 	std::list<sf::FloatRect>* loadCollisionRects(MapIndicator dataIndicator);
 
-	EnemyParamsFactors loadEnemyParamsFactors(ObjectIndicator enemyIndicator);
+	std::map<std::string, float> loadEnemyParamsFactors(ObjectIndicator enemyIndicator);
+
 	AnimationData loadAnimationData(ObjectIndicator entityIndicator);
 
 	FileReadingController();

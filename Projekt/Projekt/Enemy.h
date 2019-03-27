@@ -11,7 +11,7 @@ enum class AttackType
 
 struct AttackData
 {
-	float damage;
+	Damage damage;
 	AttackType attackType;
 };
 
@@ -23,8 +23,8 @@ protected:
 	bool sawPlayer = false; // if marked as true enemy will follow player until his death
 	float visionRadius;
 	float attackRadius;
-	float damage;
-	float attackSpeed = 2.0f;
+	float attackSpeed;
+	Damage damage;
 	int level;
 public:
 	bool didSawPlayer() const;
@@ -38,7 +38,7 @@ public:
 	void makeRandomMove(sf::Time& elapsedTime);
 	void makeMove(Direction direction, sf::Time& elapsedTime);
 	virtual AttackData getAttackData() = 0;
-	explicit Enemy(const EnemyParams& enemyParams, AnimationData& animationData);
+	explicit Enemy(EnemyParams& enemyParams, AnimationData& animationData);
 	virtual ~Enemy();
 };
 

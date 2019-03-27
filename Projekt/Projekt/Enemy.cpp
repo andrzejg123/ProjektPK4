@@ -61,7 +61,7 @@ void Enemy::makeMove(const Direction direction, sf::Time& elapsedTime)
 	animate(AnimationType::Move);
 }
 
-Enemy::Enemy(const EnemyParams& enemyParams, AnimationData& animationData) : Animated(animationData)
+Enemy::Enemy(EnemyParams& enemyParams, AnimationData& animationData) : Animated(animationData)
 {
 	randomMoveHelper = new RandomMoveHelper(this);
 	attackRadius = enemyParams.getAttackRadius();
@@ -69,6 +69,8 @@ Enemy::Enemy(const EnemyParams& enemyParams, AnimationData& animationData) : Ani
 	setPosition(sf::Vector2f(enemyParams.getPositionX(), enemyParams.getPositionY()));
 	setSpeed(enemyParams.getSpeed());
 	damage = enemyParams.getDamage();
+	defense = enemyParams.getDefense();
+	attackSpeed = enemyParams.getAttackSpeed();
 	level = enemyParams.getLevel();
 }
 

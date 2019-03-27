@@ -4,14 +4,14 @@
 
 class GameEntityDataHolder
 {
-	std::map<ObjectIndicator, EnemyParamsFactors>* enemiesParamsFactors;
+	std::map<ObjectIndicator, std::map<std::string, float>>* enemiesParamsFactors;
 	std::map<ObjectIndicator, AnimationData>* animationsData;
 	FileReadingController* fileReadingController;
 
 public:
-	EnemyParamsFactors& getEnemyParamsFactors(ObjectIndicator enemyIndicator) const;
+	std::map<std::string, float>& getEnemyParamsFactors(ObjectIndicator enemyIndicator) const;
 	AnimationData& getAnimationData(ObjectIndicator entityIndicator) const;
-	GameEntityDataHolder(FileReadingController* fileReadingController);
+	explicit GameEntityDataHolder(FileReadingController* fileReadingController);
 	~GameEntityDataHolder();
 };
 

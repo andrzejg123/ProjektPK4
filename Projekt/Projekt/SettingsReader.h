@@ -40,10 +40,10 @@ class SettingsReader
 
 	bool dataLoaded = false;
 	SettingsData settingsData;
-	std::vector<std::string> split(const std::string& s, char delimiter) const;
 	void updateSettings(SettingsData settingsData) const;
 
 public:
+	static std::vector<std::string> split(const std::string& s, char delimiter);
 	//Updates settings to its default value
 	void backToDefaultSettings();
 	//Reloads settings from source file

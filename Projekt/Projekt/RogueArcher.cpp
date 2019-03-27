@@ -23,7 +23,7 @@ AttackData RogueArcher::getAttackData()
 	return data;
 }
 
-RogueArcher::RogueArcher(sf::Texture& wildDogTexture, const EnemyParams& enemyParams, AnimationData& animationData) : Object(wildDogTexture), Enemy(enemyParams, animationData)
+RogueArcher::RogueArcher(sf::Texture& wildDogTexture, EnemyParams enemyParams, AnimationData& animationData) : Object(wildDogTexture), Enemy(enemyParams, animationData)
 {
 	sprite.setTextureRect(sf::IntRect(0, int(facing) * animationData.frameSizeY, animationData.frameSizeX, animationData.frameSizeY));
 }

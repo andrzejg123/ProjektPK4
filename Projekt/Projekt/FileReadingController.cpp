@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "FileReadingController.h"
 #include "Log.h"
+#include "SettingsReader.h"
+#include "FileNameHelper.h"
 
 
 MapDrawingData* FileReadingController::loadMapDrawingData(MapIndicator mapIndicator)
@@ -106,20 +108,20 @@ std::list<sf::FloatRect>* FileReadingController::loadCollisionRects(MapIndicator
 	return collisionRects;
 }
 
-EnemyParamsFactors FileReadingController::loadEnemyParamsFactors(ObjectIndicator enemyIndicator)
+std::map<std::string, float> FileReadingController::loadEnemyParamsFactors(const ObjectIndicator enemyIndicator)
 {
-	EnemyParamsFactors enemyParamsFactors;
-	file.open("entities/enemies/enemy_" + std::to_string(int(enemyIndicator)) + ".txt");
-	if(file.good())
+	auto map = std::map<std::string, float>();
+	file.open(FileNameHelper::getEnemyFileName(enemyIndicator));
+	if (!file.is_open())
+		return map;
+	std::string line;
+	while (std::getline(file, line))
 	{
-		file >> enemyParamsFactors.visionRadiusFactor;
-		file >> enemyParamsFactors.armorFactor;
-		file >> enemyParamsFactors.healthFactor;
-		file >> enemyParamsFactors.attackRadiusFactor;
-		file >> enemyParamsFactors.speedFactor;
+		auto separated = SettingsReader::split(line, '=');
+		map[separated[0]] = stof(separated[1]);
 	}
 	file.close();
-	return enemyParamsFactors;
+	return map;
 }
 
 AnimationData FileReadingController::loadAnimationData(ObjectIndicator entityIndicator)

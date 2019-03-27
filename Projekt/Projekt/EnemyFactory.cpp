@@ -14,21 +14,17 @@ Enemy* EnemyFactory::create(const ObjectIndicator enemyIndicator, sf::FloatRect&
 	//fixing position - so that the fixed bounds center will be placed in randomized position
 	const auto positionFixingX = animationData.frameSizeX / 2.0f;
 	const auto positionFixingY = animationData.frameSizeY - animationData.frameSizeY / 8.4f;
-
-	const auto enemyParams = EnemyParams::Builder(enemyLevel)
-		.setPosition(enemyPositionX - positionFixingX, enemyPositionY - positionFixingY)
-		.multiplyVisionRadiusByValue(enemyParamsFactors.visionRadiusFactor)
-		.multiplyArmorByValue(enemyParamsFactors.armorFactor)
-		.multiplyHealthByValue(enemyParamsFactors.healthFactor)
-		.setAttackRadius(enemyParamsFactors.attackRadiusFactor)
-		.multiplySpeedByValue(enemyParamsFactors.speedFactor)
-		.build();
+	auto builder = EnemyParams::Builder()
+		.addFileEnemyParams(enemyParamsFactors)
+		.setLevel(enemyLevel)
+		.setRank(Rank::Normal)
+		.setPosition(enemyPositionX - positionFixingX, enemyPositionY - positionFixingY);
 	switch (enemyIndicator)
 	{
 	case ObjectIndicator::RogueArcher: 
-		return new RogueArcher(gameTexturesHolder->getTexture(enemyIndicator), enemyParams, animationData);
+		return new RogueArcher(gameTexturesHolder->getTexture(enemyIndicator), builder.setRanged(true).setDamageType(DamageType::Arrow).build(), animationData);
 	default: 
-		return new RogueArcher(gameTexturesHolder->getTexture(enemyIndicator), enemyParams, animationData);
+		return new RogueArcher(gameTexturesHolder->getTexture(enemyIndicator), builder.setRanged(true).setDamageType(DamageType::Quarrel).build(), animationData);
 	};
 }
 

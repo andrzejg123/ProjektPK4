@@ -177,6 +177,7 @@
     <ClInclude Include="GameInteractionController.h" />
     <ClInclude Include="GameViewInterfaceDrawer.h" />
     <ClInclude Include="InterfaceTexturesHolder.h" />
+    <ClInclude Include="DamageHelper.h" />
     <ClInclude Include="TexturesHolder.h" />
     <ClInclude Include="GameViewImplementation.h" />
     <ClInclude Include="GameController.h" />
@@ -243,6 +244,7 @@
     <ClCompile Include="GameInteractionController.cpp" />
     <ClCompile Include="GameViewInterfaceDrawer.cpp" />
     <ClCompile Include="InterfaceTexturesHolder.cpp" />
+    <ClCompile Include="DamageHelper.cpp" />
     <ClCompile Include="TexturesHolder.cpp" />
     <ClCompile Include="GameViewImplementation.cpp" />
     <ClCompile Include="Interactive.cpp" />

@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "GameEntityDataHolder.h"
 
-EnemyParamsFactors& GameEntityDataHolder::getEnemyParamsFactors(const ObjectIndicator enemyIndicator) const
+std::map<std::string, float>& GameEntityDataHolder::getEnemyParamsFactors(const ObjectIndicator enemyIndicator) const
 {
 	const auto i = enemiesParamsFactors->find(enemyIndicator);
 	if (i == enemiesParamsFactors->end())
@@ -29,7 +29,7 @@ AnimationData& GameEntityDataHolder::getAnimationData(const ObjectIndicator enti
 
 GameEntityDataHolder::GameEntityDataHolder(FileReadingController* fileReadingController) : fileReadingController(fileReadingController)
 {
-	this->enemiesParamsFactors = new std::map<ObjectIndicator, EnemyParamsFactors>;
+	this->enemiesParamsFactors = new std::map<ObjectIndicator, std::map<std::string, float>>;
 	this->animationsData = new std::map<ObjectIndicator, AnimationData>;
 }
 

@@ -86,3 +86,19 @@ std::string FileNameHelper::getFontFileName(const FontIndicator fontIndicator)
 	}
 	return prefix + name + suffix;
 }
+
+std::string FileNameHelper::getEnemyFileName(const ObjectIndicator objectIndicator)
+{
+	const std::string prefix = "entities/enemies/";
+	std::string name;
+	const std::string suffix = ".txt";
+	switch (objectIndicator)
+	{
+	case ObjectIndicator::RogueArcher:
+		name = "rogue_archer";
+		break;
+	default:
+		name = "error";
+	}
+	return prefix + name + suffix;
+}

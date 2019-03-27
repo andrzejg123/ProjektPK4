@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "Damageable.h"
+#include "DamageHelper.h"
 
 void Damageable::onGetHit()
 {
@@ -9,11 +10,11 @@ void Damageable::onDeath()
 {
 }
 
-void Damageable::onDamage(const float damage)
+void Damageable::onDamage(Damage& damage)
 {
 	if (isDead())
 		return;
-	healthPoints -= damage;
+	healthPoints -= DamageHelper::calculateDamage(damage, defense);
 	if (isDead())
 		onDeath();
 	else
