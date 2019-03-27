@@ -36,7 +36,10 @@ struct Defense
 
 class DamageHelper
 {
+	static float calculateResistances(float currentDamage, const Damage& damage, const Defense& defense);
+	static float calculateDefense(float currentDamage, const Damage& damage, const Defense& defense);
 public:
+
 	static float calculateDamage(const Damage& damage, const Defense& defense);
 };
 

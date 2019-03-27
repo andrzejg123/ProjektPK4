@@ -224,6 +224,7 @@
     <ClInclude Include="EnemyControllerImplementation.h">
       <Filter>Enemy</Filter>
     </ClInclude>
+    <ClInclude Include="RandomHelper.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameViewImplementation.cpp">
@@ -370,5 +371,6 @@
     <ClCompile Include="EnemyControllerImplementation.cpp">
       <Filter>Enemy</Filter>
     </ClCompile>
+    <ClCompile Include="RandomHelper.cpp" />
   </ItemGroup>
 </Project>

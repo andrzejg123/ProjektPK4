@@ -2,20 +2,12 @@
 #include "RandomMoveHelper.h"
 #include "Log.h"
 #include "MathHelper.h"
+#include "RandomHelper.h"
+#include <ctime>
 
 Direction RandomMoveHelper::getRandomDirection()
 {
-	return static_cast<Direction>(rand() % 8);
-}
-
-bool RandomMoveHelper::rollRandom(const unsigned from, const unsigned to)
-{
-	return from > getRandomInt(to + 1);
-}
-
-unsigned RandomMoveHelper::getRandomInt(const unsigned number)
-{
-	return rand() % number;
+	return Direction(RandomHelper::getRandomInt(8));
 }
 
 Direction RandomMoveHelper::handleWait(const sf::Time& time)
@@ -27,15 +19,15 @@ Direction RandomMoveHelper::handleWait(const sf::Time& time)
 Direction RandomMoveHelper::checkNewDirection(sf::Time& elapsedTime)
 {
 	lastPosition = movable->getPosition();
-	if (rollRandom(changeDirectionChance.x, static_cast<unsigned>(changeDirectionChance.y / elapsedTime.asSeconds())))
+	if (RandomHelper::rollRandom(changeDirectionChance.x, static_cast<unsigned>(changeDirectionChance.y / elapsedTime.asSeconds())))
 	{
 		Log::debugS("changed direction");
 		return getRandomDirection();
 	}
-	if (rollRandom(waitChance.x, static_cast<unsigned>(waitChance.y / elapsedTime.asSeconds())))
+	if (RandomHelper::rollRandom(waitChance.x, static_cast<unsigned>(waitChance.y / elapsedTime.asSeconds())))
 	{
 		Log::debugS("waiting");
-		currentTimeToWait = static_cast<float>(getRandomInt(maxTimeToWait));
+		currentTimeToWait = static_cast<float>(RandomHelper::getRandomInt(maxTimeToWait));
 		return Direction::None;
 	}
 	if (maxDistance < MathHelper::getDistance(lastPosition, startPosition))

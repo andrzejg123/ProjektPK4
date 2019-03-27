@@ -14,8 +14,6 @@ class RandomMoveHelper
 	sf::Vector2f startPosition;
 	static Direction getRandomDirection();
 	Direction checkNewDirection(sf::Time& elapsedTime);
-	static bool rollRandom(unsigned from, unsigned to);
-	static unsigned getRandomInt(unsigned number);
 	Direction handleWait(const sf::Time& time);
 public:
 	Direction getDirection(sf::Time& elapsedTime);

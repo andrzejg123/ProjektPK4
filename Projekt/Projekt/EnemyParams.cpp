@@ -45,7 +45,7 @@ void EnemyParams::scaleWithLevel()
 	default:;
 	}
 	if (ranged)
-		attackRadius += 60.0f;
+		attackRadius += 80.0f;
 
 	health += (floatLvl * 2.0f);
 	damage.baseDamage += (floatLvl * 1.0f);

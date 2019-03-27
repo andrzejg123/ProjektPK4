@@ -76,14 +76,12 @@ Enemy::Enemy(EnemyParams& enemyParams, AnimationData& animationData) : Animated(
 	randomMoveHelper = new RandomMoveHelper(this);
 	attackRadius = enemyParams.getAttackRadius();
 	visionRadius = enemyParams.getVisionRadius();
+	attackSpeed = enemyParams.getAttackSpeed();
 	setPosition(sf::Vector2f(enemyParams.getPositionX(), enemyParams.getPositionY()));
 	setSpeed(enemyParams.getSpeed());
 	damage = enemyParams.getDamage();
 	defense = enemyParams.getDefense();
-	attackSpeed = enemyParams.getAttackSpeed();
 	level = enemyParams.getLevel();
-	damage = enemyParams.getDamage();
-	defense = enemyParams.getDefense();
 }
 
 Enemy::~Enemy()

@@ -16,6 +16,9 @@ void Warrior::onGetHit()
 
 Warrior::Warrior(sf::Texture& playerTexture, AnimationData& animationData) : Object(playerTexture), Player(animationData)
 {
+	defense.armor = 20;
+	defense.dodgeChance = 5.0f;
+	defense.arrowResistance = 20.0f;
 	sprite.setTextureRect(sf::IntRect(0, int(facing) * animationData.frameSizeY, animationData.frameSizeX, animationData.frameSizeY));
 }
 
