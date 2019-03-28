@@ -110,9 +110,11 @@ void MenuControllerImplementation::selectItem()
 void MenuControllerImplementation::selectHigherItem()
 {
 	SoundController::getInstance()->playSound(SoundIndicator::MenuSelectItem);
-	currentItem--;
-	if (currentItem < 0)
+
+	if (currentItem == 0)
 		currentItem = menuItems->size() - 1;
+	else
+		currentItem--;
 	handleSelection();
 }
 

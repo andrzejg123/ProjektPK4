@@ -6,15 +6,30 @@
 #include "MusicController.h"
 #include "SoundController.h"
 #include "SettingsReader.h"
+#include <unordered_map>
+#include <mutex>
+
+enum class LoadState
+{
+	Loaded,
+	Loading
+};
+
+struct SoundData
+{
+	LoadState loadState = LoadState::Loading;
+	sf::SoundBuffer* soundBuffer = nullptr;
+};
 
 class SoundControllerImplementation: public SoundController
 {
 	static SoundController* instance;
 	SettingsReader* settingsManager;
 	MusicController* musicController;
-	std::list<sf::Sound>* playingSounds;
-	std::map<SoundIndicator, sf::SoundBuffer>* sounds;
-	std::thread* thread;
+	std::mutex* readSoundMutex;
+	std::list<sf::Sound>* sounds;
+	std::unordered_map<SoundIndicator, SoundData*>* buffers;
+	std::list<std::thread*>* threads;
 	//Reads new sound from file and plays it
 	void fetchAndPlay(SoundIndicator soundIndicator) const;
 	void cleanUpSounds() const;

@@ -1,20 +1,24 @@
 #include "stdafx.h"
 #include "MusicControllerImplementation.h"
-#include "SoundController.h"
 #include "Log.h"
-#include <map>
 #include "FileNameHelper.h"
+#include <iostream>
 
 void MusicControllerImplementation::fetchAndPlay(const MusicIndicator musicIndicator, const float volume) const
 {
-	Log::debugS("loading new music");
+	Log::debugS("Reading new music with indicator = " + std::to_string(static_cast<int>(musicIndicator)));
+	readSoundMutex->lock();
 	auto music = new sf::Music();
-	if (music->openFromFile(FileNameHelper::getMusicFileName(musicIndicator)))
+	const auto check = music->openFromFile(FileNameHelper::getMusicFileName(musicIndicator));
+	readSoundMutex->unlock();
+	if (check)
 	{
 		music->setLoop(true);
-		(*musics)[musicIndicator] = music;
 		music->setVolume(volume);
 		music->play();
+		(*musics)[musicIndicator]->music = music;
+		(*musics)[musicIndicator]->loadState = LoadState::Loaded;
+		Log::debugS("Finished loading music with indicator = " + std::to_string(static_cast<int>(musicIndicator)));
 	}
 	else
 		delete music;
@@ -23,7 +27,8 @@ void MusicControllerImplementation::fetchAndPlay(const MusicIndicator musicIndic
 void MusicControllerImplementation::stopAllMusic() const
 {
 	for (auto music : *musics)
-		music.second->stop();
+		if (music.second != nullptr && music.second->music != nullptr)
+			music.second->music->pause();
 }
 
 void MusicControllerImplementation::updateSettings(const bool shouldPlayMusic, const float musicVolume)
@@ -32,38 +37,51 @@ void MusicControllerImplementation::updateSettings(const bool shouldPlayMusic, c
 		stopAllMusic();
 	else
 		for (auto music : *musics)
-			music.second->setVolume(musicVolume);
+			if (music.second != nullptr && music.second->music != nullptr)
+				music.second->music->setVolume(musicVolume);
 }
 
 void MusicControllerImplementation::playMusic(const MusicIndicator musicIndicator, const float volume)
 {
 	stopAllMusic();
-	const auto i = musics->find(musicIndicator);
-	if (i == musics->end())
+	auto music = (*musics)[musicIndicator];
+	if (music == nullptr)
 	{
-		SoundController::syncThread(thread);
-		thread = new std::thread([=] { fetchAndPlay(musicIndicator, volume); });
+		(*musics)[musicIndicator] = new MusicData();
+		(*threads).push_back(new std::thread([=] { fetchAndPlay(musicIndicator, volume); }));
 	}
-	else
+	else if(music->loadState == LoadState::Loaded)
 	{
-		i->second->setVolume(volume);
-		i->second->play();
+		music->music->setVolume(volume);
+		music->music->play();
 	}
 }
 
-MusicControllerImplementation::MusicControllerImplementation()
+MusicControllerImplementation::MusicControllerImplementation(std::mutex* mutex)
 {
-	this->thread = nullptr;
-	this->musics = new std::map<MusicIndicator, sf::Music*>();
+	this->readSoundMutex = mutex;
+	this->threads = new std::list<std::thread*>();
+	this->musics = new std::unordered_map<MusicIndicator, MusicData*>();
 }
 
 MusicControllerImplementation::~MusicControllerImplementation()
 {
-	SoundController::syncThread(thread);
+	for (auto thread : *threads)
+		if (thread != nullptr)
+		{
+			thread->join();
+			delete thread;
+		}
 	for (auto music : *musics)
-	{
-		music.second->stop();
-		delete music.second;
-	}
+		if (music.second != nullptr)
+		{
+			if(music.second->music != nullptr)
+			{
+				music.second->music->stop();
+				delete music.second->music;
+			}
+			delete music.second;
+		}
+	delete threads;
 	delete musics;
 }

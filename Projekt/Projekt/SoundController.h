@@ -19,8 +19,6 @@ class SoundController
 public:
 	//Update sound settings
 	virtual void updateSettings() = 0;
-	//Joins thread and removes from memory
-	static void syncThread(std::thread* thread);
 	//Plays sound specified by indicator
 	virtual void playSound(SoundIndicator soundIndicator) = 0;
 	//Plays music specified by indicator
