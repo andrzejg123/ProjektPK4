@@ -25,7 +25,7 @@ void GameViewInterfaceDrawer::drawInteractionInfo()
 	}
 }
 
-void GameViewInterfaceDrawer::draw(Player* player)
+void GameViewInterfaceDrawer::draw()
 {
 	window->draw(backgroundBars);
 	const auto playerPoints = player->getPlayerPoints();
@@ -54,7 +54,7 @@ GameViewInterfaceDrawer::~GameViewInterfaceDrawer()
 {
 }
 
-GameViewInterfaceDrawer::GameViewInterfaceDrawer(sf::RenderWindow* window) : window(window), possibleInteraction(nullptr)
+GameViewInterfaceDrawer::GameViewInterfaceDrawer(sf::RenderWindow* window, Player* player) : window(window), player(player), possibleInteraction(nullptr)
 {
 	backgroundBars.setTexture(InterfaceTexturesHolder::getInstance()->getTexture(InterfaceTextureIndicator::BackgroundBars));
 	backgroundBars.setPosition(10, 10);

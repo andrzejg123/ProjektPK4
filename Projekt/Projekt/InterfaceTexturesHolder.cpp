@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "InterfaceTexturesHolder.h"
+#include "FileNameHelper.h"
 
 InterfaceTexturesHolder* InterfaceTexturesHolder::instance = nullptr;
 
@@ -21,13 +22,13 @@ InterfaceTexturesHolder* InterfaceTexturesHolder::getInstance()
 	return instance;
 }
 
-sf::Texture& InterfaceTexturesHolder::getTexture(InterfaceTextureIndicator textureIndicator)
+sf::Texture& InterfaceTexturesHolder::getTexture(const InterfaceTextureIndicator textureIndicator)
 {
 	const auto i = textures->find(textureIndicator);
 	if (i == textures->end()) //texture was not loaded before
 	{
 		sf::Texture newTexture;
-		newTexture.loadFromFile("textures/interface/texture_" + std::to_string(int(textureIndicator)) + ".png"); //TODO: A - throwing an exception when couldn't load
+		newTexture.loadFromFile(FileNameHelper::getInterfaceTextureFileName(textureIndicator)); //TODO: A - throwing an exception when couldn't load
 		(*textures)[textureIndicator] = newTexture;
 		return (*textures)[textureIndicator];
 	}

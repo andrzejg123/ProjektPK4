@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "TexturesHolder.h"
+#include "FileNameHelper.h"
 
 TexturesHolder* TexturesHolder::instance = nullptr;
 
@@ -9,7 +10,7 @@ sf::Texture& TexturesHolder::getTexture(const ObjectIndicator textureIndicator) 
 	if (i == textures->end()) //texture was not loaded before
 	{
 		sf::Texture newTexture;
-		newTexture.loadFromFile("textures/texture_" + std::to_string(int(textureIndicator)) + ".png"); //TODO: A - throwing an exception when couldn't load
+		newTexture.loadFromFile(FileNameHelper::getObjectTextureFileName(textureIndicator)); //TODO: A - throwing an exception when couldn't load
 		(*textures)[textureIndicator] = newTexture;
 		return (*textures)[textureIndicator];
 	}

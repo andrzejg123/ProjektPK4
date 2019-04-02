@@ -147,8 +147,9 @@ GameControllerImplementation::GameControllerImplementation(GameView* gameView): 
 	this->gameObjectsHolder = new GameObjectsHolder();
 	this->gameEnemyController = new EnemyControllerImplementation(gameObjectsHolder, gameTexturesHolder);
 	this->gameEntityDataHolder = new GameEntityDataHolder(fileReadingController);
-	this->interactionController = new GameInteractionController(gameObjectsHolder, gameView);
 	this->pendingActionsController = new PendingActionsController();
+	this->interactionController = new GameInteractionController(gameObjectsHolder, gameView, pendingActionsController);
+	
 }
 
 GameControllerImplementation::~GameControllerImplementation()

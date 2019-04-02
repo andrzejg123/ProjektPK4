@@ -33,7 +33,8 @@ void GameInteractionController::checkInteractions()
 	gameView->setPossibleInteraction(possibleInteractionObject);
 }
 
-GameInteractionController::GameInteractionController(GameObjectsHolder* gameObjectsHolder, GameView* gameView) : gameObjectsHolder(gameObjectsHolder), gameView(gameView)
+GameInteractionController::GameInteractionController(GameObjectsHolder* gameObjectsHolder, GameView* gameView, PendingActionsController* pendingActionsController) 
+				: gameObjectsHolder(gameObjectsHolder), pendingActionsController(pendingActionsController), gameView(gameView)
 {
 }
 
@@ -45,5 +46,15 @@ void GameInteractionController::handleInteraction()
 	if(possibleInteractionObject != nullptr)
 	{
 		possibleInteractionObject->onInteract();
+		switch(possibleInteractionObject->getInteractionType())
+		{
+		case InteractionType::ChestOpen:
+			const auto boundAction = std::bind(&GameView::setDoneInteraction, gameView, possibleInteractionObject);
+			const auto action = new PendingAction(boundAction, sf::seconds(possibleInteractionObject->getAnimationDuration(1, AnimationType::ChestOpen)));
+			pendingActionsController->addPendingAction(action);
+			break;
+		
+		
+		}
 	}
 }
