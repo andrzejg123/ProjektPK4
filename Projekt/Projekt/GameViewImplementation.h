@@ -20,6 +20,7 @@ public:
 	void show() override;
 	sf::Vector2u getWindowSize() override;
 	void setPossibleInteraction(Interactive* newPossibleInteraction) override;
+	void setDoneInteraction(Interactive* doneInteraction) override;
 	explicit GameViewImplementation(sf::RenderWindow* window);
 	~GameViewImplementation();
 };

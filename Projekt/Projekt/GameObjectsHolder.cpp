@@ -1,6 +1,9 @@
 #include "stdafx.h"
 #include "GameObjectsHolder.h"
 #include "Enemy.h"
+#include "Log.h"
+#include "Warrior.h"
+#include <iostream>
 
 std::list<Object*>* GameObjectsHolder::getObjects() const
 {
@@ -53,6 +56,7 @@ void GameObjectsHolder::setPlayer(Player* player)
 	this->player = player;
 	objects->push_back(player);
 	animatedList->push_back(player);
+	
 }
 
 void GameObjectsHolder::addEnemy(Enemy* enemy) const

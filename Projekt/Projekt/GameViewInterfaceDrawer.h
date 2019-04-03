@@ -3,10 +3,12 @@
 #include <SFML/Graphics/RenderWindow.hpp>
 #include "Interactive.h"
 #include <SFML/Graphics/Text.hpp>
+#include "Drawer.h"
 
-class GameViewInterfaceDrawer
+class GameViewInterfaceDrawer : public Drawer
 {
 	sf::RenderWindow* window;
+	Player* player;
 	sf::Sprite backgroundBars;
 	sf::Sprite healthBar;
 	sf::Sprite staminaBar;
@@ -16,9 +18,9 @@ class GameViewInterfaceDrawer
 	Interactive* possibleInteraction;
 	void drawInteractionInfo();
 public:
-	void draw(Player* player);
+	void draw() override;
 	void setPossibleInteraction(Interactive* newPossibleInteraction);
-	GameViewInterfaceDrawer(sf::RenderWindow* window);
+	GameViewInterfaceDrawer(sf::RenderWindow* window, Player* player);
 	~GameViewInterfaceDrawer();
 };
 

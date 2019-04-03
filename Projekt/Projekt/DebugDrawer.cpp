@@ -8,8 +8,7 @@ void DebugDrawer::toggle()
 	isWorking = !isWorking;
 }
 
-void DebugDrawer::draw(std::list<sf::FloatRect>* collisionRects, GameObjectsHolder* gameObjectHolder,
-	sf::RenderWindow* window)
+void DebugDrawer::draw()
 {
 	if(isWorking)
 	{
@@ -66,10 +65,10 @@ void DebugDrawer::draw(std::list<sf::FloatRect>* collisionRects, GameObjectsHold
 	}
 }
 
-DebugDrawer::DebugDrawer() : isWorking(false)
+DebugDrawer::DebugDrawer(std::list<sf::FloatRect>* collisionRects, GameObjectsHolder* gameObjectHolder,
+	sf::RenderWindow* window) : isWorking(false), collisionRects(collisionRects), gameObjectHolder(gameObjectHolder), window(window)
 {
 }
-
 
 DebugDrawer::~DebugDrawer()
 = default;

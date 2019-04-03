@@ -5,6 +5,7 @@
 #include "SettingsViewImplementation.h"
 #include "MenuViewImplementation.h"
 #include "ExtrasView.h"
+#include "InteractionView.h"
 
 void ViewRouter::openGame(sf::RenderWindow* window)
 {
@@ -29,4 +30,9 @@ void ViewRouter::openOptions(sf::RenderWindow* window, GameViewCloseCallback* ga
 void ViewRouter::openExtras(sf::RenderWindow* window)
 {
 	ExtrasView(window).show();
+}
+
+void ViewRouter::openInteraction(sf::RenderWindow* window, Interactive* doneInteraction)
+{
+	InteractionView(window, doneInteraction).show();
 }

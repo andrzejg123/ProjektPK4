@@ -128,7 +128,7 @@ std::map<std::string, float> FileReadingController::loadEnemyParamsFactors(const
 AnimationData FileReadingController::loadAnimationData(ObjectIndicator entityIndicator)
 {
 	AnimationData animationData;
-	file.open("entities/animations/entity_animation_" + std::to_string(int(entityIndicator)) + ".txt");
+	file.open(FileNameHelper::getAnimationDataFileName(entityIndicator));
 	if(file.good())
 	{
 		file >> animationData.frameSizeX;

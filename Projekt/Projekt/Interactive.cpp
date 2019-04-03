@@ -5,6 +5,11 @@ Interactive::Interactive(InteractionType interactionType, AnimationData& animati
 {
 }
 
+InteractionType Interactive::getInteractionType()
+{
+	return interactionType;
+}
+
 Interactive::~Interactive()
 {
 }

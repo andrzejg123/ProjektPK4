@@ -5,8 +5,8 @@
 
 enum class InteractionType
 {
-	TreasureOpen,
-	TreasureClosed,
+	ChestOpen,
+	ChestClosed,
 	Speak,
 	LeaveLocation
 };
@@ -26,6 +26,7 @@ class Interactive : public Animated
 public:
 	virtual void onInteract() = 0;
 	Interactive(InteractionType interactionType, AnimationData& animationData);
+	InteractionType getInteractionType();
 	~Interactive();
 };
 

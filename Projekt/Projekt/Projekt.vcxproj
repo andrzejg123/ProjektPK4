@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -154,11 +154,16 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animated.h" />
+    <ClInclude Include="Armor.h" />
     <ClInclude Include="Arrow.h" />
     <ClInclude Include="Chest.h" />
     <ClInclude Include="Damageable.h" />
     <ClInclude Include="DamageHelper.h" />
     <ClInclude Include="DebugDrawer.h" />
+    <ClInclude Include="Drawer.h" />
+    <ClInclude Include="InteractionView.h" />
+    <ClInclude Include="Item.h" />
+    <ClInclude Include="ItemTexturesHolder.h" />
     <ClInclude Include="MathHelper.h" />
     <ClInclude Include="Enemy.h" />
     <ClInclude Include="EnemyParams.h" />
@@ -224,14 +229,19 @@
     <ClInclude Include="ViewRouter.h" />
     <ClInclude Include="Warrior.h" />
     <ClInclude Include="RogueArcher.h" />
+    <ClInclude Include="Weapon.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animated.cpp" />
+    <ClCompile Include="Armor.cpp" />
     <ClCompile Include="Arrow.cpp" />
     <ClCompile Include="Chest.cpp" />
     <ClCompile Include="Damageable.cpp" />
     <ClCompile Include="DamageHelper.cpp" />
     <ClCompile Include="DebugDrawer.cpp" />
+    <ClCompile Include="InteractionView.cpp" />
+    <ClCompile Include="Item.cpp" />
+    <ClCompile Include="ItemTexturesHolder.cpp" />
     <ClCompile Include="MathHelper.cpp" />
     <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="EnemyParams.cpp" />
@@ -288,6 +298,7 @@
     <ClCompile Include="ViewRouter.cpp" />
     <ClCompile Include="Warrior.cpp" />
     <ClCompile Include="RogueArcher.cpp" />
+    <ClCompile Include="Weapon.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

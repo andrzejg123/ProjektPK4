@@ -13,8 +13,9 @@ GameViewImplementation::GameViewImplementation(sf::RenderWindow* window)
 {
 	this->gameController = new GameControllerImplementation(this);
 	this->window = window;
-	this->debugDrawer = new DebugDrawer();
-	this->interfaceDrawer = new GameViewInterfaceDrawer(window);
+	gameController->initializeGame();
+	this->debugDrawer = new DebugDrawer(gameController->getCollisionRects(), gameController->getGameObjectHolder(), window);
+	this->interfaceDrawer = new GameViewInterfaceDrawer(window, gameController->getGameObjectHolder()->getPlayer());
 }
 
 GameViewImplementation::~GameViewImplementation()
@@ -32,7 +33,6 @@ void GameViewImplementation::closeGame()
 void GameViewImplementation::show()
 {
 	shouldShowWindow = true;
-	gameController->initializeGame();
 	auto& window = *this->window;
 
 	sf::Clock gameClock;
@@ -71,7 +71,7 @@ void GameViewImplementation::show()
 			}
 		}
 		
-		const auto oldPlayerPosition = gameController->getGameObjectHolder()->getPlayer()->getPosition();
+		//const auto oldPlayerPosition = gameController->getGameObjectHolder()->getPlayer()->getPosition();
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
 		{
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
@@ -96,7 +96,7 @@ void GameViewImplementation::show()
 			gameController->movePlayer(Direction::Right, elapsed);
 		else
 			gameController->stopPlayer();
-		const auto newPlayerPosition = gameController->getGameObjectHolder()->getPlayer()->getPosition();
+		//const auto newPlayerPosition = gameController->getGameObjectHolder()->getPlayer()->getPosition();
 		
 		gameController->updateGame(elapsed);
 
@@ -106,7 +106,7 @@ void GameViewImplementation::show()
 		for (auto objectToDraw : *gameController->getObjectsToDraw())
 			window.draw(*objectToDraw);
 
-		debugDrawer->draw(gameController->getCollisionRects(), gameController->getGameObjectHolder(), &window);
+		debugDrawer->draw();
 
 		//TODO camera
 		/*const auto playerDisplacement = newPlayerPosition - oldPlayerPosition;
@@ -128,7 +128,7 @@ void GameViewImplementation::show()
 		
 		window.setView(camera);*/
 
-		interfaceDrawer->draw(gameController->getGameObjectHolder()->getPlayer());
+		interfaceDrawer->draw();
 		window.display();
 	}
 	
@@ -142,4 +142,9 @@ sf::Vector2u GameViewImplementation::getWindowSize()
 void GameViewImplementation::setPossibleInteraction(Interactive* newPossibleInteraction)
 {
 	interfaceDrawer->setPossibleInteraction(newPossibleInteraction);
+}
+
+void GameViewImplementation::setDoneInteraction(Interactive* doneInteraction)
+{
+	ViewRouter::openInteraction(window, doneInteraction);
 }

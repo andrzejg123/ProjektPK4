@@ -102,3 +102,76 @@ std::string FileNameHelper::getEnemyFileName(const ObjectIndicator objectIndicat
 	}
 	return prefix + name + suffix;
 }
+
+std::string FileNameHelper::getObjectTextureFileName(const ObjectIndicator objectIndicator)
+{
+	const std::string prefix = "textures/";
+	std::string name;
+	const std::string suffix = ".png";
+	switch (objectIndicator)
+	{
+	case ObjectIndicator::RogueArcher:
+		name = "rogue_archer";
+		break;
+	case ObjectIndicator::PlayerWarrior:
+		name = "player_warrior";
+		break;
+	case ObjectIndicator::Chest:
+		name = "chest";
+		break;
+	case ObjectIndicator::Arrow:
+		name = "arrow";
+		break;
+	default: name = "error";
+	}
+	return prefix + name + suffix;
+}
+
+std::string FileNameHelper::getInterfaceTextureFileName(const InterfaceTextureIndicator textureIndicator)
+{
+	const std::string prefix = "textures/interface/";
+	std::string name;
+	const std::string suffix = ".png";
+	switch (textureIndicator)
+	{
+	case InterfaceTextureIndicator::MenuBackground:
+		name = "menu_background";
+		break;
+	case InterfaceTextureIndicator::BackgroundBars:
+		name = "background_bars";
+		break;
+	case InterfaceTextureIndicator::RedBarBig:
+		name = "red_bar_big";
+		break;
+	case InterfaceTextureIndicator::BlueBarSmall:
+		name = "blue_bar_small";
+		break;
+	case InterfaceTextureIndicator::InteractionInfoBackground:
+		name = "interaction_info_background";
+		break;
+	default: name = "error";
+	}
+	return prefix + name + suffix;
+}
+
+std::string FileNameHelper::getAnimationDataFileName(ObjectIndicator objectIndicator)
+{
+	const std::string prefix = "entities/animations/";
+	std::string name;
+	const std::string suffix = ".txt";
+	switch (objectIndicator)
+	{
+	case ObjectIndicator::RogueArcher:
+		name = "rogue_archer";
+		break;
+	case ObjectIndicator::PlayerWarrior:
+		name = "player_warrior";
+		break;
+	case ObjectIndicator::Chest:
+		name = "chest";
+		break;
+
+	default: name = "error";
+	}
+	return prefix + name + suffix;
+}

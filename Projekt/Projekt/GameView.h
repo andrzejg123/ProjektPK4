@@ -7,6 +7,7 @@ class GameView
 public:
 	virtual sf::Vector2u getWindowSize() = 0;
 	virtual void setPossibleInteraction(Interactive* newPossibleInteraction) = 0;
+	virtual void setDoneInteraction(Interactive* doneInteraction) = 0;
 	virtual ~GameView() = default;
 };
 

@@ -2,6 +2,9 @@
 #include "Moveable.h"
 #include "Animated.h"
 #include "Damageable.h"
+#include "Weapon.h"
+#include <list>
+#include "Armor.h"
 
 struct PlayerPoints
 {
@@ -13,9 +16,12 @@ struct PlayerPoints
 
 class Player : public Moveable, public Animated, public Damageable
 {
-	float stamina = 100.0;
-	float maxStamina = 100.0;
-	float interactionRadius = 100.0;
+	float stamina = 100.0f;
+	float maxStamina = 100.0f;
+	float interactionRadius = 100.0f;
+	Weapon* weapon;
+	Armor* armor;
+	std::list<Item*>* playerItems;
 public:
 	Player();
 	Player(AnimationData& animationData);
